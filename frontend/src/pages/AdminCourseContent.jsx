@@ -29,8 +29,6 @@ const AI_FALLBACK_DATA = {
           duration: "30 min",
           videoUrl: "",
           zipUrl: "/uploads/courses/1791286605286-173949088.zip",
-          zipName: "Course Introduction TEAMWORK.zip",
-          zipSize: "266.07 MB",
         },
       ],
     },
@@ -46,8 +44,6 @@ const AI_FALLBACK_DATA = {
           duration: "45 min",
           videoUrl: "",
           zipUrl: "/uploads/courses/1791286656010-391085889.zip",
-          zipName: "Python Fundamentals (Part-1).zip",
-          zipSize: "457.43 MB",
         },
       ],
     },
@@ -117,9 +113,9 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 1: HTML5 & Modern Responsive CSS",
         description: "Foundations of modern web layout, semantic elements, and responsive design with project ZIP archives.",
         lessons: [
-          { _id: "web-les-1", title: "Lesson 1: HTML5 Semantic Structure & Starter Project", duration: "35 min", videoUrl: "", zipUrl: "/uploads/courses/1791194734125-528801946.zip", zipName: "01-HTML5-Starter-Project.zip", zipSize: "185 MB" },
-          { _id: "web-les-2", title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts", duration: "45 min", videoUrl: "", zipUrl: "/uploads/courses/1791194748044-253890491.zip", zipName: "02-CSS3-Flexbox-Grid-Layouts.zip", zipSize: "507 MB" },
-          { _id: "web-les-3", title: "Lesson 3: Complete Responsive Agency Landing Page", duration: "50 min", videoUrl: "", zipUrl: "/uploads/courses/1791194763164-769067527.zip", zipName: "03-Responsive-Landing-Page.zip", zipSize: "185 MB" },
+          { _id: "web-les-1", title: "Lesson 1: HTML5 Semantic Structure & Starter Project", duration: "35 min", videoUrl: "", zipSize: "185 MB" },
+          { _id: "web-les-2", title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts", duration: "45 min", videoUrl: "", zipSize: "507 MB" },
+          { _id: "web-les-3", title: "Lesson 3: Complete Responsive Agency Landing Page", duration: "50 min", videoUrl: "", zipSize: "185 MB" },
         ],
       },
       {
@@ -127,9 +123,9 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 2: JavaScript DOM & Interactive Applications",
         description: "Master core JavaScript, DOM manipulation, asynchronous programming, APIs, and interactive applications.",
         lessons: [
-          { _id: "web-les-4", title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control", duration: "55 min", videoUrl: "", zipUrl: "/uploads/courses/1791194776246-178006013.zip", zipName: "04-JS-DOM-Interactive-Project.zip", zipSize: "351 MB" },
-          { _id: "web-les-5", title: "Lesson 5: Async JS, REST APIs & Live Weather Application", duration: "60 min", videoUrl: "", zipUrl: "/uploads/courses/1791195035501-472161838.zip", zipName: "05-Async-API-Weather-App.zip", zipSize: "436 MB" },
-          { _id: "web-les-6", title: "Lesson 6: Interactive CRUD App with LocalStorage", duration: "50 min", videoUrl: "", zipUrl: "/uploads/courses/1791196105477-687599394.zip", zipName: "06-Interactive-CRUD-Storage-App.zip", zipSize: "707 MB" },
+          { _id: "web-les-4", title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control", duration: "55 min", videoUrl: "", zipSize: "351 MB" },
+          { _id: "web-les-5", title: "Lesson 5: Async JS, REST APIs & Live Weather Application", duration: "60 min", videoUrl: "", zipSize: "436 MB" },
+          { _id: "web-les-6", title: "Lesson 6: Interactive CRUD App with LocalStorage", duration: "50 min", videoUrl: "", zipSize: "707 MB" },
         ],
       },
       {
@@ -137,9 +133,9 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 3: React.js & Modern Frontend Architecture",
         description: "Build robust single-page applications using React components, hooks, routing, and state management.",
         lessons: [
-          { _id: "web-les-7", title: "Lesson 7: React Setup, JSX, Components & Props", duration: "45 min", videoUrl: "", zipUrl: "/uploads/courses/1791196912251-509649897.zip", zipName: "07-React-Components-Starter.zip", zipSize: "586 MB" },
-          { _id: "web-les-8", title: "Lesson 8: React Hooks (useState, useEffect) & Context API", duration: "55 min", videoUrl: "", zipUrl: "/uploads/courses/1791197080020-426950135.zip", zipName: "08-React-Hooks-Context-Project.zip", zipSize: "356 MB" },
-          { _id: "web-les-9", title: "Lesson 9: Full E-Commerce Product Catalog with Cart", duration: "65 min", videoUrl: "", zipUrl: "/uploads/courses/1791198229799-559583431.zip", zipName: "09-Ecommerce-Cart-Frontend.zip", zipSize: "301 MB" },
+          { _id: "web-les-7", title: "Lesson 7: React Setup, JSX, Components & Props", duration: "45 min", videoUrl: "", zipSize: "586 MB" },
+          { _id: "web-les-8", title: "Lesson 8: React Hooks (useState, useEffect) & Context API", duration: "55 min", videoUrl: "", zipSize: "356 MB" },
+          { _id: "web-les-9", title: "Lesson 9: Full E-Commerce Product Catalog with Cart", duration: "65 min", videoUrl: "", zipSize: "301 MB" },
         ],
       },
       {
@@ -147,9 +143,9 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 4: Full-Stack Backend, Database & Deployment",
         description: "Build RESTful APIs with Node.js, Express, MongoDB, and deploy full-stack applications to cloud servers.",
         lessons: [
-          { _id: "web-les-10", title: "Lesson 10: Node.js & Express REST API Architecture", duration: "50 min", videoUrl: "", zipUrl: "/uploads/courses/1791199702700-413691350.zip", zipName: "10-Node-Express-REST-API.zip", zipSize: "253 MB" },
-          { _id: "web-les-11", title: "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth", duration: "60 min", videoUrl: "", zipUrl: "/uploads/courses/1791199715268-701008463.zip", zipName: "11-MongoDB-JWT-Auth-System.zip", zipSize: "197 MB" },
-          { _id: "web-les-12", title: "Lesson 12: Full Stack Production Deployment & CI/CD", duration: "60 min", videoUrl: "", zipUrl: "/uploads/courses/1791199726034-613446791.zip", zipName: "12-FullStack-Production-Complete.zip", zipSize: "333 MB" },
+          { _id: "web-les-10", title: "Lesson 10: Node.js & Express REST API Architecture", duration: "50 min", videoUrl: "", zipSize: "253 MB" },
+          { _id: "web-les-11", title: "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth", duration: "60 min", videoUrl: "", zipSize: "197 MB" },
+          { _id: "web-les-12", title: "Lesson 12: Full Stack Production Deployment & CI/CD", duration: "60 min", videoUrl: "", zipSize: "333 MB" },
         ],
       },
     ],
@@ -174,18 +170,18 @@ const FALLBACK_COURSES_MAP = {
         _id: "web-mod-1",
         title: "Module 1: HTML5 & Modern Responsive CSS",
         lessons: [
-          { _id: "web-les-1", title: "Lesson 1: HTML5 Semantic Structure & Starter Project", duration: "35 min", videoUrl: "", zipUrl: "/uploads/courses/1791194734125-528801946.zip", zipName: "01-HTML5-Starter-Project.zip", zipSize: "185 MB" },
-          { _id: "web-les-2", title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts", duration: "45 min", videoUrl: "", zipUrl: "/uploads/courses/1791194748044-253890491.zip", zipName: "02-CSS3-Flexbox-Grid-Layouts.zip", zipSize: "507 MB" },
-          { _id: "web-les-3", title: "Lesson 3: Complete Responsive Agency Landing Page", duration: "50 min", videoUrl: "", zipUrl: "/uploads/courses/1791194763164-769067527.zip", zipName: "03-Responsive-Landing-Page.zip", zipSize: "185 MB" },
+          { _id: "web-les-1", title: "Lesson 1: HTML5 Semantic Structure & Starter Project", duration: "35 min", videoUrl: "", zipSize: "185 MB" },
+          { _id: "web-les-2", title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts", duration: "45 min", videoUrl: "", zipSize: "507 MB" },
+          { _id: "web-les-3", title: "Lesson 3: Complete Responsive Agency Landing Page", duration: "50 min", videoUrl: "", zipSize: "185 MB" },
         ],
       },
       {
         _id: "web-mod-2",
         title: "Module 2: JavaScript DOM & Interactive Applications",
         lessons: [
-          { _id: "web-les-4", title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control", duration: "55 min", videoUrl: "", zipUrl: "/uploads/courses/1791194776246-178006013.zip", zipName: "04-JS-DOM-Interactive-Project.zip", zipSize: "351 MB" },
-          { _id: "web-les-5", title: "Lesson 5: Async JS, REST APIs & Live Weather Application", duration: "60 min", videoUrl: "", zipUrl: "/uploads/courses/1791195035501-472161838.zip", zipName: "05-Async-API-Weather-App.zip", zipSize: "436 MB" },
-          { _id: "web-les-6", title: "Lesson 6: Interactive CRUD App with LocalStorage", duration: "50 min", videoUrl: "", zipUrl: "/uploads/courses/1791196105477-687599394.zip", zipName: "06-Interactive-CRUD-Storage-App.zip", zipSize: "707 MB" },
+          { _id: "web-les-4", title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control", duration: "55 min", videoUrl: "", zipSize: "351 MB" },
+          { _id: "web-les-5", title: "Lesson 5: Async JS, REST APIs & Live Weather Application", duration: "60 min", videoUrl: "", zipSize: "436 MB" },
+          { _id: "web-les-6", title: "Lesson 6: Interactive CRUD App with LocalStorage", duration: "50 min", videoUrl: "", zipSize: "707 MB" },
         ],
       },
     ],
@@ -218,8 +214,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "30 min",
             videoUrl: "",
             zipUrl: "/uploads/courses/1791265931186-935533293.zip",
-            zipName: "01-Android-Studio-Setup-Starter.zip",
-            zipSize: "583 MB",
           },
           {
             _id: "and-les-2",
@@ -228,8 +222,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "45 min",
             videoUrl: "",
             zipUrl: "",
-            zipName: "",
-            zipSize: "",
           },
         ],
       },
@@ -245,8 +237,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "50 min",
             videoUrl: "",
             zipUrl: "/uploads/courses/1791265885918-768069909.zip",
-            zipName: "02-Jetpack-Compose-Layouts.zip",
-            zipSize: "534 MB",
           },
           {
             _id: "and-les-4",
@@ -255,8 +245,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "45 min",
             videoUrl: "",
             zipUrl: "",
-            zipName: "",
-            zipSize: "",
           },
         ],
       },
@@ -272,8 +260,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "55 min",
             videoUrl: "",
             zipUrl: "/uploads/courses/1791265849347-992920259.zip",
-            zipName: "03-Android-Retrofit-MVVM-App.zip",
-            zipSize: "480 MB",
           },
           {
             _id: "and-les-6",
@@ -282,8 +268,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "50 min",
             videoUrl: "",
             zipUrl: "",
-            zipName: "",
-            zipSize: "",
           },
         ],
       },
@@ -299,8 +283,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "65 min",
             videoUrl: "",
             zipUrl: "/uploads/courses/1791265800123-2443587.zip",
-            zipName: "04-Android-Full-Ecommerce-App.zip",
-            zipSize: "412 MB",
           },
           {
             _id: "and-les-8",
@@ -309,8 +291,6 @@ const FALLBACK_COURSES_MAP = {
             duration: "40 min",
             videoUrl: "",
             zipUrl: "",
-            zipName: "",
-            zipSize: "",
           },
         ],
       },
@@ -354,8 +334,8 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 1: Kotlin & Android Studio Setup",
         description: "Kotlin programming essentials, Android Studio IDE setup, and Project Anatomy.",
         lessons: [
-          { _id: "and-les-1", title: "Lesson 1: Android Studio Installation & Project Anatomy", duration: "30 min", videoUrl: "", zipUrl: "/uploads/courses/1791265931186-935533293.zip", zipName: "01-Android-Studio-Setup-Starter.zip", zipSize: "583 MB" },
-          { _id: "and-les-2", title: "Lesson 2: Kotlin Fundamentals, OOP & Coroutines", duration: "45 min", videoUrl: "", zipUrl: "", zipName: "", zipSize: "" },
+          { _id: "and-les-1", title: "Lesson 1: Android Studio Installation & Project Anatomy", duration: "30 min", videoUrl: "", zipUrl: "/uploads/courses/1791265931186-935533293.zip", zipSize: "583 MB" },
+          { _id: "and-les-2", title: "Lesson 2: Kotlin Fundamentals, OOP & Coroutines", duration: "45 min", videoUrl: "", zipUrl: "", zipSize: "" },
         ],
       },
       {
@@ -363,8 +343,8 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 2: Modern UI with Jetpack Compose",
         description: "Declarative UI, State management, Navigation, Material 3 Design.",
         lessons: [
-          { _id: "and-les-3", title: "Lesson 3: Jetpack Compose Layouts & Material Design 3", duration: "50 min", videoUrl: "", zipUrl: "/uploads/courses/1791265885918-768069909.zip", zipName: "02-Jetpack-Compose-Layouts.zip", zipSize: "534 MB" },
-          { _id: "and-les-4", title: "Lesson 4: Compose State, ViewModel & Navigation", duration: "45 min", videoUrl: "", zipUrl: "", zipName: "", zipSize: "" },
+          { _id: "and-les-3", title: "Lesson 3: Jetpack Compose Layouts & Material Design 3", duration: "50 min", videoUrl: "", zipUrl: "/uploads/courses/1791265885918-768069909.zip", zipSize: "534 MB" },
+          { _id: "and-les-4", title: "Lesson 4: Compose State, ViewModel & Navigation", duration: "45 min", videoUrl: "", zipUrl: "", zipSize: "" },
         ],
       },
       {
@@ -372,8 +352,8 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 3: Networking, Storage & MVVM Architecture",
         description: "Retrofit, Room SQLite Database, Repository Pattern, and Hilt Dependency Injection.",
         lessons: [
-          { _id: "and-les-5", title: "Lesson 5: REST API Integration with Retrofit & OkHttp", duration: "55 min", videoUrl: "", zipUrl: "/uploads/courses/1791265849347-992920259.zip", zipName: "03-Android-Retrofit-MVVM-App.zip", zipSize: "480 MB" },
-          { _id: "and-les-6", title: "Lesson 6: Local Persistence with Room Database & DataStore", duration: "50 min", videoUrl: "", zipUrl: "", zipName: "", zipSize: "" },
+          { _id: "and-les-5", title: "Lesson 5: REST API Integration with Retrofit & OkHttp", duration: "55 min", videoUrl: "", zipUrl: "/uploads/courses/1791265849347-992920259.zip", zipSize: "480 MB" },
+          { _id: "and-les-6", title: "Lesson 6: Local Persistence with Room Database & DataStore", duration: "50 min", videoUrl: "", zipUrl: "", zipSize: "" },
         ],
       },
       {
@@ -381,8 +361,8 @@ const FALLBACK_COURSES_MAP = {
         title: "Module 4: Full App Project, Testing & Play Store Deployment",
         description: "Capstone project, Unit testing, App bundle creation, and Play Console release.",
         lessons: [
-          { _id: "and-les-7", title: "Lesson 7: Full E-Commerce / Social App Project with Firebase", duration: "65 min", videoUrl: "", zipUrl: "/uploads/courses/1791265800123-2443587.zip", zipName: "04-Android-Full-Ecommerce-App.zip", zipSize: "412 MB" },
-          { _id: "and-les-8", title: "Lesson 8: App Bundle (AAB), ProGuard & Google Play Release", duration: "40 min", videoUrl: "", zipUrl: "", zipName: "", zipSize: "" },
+          { _id: "and-les-7", title: "Lesson 7: Full E-Commerce / Social App Project with Firebase", duration: "65 min", videoUrl: "", zipUrl: "/uploads/courses/1791265800123-2443587.zip", zipSize: "412 MB" },
+          { _id: "and-les-8", title: "Lesson 8: App Bundle (AAB), ProGuard & Google Play Release", duration: "40 min", videoUrl: "", zipUrl: "", zipSize: "" },
         ],
       },
     ],
@@ -457,6 +437,51 @@ function AdminCourseContent() {
   });
   const [savingLessonEdit, setSavingLessonEdit] = useState(false);
 
+  const isStaleDummyZip = (url) => {
+    if (!url || typeof url !== "string") return false;
+    return url.includes("179119") || url.startsWith("/uploads/courses/179119");
+  };
+
+  // Auto-sanitize stale dummy zip records in user's browser localStorage on mount
+  useEffect(() => {
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith("admin_course_")) {
+          const raw = localStorage.getItem(k);
+          if (raw && raw.includes("179119")) {
+            try {
+              const obj = JSON.parse(raw);
+              if (obj.zipFiles) {
+                obj.zipFiles = obj.zipFiles.filter((z) => z && z.url && !isStaleDummyZip(z.url));
+              }
+              if (obj.zipFile && isStaleDummyZip(obj.zipFile.url)) {
+                obj.zipFile = { url: "", fileName: "", fileSize: "" };
+              }
+              if (obj.resources) {
+                obj.resources = obj.resources.filter((r) => !isStaleDummyZip(r.url || r.fileUrl));
+              }
+              if (obj.modules) {
+                obj.modules.forEach((m) => {
+                  (m.lessons || []).forEach((l) => {
+                    if (isStaleDummyZip(l.zipUrl)) {
+                      l.zipUrl = "";
+                      l.zipName = "";
+                      l.zipSize = "";
+                    }
+                  });
+                });
+              }
+              localStorage.setItem(k, JSON.stringify(obj));
+            } catch (e) {
+              localStorage.removeItem(k);
+            }
+          }
+        }
+      }
+    } catch (e) {}
+  }, []);
+
   // ==========================================
   // LOAD COURSE
   // ==========================================
@@ -478,47 +503,70 @@ function AdminCourseContent() {
       console.warn("Backend fetch failed, checking local fallbacks:", apiError);
     }
 
-    if (!resolvedCourse) {
-      const cleanId = (id || "").toLowerCase();
-      try {
-        const saved = localStorage.getItem(`admin_course_${cleanId}`) || localStorage.getItem(`admin_course_${id}`);
-        if (saved) resolvedCourse = JSON.parse(saved);
-      } catch (e) {}
+    const cleanId = (id || "").toLowerCase();
+    let savedLocal = null;
+    try {
+      const saved = localStorage.getItem(`admin_course_${cleanId}`) || localStorage.getItem(`admin_course_${id}`);
+      if (saved) {
+        savedLocal = JSON.parse(saved);
+        if (savedLocal.zipFiles) {
+          savedLocal.zipFiles = savedLocal.zipFiles.filter((z) => z && z.url && !isStaleDummyZip(z.url));
+        }
+        if (savedLocal.zipFile && isStaleDummyZip(savedLocal.zipFile.url)) {
+          savedLocal.zipFile = null;
+        }
+      }
+    } catch (e) {}
 
-      if (!resolvedCourse) {
-        resolvedCourse =
-          FALLBACK_COURSES_MAP[cleanId] ||
-          FALLBACK_COURSES_MAP[id] ||
-          (cleanId.includes("ai") || cleanId.includes("artificial")
-            ? FALLBACK_COURSES_MAP["ai"]
-            : cleanId.includes("web")
-            ? FALLBACK_COURSES_MAP["web-development"]
-            : cleanId.includes("android")
-            ? FALLBACK_COURSES_MAP["android"]
-            : null);
+    if (!resolvedCourse) {
+      resolvedCourse =
+        savedLocal ||
+        FALLBACK_COURSES_MAP[cleanId] ||
+        FALLBACK_COURSES_MAP[id] ||
+        (cleanId.includes("ai") || cleanId.includes("artificial")
+          ? FALLBACK_COURSES_MAP["ai"]
+          : cleanId.includes("web")
+          ? FALLBACK_COURSES_MAP["web-development"]
+          : cleanId.includes("android")
+          ? FALLBACK_COURSES_MAP["android"]
+          : null);
+    } else {
+      // Merge any clean extra zips from local
+      if (savedLocal && savedLocal.zipFiles) {
+        const remoteZips = (resolvedCourse.zipFiles || []).filter((z) => z && z.url && !isStaleDummyZip(z.url));
+        const localZips = (savedLocal.zipFiles || []).filter((z) => z && z.url && !isStaleDummyZip(z.url));
+        const zipMergeMap = new Map();
+        remoteZips.forEach((z) => zipMergeMap.set(z.url, z));
+        localZips.forEach((z) => {
+          if (!zipMergeMap.has(z.url)) zipMergeMap.set(z.url, z);
+        });
+        resolvedCourse.zipFiles = Array.from(zipMergeMap.values());
       }
     }
 
     if (resolvedCourse) {
-      const cleanId = (id || "").toLowerCase();
       if (!resolvedCourse.modules || resolvedCourse.modules.length === 0) {
         const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
         if (fallback?.modules && fallback.modules.length > 0) {
           resolvedCourse.modules = fallback.modules;
         }
       }
-      if (!resolvedCourse.zipFiles || resolvedCourse.zipFiles.length === 0) {
-        const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
-        if (fallback?.zipFiles && fallback.zipFiles.length > 0) {
-          resolvedCourse.zipFiles = fallback.zipFiles;
-        }
+
+      // Filter out any dead dummy zip files
+      if (resolvedCourse.zipFiles) {
+        resolvedCourse.zipFiles = resolvedCourse.zipFiles.filter(
+          (z) => z && z.url && !isStaleDummyZip(z.url)
+        );
       }
-      if (!resolvedCourse.zipFile) {
-        const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
-        if (fallback?.zipFile) {
-          resolvedCourse.zipFile = fallback.zipFile;
-        }
+      if (resolvedCourse.zipFile && isStaleDummyZip(resolvedCourse.zipFile.url)) {
+        resolvedCourse.zipFile = { url: "", fileName: "", fileSize: "" };
       }
+      if (resolvedCourse.resources) {
+        resolvedCourse.resources = resolvedCourse.resources.filter(
+          (r) => !isStaleDummyZip(r.url || r.fileUrl)
+        );
+      }
+
       setCourse(resolvedCourse);
       if (!selectedModule && resolvedCourse.modules && resolvedCourse.modules.length > 0) {
         setSelectedModule(resolvedCourse.modules[0]._id);
@@ -694,6 +742,26 @@ function AdminCourseContent() {
         source: "Google Drive",
       };
 
+      // 1. Immediately update local state and localStorage
+      setCourse((prevCourse) => {
+        const base = prevCourse || {};
+        const oldZips = (base.zipFiles || []).filter(
+          (z) => z && z.url && !isStaleDummyZip(z.url) && z.url !== formattedUrl
+        );
+        const updated = {
+          ...base,
+          zipFiles: [...oldZips, newZipItem],
+          zipFile: newZipItem,
+        };
+        try {
+          const cleanKey = (updated.slug || id || "").toLowerCase();
+          localStorage.setItem(`admin_course_${cleanKey}`, JSON.stringify(updated));
+          localStorage.setItem(`admin_course_${id}`, JSON.stringify(updated));
+        } catch (e) {}
+        return updated;
+      });
+
+      // 2. Persist to Backend API
       let success = false;
       try {
         const res = await fetch(getApiUrl(`/api/courses/${id}/add-drive-zip`), {
@@ -718,27 +786,25 @@ function AdminCourseContent() {
       }
 
       if (!success) {
-        const currentList = Array.from(zipMap.values()).map((z) => ({
-          title: z.title || z.fileName,
-          url: z.url,
-          fileName: z.fileName,
-          fileSize: z.fileSize,
-        }));
-        const updatedZipFiles = [
-          ...currentList.filter((z) => z.url !== formattedUrl),
-          newZipItem,
-        ];
-        const updateRes = await fetch(getApiUrl(`/api/courses/${id}`), {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            zipFiles: updatedZipFiles,
-            zipFile: newZipItem,
-          }),
-        });
-        if (updateRes.ok) {
-          const updateData = await updateRes.json();
-          if (updateData.course) setCourse(updateData.course);
+        try {
+          const currentList = (course?.zipFiles || []).filter(
+            (z) => z && z.url && !isStaleDummyZip(z.url) && z.url !== formattedUrl
+          );
+          const updatedZipFiles = [...currentList, newZipItem];
+          const updateRes = await fetch(getApiUrl(`/api/courses/${id}`), {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              zipFiles: updatedZipFiles,
+              zipFile: newZipItem,
+            }),
+          });
+          if (updateRes.ok) {
+            const updateData = await updateRes.json();
+            if (updateData.course) setCourse(updateData.course);
+          }
+        } catch (e) {
+          console.warn("PUT update fallback failed:", e);
         }
       }
 
@@ -746,7 +812,7 @@ function AdminCourseContent() {
       setZipTitle("");
       setDriveFileSize("");
       setMessage(`✅ Google Drive ZIP "${customTitle}" added successfully!`);
-      fetchCourse();
+      await loadCourse();
     } catch (error) {
       setMessage(`❌ ${error.message}`);
     } finally {
@@ -1275,20 +1341,21 @@ function AdminCourseContent() {
   const zipMap = new Map();
 
   (course.zipFiles || []).forEach((z, i) => {
-    if (z && z.url) {
+    if (z && z.url && !isStaleDummyZip(z.url)) {
       zipMap.set(z.url, {
         _id: z._id || `zf-${i}`,
         title: z.title || `Project ZIP Part ${i + 1}`,
         fileName: z.fileName || `project-part-${i + 1}.zip`,
         url: z.url,
         fileSize: z.fileSize || "",
+        isExternal: z.isExternal || z.url.includes("drive.google.com") || z.url.includes("google"),
       });
     }
   });
 
   (course.resources || []).forEach((r, i) => {
     const url = r.url || r.fileUrl;
-    if (url && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || !zipMap.has(url))) {
+    if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || !zipMap.has(url))) {
       if (!zipMap.has(url)) {
         zipMap.set(url, {
           _id: r._id || `res-${i}`,
@@ -1296,18 +1363,20 @@ function AdminCourseContent() {
           fileName: r.fileName || `resource-${i + 1}.zip`,
           url,
           fileSize: r.fileSize || "",
+          isExternal: r.isExternal || url.includes("drive.google.com") || url.includes("google"),
         });
       }
     }
   });
 
-  if (course.zipFile && course.zipFile.url && !zipMap.has(course.zipFile.url)) {
+  if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url) && !zipMap.has(course.zipFile.url)) {
     zipMap.set(course.zipFile.url, {
       _id: "main-zip",
       title: course.zipFile.fileName || "Course Project ZIP",
       fileName: course.zipFile.fileName || "course-project.zip",
       url: course.zipFile.url,
       fileSize: course.zipFile.fileSize || "",
+      isExternal: course.zipFile.isExternal || course.zipFile.url.includes("drive.google.com") || course.zipFile.url.includes("google"),
     });
   }
 

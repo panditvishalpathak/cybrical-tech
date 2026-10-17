@@ -130,9 +130,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Learn semantic tags, forms, tables, and project directory scaffolding. Download the starter kit ZIP below.",
           duration: "35 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791194734125-528801946.zip",
-          zipName: "01-HTML5-Starter-Project.zip",
-          zipSize: "185 MB",
         },
         {
           _id: "web-les-2",
@@ -141,9 +138,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Master modern layout techniques, media queries, CSS variables, and layout patterns with full source code.",
           duration: "45 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791194748044-253890491.zip",
-          zipName: "02-CSS3-Flexbox-Grid-Layouts.zip",
-          zipSize: "507 MB",
         },
         {
           _id: "web-les-3",
@@ -152,9 +146,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Build and deploy a mobile-friendly agency landing page with animations and interactive navigation.",
           duration: "50 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791194763164-769067527.zip",
-          zipName: "03-Responsive-Landing-Page.zip",
-          zipSize: "185 MB",
         },
       ],
     },
@@ -171,9 +162,6 @@ const WEB_DEV_ZIP_COURSE = {
             "ES6+ syntax, arrays, objects, functions, event listeners, and dynamic DOM rendering practice project.",
           duration: "55 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791194776246-178006013.zip",
-          zipName: "04-JS-DOM-Interactive-Project.zip",
-          zipSize: "351 MB",
         },
         {
           _id: "web-les-5",
@@ -182,9 +170,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Working with Promises, async/await, Fetch API, error handling, and building a live API-powered app.",
           duration: "60 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791195035501-472161838.zip",
-          zipName: "05-Async-API-Weather-App.zip",
-          zipSize: "436 MB",
         },
         {
           _id: "web-les-6",
@@ -193,9 +178,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Create a persistent task management application with state persistence, filtering, and local storage.",
           duration: "50 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791196105477-687599394.zip",
-          zipName: "06-Interactive-CRUD-Storage-App.zip",
-          zipSize: "707 MB",
         },
       ],
     },
@@ -212,9 +194,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Component architecture, props drilling, conditional rendering, and structured folder layout with Vite.",
           duration: "45 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791196912251-509649897.zip",
-          zipName: "07-React-Components-Starter.zip",
-          zipSize: "586 MB",
         },
         {
           _id: "web-les-8",
@@ -223,9 +202,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Deep dive into state lifecycles, effect hooks, custom hooks, and global state management with Context.",
           duration: "55 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791197080020-426950135.zip",
-          zipName: "08-React-Hooks-Context-Project.zip",
-          zipSize: "356 MB",
         },
         {
           _id: "web-les-9",
@@ -234,9 +210,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Build an interactive E-commerce frontend with cart management, checkout modals, and responsive UI.",
           duration: "65 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791198229799-559583431.zip",
-          zipName: "09-Ecommerce-Cart-Frontend.zip",
-          zipSize: "301 MB",
         },
       ],
     },
@@ -253,9 +226,6 @@ const WEB_DEV_ZIP_COURSE = {
             "Express routing, middleware, request validation, error handling, and building secure REST endpoints.",
           duration: "50 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791199702700-413691350.zip",
-          zipName: "10-Node-Express-REST-API.zip",
-          zipSize: "253 MB",
         },
         {
           _id: "web-les-11",
@@ -726,9 +696,37 @@ const getCourseDoc = async (targetId) => {
   return course;
 };
 
+const sanitizeCourseZips = (c) => {
+  if (!c) return c;
+  if (c.zipFiles) {
+    c.zipFiles = c.zipFiles.filter((z) => z && z.url && !z.url.includes("179119"));
+  }
+  if (c.zipFile && c.zipFile.url && c.zipFile.url.includes("179119")) {
+    c.zipFile = { url: "", fileName: "", fileSize: "" };
+  }
+  if (c.resources) {
+    c.resources = c.resources.filter((r) => {
+      const u = (r.url || r.fileUrl || "");
+      return !u.includes("179119");
+    });
+  }
+  if (c.modules) {
+    c.modules.forEach((m) => {
+      (m.lessons || []).forEach((l) => {
+        if (l.zipUrl && l.zipUrl.includes("179119")) {
+          l.zipUrl = "";
+          l.zipName = "";
+          l.zipSize = "";
+        }
+      });
+    });
+  }
+  return c;
+};
+
 const getFallbackCourse = (targetId) => {
   const storeCourses = loadFallbackCourses();
-  if (!targetId) return storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE;
+  if (!targetId) return sanitizeCourseZips(storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE);
   const clean = targetId.toString().trim().toLowerCase();
 
   const found = storeCourses.find(
@@ -737,15 +735,15 @@ const getFallbackCourse = (targetId) => {
       (c.slug && c.slug.toLowerCase() === clean) ||
       (c.title && c.title.toLowerCase() === clean)
   );
-  if (found) return found;
+  if (found) return sanitizeCourseZips(found);
 
   if (clean.includes("ai") || clean.includes("artificial")) {
-    return storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE;
+    return sanitizeCourseZips(storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE);
   }
   if (clean.includes("android")) {
-    return storeCourses.find((c) => c.slug === "android") || FALLBACK_ANDROID_COURSE;
+    return sanitizeCourseZips(storeCourses.find((c) => c.slug === "android") || FALLBACK_ANDROID_COURSE);
   }
-  return storeCourses[0] || FALLBACK_AI_COURSE;
+  return sanitizeCourseZips(storeCourses[0] || FALLBACK_AI_COURSE);
 };
 
 // ==========================================
