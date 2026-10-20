@@ -3,6 +3,33 @@ import { useState, useEffect } from "react";
 import { getApiUrl } from "../config/api";
 import "./Home.css";
 import logo from "../assets/logo/cybrical logo.jpg";
+import team1 from "../assets/images/team/team-1.jpeg";
+import team2 from "../assets/images/team/team-2.jpeg";
+import team3 from "../assets/images/team/team-3.jpeg";
+
+const defaultHomePhotos = [
+  {
+    id: "01",
+    image: team1,
+    title: "Our Team at Work",
+    subtitle: "Everyday problem solving, rapid development, and creative collaboration.",
+    tag: "Workplace",
+  },
+  {
+    id: "02",
+    image: team2,
+    title: "Team Spirit & Patriotism",
+    subtitle: "Unified energy, engineering passion, and building world-class tech together.",
+    tag: "Team Spirit",
+  },
+  {
+    id: "03",
+    image: team3,
+    title: "Life at Cybrical Tech",
+    subtitle: "Celebrations, shared victories, and a warm community of builders.",
+    tag: "Community",
+  },
+];
 
 const defaultFeaturedCourses = [
   {
@@ -552,6 +579,74 @@ function Home() {
                 Explore Full LMS Catalog <span>↗</span>
               </Link>
             </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ================= PHOTOS & CULTURE ================= */}
+      <section className="home-photos-intro">
+
+        <div className="home-container">
+
+          <div className="section-pill-badge">
+            <span></span>
+            LIFE AT CYBRICAL TECH
+            <span></span>
+          </div>
+
+          <div className="courses-heading">
+
+            <div className="courses-heading-left">
+              <h2>
+                The people behind
+                <br />
+                <span>our innovation.</span>
+              </h2>
+            </div>
+
+            <div className="courses-heading-right">
+              <p>
+                Behind every line of code, design system, and digital product is a dedicated team passionate about solving problems and creating real impact.
+              </p>
+              <Link to="/photos" className="view-all-courses-btn">
+                View Full Team Gallery <span>↗</span>
+              </Link>
+            </div>
+
+          </div>
+
+          <div className="home-photos-grid">
+            {defaultHomePhotos.map((photo) => (
+              <div className="home-photo-card" key={photo.id}>
+                <div className="home-photo-img-wrapper">
+                  <img src={photo.image} alt={photo.title} loading="lazy" />
+                  <div className="home-photo-overlay"></div>
+                  <span className="photo-tag-pill">{photo.tag}</span>
+                  <span className="photo-id-pill">{photo.id}</span>
+                </div>
+                <div className="home-photo-content">
+                  <span className="photo-subtitle-tag">TEAM MOMENT</span>
+                  <h3>{photo.title}</h3>
+                  <p>{photo.subtitle}</p>
+                  <Link to="/photos" className="photo-explore-link">
+                    Explore Photos <span>↗</span>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="photos-bottom-cta">
+            <div className="photos-cta-left">
+              <span className="banner-badge">✦ OUR WORKPLACE CULTURE</span>
+              <h3>Want to experience our culture firsthand?</h3>
+              <p>Explore all team stories, celebrations, and life at our Noida development center.</p>
+            </div>
+            <Link to="/photos" className="hero-primary-btn">
+              Explore Our Team Photos <span>↗</span>
+            </Link>
           </div>
 
         </div>
