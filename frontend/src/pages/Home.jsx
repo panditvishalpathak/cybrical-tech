@@ -42,6 +42,8 @@ const defaultFeaturedCourses = [
     duration: "12 Weeks",
     icon: "💻",
     badge: "Most Popular",
+    thumbnail:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
   },
   {
     slug: "ai",
@@ -53,6 +55,8 @@ const defaultFeaturedCourses = [
     duration: "16 Weeks",
     icon: "🤖",
     badge: "Trending",
+    thumbnail:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
   },
   {
     slug: "android",
@@ -64,6 +68,8 @@ const defaultFeaturedCourses = [
     duration: "14 Weeks",
     icon: "📱",
     badge: "High Demand",
+    thumbnail:
+      "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&auto=format&fit=crop&q=80",
   },
   {
     slug: "seo",
@@ -75,8 +81,32 @@ const defaultFeaturedCourses = [
     duration: "8 Weeks",
     icon: "📈",
     badge: "Career Track",
+    thumbnail:
+      "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80",
   },
 ];
+
+const getCourseThumbnail = (course, idx) => {
+  if (course.thumbnail) return course.thumbnail;
+  const s = (course.slug || "").toLowerCase();
+  if (s.includes("web"))
+    return "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80";
+  if (s.includes("ai") || s.includes("artificial"))
+    return "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80";
+  if (s.includes("android"))
+    return "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&auto=format&fit=crop&q=80";
+  if (s.includes("seo"))
+    return "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80";
+  if (s.includes("marketing"))
+    return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80";
+  const defaults = [
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80",
+  ];
+  return defaults[idx % defaults.length];
+};
 
 function Home() {
   const [coursesList, setCoursesList] = useState(defaultFeaturedCourses);
@@ -536,31 +566,42 @@ function Home() {
               const icon = course.icon || icons[idx % icons.length];
               const badge = course.badge || badges[idx % badges.length];
               const color = colors[idx % colors.length];
+              const thumbUrl = getCourseThumbnail(course, idx);
 
               return (
                 <div className={`home-course-card course-${color}`} key={course.slug || idx}>
-                  <div className="course-card-header">
-                    <div className="course-icon-box">{icon}</div>
+                  {/* COURSE COVER PHOTO */}
+                  <div className="course-card-image-wrapper">
+                    <img
+                      src={thumbUrl}
+                      alt={course.title}
+                      className="course-card-cover-img"
+                      loading="lazy"
+                    />
+                    <div className="course-image-overlay"></div>
                     <span className="course-status-badge">{badge}</span>
+                    <div className="course-icon-bubble">{icon}</div>
                   </div>
 
-                  <span className="course-category-tag">{course.category || "Professional Track"}</span>
-                  <h3>{course.title}</h3>
-                  <p>{course.description}</p>
+                  <div className="course-card-body">
+                    <span className="course-category-tag">{course.category || "Professional Track"}</span>
+                    <h3>{course.title}</h3>
+                    <p>{course.description}</p>
 
-                  <div className="course-meta-pills">
-                    <span>⏱ {course.duration || "Self-Paced"}</span>
-                    <span>📊 {course.level || "Beginner to Pro"}</span>
-                    {course.modules && course.modules.length > 0 && (
-                      <span>📚 {course.modules.length} Modules</span>
-                    )}
-                  </div>
+                    <div className="course-meta-pills">
+                      <span>⏱ {course.duration || "Self-Paced"}</span>
+                      <span>📊 {course.level || "Beginner to Pro"}</span>
+                      {course.modules && course.modules.length > 0 && (
+                        <span>📚 {course.modules.length} Modules</span>
+                      )}
+                    </div>
 
-                  <div className="course-card-action">
-                    <span className="course-zip-notice">📦 Includes Project ZIPs</span>
-                    <Link to={`/courses/${course.slug}`} className="course-enroll-btn">
-                      View Course ↗
-                    </Link>
+                    <div className="course-card-action">
+                      <span className="course-zip-notice">📦 Includes Project ZIPs</span>
+                      <Link to={`/courses/${course.slug}`} className="course-enroll-btn">
+                        View Course ↗
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );

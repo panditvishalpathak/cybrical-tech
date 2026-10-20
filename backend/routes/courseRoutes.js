@@ -458,6 +458,7 @@ const SYSTEM_DEFAULT_COURSES = [
     duration: "8 Weeks",
     price: 0,
     isPublished: true,
+    thumbnail: "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80",
     modules: [
       {
         _id: "seo-mod-1",
@@ -481,6 +482,7 @@ const SYSTEM_DEFAULT_COURSES = [
     duration: "10 Weeks",
     price: 0,
     isPublished: true,
+    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
     modules: [
       {
         _id: "dm-mod-1",

@@ -14,6 +14,8 @@ const defaultCourses = [
     icon: "💻",
     modulesCount: 4,
     lessonsCount: 12,
+    thumbnail:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
   },
   {
     slug: "seo",
@@ -25,6 +27,8 @@ const defaultCourses = [
     icon: "📈",
     modulesCount: 1,
     lessonsCount: 2,
+    thumbnail:
+      "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80",
   },
   {
     slug: "digital-marketing",
@@ -36,6 +40,8 @@ const defaultCourses = [
     icon: "📢",
     modulesCount: 1,
     lessonsCount: 2,
+    thumbnail:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
   },
   {
     slug: "ai",
@@ -47,6 +53,8 @@ const defaultCourses = [
     icon: "🤖",
     modulesCount: 2,
     lessonsCount: 2,
+    thumbnail:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
   },
   {
     slug: "android",
@@ -58,8 +66,24 @@ const defaultCourses = [
     icon: "📱",
     modulesCount: 4,
     lessonsCount: 8,
+    thumbnail:
+      "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&auto=format&fit=crop&q=80",
   },
 ];
+
+const getThumbnailForCourse = (course) => {
+  if (course.thumbnail) return course.thumbnail;
+  const s = (course.slug || "").toLowerCase();
+  if (s.includes("web"))
+    return "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80";
+  if (s.includes("ai") || s.includes("artificial"))
+    return "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80";
+  if (s.includes("android"))
+    return "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&auto=format&fit=crop&q=80";
+  if (s.includes("seo"))
+    return "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80";
+  return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80";
+};
 
 function Courses() {
   const [coursesList, setCoursesList] = useState(defaultCourses);
@@ -137,31 +161,39 @@ function Courses() {
                   className="course-card"
                   key={course.slug || course._id}
                 >
-                  <div className="course-card-top">
-                    <span className="course-icon">{getIcon()}</span>
-
+                  <div className="course-card-cover">
+                    <img
+                      src={getThumbnailForCourse(course)}
+                      alt={course.title}
+                      className="course-cover-img"
+                      loading="lazy"
+                    />
+                    <div className="course-cover-overlay"></div>
                     <span className="course-level">
                       {course.level || "Beginner"}
                     </span>
+                    <span className="course-icon-bubble">{getIcon()}</span>
                   </div>
 
-                  <h3>{course.title}</h3>
+                  <div className="course-card-details">
+                    <h3>{course.title}</h3>
 
-                  <p>{course.description}</p>
+                    <p>{course.description}</p>
 
-                  <div className="course-info">
-                    <span>⏱ {course.duration || "Self-Paced"}</span>
-                    <span>
-                      📚 {lessonCount} Lessons
-                    </span>
+                    <div className="course-info">
+                      <span>⏱ {course.duration || "Self-Paced"}</span>
+                      <span>
+                        📚 {lessonCount} Lessons
+                      </span>
+                    </div>
+
+                    <Link
+                      to={`/courses/${course.slug}`}
+                      className="course-button"
+                    >
+                      View Course <span>↗</span>
+                    </Link>
                   </div>
-
-                  <Link
-                    to={`/courses/${course.slug}`}
-                    className="course-button"
-                  >
-                    View Course <span>↗</span>
-                  </Link>
                 </article>
               );
             })}
