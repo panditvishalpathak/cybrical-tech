@@ -510,36 +510,58 @@ function Home() {
               </div>
             </div>
 
-            <div className="preview-card preview-blue">
+            <div className="preview-card preview-blue ai-highlight-card">
+              <div className="ai-card-glow"></div>
+
               <div className="preview-card-cover">
                 <img
-                  src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
+                  src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80"
                   alt="AI & Automation"
                   className="preview-cover-img"
                   loading="lazy"
                 />
                 <div className="preview-cover-overlay"></div>
+
+                {/* MINI HOLOGRAPHIC AI WORKFLOW TERMINAL */}
+                <div className="ai-mini-terminal">
+                  <div className="terminal-header">
+                    <span className="terminal-dot red"></span>
+                    <span className="terminal-dot yellow"></span>
+                    <span className="terminal-dot green"></span>
+                    <small>CYBRICAL-AGENT // v2.4</small>
+                  </div>
+                  <div className="terminal-prompt">
+                    <code>&gt; auto_pipeline.run(LLM + RAG)</code>
+                    <span className="terminal-badge-live">ACTIVE ⚡</span>
+                  </div>
+                </div>
+
                 <span className="preview-service-num">02</span>
-                <span className="preview-service-badge">INTELLIGENCE</span>
-                <div className="preview-icon-bubble">🤖</div>
+                <span className="preview-service-badge ai-badge">✦ NEXT-GEN AI</span>
+                <div className="preview-icon-bubble ai-bubble">🤖</div>
               </div>
 
               <div className="preview-card-body">
                 <div className="preview-tags-row">
-                  <span>GenAI</span>
-                  <span>LLMs</span>
-                  <span>Workflows</span>
+                  <span className="tag-highlight">✦ Autonomous Agents</span>
+                  <span className="tag-highlight">✦ Custom LLMs</span>
+                  <span className="tag-highlight">✦ RAG Pipelines</span>
+                  <span>Auto-Workflows</span>
                 </div>
 
-                <h3>AI & Automation</h3>
+                <div className="ai-title-row">
+                  <h3>AI &amp; Automation</h3>
+                  <span className="ai-popular-pill">Flagship</span>
+                </div>
 
                 <p>
-                  Intelligent systems, autonomous agents and custom workflow automations that boost business efficiency and output.
+                  Intelligent systems, generative AI integrations, neural search, and autonomous agent workflows engineered to multiply enterprise productivity.
                 </p>
 
-                <div className="preview-action-row">
-                  <Link to="/services" className="preview-explore-btn">
-                    Explore Capabilities <span>↗</span>
+                <div className="preview-action-row ai-action-row">
+                  <span className="ai-stat-hint">⚡ 10x Operational Speed</span>
+                  <Link to="/services" className="preview-explore-btn ai-btn">
+                    Explore AI Systems <span>↗</span>
                   </Link>
                 </div>
               </div>
