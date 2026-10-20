@@ -476,50 +476,122 @@ function Home() {
           <div className="services-preview">
 
             <div className="preview-card preview-purple">
-              <span>01</span>
+              <div className="preview-card-cover">
+                <img
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80"
+                  alt="Web Development"
+                  className="preview-cover-img"
+                  loading="lazy"
+                />
+                <div className="preview-cover-overlay"></div>
+                <span className="preview-service-num">01</span>
+                <span className="preview-service-badge">ENGINEERING</span>
+                <div className="preview-icon-bubble">💻</div>
+              </div>
 
-              <h3>Web Development</h3>
+              <div className="preview-card-body">
+                <div className="preview-tags-row">
+                  <span>React.js</span>
+                  <span>Node.js</span>
+                  <span>Cloud APIs</span>
+                </div>
 
-              <p>
-                Modern websites and scalable digital products
-                built for performance.
-              </p>
+                <h3>Web Development</h3>
 
-              <Link to="/services">
-                Explore ↗
-              </Link>
+                <p>
+                  Modern web applications, robust digital products and scalable high-performance architecture built for growth.
+                </p>
+
+                <div className="preview-action-row">
+                  <Link to="/services" className="preview-explore-btn">
+                    Explore Capabilities <span>↗</span>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             <div className="preview-card preview-blue">
-              <span>02</span>
+              <div className="preview-card-cover">
+                <img
+                  src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
+                  alt="AI & Automation"
+                  className="preview-cover-img"
+                  loading="lazy"
+                />
+                <div className="preview-cover-overlay"></div>
+                <span className="preview-service-num">02</span>
+                <span className="preview-service-badge">INTELLIGENCE</span>
+                <div className="preview-icon-bubble">🤖</div>
+              </div>
 
-              <h3>AI & Automation</h3>
+              <div className="preview-card-body">
+                <div className="preview-tags-row">
+                  <span>GenAI</span>
+                  <span>LLMs</span>
+                  <span>Workflows</span>
+                </div>
 
-              <p>
-                Intelligent systems that automate workflows
-                and improve productivity.
-              </p>
+                <h3>AI & Automation</h3>
 
-              <Link to="/services">
-                Explore ↗
-              </Link>
+                <p>
+                  Intelligent systems, autonomous agents and custom workflow automations that boost business efficiency and output.
+                </p>
+
+                <div className="preview-action-row">
+                  <Link to="/services" className="preview-explore-btn">
+                    Explore Capabilities <span>↗</span>
+                  </Link>
+                </div>
+              </div>
             </div>
 
             <div className="preview-card preview-pink">
-              <span>03</span>
+              <div className="preview-card-cover">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80"
+                  alt="SEO & Growth"
+                  className="preview-cover-img"
+                  loading="lazy"
+                />
+                <div className="preview-cover-overlay"></div>
+                <span className="preview-service-num">03</span>
+                <span className="preview-service-badge">OPTIMIZATION</span>
+                <div className="preview-icon-bubble">📈</div>
+              </div>
 
-              <h3>SEO & Growth</h3>
+              <div className="preview-card-body">
+                <div className="preview-tags-row">
+                  <span>Rank #1</span>
+                  <span>Audits</span>
+                  <span>Analytics</span>
+                </div>
 
-              <p>
-                Data-driven strategies that improve visibility
-                and organic growth.
-              </p>
+                <h3>SEO & Growth</h3>
 
-              <Link to="/services">
-                Explore ↗
-              </Link>
+                <p>
+                  Data-driven search strategies, technical optimization and conversion growth to consistently capture organic market share.
+                </p>
+
+                <div className="preview-action-row">
+                  <Link to="/services" className="preview-explore-btn">
+                    Explore Capabilities <span>↗</span>
+                  </Link>
+                </div>
+              </div>
             </div>
 
+          </div>
+
+          {/* SERVICES BOTTOM ACTION BANNER */}
+          <div className="services-bottom-action">
+            <div className="services-cta-copy">
+              <span className="services-badge-pill">✦ FULL RANGE OF CAPABILITIES</span>
+              <h3>Need UI/UX Design, Branding, or Performance Ads?</h3>
+              <p>We provide full-spectrum engineering, creative design, and growth marketing tailored for ambitious enterprises.</p>
+            </div>
+            <Link to="/services" className="hero-primary-btn">
+              Explore All 6 Services <span>↗</span>
+            </Link>
           </div>
 
         </div>
