@@ -1,13 +1,105 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getApiUrl } from "../config/api";
 import "./Home.css";
 import logo from "../assets/logo/cybrical logo.jpg";
 
+const defaultFeaturedCourses = [
+  {
+    slug: "web-development",
+    title: "Full-Stack Web Development",
+    category: "Full Stack MERN",
+    description:
+      "Master modern web development: HTML5, CSS3, JavaScript, React.js, Node.js, Express & MongoDB with downloadable project ZIPs for each lesson.",
+    level: "Beginner to Advanced",
+    duration: "12 Weeks",
+    icon: "💻",
+    badge: "Most Popular",
+  },
+  {
+    slug: "ai",
+    title: "Artificial Intelligence (AI & GenAI)",
+    category: "AI & Machine Learning",
+    description:
+      "Deep dive into Python, Machine Learning, Deep Neural Networks, and Generative AI models with starter project archives and notebooks.",
+    level: "Beginner to Advanced",
+    duration: "16 Weeks",
+    icon: "🤖",
+    badge: "Trending",
+  },
+  {
+    slug: "android",
+    title: "Native Android App Development",
+    category: "Mobile Apps",
+    description:
+      "Build production-grade Android apps with Kotlin, Jetpack Compose, MVVM Architecture, Room Database, and Google Play Store deployment.",
+    level: "Beginner to Advanced",
+    duration: "14 Weeks",
+    icon: "📱",
+    badge: "High Demand",
+  },
+  {
+    slug: "seo",
+    title: "SEO & Digital Growth",
+    category: "Search Optimization",
+    description:
+      "Master Technical SEO, keyword research, on-page optimization, analytics, and data-driven organic traffic growth.",
+    level: "Beginner to Pro",
+    duration: "8 Weeks",
+    icon: "📈",
+    badge: "Career Track",
+  },
+];
+
 function Home() {
+  const [coursesList, setCoursesList] = useState(defaultFeaturedCourses);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(getApiUrl("/api/courses"));
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.courses && data.courses.length > 0) {
+            const published = data.courses.filter((c) => c.isPublished !== false);
+            if (published.length > 0) {
+              setCoursesList(published.slice(0, 4));
+            }
+          }
+        }
+      } catch (e) {
+        // Fallback to defaultFeaturedCourses
+      }
+    };
+    fetchCourses();
+  }, []);
+
   const stats = [
     { number: "35+", label: "Expert Team Members", icon: "👥" },
     { number: "1000+", label: "Projects Delivered", icon: "↗" },
     { number: "950+", label: "Happy Clients", icon: "♧" },
     { number: "100%", label: "Client Satisfaction", icon: "✦" },
+  ];
+
+  const aboutPillars = [
+    {
+      number: "01",
+      icon: "✦",
+      title: "Think Different",
+      desc: "Challenging conventional boundaries to invent smarter, scalable digital solutions.",
+    },
+    {
+      number: "02",
+      icon: "◈",
+      title: "Build Better",
+      desc: "Pixel-perfect engineering, modern web & mobile architecture with rock-solid security.",
+    },
+    {
+      number: "03",
+      icon: "∞",
+      title: "Empower Future",
+      desc: "Equipping businesses with high-impact software and students with industry-grade LMS training.",
+    },
   ];
 
   const services = [
@@ -196,6 +288,106 @@ function Home() {
 
       </section>
 
+      {/* ================= ABOUT CYBRICAL TECH ================= */}
+      <section className="home-about-intro">
+
+        <div className="home-container">
+
+          <div className="section-pill-badge">
+            <span></span>
+            ABOUT CYBRICAL TECH
+            <span></span>
+          </div>
+
+          <div className="home-about-grid">
+
+            <div className="home-about-left">
+
+              <h2>
+                Crafting digital experiences
+                <br />
+                that <span>drive real growth.</span>
+              </h2>
+
+              <p>
+                Cybrical Tech is a modern technology company blending creative design, 
+                engineering excellence, and AI-driven intelligence. We partner with ambitious 
+                businesses to turn complex ideas into scalable digital products, while empowering 
+                learners with industry-grade software education and hands-on LMS training.
+              </p>
+
+              <div className="home-about-pillars">
+                {aboutPillars.map((p) => (
+                  <div className="pillar-item" key={p.number}>
+                    <div className="pillar-num">{p.number}</div>
+                    <div className="pillar-info">
+                      <h4>{p.title}</h4>
+                      <p>{p.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="home-about-buttons">
+                <Link to="/about" className="hero-primary-btn">
+                  Discover More About Us <span>↗</span>
+                </Link>
+                <Link to="/works" className="hero-secondary-btn">
+                  Explore Our Works
+                </Link>
+              </div>
+
+            </div>
+
+            <div className="home-about-right">
+
+              <div className="about-spotlight-card">
+                <div className="spotlight-glow"></div>
+
+                <div className="spotlight-badge">
+                  <span className="live-dot"></span>
+                  CYBRICAL ADVANTAGE
+                </div>
+
+                <h3>Innovation. Speed. Scalability.</h3>
+
+                <p>
+                  From full-stack web applications and AI automations to mobile apps and professional developer training, we create measurable value at every touchpoint.
+                </p>
+
+                <div className="about-card-metrics">
+                  <div className="metric-box">
+                    <strong>35+</strong>
+                    <span>Core Engineers</span>
+                  </div>
+                  <div className="metric-box">
+                    <strong>1000+</strong>
+                    <span>Shipped Projects</span>
+                  </div>
+                  <div className="metric-box">
+                    <strong>100%</strong>
+                    <span>Commitment</span>
+                  </div>
+                </div>
+
+                <div className="about-tech-stack">
+                  <span>React.js</span>
+                  <span>Node.js</span>
+                  <span>Python</span>
+                  <span>GenAI</span>
+                  <span>Kotlin</span>
+                  <span>MongoDB</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
       {/* ================= SERVICES INTRO ================= */}
       <section className="home-services-intro">
 
@@ -271,6 +463,95 @@ function Home() {
               </Link>
             </div>
 
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ================= COURSES INTRO ================= */}
+      <section className="home-courses-intro">
+
+        <div className="home-container">
+
+          <div className="section-pill-badge">
+            <span></span>
+            CYBRICAL LMS & ONLINE COURSES
+            <span></span>
+          </div>
+
+          <div className="courses-heading">
+
+            <div className="courses-heading-left">
+              <h2>
+                Industry-Ready Courses.
+                <br />
+                <span>Build real skills.</span>
+              </h2>
+            </div>
+
+            <div className="courses-heading-right">
+              <p>
+                Learn in-demand technologies with step-by-step video lectures, complete source code ZIP archives for each lesson, and practical project builds.
+              </p>
+              <Link to="/courses" className="view-all-courses-btn">
+                Browse Full Course Catalog <span>↗</span>
+              </Link>
+            </div>
+
+          </div>
+
+          <div className="home-courses-grid">
+            {coursesList.map((course, idx) => {
+              const icons = ["💻", "🤖", "📱", "📈"];
+              const badges = ["Most Popular", "Trending", "High Demand", "Career Track"];
+              const colors = ["purple", "blue", "cyan", "pink"];
+              const icon = course.icon || icons[idx % icons.length];
+              const badge = course.badge || badges[idx % badges.length];
+              const color = colors[idx % colors.length];
+
+              return (
+                <div className={`home-course-card course-${color}`} key={course.slug || idx}>
+                  <div className="course-card-header">
+                    <div className="course-icon-box">{icon}</div>
+                    <span className="course-status-badge">{badge}</span>
+                  </div>
+
+                  <span className="course-category-tag">{course.category || "Professional Track"}</span>
+                  <h3>{course.title}</h3>
+                  <p>{course.description}</p>
+
+                  <div className="course-meta-pills">
+                    <span>⏱ {course.duration || "Self-Paced"}</span>
+                    <span>📊 {course.level || "Beginner to Pro"}</span>
+                    {course.modules && course.modules.length > 0 && (
+                      <span>📚 {course.modules.length} Modules</span>
+                    )}
+                  </div>
+
+                  <div className="course-card-action">
+                    <span className="course-zip-notice">📦 Includes Project ZIPs</span>
+                    <Link to={`/courses/${course.slug}`} className="course-enroll-btn">
+                      View Course ↗
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* COURSES BOTTOM BANNER */}
+          <div className="courses-bottom-banner">
+            <div className="banner-left">
+              <span className="banner-badge">⚡ 100% HANDS-ON LEARNING</span>
+              <h3>Need full source code and starter templates?</h3>
+              <p>Every single lesson in our courses includes downloadable project ZIP archives ready to run on your machine.</p>
+            </div>
+            <div className="banner-right">
+              <Link to="/courses" className="hero-primary-btn">
+                Explore Full LMS Catalog <span>↗</span>
+              </Link>
+            </div>
           </div>
 
         </div>

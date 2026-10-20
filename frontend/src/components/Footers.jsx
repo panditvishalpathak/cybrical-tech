@@ -60,6 +60,10 @@ function Footer() {
               Services
             </Link>
 
+            <Link to="/courses">
+              Courses
+            </Link>
+
             <Link to="/works">
               Our Works
             </Link>
@@ -100,6 +104,36 @@ function Footer() {
 
             <Link to="/services">
               Social Media Marketing
+            </Link>
+
+          </div>
+
+
+          {/* =========================
+              COURSES
+          ========================= */}
+          <div className="footer-column">
+
+            <h3>Courses</h3>
+
+            <Link to="/courses/web-development">
+              Web Development
+            </Link>
+
+            <Link to="/courses/ai">
+              Artificial Intelligence (AI)
+            </Link>
+
+            <Link to="/courses/android">
+              Android App Development
+            </Link>
+
+            <Link to="/courses/seo">
+              SEO Optimization
+            </Link>
+
+            <Link to="/courses/digital-marketing">
+              Digital Marketing
             </Link>
 
           </div>

@@ -951,6 +951,239 @@
 
 
 /* =========================================================
+   COMMON SECTION BADGE
+========================================================= */
+
+.section-pill-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.section-pill-badge span {
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #22c55e);
+}
+
+.section-pill-badge span:last-child {
+    background: linear-gradient(90deg, #22c55e, transparent);
+}
+
+
+/* =========================================================
+   ABOUT CYBRICAL TECH
+========================================================= */
+
+.home-about-intro {
+    padding: 120px 0 90px;
+    position: relative;
+    background: radial-gradient(circle at 20% 30%, rgba(34, 197, 94, 0.05), transparent 45%);
+}
+
+.home-about-grid {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.home-about-left h2 {
+    color: #ffffff;
+    font-size: clamp(36px, 4.2vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -2.5px;
+    font-weight: 800;
+}
+
+.home-about-left h2 span {
+    background: linear-gradient(100deg, #4ade80, #22c55e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.home-about-left > p {
+    margin-top: 22px;
+    color: #8fa597;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.home-about-pillars {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.pillar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    transition: 0.3s ease;
+}
+
+.pillar-item:hover {
+    background: rgba(34, 197, 94, 0.04);
+    border-color: rgba(74, 222, 128, 0.25);
+    transform: translateX(6px);
+}
+
+.pillar-num {
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 13px;
+    color: #4ade80;
+    padding: 6px 12px;
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.pillar-info h4 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.pillar-info p {
+    color: #7b9183;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.home-about-buttons {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.about-spotlight-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    background: linear-gradient(145deg, rgba(16, 26, 21, 0.85), rgba(7, 13, 10, 0.95));
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    border-radius: 28px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.spotlight-glow {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.18), transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+.spotlight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #4ade80;
+    padding: 6px 14px;
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.25);
+    border-radius: 100px;
+    margin-bottom: 22px;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4ade80;
+    animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.about-spotlight-card h3 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+}
+
+.about-spotlight-card p {
+    color: #8ca395;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.about-card-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    margin-bottom: 25px;
+}
+
+.metric-box strong {
+    display: block;
+    color: #4ade80;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.metric-box span {
+    display: block;
+    color: #6d8274;
+    font-size: 10px;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.about-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.about-tech-stack span {
+    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    color: #9eb5a7;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
    SERVICES
 ========================================================= */
 
@@ -1152,6 +1385,276 @@
 
 
 /* =========================================================
+   COURSES INTRO
+========================================================= */
+
+.home-courses-intro {
+    padding: 120px 0 100px;
+    position: relative;
+    background: radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.06), transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(0, 200, 150, 0.04), transparent 50%);
+}
+
+.courses-heading {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 70px;
+    align-items: end;
+}
+
+.courses-heading-left h2 {
+    color: #ffffff;
+    font-size: clamp(38px, 4.6vw, 62px);
+    line-height: 0.98;
+    letter-spacing: -2.8px;
+    font-weight: 800;
+}
+
+.courses-heading-left h2 span {
+    background: linear-gradient(100deg, #4ade80, #22c55e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.courses-heading-right p {
+    color: #82978a;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.view-all-courses-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: #4ade80;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: 0.25s ease;
+}
+
+.view-all-courses-btn:hover {
+    color: #8affb5;
+    transform: translateX(4px);
+}
+
+.home-courses-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.home-course-card {
+    position: relative;
+    overflow: hidden;
+    padding: 28px 24px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 380px;
+    transition: all 0.35s ease;
+}
+
+.home-course-card::before {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    right: -40px;
+    top: -40px;
+    border-radius: 50%;
+    filter: blur(35px);
+    pointer-events: none;
+    transition: 0.35s ease;
+}
+
+.course-purple::before {
+    background: rgba(74, 222, 128, 0.12);
+}
+
+.course-blue::before {
+    background: rgba(56, 189, 248, 0.12);
+}
+
+.course-cyan::before {
+    background: rgba(45, 212, 191, 0.12);
+}
+
+.course-pink::before {
+    background: rgba(244, 114, 182, 0.12);
+}
+
+.home-course-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(74, 222, 128, 0.3);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 25px rgba(74, 222, 128, 0.08);
+}
+
+.course-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.course-icon-box {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+}
+
+.course-status-badge {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(74, 222, 128, 0.12);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.course-category-tag {
+    display: inline-block;
+    color: #617567;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.home-course-card h3 {
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.home-course-card p {
+    color: #82978a;
+    font-size: 12px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+}
+
+.course-meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.course-meta-pills span {
+    font-size: 10px;
+    color: #9cb1a4;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.course-card-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.course-zip-notice {
+    font-size: 10px;
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.course-enroll-btn {
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffffff;
+    padding: 8px 14px;
+    background: rgba(74, 222, 128, 0.15);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 100px;
+    transition: 0.25s ease;
+}
+
+.course-enroll-btn:hover {
+    background: #4ade80;
+    color: #030807;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+/* COURSES BOTTOM BANNER */
+.courses-bottom-banner {
+    margin-top: 60px;
+    padding: 38px 45px;
+    background: linear-gradient(135deg, rgba(20, 40, 30, 0.6), rgba(8, 16, 12, 0.85));
+    border: 1px solid rgba(74, 222, 128, 0.22);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.courses-bottom-banner::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    height: 100%;
+    background: radial-gradient(circle at 100% 100%, rgba(74, 222, 128, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+.banner-badge {
+    display: inline-block;
+    color: #4ade80;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.banner-left h3 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.banner-left p {
+    color: #8aa092;
+    font-size: 13px;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.banner-right {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
    CTA
 ========================================================= */
 
@@ -1332,9 +1835,29 @@
         min-height: 500px;
     }
 
+    .home-about-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
     .services-heading {
         grid-template-columns: 1fr;
         gap: 25px;
+    }
+
+    .courses-heading {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .home-courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .courses-bottom-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 28px;
     }
 
     .stats-container {
@@ -1439,12 +1962,27 @@
         border-top: 0;
     }
 
+    .home-about-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .about-card-metrics {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
     .services-preview {
         grid-template-columns: 1fr;
     }
 
+    .home-courses-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-pill-badge span,
     .services-line span {
-        width: 70px;
+        width: 50px;
     }
 
     .cta-content h2 {
@@ -1474,8 +2012,24 @@
         gap: 6px;
     }
 
-    .home-services-intro {
-        padding: 90px 0;
+    .home-about-intro,
+    .home-services-intro,
+    .home-courses-intro {
+        padding: 80px 0;
+    }
+
+    .home-about-left h2,
+    .courses-heading-left h2 {
+        font-size: 32px;
+        letter-spacing: -1.5px;
+    }
+
+    .about-spotlight-card {
+        padding: 24px;
+    }
+
+    .courses-bottom-banner {
+        padding: 24px 18px;
     }
 
     .cta-content h2 {
