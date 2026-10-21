@@ -180,6 +180,13 @@ function Navbar() {
           </Link>
 
           <Link
+            to="/dashboard"
+            className={isActive("/dashboard") || isActive("/ai-dashboard") ? "active" : ""}
+          >
+            AI Dashboard
+          </Link>
+
+          <Link
             to="/contact"
             className={isActive("/contact") ? "active" : ""}
           >
@@ -261,9 +268,9 @@ function Navbar() {
                 </svg>
               </span>
 
-              <span>
+              <Link to="/dashboard" style={{ color: "#4ade80", textDecoration: "none", fontWeight: 700, cursor: "pointer" }}>
                 Hi, {user.name || "User"}
-              </span>
+              </Link>
 
               <button
                 type="button"

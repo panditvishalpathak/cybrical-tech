@@ -112,6 +112,11 @@ function App() {
           element={<Dashboard />}
         />
 
+        <Route
+          path="/ai-dashboard"
+          element={<Dashboard />}
+        />
+
         <Route path="/admin/courses" element={<AdminCourses />} />
 
         <Route
