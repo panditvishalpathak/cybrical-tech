@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import logo from "../assets/logo/cybrical logo.jpg";
+import logo from "../assets/logo/cybrical-logo.jpg";
 import "./Navbar.css";
 
 function Navbar() {
@@ -98,6 +98,12 @@ function Navbar() {
             <img
               src={logo}
               alt="Cybrical Tech Logo"
+              onError={(e) => {
+                if (!e.target.dataset.fallbackTried) {
+                  e.target.dataset.fallbackTried = "true";
+                  e.target.src = "/images/cybrical-logo.jpg";
+                }
+              }}
             />
           </div>
 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getApiUrl } from "../config/api";
 import "./Home.css";
-import logo from "../assets/logo/cybrical logo.jpg";
+import logo from "../assets/logo/cybrical-logo.jpg";
 import team1 from "../assets/images/team/team-1.jpeg";
 import team2 from "../assets/images/team/team-2.jpeg";
 import team3 from "../assets/images/team/team-3.jpeg";
@@ -11,6 +11,8 @@ const defaultHomePhotos = [
   {
     id: "01",
     image: team1,
+    publicPath: "/images/team/team-1.jpeg",
+    fallback: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
     title: "Our Team at Work",
     subtitle: "Everyday problem solving, rapid development, and creative collaboration.",
     tag: "Workplace",
@@ -18,6 +20,8 @@ const defaultHomePhotos = [
   {
     id: "02",
     image: team2,
+    publicPath: "/images/team/team-2.jpeg",
+    fallback: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&auto=format&fit=crop&q=80",
     title: "Team Spirit & Patriotism",
     subtitle: "Unified energy, engineering passion, and building world-class tech together.",
     tag: "Team Spirit",
@@ -25,6 +29,8 @@ const defaultHomePhotos = [
   {
     id: "03",
     image: team3,
+    publicPath: "/images/team/team-3.jpeg",
+    fallback: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&auto=format&fit=crop&q=80",
     title: "Life at Cybrical Tech",
     subtitle: "Celebrations, shared victories, and a warm community of builders.",
     tag: "Community",
@@ -284,6 +290,12 @@ function Home() {
                   src={logo}
                   alt="Cybrical Tech"
                   className="screen-logo"
+                  onError={(e) => {
+                    if (!e.target.dataset.fallbackTried) {
+                      e.target.dataset.fallbackTried = "true";
+                      e.target.src = "/images/cybrical-logo.jpg";
+                    }
+                  }}
                 />
 
               </div>
@@ -756,7 +768,19 @@ function Home() {
             {defaultHomePhotos.map((photo) => (
               <div className="home-photo-card" key={photo.id}>
                 <div className="home-photo-img-wrapper">
-                  <img src={photo.image} alt={photo.title} loading="lazy" />
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    loading="lazy"
+                    onError={(e) => {
+                      if (!e.target.dataset.triedPublic && photo.publicPath) {
+                        e.target.dataset.triedPublic = "true";
+                        e.target.src = photo.publicPath;
+                      } else if (photo.fallback && e.target.src !== photo.fallback) {
+                        e.target.src = photo.fallback;
+                      }
+                    }}
+                  />
                   <div className="home-photo-overlay"></div>
                   <span className="photo-tag-pill">{photo.tag}</span>
                   <span className="photo-id-pill">{photo.id}</span>

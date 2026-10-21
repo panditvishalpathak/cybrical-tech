@@ -12,6 +12,8 @@ function Photos() {
     {
       id: "01",
       image: team1,
+      publicPath: "/images/team/team-1.jpeg",
+      fallback: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80",
       title: "Our Team at Work",
       description:
         "Collaboration, creativity and technology working together.",
@@ -19,6 +21,8 @@ function Photos() {
     {
       id: "02",
       image: team2,
+      publicPath: "/images/team/team-2.jpeg",
+      fallback: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&auto=format&fit=crop&q=80",
       title: "Team Spirit",
       description:
         "Great ideas become stronger when we build them together.",
@@ -26,6 +30,8 @@ function Photos() {
     {
       id: "03",
       image: team3,
+      publicPath: "/images/team/team-3.jpeg",
+      fallback: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&auto=format&fit=crop&q=80",
       title: "Our Team Family",
       description:
         "Celebrating people, teamwork and memorable moments.",
@@ -135,6 +141,14 @@ function Photos() {
                   <img
                     src={photo.image}
                     alt={photo.title}
+                    onError={(e) => {
+                      if (!e.target.dataset.triedPublic && photo.publicPath) {
+                        e.target.dataset.triedPublic = "true";
+                        e.target.src = photo.publicPath;
+                      } else if (photo.fallback && e.target.src !== photo.fallback) {
+                        e.target.src = photo.fallback;
+                      }
+                    }}
                   />
 
                   <div className="team-card-gradient"></div>
@@ -265,6 +279,14 @@ function Photos() {
             <img
               src={selectedPhoto.image}
               alt={selectedPhoto.title}
+              onError={(e) => {
+                if (!e.target.dataset.triedPublic && selectedPhoto.publicPath) {
+                  e.target.dataset.triedPublic = "true";
+                  e.target.src = selectedPhoto.publicPath;
+                } else if (selectedPhoto.fallback && e.target.src !== selectedPhoto.fallback) {
+                  e.target.src = selectedPhoto.fallback;
+                }
+              }}
             />
 
             <div className="lightbox-caption">

@@ -66,7 +66,19 @@ app.use("/api/courses", courseRoutes);
 
 const publicPath = path.join(__dirname, "public");
 if (fs.existsSync(publicPath)) {
-  app.use(express.static(publicPath));
+  app.use(
+    express.static(publicPath, {
+      maxAge: "1d",
+      setHeaders: (res, filePath) => {
+        // Never cache index.html so users always get fresh bundles
+        if (filePath.endsWith("index.html")) {
+          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+          res.setHeader("Pragma", "no-cache");
+          res.setHeader("Expires", "0");
+        }
+      },
+    })
+  );
 }
 
 /* =========================
@@ -95,8 +107,21 @@ app.use((req, res, next) => {
   if (req.path.startsWith("/api") || req.path.startsWith("/uploads")) {
     return next();
   }
+
+  // Prevent returning index.html for missing static assets (images, scripts, styles)
+  if (
+    req.path.startsWith("/assets") ||
+    req.path.startsWith("/images") ||
+    /\.(jpg|jpeg|png|gif|svg|ico|webp|js|css|woff2?|ttf|eot|map)$/i.test(req.path)
+  ) {
+    return res.status(404).send("Asset not found");
+  }
+
   const indexPath = path.join(publicPath, "index.html");
   if (fs.existsSync(indexPath)) {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
     return res.sendFile(indexPath);
   }
   res.json({
