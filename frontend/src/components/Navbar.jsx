@@ -183,7 +183,7 @@ function Navbar() {
             to="/dashboard"
             className={isActive("/dashboard") || isActive("/ai-dashboard") ? "active" : ""}
           >
-            AI Dashboard
+            Dashboard
           </Link>
 
           <Link
