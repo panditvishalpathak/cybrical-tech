@@ -114,6 +114,29 @@ function Login() {
             required
           />
 
+          {/* Quick Fill Button */}
+          <button
+            type="button"
+            onClick={() => {
+              setEmail("admin@cybrical.com");
+              setPassword("Admin@123");
+            }}
+            style={{
+              width: "100%",
+              margin: "10px 0 14px",
+              padding: "10px",
+              background: "rgba(34, 197, 94, 0.12)",
+              border: "1px solid rgba(34, 197, 94, 0.3)",
+              borderRadius: "10px",
+              color: "#4ade80",
+              fontSize: "12.5px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            ⚡ 1-Click Demo Fill: admin@cybrical.com / Admin@123
+          </button>
+
           {/* Login Button */}
           <button
             type="submit"
