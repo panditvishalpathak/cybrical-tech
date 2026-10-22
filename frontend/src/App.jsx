@@ -36,13 +36,14 @@ import AdminCourseContent from "./pages/AdminCourseContent";
 function App() {
   const location = useLocation();
 
-  // Admin pages par public Navbar/Footer/AI Assistant hide karna
+  // Admin & Dashboard pages par public Navbar/Footer/AI Assistant hide karna
   const isAdminPage = location.pathname.startsWith("/admin");
+  const isDashboardPage = location.pathname.startsWith("/dashboard") || location.pathname.startsWith("/ai-dashboard");
 
   return (
     <>
       {/* ================= PUBLIC NAVBAR ================= */}
-      {!isAdminPage && <Navbar />}
+      {!isAdminPage && !isDashboardPage && <Navbar />}
 
       <Routes>
         {/* ================= PUBLIC WEBSITE ================= */}
@@ -170,10 +171,10 @@ function App() {
       </Routes>
 
       {/* ================= AI ASSISTANT ================= */}
-      <AIAssistant />
+      {!isAdminPage && !isDashboardPage && <AIAssistant />}
 
       {/* ================= PUBLIC FOOTER ================= */}
-      {!isAdminPage && <Footer />}
+      {!isAdminPage && !isDashboardPage && <Footer />}
     </>
   );
 }
