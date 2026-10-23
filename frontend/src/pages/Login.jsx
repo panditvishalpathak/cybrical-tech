@@ -64,6 +64,10 @@ export default function Login() {
       <div className="neu-outer-halo">
         {/* Main 3D Circular Bevel Disk */}
         <div className="neu-disk-card">
+          <div className="neu-brand-badge">
+            <span className="neu-brand-dot" />
+            CYBRICAL TECH
+          </div>
           <h1 className="neu-title">Login</h1>
           <p className="neu-subtitle">Sign in to your account</p>
 

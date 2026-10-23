@@ -1,91 +1,97 @@
 /* ==========================================================================
-   CYBRICAL TECH - NEUMORPHIC 3D CIRCULAR AUTHENTICATION SUITE
-   Faithfully matching reference image media_1792753381436_fe27406e.jpg
-   Style: Soft UI / Neumorphism, Sculpted Inset Inputs, 3D Circular Bevel Disk
+   CYBRICAL TECH - SIGNATURE DARK LUXURY AUTHENTICATION SUITE
+   Aesthetic: Obsidian Glass, Glowing Emerald Neon (#22c55e), Tactile 3D Inset Fields
+   Palette: #030807, #06140d, #0a1c12, #22c55e, #4ade80, #10b981, #f5fff8
 ========================================================================== */
 
 :root {
-  --neu-bg: #e6ebf2;
-  --neu-surface: #eaedf2;
-  --neu-light: #ffffff;
-  --neu-dark: #c2c8d2;
-  --neu-dark-inset: #cbcfd8;
-  --neu-text: #2a2e37;
-  --neu-muted: #8e97a6;
-  --neu-red: #c92a2a;
-  --neu-red-glow: rgba(201, 42, 42, 0.25);
-  --neu-green: #22c55e;
+  --cyb-bg: #030807;
+  --cyb-bg-soft: #06140d;
+  --cyb-card: rgba(8, 22, 15, 0.85);
+  --cyb-card-inner: rgba(4, 12, 8, 0.95);
+  --cyb-border: rgba(74, 222, 128, 0.22);
+  --cyb-border-strong: rgba(74, 222, 128, 0.45);
+  --cyb-border-glow: rgba(34, 197, 94, 0.5);
+  --cyb-green: #22c55e;
+  --cyb-green-dark: #16a34a;
+  --cyb-mint: #4ade80;
+  --cyb-emerald: #10b981;
+  --cyb-gold: #eab308;
+  --cyb-text: #f5fff8;
+  --cyb-muted: #8da397;
+  --cyb-dim: #4b6356;
+  --cyb-red: #ef4444;
+  --cyb-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+  --cyb-glow: 0 0 35px rgba(34, 197, 94, 0.2);
 }
 
 /* Page Background */
 .neu-auth-page {
   min-height: 100vh;
   width: 100%;
-  background-color: var(--neu-bg);
-  background: radial-gradient(circle at 50% 30%, #f0f3f8 0%, #e2e7ef 100%);
+  background-color: var(--cyb-bg);
+  background: 
+    radial-gradient(circle at 50% 20%, rgba(34, 197, 94, 0.16) 0%, transparent 55%),
+    radial-gradient(circle at 10% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 90% 90%, rgba(234, 179, 8, 0.05) 0%, transparent 45%),
+    var(--cyb-bg);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   position: relative;
   overflow: hidden;
 }
 
-/* Ambient Soft Lighting */
+/* Cybernetic Ambient Grid */
 .neu-auth-page::before {
   content: "";
   position: absolute;
-  top: -150px;
-  left: -150px;
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 90%);
   pointer-events: none;
+  z-index: 0;
 }
 
-.neu-auth-page::after {
-  content: "";
-  position: absolute;
-  bottom: -150px;
-  right: -150px;
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(194, 200, 210, 0.5) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* Outer Halo Ring (The Sculpted 3D Beveled Ring from the screenshot) */
+/* Outer Halo Ring (The Tactile 3D Circular Bevel Disk) */
 .neu-outer-halo {
-  padding: 10px;
+  position: relative;
+  z-index: 1;
+  padding: 8px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(194, 200, 210, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.35) 0%, rgba(16, 185, 129, 0.1) 50%, rgba(234, 179, 8, 0.2) 100%);
   box-shadow: 
-    24px 24px 60px var(--neu-dark), 
-    -24px -24px 60px var(--neu-light);
+    var(--cyb-shadow),
+    0 0 50px rgba(34, 197, 94, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Signup specific outer halo: gently stretched squircle for 4 inputs */
+/* Signup specific outer halo: squircle for 4 inputs */
 .neu-outer-halo.signup-halo {
   border-radius: 64px;
 }
 
 /* The Main Circular Disk */
 .neu-disk-card {
-  width: 430px;
-  min-height: 450px;
+  width: 440px;
+  min-height: 470px;
   border-radius: 50%;
-  background: var(--neu-surface);
-  border: 4px solid rgba(255, 255, 255, 0.65);
+  background: var(--cyb-card);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  border: 2px solid var(--cyb-border);
   box-shadow: 
-    inset 4px 4px 10px rgba(255, 255, 255, 0.9),
-    inset -4px -4px 10px rgba(194, 200, 210, 0.45);
+    inset 2px 2px 8px rgba(74, 222, 128, 0.15),
+    inset -3px -3px 10px rgba(0, 0, 0, 0.8),
+    0 20px 50px rgba(0, 0, 0, 0.6);
   padding: 44px 38px;
   display: flex;
   flex-direction: column;
@@ -94,42 +100,70 @@
   box-sizing: border-box;
   text-align: center;
   position: relative;
-  z-index: 1;
 }
 
 /* Signup specific disk */
 .neu-disk-card.signup-disk {
   border-radius: 56px;
-  min-height: 540px;
-  padding: 40px 36px;
+  min-height: 550px;
+  padding: 38px 36px;
 }
 
-/* Top Titles */
+/* Cybrical Brand Emblem Badge inside disk */
+.neu-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  border-radius: 9999px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--cyb-mint);
+  text-transform: uppercase;
+}
+
+.neu-brand-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyb-green);
+  box-shadow: 0 0 8px var(--cyb-green);
+}
+
+/* Titles */
 .neu-title {
   font-size: 32px;
   font-weight: 800;
-  color: var(--neu-text);
+  color: var(--cyb-text);
   margin: 0;
   letter-spacing: -0.5px;
 }
 
-.neu-subtitle {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: var(--neu-muted);
-  margin: 4px 0 20px;
+.neu-title span {
+  color: var(--cyb-mint);
 }
 
-/* Error & Success Messages */
+.neu-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cyb-muted);
+  margin: 4px 0 18px;
+}
+
+/* Alerts */
 .neu-alert-error {
   width: 100%;
-  max-width: 310px;
-  padding: 8px 12px;
+  max-width: 320px;
+  padding: 9px 14px;
   margin-bottom: 14px;
-  background: rgba(201, 42, 42, 0.1);
-  border: 1px solid rgba(201, 42, 42, 0.3);
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
   border-radius: 12px;
-  color: var(--neu-red);
+  color: #fca5a5;
   font-size: 12px;
   font-weight: 600;
   box-sizing: border-box;
@@ -137,13 +171,13 @@
 
 .neu-alert-success {
   width: 100%;
-  max-width: 310px;
-  padding: 8px 12px;
+  max-width: 320px;
+  padding: 9px 14px;
   margin-bottom: 14px;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
   border-radius: 12px;
-  color: var(--neu-green);
+  color: var(--cyb-mint);
   font-size: 12px;
   font-weight: 600;
   box-sizing: border-box;
@@ -152,22 +186,22 @@
 /* Form Container */
 .neu-form {
   width: 100%;
-  max-width: 310px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 13px;
 }
 
-/* Inset Sunken Grooves (Neumorphic Input) */
+/* Inset Sunken Grooves (Neumorphic Dark Glass Input) */
 .neu-input-groove {
   width: 100%;
   height: 48px;
-  background: #e6ebf2;
-  border-radius: 16px;
+  background: var(--cyb-card-inner);
+  border-radius: 14px;
   box-shadow: 
-    inset 4px 4px 8px var(--neu-dark-inset), 
-    inset -4px -4px 8px var(--neu-light);
-  border: 1.5px solid transparent;
+    inset 3px 3px 8px rgba(0, 0, 0, 0.8),
+    inset -2px -2px 6px rgba(74, 222, 128, 0.06);
+  border: 1px solid var(--cyb-border);
   display: flex;
   align-items: center;
   padding: 0 16px;
@@ -176,17 +210,28 @@
   transition: all 0.25s ease;
 }
 
-/* Red/Crimson Active Accent for Password (Exactly matching screenshot!) */
-.neu-input-groove.password-accent {
-  border-color: rgba(201, 42, 42, 0.35);
+/* Active Glow on Focus */
+.neu-input-groove:focus-within {
+  border-color: var(--cyb-mint);
   box-shadow: 
-    inset 4px 4px 8px var(--neu-dark-inset), 
-    inset -4px -4px 8px var(--neu-light),
-    0 0 10px rgba(201, 42, 42, 0.15);
+    inset 2px 2px 6px rgba(0, 0, 0, 0.9),
+    0 0 16px rgba(34, 197, 94, 0.25);
+  background: rgba(6, 18, 12, 0.98);
 }
 
-.neu-input-groove:focus-within {
-  border-color: rgba(42, 46, 55, 0.25);
+/* Red/Crimson Accent on Password (Reference Match) */
+.neu-input-groove.password-accent {
+  border-color: rgba(239, 68, 68, 0.45);
+  box-shadow: 
+    inset 3px 3px 8px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(239, 68, 68, 0.2);
+}
+
+.neu-input-groove.password-accent:focus-within {
+  border-color: #f87171;
+  box-shadow: 
+    inset 2px 2px 6px rgba(0, 0, 0, 0.9),
+    0 0 16px rgba(239, 68, 68, 0.35);
 }
 
 .neu-input-icon {
@@ -194,11 +239,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--neu-muted);
+  color: var(--cyb-mint);
 }
 
 .neu-input-icon.red-icon {
-  color: var(--neu-red);
+  color: #ef4444;
 }
 
 .neu-input-field {
@@ -208,30 +253,30 @@
   outline: none;
   font-size: 13.5px;
   font-weight: 500;
-  color: var(--neu-text);
+  color: var(--cyb-text);
   font-family: inherit;
   width: 100%;
 }
 
 .neu-input-field::placeholder {
-  color: var(--neu-muted);
-  font-size: 13.5px;
+  color: var(--cyb-dim);
+  font-size: 13px;
 }
 
-/* Remember Me & Forgot Password Row */
+/* Controls Row */
 .neu-controls-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   font-size: 12px;
-  color: var(--neu-muted);
+  color: var(--cyb-muted);
   margin-top: -2px;
   padding: 0 4px;
   box-sizing: border-box;
 }
 
-/* Neumorphic Toggle Switch */
+/* Neumorphic Dark Toggle */
 .neu-toggle-label {
   display: flex;
   align-items: center;
@@ -244,62 +289,62 @@
   position: relative;
   width: 34px;
   height: 18px;
-  background: #e0e5ed;
+  background: rgba(4, 12, 8, 0.9);
+  border: 1px solid var(--cyb-border);
   border-radius: 9999px;
-  box-shadow: 
-    inset 2px 2px 4px var(--neu-dark-inset), 
-    inset -2px -2px 4px var(--neu-light);
-  transition: background 0.25s ease;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.8);
+  transition: all 0.25s ease;
 }
 
 .neu-toggle-thumb {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: var(--cyb-dim);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .neu-toggle-switch.active {
-  background: rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.3);
+  border-color: var(--cyb-mint);
 }
 
 .neu-toggle-switch.active .neu-toggle-thumb {
   transform: translateX(16px);
-  background: #ffffff;
+  background: var(--cyb-green);
+  box-shadow: 0 0 8px var(--cyb-green);
 }
 
 .neu-forgot-link {
-  color: var(--neu-muted);
+  color: var(--cyb-muted);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .neu-forgot-link:hover {
-  color: var(--neu-text);
+  color: var(--cyb-mint);
 }
 
-/* Raised Extruded Neumorphic Submit Button */
+/* Cybrical Signature Emerald Gradient Submit Button */
 .neu-submit-btn {
   width: 100%;
   height: 48px;
-  background: var(--neu-surface);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 60%, #15803d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
   box-shadow: 
-    6px 6px 14px var(--neu-dark), 
-    -6px -6px 14px var(--neu-light);
-  color: #4a5160;
+    0 8px 25px rgba(34, 197, 94, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #03160a;
   font-size: 13.5px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,17 +352,16 @@
 }
 
 .neu-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
   box-shadow: 
-    4px 4px 10px var(--neu-dark), 
-    -4px -4px 10px var(--neu-light);
-  color: var(--neu-text);
+    0 12px 35px rgba(34, 197, 94, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  background: linear-gradient(135deg, #34d399 0%, #22c55e 60%, #16a34a 100%);
 }
 
 .neu-submit-btn:active:not(:disabled) {
-  box-shadow: 
-    inset 4px 4px 8px var(--neu-dark-inset), 
-    inset -4px -4px 8px var(--neu-light);
   transform: translateY(1px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
 }
 
 .neu-submit-btn:disabled {
@@ -327,42 +371,42 @@
 
 /* Demo Helper Pill */
 .neu-demo-pill {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px dashed rgba(194, 200, 210, 0.9);
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px dashed rgba(74, 222, 128, 0.3);
   border-radius: 10px;
-  padding: 6px 10px;
+  padding: 7px 10px;
   font-size: 11px;
   font-weight: 600;
-  color: #555e6d;
+  color: var(--cyb-mint);
   cursor: pointer;
   width: 100%;
   transition: all 0.2s ease;
 }
 
 .neu-demo-pill:hover {
-  background: #ffffff;
-  color: var(--neu-text);
-  border-color: var(--neu-muted);
+  background: rgba(34, 197, 94, 0.16);
+  border-color: var(--cyb-mint);
 }
 
-/* Bottom Footer Text */
+/* Footer Link */
 .neu-footer-text {
   font-size: 12.5px;
-  color: var(--neu-muted);
+  color: var(--cyb-muted);
   margin: 16px 0 0;
   font-weight: 500;
 }
 
 .neu-footer-highlight {
-  color: var(--neu-red);
+  color: var(--cyb-mint);
   font-weight: 700;
   text-decoration: none;
   margin-left: 4px;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .neu-footer-highlight:hover {
-  opacity: 0.85;
+  color: #ffffff;
+  text-shadow: 0 0 10px var(--cyb-mint);
 }
 
 /* Top Back To Website Button */
@@ -372,31 +416,35 @@
   left: 24px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: var(--neu-muted);
+  gap: 8px;
+  color: var(--cyb-muted);
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
-  padding: 8px 16px;
-  background: var(--neu-surface);
+  padding: 8px 18px;
+  background: var(--cyb-card);
+  border: 1px solid var(--cyb-border);
   border-radius: 9999px;
-  box-shadow: 4px 4px 10px var(--neu-dark), -4px -4px 10px var(--neu-light);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   transition: all 0.2s ease;
 }
 
 .neu-back-home:hover {
-  color: var(--neu-text);
-  box-shadow: 2px 2px 6px var(--neu-dark), -2px -2px 6px var(--neu-light);
+  color: #ffffff;
+  border-color: var(--cyb-mint);
+  background: rgba(12, 34, 23, 0.95);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
 }
 
-/* Mobile Responsive */
+/* Responsive Rules */
 @media (max-width: 500px) {
   .neu-auth-page {
     padding: 20px 10px;
   }
   .neu-outer-halo {
     border-radius: 44px !important;
-    padding: 8px;
+    padding: 6px;
     width: 100%;
     max-width: 360px;
   }

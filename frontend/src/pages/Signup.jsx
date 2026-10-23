@@ -72,6 +72,10 @@ export default function Signup() {
       <div className="neu-outer-halo signup-halo">
         {/* Main 3D Bevel Disk */}
         <div className="neu-disk-card signup-disk">
+          <div className="neu-brand-badge">
+            <span className="neu-brand-dot" />
+            CYBRICAL TECH
+          </div>
           <h1 className="neu-title">Sign Up</h1>
           <p className="neu-subtitle">Create your new account</p>
 
