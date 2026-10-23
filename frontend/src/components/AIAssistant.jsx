@@ -4511,6 +4511,20 @@ function AIAssistant() {
                   🎙
                 </button>
 
+                <button
+                  type="button"
+                  className="ai-enhance-btn"
+                  onClick={() => {
+                    if (!message.trim()) return;
+                    const enhanced = `Act as an expert AI systems architect & lead software engineer. Provide an exhaustive, production-grade solution, clean modular code with error handling, and performance guidelines for: "${message.trim()}"`;
+                    setMessage(enhanced);
+                  }}
+                  disabled={!message.trim() || loading || isStreaming}
+                  title="✨ Magic Enhance Prompt"
+                >
+                  ✨
+                </button>
+
                 <textarea
                   ref={textareaRef}
                   rows={1}
