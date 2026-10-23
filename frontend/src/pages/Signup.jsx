@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getApiUrl } from "../config/api";
+import "./AuthNeumorphic.css";
 
-function Signup() {
+export default function Signup() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -17,17 +18,14 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
     setError("");
     setSuccess("");
 
-    // Password match check
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
 
-    // Password length check
     if (password.length < 6) {
       setError("Password must be at least 6 characters.");
       return;
@@ -46,24 +44,15 @@ function Signup() {
       );
 
       console.log("Signup Response:", response.data);
+      setSuccess("Account created successfully! Redirecting...");
 
-      setSuccess("Account created successfully!");
-
-      // Clear form
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-
-      // Go to login
       setTimeout(() => {
         navigate("/login");
       }, 1500);
-    } catch (error) {
-      console.error("Signup Error:", error);
-
+    } catch (err) {
+      console.error("Signup Error:", err);
       setError(
-        error.response?.data?.message ||
+        err.response?.data?.message ||
           "Unable to create account. Please try again."
       );
     } finally {
@@ -72,257 +61,117 @@ function Signup() {
   };
 
   return (
-    <div style={styles.page}>
-      <div style={styles.card}>
+    <div className="neu-auth-page">
+      {/* Top Back To Website Button */}
+      <Link to="/" className="neu-back-home">
+        <span>←</span>
+        <span>Back to Website</span>
+      </Link>
 
-        {/* Logo */}
-        <div style={styles.logo}>
-          CYBRICAL
-          <span> TECH</span>
+      {/* 3D Neumorphic Sculpted Outer Halo */}
+      <div className="neu-outer-halo signup-halo">
+        {/* Main 3D Bevel Disk */}
+        <div className="neu-disk-card signup-disk">
+          <h1 className="neu-title">Sign Up</h1>
+          <p className="neu-subtitle">Create your new account</p>
+
+          {/* Alerts */}
+          {error && <div className="neu-alert-error">{error}</div>}
+          {success && <div className="neu-alert-success">{success}</div>}
+
+          {/* Form */}
+          <form className="neu-form" onSubmit={handleSignup}>
+            {/* Full Name */}
+            <div className="neu-input-groove">
+              <span className="neu-input-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="neu-input-field"
+                required
+                autoComplete="name"
+              />
+            </div>
+
+            {/* Email Address */}
+            <div className="neu-input-groove">
+              <span className="neu-input-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </span>
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="neu-input-field"
+                required
+                autoComplete="email"
+              />
+            </div>
+
+            {/* Password */}
+            <div className="neu-input-groove">
+              <span className="neu-input-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                </svg>
+              </span>
+              <input
+                type="password"
+                placeholder="Create Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="neu-input-field"
+                required
+                autoComplete="new-password"
+              />
+            </div>
+
+            {/* Confirm Password (with Red Padlock & Accent) */}
+            <div className="neu-input-groove password-accent">
+              <span className="neu-input-icon red-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                </svg>
+              </span>
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="neu-input-field"
+                required
+                autoComplete="new-password"
+              />
+            </div>
+
+            {/* Raised 3D Button */}
+            <button
+              type="submit"
+              className="neu-submit-btn"
+              disabled={loading}
+            >
+              {loading ? "CREATING ACCOUNT..." : "SIGN UP"}
+            </button>
+          </form>
+
+          {/* Footer Text */}
+          <p className="neu-footer-text">
+            Already have an account?
+            <Link to="/login" className="neu-footer-highlight">
+              Sign in
+            </Link>
+          </p>
         </div>
-
-        {/* Heading */}
-        <h1 style={styles.title}>
-          Create Account
-        </h1>
-
-        <p style={styles.subtitle}>
-          Join Cybrical Tech today
-        </p>
-
-        {/* Error */}
-        {error && (
-          <div style={styles.error}>
-            {error}
-          </div>
-        )}
-
-        {/* Success */}
-        {success && (
-          <div style={styles.success}>
-            {success}
-          </div>
-        )}
-
-        {/* Signup Form */}
-        <form onSubmit={handleSignup}>
-
-          {/* Name */}
-          <label style={styles.label}>
-            Full Name
-          </label>
-
-          <input
-            type="text"
-            placeholder="Enter your full name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={styles.input}
-            required
-          />
-
-          {/* Email */}
-          <label style={styles.label}>
-            Email Address
-          </label>
-
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={styles.input}
-            required
-          />
-
-          {/* Password */}
-          <label style={styles.label}>
-            Password
-          </label>
-
-          <input
-            type="password"
-            placeholder="Create a password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
-            minLength={6}
-            required
-          />
-
-          {/* Confirm Password */}
-          <label style={styles.label}>
-            Confirm Password
-          </label>
-
-          <input
-            type="password"
-            placeholder="Confirm your password"
-            value={confirmPassword}
-            onChange={(e) =>
-              setConfirmPassword(e.target.value)
-            }
-            style={styles.input}
-            minLength={6}
-            required
-          />
-
-          {/* Signup Button */}
-          <button
-            type="submit"
-            style={{
-              ...styles.button,
-              opacity: loading ? 0.7 : 1,
-            }}
-            disabled={loading}
-          >
-            {loading ? "Creating Account..." : "Create Account"}
-          </button>
-        </form>
-
-        {/* Login */}
-        <p style={styles.bottomText}>
-          Already have an account?{" "}
-
-          <Link
-            to="/login"
-            style={styles.link}
-          >
-            Login
-          </Link>
-        </p>
-
-        {/* Home */}
-        <button
-          type="button"
-          onClick={() => navigate("/")}
-          style={styles.backButton}
-        >
-          ← Back to Home
-        </button>
-
       </div>
     </div>
   );
 }
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    background: "#080810",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "100px 20px 50px",
-    color: "#ffffff",
-    fontFamily: "Arial, sans-serif",
-  },
-
-  card: {
-    width: "100%",
-    maxWidth: "430px",
-    background: "#11111d",
-    padding: "40px",
-    borderRadius: "22px",
-    border: "1px solid #252538",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.45)",
-  },
-
-  logo: {
-    textAlign: "center",
-    fontSize: "24px",
-    fontWeight: "800",
-    letterSpacing: "2px",
-    marginBottom: "25px",
-  },
-
-  title: {
-    textAlign: "center",
-    fontSize: "32px",
-    margin: "0 0 10px",
-  },
-
-  subtitle: {
-    textAlign: "center",
-    color: "#9ca3af",
-    marginBottom: "30px",
-  },
-
-  label: {
-    display: "block",
-    marginBottom: "8px",
-    color: "#d1d5db",
-    fontWeight: "600",
-  },
-
-  input: {
-    width: "100%",
-    boxSizing: "border-box",
-    padding: "14px",
-    marginBottom: "20px",
-    borderRadius: "9px",
-    border: "1px solid #343449",
-    background: "#191925",
-    color: "#ffffff",
-    fontSize: "15px",
-    outline: "none",
-  },
-
-  button: {
-    width: "100%",
-    padding: "14px",
-    marginTop: "5px",
-    background:
-      "linear-gradient(135deg, #635bff, #4f46e5)",
-    color: "#ffffff",
-    border: "none",
-    borderRadius: "9px",
-    fontSize: "16px",
-    fontWeight: "700",
-    cursor: "pointer",
-  },
-
-  error: {
-    background: "rgba(239,68,68,0.12)",
-    border: "1px solid rgba(239,68,68,0.35)",
-    color: "#fca5a5",
-    padding: "12px",
-    borderRadius: "8px",
-    marginBottom: "20px",
-    fontSize: "14px",
-  },
-
-  success: {
-    background: "rgba(34,197,94,0.12)",
-    border: "1px solid rgba(34,197,94,0.35)",
-    color: "#86efac",
-    padding: "12px",
-    borderRadius: "8px",
-    marginBottom: "20px",
-    fontSize: "14px",
-  },
-
-  bottomText: {
-    textAlign: "center",
-    color: "#9ca3af",
-    marginTop: "25px",
-  },
-
-  link: {
-    color: "#8b7cff",
-    textDecoration: "none",
-    fontWeight: "600",
-  },
-
-  backButton: {
-    display: "block",
-    margin: "18px auto 0",
-    background: "transparent",
-    border: "none",
-    color: "#9ca3af",
-    cursor: "pointer",
-    fontSize: "14px",
-  },
-};
-
-export default Signup;
