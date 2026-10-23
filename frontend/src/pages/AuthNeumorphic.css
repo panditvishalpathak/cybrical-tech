@@ -65,18 +65,84 @@
   z-index: 1;
   padding: 8px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.35) 0%, rgba(16, 185, 129, 0.1) 50%, rgba(234, 179, 8, 0.2) 100%);
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.4) 0%, rgba(16, 185, 129, 0.15) 50%, rgba(234, 179, 8, 0.25) 100%);
   box-shadow: 
     var(--cyb-shadow),
-    0 0 50px rgba(34, 197, 94, 0.18);
+    0 0 50px rgba(34, 197, 94, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+/* Dynamic Rotating Cyber Aura on Outer Ring */
+.neu-outer-halo::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(34, 197, 94, 0.85) 60deg,
+    rgba(74, 222, 128, 0.95) 110deg,
+    rgba(234, 179, 8, 0.7) 160deg,
+    transparent 220deg,
+    rgba(16, 185, 129, 0.6) 280deg,
+    transparent 360deg
+  );
+  z-index: -1;
+  opacity: 0.35;
+  filter: blur(8px);
+  animation: haloOrbitSpin 14s linear infinite;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+  pointer-events: none;
+}
+
+/* Ambient Radial Luminescence */
+.neu-outer-halo::after {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.25) 0%, rgba(16, 185, 129, 0.1) 40%, transparent 70%);
+  z-index: -2;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
 /* Signup specific outer halo: squircle for 4 inputs */
 .neu-outer-halo.signup-halo {
   border-radius: 64px;
+}
+
+/* Outer Halo Hover State */
+.neu-outer-halo:hover {
+  box-shadow: 
+    0 30px 70px -10px rgba(0, 0, 0, 0.9),
+    0 0 70px rgba(34, 197, 94, 0.45),
+    0 0 120px rgba(16, 185, 129, 0.25);
+}
+
+.neu-outer-halo:hover::before {
+  opacity: 0.95;
+  filter: blur(14px);
+  animation-duration: 6s;
+}
+
+.neu-outer-halo:hover::after {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+@keyframes haloOrbitSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* The Main Circular Disk */
@@ -100,6 +166,47 @@
   box-sizing: border-box;
   text-align: center;
   position: relative;
+  overflow: hidden;
+  transition: border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+/* Specular Diagonal Glass Sheen Sweep across the circular disk */
+.neu-disk-card::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.04) 45%,
+    rgba(74, 222, 128, 0.18) 50%,
+    rgba(255, 255, 255, 0.08) 54%,
+    transparent 60%,
+    transparent 100%
+  );
+  transform: rotate(-18deg) translateY(-100%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+
+.neu-outer-halo:hover .neu-disk-card::before {
+  transform: rotate(-18deg) translateY(45%);
+  opacity: 1;
+}
+
+/* Disk Card Hover State */
+.neu-outer-halo:hover .neu-disk-card {
+  border-color: rgba(74, 222, 128, 0.45);
+  box-shadow: 
+    inset 2px 2px 14px rgba(74, 222, 128, 0.28),
+    inset -4px -4px 14px rgba(0, 0, 0, 0.9),
+    0 25px 60px rgba(0, 0, 0, 0.7);
 }
 
 /* Signup specific disk */
@@ -107,6 +214,18 @@
   border-radius: 56px;
   min-height: 550px;
   padding: 38px 36px;
+}
+
+/* Ensure all direct children are layered properly above specular glass sheen */
+.neu-brand-badge,
+.neu-title,
+.neu-subtitle,
+.neu-alert-error,
+.neu-alert-success,
+.neu-form,
+.neu-footer-text {
+  position: relative;
+  z-index: 2;
 }
 
 /* Cybrical Brand Emblem Badge inside disk */
@@ -124,6 +243,14 @@
   letter-spacing: 1.5px;
   color: var(--cyb-mint);
   text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-outer-halo:hover .neu-brand-badge {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(74, 222, 128, 0.6);
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.35);
+  transform: translateY(-1px);
 }
 
 .neu-brand-dot {
@@ -132,6 +259,11 @@
   border-radius: 50%;
   background: var(--cyb-green);
   box-shadow: 0 0 8px var(--cyb-green);
+  transition: box-shadow 0.3s ease;
+}
+
+.neu-outer-halo:hover .neu-brand-dot {
+  box-shadow: 0 0 10px #22c55e, 0 0 18px #4ade80;
 }
 
 /* Titles */
@@ -141,6 +273,11 @@
   color: var(--cyb-text);
   margin: 0;
   letter-spacing: -0.5px;
+  transition: text-shadow 0.3s ease;
+}
+
+.neu-outer-halo:hover .neu-title {
+  text-shadow: 0 0 20px rgba(74, 222, 128, 0.35);
 }
 
 .neu-title span {

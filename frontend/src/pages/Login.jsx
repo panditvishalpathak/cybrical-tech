@@ -13,6 +13,30 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Interactive 3D Holographic Gyroscope Mouse Parallax
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6.5;
+    const rotateY = ((x - centerX) / centerX) * 6.5;
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -61,7 +85,20 @@ export default function Login() {
       </Link>
 
       {/* 3D Neumorphic Sculpted Outer Halo */}
-      <div className="neu-outer-halo">
+      <div
+        className="neu-outer-halo"
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform: isHovered
+            ? `perspective(1000px) rotateX(${tilt.x.toFixed(2)}deg) rotateY(${tilt.y.toFixed(2)}deg) translateY(-8px) scale(1.02)`
+            : "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)",
+          transition: isHovered
+            ? "transform 0.12s ease-out, box-shadow 0.45s ease"
+            : "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease",
+        }}
+      >
         {/* Main 3D Circular Bevel Disk */}
         <div className="neu-disk-card">
           <div className="neu-brand-badge">
