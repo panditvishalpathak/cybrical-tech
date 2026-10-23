@@ -103,7 +103,7 @@ app.get("/api/health", (req, res) => {
 ========================= */
 
 app.use((req, res, next) => {
-  if (req.method !== "GET") return next();
+  if (req.method !== "GET" && req.method !== "HEAD") return next();
   if (req.path.startsWith("/api") || req.path.startsWith("/uploads")) {
     return next();
   }
