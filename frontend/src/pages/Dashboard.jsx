@@ -83,6 +83,23 @@ const PROMPT_TEMPLATES = [
   },
 ];
 
+const QUICK_CHAT_PROMPTS = [
+  { label: "⚡ MERN Backend CRUD", prompt: "Write a complete production-grade MERN CRUD backend with Express.js, Mongoose schema, JWT authentication, and structured error handling." },
+  { label: "🛡️ JWT Auth Architecture", prompt: "Design a secure JWT authentication flow with refresh tokens in HttpOnly cookies, CSRF protection, and role-based middleware." },
+  { label: "🎨 Glassmorphic Hero UI", prompt: "Create an ultra-luxury dark-emerald glassmorphic React hero component with floating badges, responsive navigation, and glowing borders." },
+  { label: "🚀 Custom React Hook", prompt: "Write a complete production-grade React Custom Hook with debouncing, cache memory, and error handling." },
+  { label: "📦 LMS Project ZIPs", prompt: "How can I access and download offline project ZIP files from the Cybrical Tech LMS courses?" },
+  { label: "🌐 2026 AI Trends", prompt: "Search live web: Latest breakthroughs in Artificial Intelligence, agentic workflows, and Web Development in 2026 with citations." },
+];
+
+const QUICK_IMAGE_PROMPTS = [
+  { label: "🌆 Cyberpunk 8K", prompt: "Futuristic cyberpunk megalopolis at night, vibrant neon emerald and amber lighting, flying holographic vehicles, 8k resolution, octane render, masterpiece" },
+  { label: "🤖 AI Humanoid Coder", prompt: "Hyperrealistic futuristic AI humanoid robot coding in a high-tech obsidian neon lab, cinematic lighting, 8k resolution, photorealistic" },
+  { label: "👑 Golden Crown Lion", prompt: "Majestic royal lion wearing an intricately crafted glowing golden crown in a mystical fantasy emerald jungle, ultra photorealistic, 8k" },
+  { label: "🌌 Deep Space Nebula", prompt: "Astronaut floating peacefully in deep space beside a mesmerizing colorful galaxy nebula, stars reflecting on helmet visor, ultra photorealistic" },
+  { label: "💎 Luxury 3D Icon", prompt: "High-end 3D glossy obsidian glass icon of a glowing emerald shield with gold circuits, dark minimalist background, studio lighting, raytracing" },
+];
+
 const DEFAULT_COURSES = [
   {
     slug: "web-development",
@@ -187,6 +204,7 @@ export default function Dashboard() {
   const [creativity, setCreativity] = useState(0.7);
   const [promptInput, setPromptInput] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isVoiceListening, setIsVoiceListening] = useState(false);
 
   // Image Studio State
   const [imagePrompt, setImagePrompt] = useState("");
@@ -315,6 +333,55 @@ export default function Dashboard() {
       setMessages([...newMessages, fallbackMsg]);
     } finally {
       setIsGenerating(false);
+    }
+  };
+
+  // Advanced Prompt Helpers & Enhancers
+  const handleEnhancePrompt = () => {
+    if (!promptInput.trim()) return;
+    const base = promptInput.trim();
+    const enhanced = `Act as an expert AI systems architect & lead software engineer. Provide an exhaustive, production-grade solution, complete architectural breakdown, clean modular ES6/TypeScript code with best practices, and performance optimization guidelines for: "${base}"`;
+    setPromptInput(enhanced);
+  };
+
+  const handleEnhanceImagePrompt = () => {
+    if (!imagePrompt.trim()) return;
+    const base = imagePrompt.trim();
+    const enhanced = `${base}, highly detailed, 8k resolution, cinematic studio lighting, photorealistic, octane render, unreal engine 5, masterpiece, ultra-sharp focus, volumetric god rays`;
+    setImagePrompt(enhanced);
+  };
+
+  const cycleMode = () => {
+    const modes = ["code", "architecture", "debug", "explain"];
+    const idx = modes.indexOf(activeMode);
+    const next = modes[(idx + 1) % modes.length];
+    setActiveMode(next);
+  };
+
+  const toggleVoiceInput = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Speech recognition is not supported in this browser. Please try in Google Chrome or Edge.");
+      return;
+    }
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+
+      recognition.onstart = () => setIsVoiceListening(true);
+      recognition.onend = () => setIsVoiceListening(false);
+      recognition.onerror = () => setIsVoiceListening(false);
+
+      recognition.onresult = (e) => {
+        const text = e.results[0][0].transcript;
+        setPromptInput((prev) => (prev ? prev + " " + text : text));
+      };
+
+      recognition.start();
+    } catch (err) {
+      console.error("Voice Error:", err);
+      setIsVoiceListening(false);
     }
   };
 
@@ -938,24 +1005,132 @@ export default function Dashboard() {
                       <div ref={chatBottomRef} />
                     </div>
 
-                    <form
-                      className="admin-chat-input-bar"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        handleSendMessage();
-                      }}
-                    >
-                      <input
-                        type="text"
-                        placeholder="Type a coding request, architecture blueprint, or query..."
-                        value={promptInput}
-                        onChange={(e) => setPromptInput(e.target.value)}
-                        disabled={isGenerating}
-                      />
-                      <button type="submit" disabled={isGenerating || !promptInput.trim()}>
-                        {isGenerating ? "Reasoning..." : "Send"}
-                      </button>
-                    </form>
+                    {/* Advanced Cybernetic AI Command Dock */}
+                    <div className="admin-chat-dock-container">
+                      {/* Quick Starter Suggestions */}
+                      <div className="dock-quick-starters">
+                        <span className="dock-starters-label">⚡ Starters:</span>
+                        <div className="dock-starters-scroll">
+                          {QUICK_CHAT_PROMPTS.map((q, idx) => (
+                            <button
+                              key={idx}
+                              type="button"
+                              className="dock-starter-chip"
+                              onClick={() => {
+                                setPromptInput(q.prompt);
+                              }}
+                              title={q.prompt}
+                            >
+                              {q.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Main Dock Form */}
+                      <form
+                        className="admin-chat-dock"
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          handleSendMessage();
+                        }}
+                      >
+                        <div className="dock-textarea-wrapper">
+                          <textarea
+                            className="admin-dock-textarea"
+                            placeholder="Ask anything, describe system architecture, or paste code snippets... (Enter to send, Shift+Enter for new line)"
+                            value={promptInput}
+                            onChange={(e) => setPromptInput(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" && !e.shiftKey) {
+                                e.preventDefault();
+                                handleSendMessage();
+                              }
+                            }}
+                            disabled={isGenerating}
+                            rows={2}
+                          />
+                        </div>
+
+                        {/* Dock Toolbar */}
+                        <div className="admin-dock-toolbar">
+                          <div className="dock-toolbar-left">
+                            {/* Mode Selector Pill */}
+                            <button
+                              type="button"
+                              className="dock-pill-btn mode-pill"
+                              onClick={cycleMode}
+                              title="Click to switch AI Engine Mode"
+                            >
+                              <span className="pill-dot" />
+                              <span>Mode: <strong>{activeMode.toUpperCase()}</strong></span>
+                            </button>
+
+                            {/* Model Indicator Pill */}
+                            <div className="dock-pill-static model-pill">
+                              <span>🧠 {AI_MODELS.find((m) => m.id === selectedModel)?.name || "Gemini 2.0"}</span>
+                            </div>
+
+                            {/* Magic Enhance Prompt */}
+                            <button
+                              type="button"
+                              className="dock-pill-btn enhance-pill"
+                              onClick={handleEnhancePrompt}
+                              disabled={!promptInput.trim() || isGenerating}
+                              title="Enrich and expand prompt with enterprise context"
+                            >
+                              ✨ Enhance
+                            </button>
+
+                            {/* Voice Dictation */}
+                            <button
+                              type="button"
+                              className={`dock-pill-btn voice-pill ${isVoiceListening ? "listening" : ""}`}
+                              onClick={toggleVoiceInput}
+                              title="Voice Dictation"
+                            >
+                              {isVoiceListening ? "🔴 Listening..." : "🎙️ Voice"}
+                            </button>
+
+                            {/* Clear Button */}
+                            {promptInput.trim() && (
+                              <button
+                                type="button"
+                                className="dock-pill-btn clear-pill"
+                                onClick={() => setPromptInput("")}
+                                title="Clear prompt"
+                              >
+                                ✕ Clear
+                              </button>
+                            )}
+                          </div>
+
+                          <div className="dock-toolbar-right">
+                            <span className="dock-char-count">
+                              {promptInput.length} chars
+                            </span>
+
+                            <button
+                              type="submit"
+                              className="admin-dock-send-btn"
+                              disabled={isGenerating || !promptInput.trim()}
+                            >
+                              {isGenerating ? (
+                                <>
+                                  <span className="dock-spinner" />
+                                  <span>Reasoning...</span>
+                                </>
+                              ) : (
+                                <>
+                                  <span>Send Command</span>
+                                  <span className="dock-send-icon">↵</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               )}
@@ -964,12 +1139,65 @@ export default function Dashboard() {
               {activeAdminTab === "image" && (
                 <div className="admin-image-layout">
                   <div className="image-prompt-box">
-                    <input
-                      type="text"
-                      placeholder="Describe high-res UI preview, cyberpunk cityscape, or 3D icon..."
+                    <div className="image-box-header">
+                      <div className="image-box-title">
+                        <span className="image-sparkle">🎨</span>
+                        <strong>8K Diffusion Studio Prompt Engine</strong>
+                      </div>
+                      <button
+                        type="button"
+                        className="dock-pill-btn enhance-pill"
+                        onClick={handleEnhanceImagePrompt}
+                        disabled={!imagePrompt.trim() || isGeneratingImage}
+                        title="Auto-enhance image prompt with 8K cinematic keywords"
+                      >
+                        ✨ Magic Enhance
+                      </button>
+                    </div>
+
+                    {/* Quick Visual Starters */}
+                    <div className="dock-quick-starters in-image-box">
+                      <span className="dock-starters-label">💡 Themes:</span>
+                      <div className="dock-starters-scroll">
+                        {QUICK_IMAGE_PROMPTS.map((q, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className="dock-starter-chip"
+                            onClick={() => setImagePrompt(q.prompt)}
+                            title={q.prompt}
+                          >
+                            {q.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <textarea
+                      className="image-prompt-textarea"
+                      placeholder="Describe high-res UI preview, cyberpunk cityscape, or 3D icon in ultra detail..."
                       value={imagePrompt}
                       onChange={(e) => setImagePrompt(e.target.value)}
+                      rows={3}
                     />
+
+                    {/* Aspect Ratio Selector */}
+                    <div className="aspect-ratio-selector-row">
+                      <span className="selector-label">📐 Aspect Ratio:</span>
+                      <div className="ratio-chips">
+                        {ASPECT_RATIOS.map((r) => (
+                          <button
+                            key={r.id}
+                            type="button"
+                            className={`ratio-chip ${selectedRatio === r.id ? "active" : ""}`}
+                            onClick={() => setSelectedRatio(r.id)}
+                          >
+                            {r.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
                     <div className="image-options-row">
                       <div className="style-chips">
                         {STYLE_PRESETS.map((s) => (
@@ -987,7 +1215,16 @@ export default function Dashboard() {
                         onClick={handleGenerateImage}
                         disabled={isGeneratingImage || !imagePrompt.trim()}
                       >
-                        {isGeneratingImage ? "Rendering 8K..." : "Generate Artwork"}
+                        {isGeneratingImage ? (
+                          <>
+                            <span className="dock-spinner" />
+                            <span>Rendering 8K...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>⚡ Generate 8K Artwork</span>
+                          </>
+                        )}
                       </button>
                     </div>
                   </div>
