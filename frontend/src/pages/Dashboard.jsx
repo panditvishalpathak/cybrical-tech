@@ -162,7 +162,7 @@ const IMAGES = {
   runner: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
   fruits: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
   veggies: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=300&q=80",
-  salad: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=300&q=80",
+  salad: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=300&q=80",
   avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
   cardio1: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=200&q=80",
   cardio2: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=200&q=80",
@@ -444,9 +444,9 @@ export default function Dashboard() {
     return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
 
-  // Display Name & Handle
-  const displayName = user?.name || "Lionel Messi";
-  const userHandle = user?.username ? `@${user.username}` : "@itsworks";
+  // Display Name & Handle (Clean, no mock account fallbacks)
+  const displayName = user?.name || "Developer";
+  const userHandle = user?.email || (user?.username ? `@${user.username}` : "");
 
   return (
     <div className="glassy-dashboard-viewport">
@@ -606,10 +606,10 @@ export default function Dashboard() {
               <div className="glassy-header-row">
                 <div className="greeting-box">
                   <h1 className="greeting-title">
-                    Good Morning, {displayName} <span className="greeting-wave">👋</span>
+                    {user?.name ? `Good Morning, ${user.name}` : "Welcome to Cybrical Executive Suite"} <span className="greeting-wave">👋</span>
                   </h1>
                   <p className="greeting-subtitle">
-                    Welcome to Cybrical Executive Intelligence & Learning Suite
+                    Cybrical Executive Intelligence & Learning Suite
                   </p>
                 </div>
 
@@ -929,7 +929,13 @@ export default function Dashboard() {
                       <span className="diet-day-pill">Sprint 3 • Upcoming 🚀</span>
                     </div>
                     <div className="diet-thumb-circle">
-                      <img src={IMAGES.salad} alt="Android Architecture" />
+                      <img
+                        src={IMAGES.salad}
+                        alt="Android Architecture"
+                        onError={(e) => {
+                          e.target.src = "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=300&q=80";
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -1298,42 +1304,24 @@ export default function Dashboard() {
         </main>
 
         {/* ======================================================== */}
-        {/* 3. RIGHT PROFILE, CALENDAR & SCHEDULE PANEL               */}
+        {/* 3. RIGHT TELEMETRY, CALENDAR & SCHEDULE PANEL             */}
         {/* ======================================================== */}
         <aside className="glassy-right-panel">
-          {/* Top User Profile Header */}
-          <div className="profile-section-top">
-            <div className="profile-user-left">
-              <img
-                src={IMAGES.avatar}
-                alt={displayName}
-                className="profile-avatar-img"
-                onError={(e) => {
-                  e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80";
-                }}
-              />
-              <div className="profile-user-info">
-                <div className="profile-name-row">
-                  <span className="profile-name">{displayName}</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </div>
-                <div className="profile-handle">{userHandle}</div>
-              </div>
+          {/* Header Bar: Executive Telemetry & Auth Action */}
+          <div className="right-panel-header-title">
+            <div className="telemetry-badge">
+              <span className="telemetry-live-dot" />
+              <span>{user ? `Dev: ${user.name}` : "Executive Telemetry"}</span>
             </div>
-
-            <button
-              className="profile-more-btn"
-              onClick={handleLogout}
-              title="Profile Menu & Logout"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="5" cy="12" r="2" />
-                <circle cx="12" cy="12" r="2" />
-                <circle cx="19" cy="12" r="2" />
-              </svg>
-            </button>
+            {user ? (
+              <button className="telemetry-logout-btn" onClick={handleLogout} title="Logout">
+                Logout ↗
+              </button>
+            ) : (
+              <Link to="/login" className="telemetry-signin-btn" title="Sign In">
+                Login →
+              </Link>
+            )}
           </div>
 
           {/* 3 Developer Profile Pills: Skill Tier / Global Rank / Project Vault */}
