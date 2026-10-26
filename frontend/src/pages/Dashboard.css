@@ -541,20 +541,20 @@
   margin-top: 10px;
 }
 
-/* Floating Peak Badge (e.g. 24 km/h) */
+/* Floating Peak Badge (e.g. 98.4% Efficiency) */
 .spline-peak-badge {
   position: absolute;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
   background: #ffffff;
-  border: 1.5px solid var(--accent-orange);
+  border: 1.5px solid #10b981;
   border-radius: 9999px;
-  padding: 3px 10px;
+  padding: 3px 12px;
   font-size: 11px;
   font-weight: 700;
-  color: var(--accent-orange);
-  box-shadow: 0 4px 14px rgba(255, 94, 40, 0.25);
+  color: #059669;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
   display: flex;
   align-items: center;
   gap: 5px;
@@ -562,10 +562,11 @@
 }
 
 .peak-badge-dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--accent-orange);
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
 }
 
 .spline-svg {

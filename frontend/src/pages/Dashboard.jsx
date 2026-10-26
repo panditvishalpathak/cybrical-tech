@@ -159,14 +159,14 @@ const ASPECT_RATIOS = [
 
 // High-resolution reliable fallback images
 const IMAGES = {
-  runner: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=600&q=80",
-  fruits: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=300&q=80",
-  veggies: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80",
-  salad: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=80",
+  runner: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+  fruits: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80",
+  veggies: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=300&q=80",
+  salad: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=300&q=80",
   avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-  cardio1: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=200&q=80",
-  cardio2: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=200&q=80",
-  cardio3: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=200&q=80",
+  cardio1: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=200&q=80",
+  cardio2: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=200&q=80",
+  cardio3: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=200&q=80",
 };
 
 export default function Dashboard() {
@@ -609,7 +609,7 @@ export default function Dashboard() {
                     Good Morning, {displayName} <span className="greeting-wave">👋</span>
                   </h1>
                   <p className="greeting-subtitle">
-                    Let's do some workout today
+                    Welcome to Cybrical Executive Intelligence & Learning Suite
                   </p>
                 </div>
 
@@ -622,7 +622,7 @@ export default function Dashboard() {
                     </svg>
                     <input
                       type="text"
-                      placeholder="Search something here..."
+                      placeholder="Search courses, APIs, blueprints..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -643,23 +643,24 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* TOP 4 METRIC WIDGET CARDS (Crisp White Rounded Cards) */}
+              {/* TOP 4 METRIC WIDGET CARDS (Cybrical Analytics Cards) */}
               <div className="glassy-top-metrics-grid">
-                {/* 1. Calories */}
+                {/* 1. Builds & Commits */}
                 <div className="metric-white-card">
                   <div className="metric-card-top">
-                    <span className="metric-card-label">Calories</span>
-                    <span className="metric-icon-badge orange-badge">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2c1.5 3 4 5 4 8a6 6 0 1 1-12 0c0-3 2.5-5 4-8 1.5 2 2 4 4 0z" />
+                    <span className="metric-card-label">Builds & Commits</span>
+                    <span className="metric-icon-badge green-badge">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <polyline points="16 18 22 12 16 6" />
+                        <polyline points="8 6 2 12 8 18" />
                       </svg>
                     </span>
                   </div>
                   <div className="metric-card-body">
                     <div className="metric-card-value">
-                      1428 <span className="metric-unit">Kcal</span>
+                      1,428 <span className="metric-unit">Builds/mo</span>
                     </div>
-                    {/* Orange Vertical Bar Micro-Chart */}
+                    {/* Emerald Vertical Bar Micro-Chart */}
                     <div className="micro-bar-chart orange-chart">
                       <span style={{ height: "40%" }} />
                       <span style={{ height: "65%" }} />
@@ -672,27 +673,28 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                {/* 2. Heart Rate */}
+                {/* 2. API Telemetry */}
                 <div className="metric-white-card">
                   <div className="metric-card-top">
-                    <span className="metric-card-label">Heart Rate</span>
+                    <span className="metric-card-label">API Latency</span>
                     <span className="metric-icon-badge pink-badge">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
                       </svg>
                     </span>
                   </div>
                   <div className="metric-card-body">
                     <div className="metric-card-value">
-                      104 <span className="metric-unit">bpm/day</span>
+                      42 <span className="metric-unit">ms / 99.9%</span>
                     </div>
-                    {/* Pink ECG Pulse Waveform SVG */}
+                    {/* Emerald Pulse Waveform SVG */}
                     <div className="micro-wave-chart pink-wave">
                       <svg viewBox="0 0 100 30" preserveAspectRatio="none">
                         <path
                           d="M0 16 L20 16 L27 8 L34 26 L42 5 L48 20 L55 14 L62 16 L100 16"
                           fill="none"
-                          stroke="#ff3b69"
+                          stroke="#22c55e"
                           strokeWidth="2.8"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -702,19 +704,21 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                {/* 3. Steps */}
+                {/* 3. Project Vault */}
                 <div className="metric-white-card">
                   <div className="metric-card-top">
-                    <span className="metric-card-label">Steps</span>
+                    <span className="metric-card-label">Project Vault</span>
                     <span className="metric-icon-badge green-badge">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                        <line x1="12" y1="22.08" x2="12" y2="12" />
                       </svg>
                     </span>
                   </div>
                   <div className="metric-card-body">
                     <div className="metric-card-value">
-                      9,886 <span className="metric-unit">Steps</span>
+                      63 <span className="metric-unit">ZIPs Active</span>
                     </div>
                     {/* Emerald Radial Arc Gauge SVG */}
                     <div className="micro-arc-chart green-arc">
@@ -727,7 +731,7 @@ export default function Dashboard() {
                           strokeLinecap="round"
                         />
                         <path
-                          d="M6 30 A24 24 0 0 1 45 12"
+                          d="M6 30 A24 24 0 0 1 48 10"
                           fill="none"
                           stroke="#10b981"
                           strokeWidth="5"
@@ -738,19 +742,19 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                {/* 4. Sleep */}
+                {/* 4. AI Inference Tokens */}
                 <div className="metric-white-card">
                   <div className="metric-card-top">
-                    <span className="metric-card-label">Sleep</span>
+                    <span className="metric-card-label">AI Inference</span>
                     <span className="metric-icon-badge blue-badge">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A7.003 7.003 0 0 1 5.07 11H5a1 1 0 0 1 0-2h.07A7.003 7.003 0 0 1 11 3.07V3a1 1 0 0 1 2 0v.07A7.003 7.003 0 0 1 18.93 9H19a1 1 0 0 1 0 2h-.07A7.003 7.003 0 0 1 13 16.93z" />
                       </svg>
                     </span>
                   </div>
                   <div className="metric-card-body">
                     <div className="metric-card-value">
-                      8.5 <span className="metric-unit">hrs/day</span>
+                      2.4M <span className="metric-unit">Tokens/mo</span>
                     </div>
                     {/* Blue Vertical Bar Micro-Chart */}
                     <div className="micro-bar-chart blue-chart">
@@ -765,14 +769,14 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* MIDDLE ROW: Activity Tracking Chart + Running Feature Card */}
+              {/* MIDDLE ROW: Engineering Velocity Spline Chart + Featured SaaS Sprint Card */}
               <div className="glassy-middle-row">
-                {/* LEFT CARD: Activity Tracking (Spline Area Curve) */}
+                {/* LEFT CARD: Velocity Spline Area Curve */}
                 <div className="activity-tracking-card">
                   <div className="activity-card-header">
-                    <h3 className="activity-card-title">Activity Tracking</h3>
+                    <h3 className="activity-card-title">Development & Commit Velocity</h3>
                     <div className="activity-dropdown-pill">
-                      <span>{activityTimeframe}</span>
+                      <span>Weekly Sprints</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <polyline points="6 9 12 15 18 9" />
                       </svg>
@@ -781,18 +785,18 @@ export default function Dashboard() {
 
                   {/* Spline Area Chart Canvas */}
                   <div className="spline-chart-wrapper">
-                    {/* Floating Peak Badge e.g. "24 km/h" */}
+                    {/* Floating Peak Badge e.g. "98.4% Efficiency" */}
                     <div className="spline-peak-badge">
                       <span className="peak-badge-dot" />
-                      <span>24 km/h</span>
+                      <span>98.4% Efficiency</span>
                     </div>
 
                     <svg className="spline-svg" viewBox="0 0 600 160" preserveAspectRatio="none">
                       <defs>
-                        <linearGradient id="splineOrangeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#ff5e28" stopOpacity="0.45" />
-                          <stop offset="65%" stopColor="#ff5e28" stopOpacity="0.12" />
-                          <stop offset="100%" stopColor="#ff5e28" stopOpacity="0.0" />
+                        <linearGradient id="splineEmeraldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#10b981" stopOpacity="0.45" />
+                          <stop offset="65%" stopColor="#10b981" stopOpacity="0.12" />
+                          <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
                         </linearGradient>
                       </defs>
 
@@ -809,7 +813,7 @@ export default function Dashboard() {
                            L 570 68 
                            L 570 155 
                            L 20 155 Z"
-                        fill="url(#splineOrangeGrad)"
+                        fill="url(#splineEmeraldGrad)"
                       />
 
                       {/* Smooth Spline Stroke */}
@@ -824,16 +828,16 @@ export default function Dashboard() {
                            T 530 65 
                            L 570 68"
                         fill="none"
-                        stroke="#ff5e28"
+                        stroke="#10b981"
                         strokeWidth="3.2"
                         strokeLinecap="round"
                       />
 
                       {/* Peak Glowing Circle Indicator */}
-                      <circle cx="320" cy="40" r="5" fill="#ffffff" stroke="#ff5e28" strokeWidth="3.5" />
+                      <circle cx="320" cy="40" r="5" fill="#ffffff" stroke="#10b981" strokeWidth="3.5" />
                     </svg>
 
-                    {/* X-Axis Month Labels */}
+                    {/* X-Axis Sprint Labels */}
                     <div className="spline-xaxis-labels">
                       <span>Jan</span>
                       <span>Feb</span>
@@ -849,20 +853,20 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                {/* RIGHT CARD: Running with resistance band (Feature Media Card) */}
+                {/* RIGHT CARD: Full-Stack SaaS Architecture Sprint */}
                 <div className="featured-media-card">
                   <div className="featured-card-info">
                     <h3 className="featured-card-title">
-                      Running with resistance band
+                      Full-Stack SaaS Architecture Sprint
                     </h3>
                     <div className="featured-stats-stack">
                       <div className="featured-stat-block">
-                        <div className="stat-large-val">12 km</div>
-                        <div className="stat-small-desc">Today's distance</div>
+                        <div className="stat-large-val">12 Modules</div>
+                        <div className="stat-small-desc">Curriculum Completed</div>
                       </div>
                       <div className="featured-stat-block">
-                        <div className="stat-large-val">428 km</div>
-                        <div className="stat-small-desc">Total distance covered</div>
+                        <div className="stat-large-val">428 Commits</div>
+                        <div className="stat-small-desc">Production Merged</div>
                       </div>
                     </div>
                   </div>
@@ -870,62 +874,62 @@ export default function Dashboard() {
                   <div className="featured-card-image-box">
                     <img
                       src={IMAGES.runner}
-                      alt="Running exercise"
+                      alt="Full-Stack Development Sprint"
                       className="featured-cover-img"
                       onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=600&q=80";
+                        e.target.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80";
                       }}
                     />
                   </div>
                 </div>
               </div>
 
-              {/* BOTTOM ROW: Diet Plan (3 Cards with highlighted Active Card) */}
+              {/* BOTTOM ROW: Enterprise Learning Roadmap & Milestones (3 Sprints with active highlighted card) */}
               <div className="glassy-bottom-section">
                 <div className="bottom-section-header">
                   <div className="section-title-with-bar">
                     <span className="accent-bar-orange" />
-                    <h3 className="section-heading-text">Diet Plan</h3>
+                    <h3 className="section-heading-text">Enterprise Learning Roadmap & Milestones</h3>
                   </div>
-                  <button className="view-all-link-btn" onClick={() => alert("All 14-day plans unlocked")}>
-                    view all
+                  <button className="view-all-link-btn" onClick={() => navigate("/courses/web-development")}>
+                    view all 63 ZIPs →
                   </button>
                 </div>
 
                 <div className="diet-cards-grid">
-                  {/* Card 1: Fruits only */}
-                  <div className="diet-item-card white-diet-card">
+                  {/* Sprint 1: MERN Architecture */}
+                  <div className="diet-item-card white-diet-card" onClick={() => navigate("/courses/web-development")} style={{ cursor: "pointer" }}>
                     <div className="diet-card-details">
-                      <h4 className="diet-card-name">Fruits only</h4>
-                      <p className="diet-card-sub">It contains most water content in it.</p>
-                      <span className="diet-day-pill">Day 1</span>
+                      <h4 className="diet-card-name">MERN Production Architecture</h4>
+                      <p className="diet-card-sub">JWT auth, MongoDB indexes, API gateway & Docker.</p>
+                      <span className="diet-day-pill">Sprint 1 • Completed ✅</span>
                     </div>
                     <div className="diet-thumb-circle">
-                      <img src={IMAGES.fruits} alt="Fruits bowl" />
+                      <img src={IMAGES.fruits} alt="MERN Architecture" />
                     </div>
                   </div>
 
-                  {/* Card 2: Vegetables only (Vibrant Orange Card!) */}
-                  <div className="diet-item-card orange-active-diet-card">
+                  {/* Sprint 2: AI Agents & Vector RAG (Active Highlighted Card) */}
+                  <div className="diet-item-card orange-active-diet-card" onClick={() => navigate("/courses/ai")} style={{ cursor: "pointer" }}>
                     <div className="diet-card-details">
-                      <h4 className="diet-card-name">Vegetables only</h4>
-                      <p className="diet-card-sub">It contains most water content in it.</p>
-                      <span className="diet-day-pill white-pill">Day 2</span>
+                      <h4 className="diet-card-name">AI Agents & Vector RAG</h4>
+                      <p className="diet-card-sub">Multi-model reasoning, embeddings & LangChain.</p>
+                      <span className="diet-day-pill white-pill">Sprint 2 • Active ⚡</span>
                     </div>
                     <div className="diet-thumb-circle">
-                      <img src={IMAGES.veggies} alt="Vegetables bowl" />
+                      <img src={IMAGES.veggies} alt="AI Neural Networks" />
                     </div>
                   </div>
 
-                  {/* Card 3: Fruits and Vegetables */}
-                  <div className="diet-item-card white-diet-card">
+                  {/* Sprint 3: Native Android Development */}
+                  <div className="diet-item-card white-diet-card" onClick={() => navigate("/courses/android")} style={{ cursor: "pointer" }}>
                     <div className="diet-card-details">
-                      <h4 className="diet-card-name">Fruits and Vegetables</h4>
-                      <p className="diet-card-sub">It contains most water content in it.</p>
-                      <span className="diet-day-pill">Day 3</span>
+                      <h4 className="diet-card-name">Native Android & Kotlin</h4>
+                      <p className="diet-card-sub">Jetpack Compose, Room database, Play Store builds.</p>
+                      <span className="diet-day-pill">Sprint 3 • Upcoming 🚀</span>
                     </div>
                     <div className="diet-thumb-circle">
-                      <img src={IMAGES.salad} alt="Fruits and vegetables bowl" />
+                      <img src={IMAGES.salad} alt="Android Architecture" />
                     </div>
                   </div>
                 </div>
@@ -1272,7 +1276,7 @@ export default function Dashboard() {
 
           {/* ======================================================== */}
           {/* FLOATING BOTTOM PILL SWITCHER                             */}
-          {/* [ Dashboard 1 (Admin) ] [ Dashboard 2 (Glassy Fitness ✨) ] */}
+          {/* [ ⚡ AI Studio & ZIP Vault ] [ 📊 Executive Analytics ]   */}
           {/* ======================================================== */}
           <div className="floating-bottom-switcher-container">
             <div className="floating-bottom-switcher">
@@ -1280,14 +1284,14 @@ export default function Dashboard() {
                 className={`switch-tab-btn ${dashboardMode === "admin" ? "active-orange" : ""}`}
                 onClick={() => setDashboardMode("admin")}
               >
-                Dashboard 1 (Admin)
+                ⚡ AI Studio & ZIP Vault
               </button>
 
               <button
                 className={`switch-tab-btn ${dashboardMode === "glassy" ? "active-orange" : ""}`}
                 onClick={() => setDashboardMode("glassy")}
               >
-                Dashboard 2 (Glassy Fitness ✨)
+                📊 Executive Analytics & Metrics
               </button>
             </div>
           </div>
@@ -1332,19 +1336,19 @@ export default function Dashboard() {
             </button>
           </div>
 
-          {/* 3 Metric Pills: Weight / Height / Age */}
+          {/* 3 Developer Profile Pills: Skill Tier / Global Rank / Project Vault */}
           <div className="profile-metrics-row">
             <div className="profile-metric-pill">
-              <div className="metric-pill-val">75 kg</div>
-              <div className="metric-pill-sub">Weight</div>
+              <div className="metric-pill-val">Senior Dev</div>
+              <div className="metric-pill-sub">Skill Tier</div>
             </div>
             <div className="profile-metric-pill">
-              <div className="metric-pill-val">180 cm</div>
-              <div className="metric-pill-sub">Height</div>
+              <div className="metric-pill-val">Top 1%</div>
+              <div className="metric-pill-sub">Global Rank</div>
             </div>
             <div className="profile-metric-pill">
-              <div className="metric-pill-val">26 yrs</div>
-              <div className="metric-pill-sub">Age</div>
+              <div className="metric-pill-val">63 ZIPs</div>
+              <div className="metric-pill-sub">Unlocked Vault</div>
             </div>
           </div>
 
@@ -1414,26 +1418,26 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* SCHEDULED SESSIONS LIST */}
+          {/* SCHEDULED LIVE LABS & MASTERCLASSES LIST */}
           <div className="scheduled-section-box">
             <div className="scheduled-header-row">
               <div className="section-title-with-bar">
                 <span className="accent-bar-orange" />
-                <h3 className="section-heading-text">Scheduled</h3>
+                <h3 className="section-heading-text">Live Labs & Masterclasses</h3>
               </div>
-              <button className="view-all-link-btn" onClick={() => alert("Full schedule list opened")}>
+              <button className="view-all-link-btn" onClick={() => navigate("/courses/web-development")}>
                 view all
               </button>
             </div>
 
             <div className="scheduled-items-stack">
-              {/* Scheduled Item 1 */}
-              <div className="scheduled-item-card">
-                <img src={IMAGES.cardio1} alt="Cardio Workshop" className="scheduled-thumb" />
+              {/* Scheduled Item 1: Microservices Architecture Lab */}
+              <div className="scheduled-item-card" onClick={() => navigate("/courses/web-development")} style={{ cursor: "pointer" }}>
+                <img src={IMAGES.cardio1} alt="Microservices Architecture Lab" className="scheduled-thumb" />
                 <div className="scheduled-info-col">
-                  <span className="scheduled-tag">Fitness</span>
-                  <h4 className="scheduled-title">Cardio Workshop</h4>
-                  <p className="scheduled-sub">Strengthens your muscles</p>
+                  <span className="scheduled-tag">Engineering</span>
+                  <h4 className="scheduled-title">Microservices Architecture Lab</h4>
+                  <p className="scheduled-sub">Event-driven scaling with Kafka & Docker</p>
                 </div>
                 <button className="scheduled-more-btn" title="Options">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -1444,13 +1448,13 @@ export default function Dashboard() {
                 </button>
               </div>
 
-              {/* Scheduled Item 2 */}
-              <div className="scheduled-item-card">
-                <img src={IMAGES.cardio2} alt="Cardio Workshop" className="scheduled-thumb" />
+              {/* Scheduled Item 2: LLM Fine-Tuning & Prompt Studio */}
+              <div className="scheduled-item-card" onClick={() => navigate("/courses/ai")} style={{ cursor: "pointer" }}>
+                <img src={IMAGES.cardio2} alt="LLM Fine-Tuning Studio" className="scheduled-thumb" />
                 <div className="scheduled-info-col">
-                  <span className="scheduled-tag">Fitness</span>
-                  <h4 className="scheduled-title">Cardio Workshop</h4>
-                  <p className="scheduled-sub">Strengthens your muscles</p>
+                  <span className="scheduled-tag">AI Masterclass</span>
+                  <h4 className="scheduled-title">LLM Fine-Tuning & Prompt Studio</h4>
+                  <p className="scheduled-sub">LoRA adaptations & multi-turn reasoning</p>
                 </div>
                 <button className="scheduled-more-btn" title="Options">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -1461,13 +1465,13 @@ export default function Dashboard() {
                 </button>
               </div>
 
-              {/* Scheduled Item 3 */}
-              <div className="scheduled-item-card">
-                <img src={IMAGES.cardio3} alt="Cardio Workshop" className="scheduled-thumb" />
+              {/* Scheduled Item 3: 63 Project ZIPs Walkthrough */}
+              <div className="scheduled-item-card" onClick={() => navigate("/courses/android")} style={{ cursor: "pointer" }}>
+                <img src={IMAGES.cardio3} alt="63 Project ZIPs Walkthrough" className="scheduled-thumb" />
                 <div className="scheduled-info-col">
-                  <span className="scheduled-tag">Fitness</span>
-                  <h4 className="scheduled-title">Cardio Workshop</h4>
-                  <p className="scheduled-sub">Strengthens your muscles</p>
+                  <span className="scheduled-tag">LMS Sprints</span>
+                  <h4 className="scheduled-title">63 Project ZIPs Walkthrough</h4>
+                  <p className="scheduled-sub">Production deployment & offline archives</p>
                 </div>
                 <button className="scheduled-more-btn" title="Options">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
