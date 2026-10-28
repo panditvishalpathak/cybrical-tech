@@ -400,6 +400,37 @@
   font-size: 13px;
 }
 
+/* Password Visibility Show / Hide Toggle Button */
+.neu-password-toggle-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cyb-muted);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-password-toggle-btn:hover {
+  color: var(--cyb-mint);
+  background: rgba(74, 222, 128, 0.12);
+  transform: scale(1.12);
+}
+
+.neu-password-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.neu-input-groove.password-accent .neu-password-toggle-btn:hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.14);
+}
+
 /* Controls Row */
 .neu-controls-row {
   display: flex;
