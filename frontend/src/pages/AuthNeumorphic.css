@@ -116,9 +116,9 @@
   pointer-events: none;
 }
 
-/* Signup specific outer halo: squircle for 4 inputs */
+/* Signup outer halo maintains identical 50% circle */
 .neu-outer-halo.signup-halo {
-  border-radius: 64px;
+  border-radius: 50%;
 }
 
 /* Outer Halo Hover State */
@@ -209,11 +209,62 @@
     0 25px 60px rgba(0, 0, 0, 0.7);
 }
 
-/* Signup specific disk */
+/* Signup circular disk - identical 3D circular disk to Sign In */
 .neu-disk-card.signup-disk {
-  border-radius: 56px;
-  min-height: 550px;
-  padding: 38px 36px;
+  border-radius: 50%;
+  width: 470px;
+  min-height: 500px;
+  padding: 32px 34px;
+}
+
+.neu-disk-card.signup-disk .neu-brand-badge {
+  margin-bottom: 6px;
+  padding: 4px 12px;
+  font-size: 10px;
+}
+
+.neu-disk-card.signup-disk .neu-title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.neu-disk-card.signup-disk .neu-subtitle {
+  font-size: 12px;
+  margin: 2px 0 10px;
+}
+
+.neu-disk-card.signup-disk .neu-alert-error,
+.neu-disk-card.signup-disk .neu-alert-success {
+  padding: 6px 12px;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+}
+
+.neu-disk-card.signup-disk .neu-form {
+  max-width: 300px;
+  gap: 8px;
+}
+
+.neu-disk-card.signup-disk .neu-input-groove {
+  height: 42px;
+  padding: 0 14px;
+  gap: 10px;
+  border-radius: 12px;
+}
+
+.neu-disk-card.signup-disk .neu-input-field {
+  font-size: 13px;
+}
+
+.neu-disk-card.signup-disk .neu-submit-btn {
+  height: 42px;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.neu-disk-card.signup-disk .neu-footer-text {
+  margin-top: 8px;
+  font-size: 12px;
 }
 
 /* Ensure all direct children are layered properly above specular glass sheen */
