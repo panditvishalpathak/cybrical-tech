@@ -1,161 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getApiUrl } from "../config/api";
 import "./Dashboard.css";
-
-// ==========================================
-// AI & LMS CONSTANTS FOR DASHBOARD 1 (ADMIN)
-// ==========================================
-const AI_MODELS = [
-  {
-    id: "gemini",
-    name: "Google Gemini 2.0 Pro",
-    desc: "Lightning inference, complex reasoning & multi-step logic",
-    icon: "🌟",
-    badge: "Flagship",
-  },
-  {
-    id: "gpt-4o",
-    name: "OpenAI GPT-4o Omni",
-    desc: "Full-Stack engineering, refactoring & architectural design",
-    icon: "⚡",
-    badge: "Architect",
-  },
-  {
-    id: "deepseek-r1",
-    name: "DeepSeek R1 Reasoner",
-    desc: "Deep algorithmic analysis, math & DSA optimizations",
-    icon: "🧠",
-    badge: "Deep Logic",
-  },
-  {
-    id: "perplexity",
-    name: "Perplexity Online Search",
-    desc: "Live web research, real-time citations & grounded facts",
-    icon: "🔍",
-    badge: "Web Grounded",
-  },
-];
-
-const AI_MODES = [
-  { id: "code", label: "💻 Code Architect" },
-  { id: "debug", label: "🐛 Bug Hunter" },
-  { id: "explain", label: "📖 Concept Explainer" },
-  { id: "design", label: "🎨 UI/UX System" },
-];
-
-const PROMPT_TEMPLATES = [
-  {
-    tag: "BACKEND ARCHITECTURE",
-    title: "Production MERN CRUD with JWT & Mongoose",
-    desc: "Complete enterprise Express API with controller, validator, bcrypt, and error middleware.",
-    prompt: "Write a complete production-grade MERN CRUD backend with Express.js, Mongoose schema, JWT authentication, and structured error handling.",
-  },
-  {
-    tag: "FRONTEND LUXURY",
-    title: "Dark Emerald Glassmorphic Hero Section",
-    desc: "React Tailwind component with holographic glow, dynamic stats counter, and CTA buttons.",
-    prompt: "Create an ultra-luxury dark-emerald glassmorphic React hero component with floating badges, responsive navigation, and glowing borders.",
-  },
-  {
-    tag: "SEARCH OPTIMIZATION",
-    title: "JSON-LD Rich Snippet & Technical SEO",
-    desc: "Schema.org structured data for Tech Companies, Course LMS catalogs, and breadcrumbs.",
-    prompt: "Generate valid Schema.org JSON-LD structured data for an IT solutions & LMS platform offering downloadable lesson source code ZIPs.",
-  },
-  {
-    tag: "ALGORITHM EFFICIENCY",
-    title: "Memory Leak & Async Race Condition Fixer",
-    desc: "Deep analysis of event listeners, closures, promises, and unhandled rejections.",
-    prompt: "Analyze this JavaScript/Node.js code for memory leaks, async race conditions, and performance bottlenecks: ",
-  },
-  {
-    tag: "CLOUD & DEVOPS",
-    title: "Docker & CI/CD Deployment Workflow",
-    desc: "Multi-stage Dockerfile for Node/React and GitHub Actions deployment pipeline.",
-    prompt: "Write a high-performance multi-stage Dockerfile and GitHub Actions CI/CD script for a Node.js Express backend serving a React frontend.",
-  },
-  {
-    tag: "DATABASE ARCHITECTURE",
-    title: "MongoDB Indexing & Aggregation Pipeline",
-    desc: "High-throughput indexing, compound queries, and statistical aggregation pipeline.",
-    prompt: "Write a MongoDB aggregation pipeline for user analytics, course completion rates, and active daily sessions with optimal indexing.",
-  },
-];
-
-const QUICK_CHAT_PROMPTS = [
-  { label: "⚡ MERN Backend CRUD", prompt: "Write a complete production-grade MERN CRUD backend with Express.js, Mongoose schema, JWT authentication, and structured error handling." },
-  { label: "🛡️ JWT Auth Architecture", prompt: "Design a secure JWT authentication flow with refresh tokens in HttpOnly cookies, CSRF protection, and role-based middleware." },
-  { label: "🎨 Glassmorphic Hero UI", prompt: "Create an ultra-luxury dark-emerald glassmorphic React hero component with floating badges, responsive navigation, and glowing borders." },
-  { label: "🚀 Custom React Hook", prompt: "Write a complete production-grade React Custom Hook with debouncing, cache memory, and error handling." },
-  { label: "📦 LMS Project ZIPs", prompt: "How can I access and download offline project ZIP files from the Cybrical Tech LMS courses?" },
-  { label: "🌐 2026 AI Trends", prompt: "Search live web: Latest breakthroughs in Artificial Intelligence, agentic workflows, and Web Development in 2026 with citations." },
-];
-
-const QUICK_IMAGE_PROMPTS = [
-  { label: "🌆 Cyberpunk 8K", prompt: "Futuristic cyberpunk megalopolis at night, vibrant neon emerald and amber lighting, flying holographic vehicles, 8k resolution, octane render, masterpiece" },
-  { label: "🤖 AI Humanoid Coder", prompt: "Hyperrealistic futuristic AI humanoid robot coding in a high-tech obsidian neon lab, cinematic lighting, 8k resolution, photorealistic" },
-  { label: "👑 Golden Crown Lion", prompt: "Majestic royal lion wearing an intricately crafted glowing golden crown in a mystical fantasy emerald jungle, ultra photorealistic, 8k" },
-  { label: "🌌 Deep Space Nebula", prompt: "Astronaut floating peacefully in deep space beside a mesmerizing colorful galaxy nebula, stars reflecting on helmet visor, ultra photorealistic" },
-  { label: "💎 Luxury 3D Icon", prompt: "High-end 3D glossy obsidian glass icon of a glowing emerald shield with gold circuits, dark minimalist background, studio lighting, raytracing" },
-];
-
-const DEFAULT_COURSES = [
-  {
-    slug: "web-development",
-    title: "Full-Stack Web Development",
-    icon: "💻",
-    category: "MERN Stack",
-    progress: 78,
-    zipCount: "63 Project ZIPs Included",
-    modules: "4 Modules • 12 Lessons",
-    link: "/courses/web-development",
-  },
-  {
-    slug: "ai",
-    title: "Artificial Intelligence (AI & GenAI)",
-    icon: "🤖",
-    category: "AI & Machine Learning",
-    progress: 52,
-    zipCount: "Jupyter Starter Notebooks",
-    modules: "2 Modules • 4 Projects",
-    link: "/courses/ai",
-  },
-  {
-    slug: "android",
-    title: "Native Android App Development",
-    icon: "📱",
-    category: "Mobile Apps (Kotlin)",
-    progress: 35,
-    zipCount: "Play Store Ready Archives",
-    modules: "4 Modules • 8 Lessons",
-    link: "/courses/android",
-  },
-  {
-    slug: "seo",
-    title: "SEO & Digital Growth",
-    icon: "📈",
-    category: "Search Optimization",
-    progress: 92,
-    zipCount: "SEO Audit Templates",
-    modules: "1 Module • 2 Lessons",
-    link: "/courses/seo",
-  },
-];
-
-const STYLE_PRESETS = [
-  { id: "realistic", label: "📸 Realistic 8K", suffix: "photorealistic 8k, cinematic lighting, ultra-detailed Hasselblad camera shot" },
-  { id: "3d", label: "✨ 3D Unreal 5", suffix: "3d render, octane render, unreal engine 5, volumetric glow, isometric high detail" },
-  { id: "anime", label: "🎌 Anime Studio", suffix: "studio ghibli aesthetic, vibrant anime illustration, masterwork detailed background" },
-  { id: "cyberpunk", label: "🌆 Cyberpunk Sci-Fi", suffix: "cyberpunk neon aesthetic, dark emerald sci-fi city, holographic reflections" },
-  { id: "oil", label: "🎨 Oil Masterpiece", suffix: "classical oil painting, textured brush strokes, renaissance fine art" },
-];
-
-const ASPECT_RATIOS = [
-  { id: "1:1", label: "1:1 Square", width: 1024, height: 1024 },
-  { id: "16:9", label: "16:9 Cinema", width: 1280, height: 720 },
-  { id: "9:16", label: "9:16 Mobile", width: 720, height: 1280 },
-];
 
 // High-resolution reliable fallback images
 const IMAGES = {
@@ -176,9 +21,6 @@ export default function Dashboard() {
   const [user, setUser] = useState(null);
   const [isGuest, setIsGuest] = useState(false);
 
-  // Active Main View: "glassy" (Dashboard 2 - Reference Image) | "admin" (Dashboard 1 - Cybrical Developer Suite)
-  const [dashboardMode, setDashboardMode] = useState("glassy");
-
   // Left Sidebar active tab
   const [sidebarTab, setSidebarTab] = useState("overview"); // overview, analytics, calendar, timer, community, settings
 
@@ -196,43 +38,6 @@ export default function Dashboard() {
   // Focus Timer State (for Timer Tab)
   const [timerSeconds, setTimerSeconds] = useState(1500); // 25 min pomodoro
   const [timerRunning, setTimerRunning] = useState(false);
-
-  // AI Workspace Settings (for Dashboard 1)
-  const [activeAdminTab, setActiveAdminTab] = useState("console");
-  const [selectedModel, setSelectedModel] = useState("gemini");
-  const [activeMode, setActiveMode] = useState("code");
-  const [creativity, setCreativity] = useState(0.7);
-  const [promptInput, setPromptInput] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [isVoiceListening, setIsVoiceListening] = useState(false);
-
-  // Image Studio State
-  const [imagePrompt, setImagePrompt] = useState("");
-  const [selectedStyle, setSelectedStyle] = useState("realistic");
-  const [selectedRatio, setSelectedRatio] = useState("1:1");
-  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
-  const [generatedImages, setGeneratedImages] = useState([]);
-
-  // Chat Messages
-  const [messages, setMessages] = useState(() => {
-    const saved = localStorage.getItem("cybrical_dash_chat_lux");
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {}
-    }
-    return [
-      {
-        id: "lux-welcome",
-        role: "assistant",
-        content: `👋 **Welcome to Cybrical Executive Suite.**\n\nYour session is powered by an ensemble of high-performance models (*Google Gemini 2.0 Pro, OpenAI GPT-4o, DeepSeek R1 & Perplexity Live Search*).\n\n### ⚡ Executive Capabilities:\n1. 💻 **Full-Stack Engineering:** Architecture, React components, REST & GraphQL APIs.\n2. 🔍 **Live Web Grounding:** Real-time search with citations.\n3. 📦 **Project ZIP Vault:** Access source code archives from Cybrical LMS courses.\n4. 🎨 **8K Diffusion Art:** Switch to the *AI Art Studio* tab for high-fidelity rendering.`,
-        model: "Cybrical AI 2.0 Pro",
-        timestamp: "Online",
-      },
-    ];
-  });
-
-  const chatBottomRef = useRef(null);
 
   // Check Auth & Profile
   useEffect(() => {
@@ -261,180 +66,11 @@ export default function Dashboard() {
     return () => clearInterval(interval);
   }, [timerRunning, timerSeconds]);
 
-  // Scroll Chat to bottom
-  useEffect(() => {
-    if (dashboardMode === "admin" && activeAdminTab === "console") {
-      chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages, dashboardMode, activeAdminTab]);
-
   // Handle Logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/login");
-  };
-
-  // AI Prompt Send Handler
-  const handleSendMessage = async (textToSend) => {
-    const query = textToSend || promptInput;
-    if (!query.trim() || isGenerating) return;
-
-    const userMsg = {
-      id: Date.now().toString(),
-      role: "user",
-      content: query,
-      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-    };
-
-    const newMessages = [...messages, userMsg];
-    setMessages(newMessages);
-    setPromptInput("");
-    setIsGenerating(true);
-
-    try {
-      const response = await fetch(getApiUrl("api/ai/chat"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: query,
-          model: selectedModel,
-          mode: activeMode,
-          temperature: creativity,
-          history: newMessages.slice(-6).map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-        }),
-      });
-
-      const data = await response.json();
-      const replyText = data.reply || data.response || "No response received.";
-
-      const assistantMsg = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: replyText,
-        model: AI_MODELS.find((m) => m.id === selectedModel)?.name || "Cybrical AI",
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-      };
-
-      const updated = [...newMessages, assistantMsg];
-      setMessages(updated);
-      localStorage.setItem("cybrical_dash_chat_lux", JSON.stringify(updated.slice(-20)));
-    } catch (err) {
-      const fallbackMsg = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: `⚡ **Offline Engine Active**: Your request was processed via local inference fallback. Ready to generate code, blueprints, and project files.`,
-        model: "Cybrical Edge",
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-      };
-      setMessages([...newMessages, fallbackMsg]);
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
-  // Advanced Prompt Helpers & Enhancers
-  const handleEnhancePrompt = () => {
-    if (!promptInput.trim()) return;
-    const base = promptInput.trim();
-    const enhanced = `Act as an expert AI systems architect & lead software engineer. Provide an exhaustive, production-grade solution, complete architectural breakdown, clean modular ES6/TypeScript code with best practices, and performance optimization guidelines for: "${base}"`;
-    setPromptInput(enhanced);
-  };
-
-  const handleEnhanceImagePrompt = () => {
-    if (!imagePrompt.trim()) return;
-    const base = imagePrompt.trim();
-    const enhanced = `${base}, highly detailed, 8k resolution, cinematic studio lighting, photorealistic, octane render, unreal engine 5, masterpiece, ultra-sharp focus, volumetric god rays`;
-    setImagePrompt(enhanced);
-  };
-
-  const cycleMode = () => {
-    const modes = ["code", "architecture", "debug", "explain"];
-    const idx = modes.indexOf(activeMode);
-    const next = modes[(idx + 1) % modes.length];
-    setActiveMode(next);
-  };
-
-  const toggleVoiceInput = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      alert("Speech recognition is not supported in this browser. Please try in Google Chrome or Edge.");
-      return;
-    }
-    try {
-      const recognition = new SpeechRecognition();
-      recognition.lang = "en-US";
-      recognition.interimResults = false;
-
-      recognition.onstart = () => setIsVoiceListening(true);
-      recognition.onend = () => setIsVoiceListening(false);
-      recognition.onerror = () => setIsVoiceListening(false);
-
-      recognition.onresult = (e) => {
-        const text = e.results[0][0].transcript;
-        setPromptInput((prev) => (prev ? prev + " " + text : text));
-      };
-
-      recognition.start();
-    } catch (err) {
-      console.error("Voice Error:", err);
-      setIsVoiceListening(false);
-    }
-  };
-
-  // Image Generation Handler
-  const handleGenerateImage = async () => {
-    if (!imagePrompt.trim() || isGeneratingImage) return;
-    setIsGeneratingImage(true);
-
-    const styleObj = STYLE_PRESETS.find((s) => s.id === selectedStyle);
-    const ratioObj = ASPECT_RATIOS.find((r) => r.id === selectedRatio);
-    const fullPrompt = `${imagePrompt}, ${styleObj?.suffix || ""}`;
-
-    try {
-      const response = await fetch(getApiUrl("api/ai/generate-image"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: fullPrompt,
-          style: selectedStyle,
-          width: ratioObj?.width || 1024,
-          height: ratioObj?.height || 1024,
-        }),
-      });
-
-      const data = await response.json();
-      if (data.imageUrl) {
-        setGeneratedImages([
-          {
-            id: Date.now(),
-            url: data.imageUrl,
-            prompt: imagePrompt,
-            style: styleObj?.label,
-            time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-          },
-          ...generatedImages,
-        ]);
-      }
-    } catch (err) {
-      // Local preview fallback
-      const seed = Math.floor(Math.random() * 99999);
-      setGeneratedImages([
-        {
-          id: Date.now(),
-          url: `https://picsum.photos/seed/${seed}/1024/1024`,
-          prompt: imagePrompt,
-          style: styleObj?.label,
-          time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        },
-        ...generatedImages,
-      ]);
-    } finally {
-      setIsGeneratingImage(false);
-    }
   };
 
   // Format Timer
@@ -471,11 +107,8 @@ export default function Dashboard() {
           <div className="nav-rail-group">
             {/* Overview / Home (Active Tab in screenshot) */}
             <button
-              className={`nav-rail-btn ${sidebarTab === "overview" && dashboardMode === "glassy" ? "active" : ""}`}
-              onClick={() => {
-                setSidebarTab("overview");
-                setDashboardMode("glassy");
-              }}
+              className={`nav-rail-btn ${sidebarTab === "overview" ? "active" : ""}`}
+              onClick={() => setSidebarTab("overview")}
               title="Overview"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -490,10 +123,7 @@ export default function Dashboard() {
             {/* Analytics */}
             <button
               className={`nav-rail-btn ${sidebarTab === "analytics" ? "active" : ""}`}
-              onClick={() => {
-                setSidebarTab("analytics");
-                setDashboardMode("glassy");
-              }}
+              onClick={() => setSidebarTab("analytics")}
               title="Analytics"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -508,10 +138,7 @@ export default function Dashboard() {
             {/* Calendar */}
             <button
               className={`nav-rail-btn ${sidebarTab === "calendar" ? "active" : ""}`}
-              onClick={() => {
-                setSidebarTab("calendar");
-                setDashboardMode("glassy");
-              }}
+              onClick={() => setSidebarTab("calendar")}
               title="Calendar & Sessions"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -526,10 +153,7 @@ export default function Dashboard() {
             {/* Timer / Stopwatch */}
             <button
               className={`nav-rail-btn ${sidebarTab === "timer" ? "active" : ""}`}
-              onClick={() => {
-                setSidebarTab("timer");
-                setDashboardMode("glassy");
-              }}
+              onClick={() => setSidebarTab("timer")}
               title="Focus Stopwatch"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -544,10 +168,7 @@ export default function Dashboard() {
             {/* Community / Team */}
             <button
               className={`nav-rail-btn ${sidebarTab === "community" ? "active" : ""}`}
-              onClick={() => {
-                setSidebarTab("community");
-                setDashboardMode("glassy");
-              }}
+              onClick={() => setSidebarTab("community")}
               title="Community"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -562,10 +183,7 @@ export default function Dashboard() {
             {/* Settings */}
             <button
               className={`nav-rail-btn ${sidebarTab === "settings" ? "active" : ""}`}
-              onClick={() => {
-                setSidebarTab("settings");
-                setDashboardMode("glassy");
-              }}
+              onClick={() => setSidebarTab("settings")}
               title="Settings"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -600,10 +218,8 @@ export default function Dashboard() {
         {/* 2. CENTER MAIN DASHBOARD CANVAS                           */}
         {/* ======================================================== */}
         <main className="glassy-center-canvas">
-          {dashboardMode === "glassy" ? (
-            <>
-              {/* TOP HEADER: User Greeting + Search Bar + Notification */}
-              <div className="glassy-header-row">
+          {/* TOP HEADER: User Greeting + Search Bar + Notification */}
+          <div className="glassy-header-row">
                 <div className="greeting-box">
                   <h1 className="greeting-title">
                     {user?.name ? `Good Morning, ${user.name}` : "Welcome to Cybrical Executive Suite"} <span className="greeting-wave">👋</span>
@@ -940,367 +556,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
-            </>
-          ) : (
-            /* ======================================================== */
-            /* DASHBOARD 1: CYBRICAL ADMIN & AI DEVELOPER SUITE         */
-            /* ======================================================== */
-            <div className="admin-console-view">
-              {/* Header */}
-              <div className="admin-view-header">
-                <div>
-                  <h2 className="admin-title">Cybrical Developer & AI Workspace</h2>
-                  <p className="admin-subtitle">
-                    Multi-Model Reasoning Engine • 63 LMS Project ZIPs • 8K Diffusion Studio
-                  </p>
-                </div>
-                <div className="admin-tabs-pill">
-                  <button
-                    className={`tab-pill-item ${activeAdminTab === "console" ? "active" : ""}`}
-                    onClick={() => setActiveAdminTab("console")}
-                  >
-                    💬 AI Console
-                  </button>
-                  <button
-                    className={`tab-pill-item ${activeAdminTab === "image" ? "active" : ""}`}
-                    onClick={() => setActiveAdminTab("image")}
-                  >
-                    🎨 Art Studio
-                  </button>
-                  <button
-                    className={`tab-pill-item ${activeAdminTab === "courses" ? "active" : ""}`}
-                    onClick={() => setActiveAdminTab("courses")}
-                  >
-                    📦 Course ZIPs
-                  </button>
-                </div>
-              </div>
 
-              {/* Tab 1: AI Chat Console */}
-              {activeAdminTab === "console" && (
-                <div className="admin-chat-layout">
-                  {/* Left Model Picker */}
-                  <div className="admin-models-sidebar">
-                    <div className="sidebar-group-title">Active AI Models</div>
-                    {AI_MODELS.map((m) => (
-                      <button
-                        key={m.id}
-                        className={`admin-model-item ${selectedModel === m.id ? "selected" : ""}`}
-                        onClick={() => setSelectedModel(m.id)}
-                      >
-                        <div className="model-icon-bubble">{m.icon}</div>
-                        <div className="model-text-info">
-                          <div className="model-name-row">
-                            <span>{m.name}</span>
-                            <span className="model-badge-tag">{m.badge}</span>
-                          </div>
-                          <p className="model-desc-line">{m.desc}</p>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Right Chat Stream */}
-                  <div className="admin-chat-main">
-                    <div className="admin-chat-messages">
-                      {messages.map((msg) => (
-                        <div key={msg.id} className={`admin-msg-bubble ${msg.role}`}>
-                          <div className="msg-header">
-                            <span className="msg-sender">{msg.role === "assistant" ? msg.model || "Cybrical AI" : "You"}</span>
-                            <span className="msg-time">{msg.timestamp}</span>
-                          </div>
-                          <div className="msg-content">{msg.content}</div>
-                        </div>
-                      ))}
-                      <div ref={chatBottomRef} />
-                    </div>
-
-                    {/* Advanced Cybernetic AI Command Dock */}
-                    <div className="admin-chat-dock-container">
-                      {/* Quick Starter Suggestions */}
-                      <div className="dock-quick-starters">
-                        <span className="dock-starters-label">⚡ Starters:</span>
-                        <div className="dock-starters-scroll">
-                          {QUICK_CHAT_PROMPTS.map((q, idx) => (
-                            <button
-                              key={idx}
-                              type="button"
-                              className="dock-starter-chip"
-                              onClick={() => {
-                                setPromptInput(q.prompt);
-                              }}
-                              title={q.prompt}
-                            >
-                              {q.label}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Main Dock Form */}
-                      <form
-                        className="admin-chat-dock"
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          handleSendMessage();
-                        }}
-                      >
-                        <div className="dock-textarea-wrapper">
-                          <textarea
-                            className="admin-dock-textarea"
-                            placeholder="Ask anything, describe system architecture, or paste code snippets... (Enter to send, Shift+Enter for new line)"
-                            value={promptInput}
-                            onChange={(e) => setPromptInput(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter" && !e.shiftKey) {
-                                e.preventDefault();
-                                handleSendMessage();
-                              }
-                            }}
-                            disabled={isGenerating}
-                            rows={2}
-                          />
-                        </div>
-
-                        {/* Dock Toolbar */}
-                        <div className="admin-dock-toolbar">
-                          <div className="dock-toolbar-left">
-                            {/* Mode Selector Pill */}
-                            <button
-                              type="button"
-                              className="dock-pill-btn mode-pill"
-                              onClick={cycleMode}
-                              title="Click to switch AI Engine Mode"
-                            >
-                              <span className="pill-dot" />
-                              <span>Mode: <strong>{activeMode.toUpperCase()}</strong></span>
-                            </button>
-
-                            {/* Model Indicator Pill */}
-                            <div className="dock-pill-static model-pill">
-                              <span>🧠 {AI_MODELS.find((m) => m.id === selectedModel)?.name || "Gemini 2.0"}</span>
-                            </div>
-
-                            {/* Magic Enhance Prompt */}
-                            <button
-                              type="button"
-                              className="dock-pill-btn enhance-pill"
-                              onClick={handleEnhancePrompt}
-                              disabled={!promptInput.trim() || isGenerating}
-                              title="Enrich and expand prompt with enterprise context"
-                            >
-                              ✨ Enhance
-                            </button>
-
-                            {/* Voice Dictation */}
-                            <button
-                              type="button"
-                              className={`dock-pill-btn voice-pill ${isVoiceListening ? "listening" : ""}`}
-                              onClick={toggleVoiceInput}
-                              title="Voice Dictation"
-                            >
-                              {isVoiceListening ? "🔴 Listening..." : "🎙️ Voice"}
-                            </button>
-
-                            {/* Clear Button */}
-                            {promptInput.trim() && (
-                              <button
-                                type="button"
-                                className="dock-pill-btn clear-pill"
-                                onClick={() => setPromptInput("")}
-                                title="Clear prompt"
-                              >
-                                ✕ Clear
-                              </button>
-                            )}
-                          </div>
-
-                          <div className="dock-toolbar-right">
-                            <span className="dock-char-count">
-                              {promptInput.length} chars
-                            </span>
-
-                            <button
-                              type="submit"
-                              className="admin-dock-send-btn"
-                              disabled={isGenerating || !promptInput.trim()}
-                            >
-                              {isGenerating ? (
-                                <>
-                                  <span className="dock-spinner" />
-                                  <span>Reasoning...</span>
-                                </>
-                              ) : (
-                                <>
-                                  <span>Send Command</span>
-                                  <span className="dock-send-icon">↵</span>
-                                </>
-                              )}
-                            </button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Tab 2: 8K AI Art Studio */}
-              {activeAdminTab === "image" && (
-                <div className="admin-image-layout">
-                  <div className="image-prompt-box">
-                    <div className="image-box-header">
-                      <div className="image-box-title">
-                        <span className="image-sparkle">🎨</span>
-                        <strong>8K Diffusion Studio Prompt Engine</strong>
-                      </div>
-                      <button
-                        type="button"
-                        className="dock-pill-btn enhance-pill"
-                        onClick={handleEnhanceImagePrompt}
-                        disabled={!imagePrompt.trim() || isGeneratingImage}
-                        title="Auto-enhance image prompt with 8K cinematic keywords"
-                      >
-                        ✨ Magic Enhance
-                      </button>
-                    </div>
-
-                    {/* Quick Visual Starters */}
-                    <div className="dock-quick-starters in-image-box">
-                      <span className="dock-starters-label">💡 Themes:</span>
-                      <div className="dock-starters-scroll">
-                        {QUICK_IMAGE_PROMPTS.map((q, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            className="dock-starter-chip"
-                            onClick={() => setImagePrompt(q.prompt)}
-                            title={q.prompt}
-                          >
-                            {q.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <textarea
-                      className="image-prompt-textarea"
-                      placeholder="Describe high-res UI preview, cyberpunk cityscape, or 3D icon in ultra detail..."
-                      value={imagePrompt}
-                      onChange={(e) => setImagePrompt(e.target.value)}
-                      rows={3}
-                    />
-
-                    {/* Aspect Ratio Selector */}
-                    <div className="aspect-ratio-selector-row">
-                      <span className="selector-label">📐 Aspect Ratio:</span>
-                      <div className="ratio-chips">
-                        {ASPECT_RATIOS.map((r) => (
-                          <button
-                            key={r.id}
-                            type="button"
-                            className={`ratio-chip ${selectedRatio === r.id ? "active" : ""}`}
-                            onClick={() => setSelectedRatio(r.id)}
-                          >
-                            {r.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="image-options-row">
-                      <div className="style-chips">
-                        {STYLE_PRESETS.map((s) => (
-                          <button
-                            key={s.id}
-                            className={`style-chip ${selectedStyle === s.id ? "active" : ""}`}
-                            onClick={() => setSelectedStyle(s.id)}
-                          >
-                            {s.label}
-                          </button>
-                        ))}
-                      </div>
-                      <button
-                        className="generate-img-btn"
-                        onClick={handleGenerateImage}
-                        disabled={isGeneratingImage || !imagePrompt.trim()}
-                      >
-                        {isGeneratingImage ? (
-                          <>
-                            <span className="dock-spinner" />
-                            <span>Rendering 8K...</span>
-                          </>
-                        ) : (
-                          <>
-                            <span>⚡ Generate 8K Artwork</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="image-gallery-grid">
-                    {generatedImages.map((img) => (
-                      <div key={img.id} className="gallery-item-card">
-                        <img src={img.url} alt={img.prompt} />
-                        <div className="gallery-overlay">
-                          <p>{img.prompt}</p>
-                          <span>{img.style}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Tab 3: Courses & 63 Project ZIPs Vault */}
-              {activeAdminTab === "courses" && (
-                <div className="admin-courses-layout">
-                  <div className="course-vault-grid">
-                    {DEFAULT_COURSES.map((c) => (
-                      <div key={c.slug} className="course-vault-card">
-                        <div className="course-icon-row">
-                          <span className="course-icon-emoji">{c.icon}</span>
-                          <span className="course-cat-tag">{c.category}</span>
-                        </div>
-                        <h4 className="course-vault-title">{c.title}</h4>
-                        <div className="course-vault-meta">{c.modules}</div>
-                        <div className="course-zip-highlight">📦 {c.zipCount}</div>
-                        <div className="course-progress-bar">
-                          <div className="progress-fill" style={{ width: `${c.progress}%` }} />
-                        </div>
-                        <Link to={c.link} className="course-access-btn">
-                          Open Course & Download ZIPs →
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* ======================================================== */}
-          {/* FLOATING BOTTOM PILL SWITCHER                             */}
-          {/* [ ⚡ AI Studio & ZIP Vault ] [ 📊 Executive Analytics ]   */}
-          {/* ======================================================== */}
-          <div className="floating-bottom-switcher-container">
-            <div className="floating-bottom-switcher">
-              <button
-                className={`switch-tab-btn ${dashboardMode === "admin" ? "active-orange" : ""}`}
-                onClick={() => setDashboardMode("admin")}
-              >
-                ⚡ AI Studio & ZIP Vault
-              </button>
-
-              <button
-                className={`switch-tab-btn ${dashboardMode === "glassy" ? "active-orange" : ""}`}
-                onClick={() => setDashboardMode("glassy")}
-              >
-                📊 Executive Analytics & Metrics
-              </button>
-            </div>
-          </div>
         </main>
 
         {/* ======================================================== */}
