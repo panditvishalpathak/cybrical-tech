@@ -126,90 +126,109 @@
     ],
     "zipFiles": [
       {
+        "_id": "zf-wd-main",
+        "title": "01: Web Development Complete Project & Source Code (Google Drive)",
+        "fileName": "Web-Development-Complete-Projects.zip",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
         "_id": "zf-wd-1",
-        "title": "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+        "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
         "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
-        "fileSize": "185 MB",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
       },
       {
         "_id": "zf-wd-2",
-        "title": "02: JavaScript DOM & Async REST API Projects ZIP",
+        "title": "03: JavaScript DOM & Async REST API Projects ZIP",
         "fileName": "02-JavaScript-DOM-Async-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
-        "fileSize": "351 MB",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
       },
       {
         "_id": "zf-wd-3",
-        "title": "03: React.js E-Commerce Catalog & Modern UI ZIP",
+        "title": "04: React.js E-Commerce Catalog & Modern UI ZIP",
         "fileName": "03-React-Ecommerce-App-Source.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
-        "fileSize": "586 MB",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
       },
       {
         "_id": "zf-wd-4",
-        "title": "04: Full-Stack MERN Capstone Project Complete ZIP",
+        "title": "05: Full-Stack MERN Capstone Project Complete ZIP",
         "fileName": "04-FullStack-MERN-Capstone-Project.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
-        "fileSize": "420 MB",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
       }
     ],
     "resources": [
       {
-        "_id": "zf-wd-1",
-        "title": "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-        "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
-        "fileSize": "185 MB",
+        "_id": "zf-wd-main",
+        "title": "01: Web Development Complete Project & Source Code (Google Drive)",
+        "fileName": "Web-Development-Complete-Projects.zip",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3"
+        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+      },
+      {
+        "_id": "zf-wd-1",
+        "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+        "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
+        "isExternal": true,
+        "source": "Google Drive",
+        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
       },
       {
         "_id": "zf-wd-2",
-        "title": "02: JavaScript DOM & Async REST API Projects ZIP",
+        "title": "03: JavaScript DOM & Async REST API Projects ZIP",
         "fileName": "02-JavaScript-DOM-Async-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
-        "fileSize": "351 MB",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps"
+        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
       },
       {
         "_id": "zf-wd-3",
-        "title": "03: React.js E-Commerce Catalog & Modern UI ZIP",
+        "title": "04: React.js E-Commerce Catalog & Modern UI ZIP",
         "fileName": "03-React-Ecommerce-App-Source.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
-        "fileSize": "586 MB",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App"
+        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
       },
       {
         "_id": "zf-wd-4",
-        "title": "04: Full-Stack MERN Capstone Project Complete ZIP",
+        "title": "05: Full-Stack MERN Capstone Project Complete ZIP",
         "fileName": "04-FullStack-MERN-Capstone-Project.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
-        "fileSize": "420 MB",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack"
+        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
       }
     ],
     "zipFile": {
-      "_id": "zf-wd-1",
-      "title": "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-      "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
-      "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
-      "fileSize": "185 MB",
+      "_id": "zf-wd-main",
+      "title": "01: Web Development Complete Project & Source Code (Google Drive)",
+      "fileName": "Web-Development-Complete-Projects.zip",
+      "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      "fileSize": "Google Drive Cloud",
       "isExternal": true,
       "source": "Google Drive"
     }

@@ -28,7 +28,7 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Learn semantic tags, forms, tables, and project directory scaffolding. Download the starter kit ZIP below.",
           duration: "35 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
           zipName: "01-HTML5-CSS3-Responsive-Starter.zip",
           zipSize: "185 MB",
         },
@@ -61,7 +61,7 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "ES6+ syntax, arrays, objects, functions, event listeners, and dynamic DOM rendering practice project.",
           duration: "55 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
           zipName: "02-JavaScript-DOM-Async-Projects.zip",
           zipSize: "351 MB",
         },
@@ -94,7 +94,7 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Component architecture, props drilling, conditional rendering, and structured folder layout with Vite.",
           duration: "45 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
           zipName: "03-React-Ecommerce-App-Source.zip",
           zipSize: "586 MB",
         },
@@ -127,7 +127,7 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Express routing, middleware, request validation, error handling, and building secure REST endpoints.",
           duration: "50 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
           zipName: "04-FullStack-MERN-Capstone-Project.zip",
           zipSize: "420 MB",
         },
@@ -151,90 +151,109 @@ const WEB_DEV_FALLBACK_DATA = {
     },
   ],
   zipFile: {
-    _id: "zf-wd-1",
-    title: "Web Development Complete Starter & Project Code ZIP",
-    fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-    url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
-    fileSize: "185 MB",
+    _id: "zf-wd-main",
+    title: "Web Development Complete Course Project & Source Code (Google Drive)",
+    fileName: "Web-Development-Complete-Projects.zip",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+    fileSize: "Google Drive Cloud Folder",
     isExternal: true,
     source: "Google Drive",
   },
   zipFiles: [
     {
+      _id: "zf-wd-main",
+      title: "01: Web Development Complete Project & Source Code (Google Drive)",
+      fileName: "Web-Development-Complete-Projects.zip",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
       _id: "zf-wd-1",
-      title: "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
       fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
-      fileSize: "185 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
       _id: "zf-wd-2",
-      title: "02: JavaScript DOM & Async REST API Projects ZIP",
+      title: "03: JavaScript DOM & Async REST API Projects ZIP",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
-      fileSize: "351 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
       _id: "zf-wd-3",
-      title: "03: React.js E-Commerce Catalog & Modern UI ZIP",
+      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
       fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
-      fileSize: "586 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
       _id: "zf-wd-4",
-      title: "04: Full-Stack MERN Capstone Project Complete ZIP",
+      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
-      fileSize: "420 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
   ],
   resources: [
     {
+      _id: "res-wd-main",
+      title: "Web Development Complete Course Project & Source Code (Google Drive)",
+      fileName: "Web-Development-Complete-Projects.zip",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
       _id: "res-wd-1",
-      title: "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
       fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
-      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
-      fileSize: "185 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
       _id: "res-wd-2",
-      title: "02: JavaScript DOM & Async REST API Projects ZIP",
+      title: "03: JavaScript DOM & Async REST API Projects ZIP",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
-      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
-      fileSize: "351 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
       _id: "res-wd-3",
-      title: "03: React.js E-Commerce Catalog & Modern UI ZIP",
+      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
       fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
-      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
-      fileSize: "586 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
       _id: "res-wd-4",
-      title: "04: Full-Stack MERN Capstone Project Complete ZIP",
+      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
-      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
-      fileSize: "420 MB",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
@@ -547,8 +566,16 @@ function CourseDetails() {
       for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
         if (k && k.startsWith("admin_course_")) {
-          const raw = localStorage.getItem(k);
-          if (raw && raw.includes("179119")) {
+          let raw = localStorage.getItem(k);
+          if (raw && (raw.includes("179119") || raw.includes("1Cybrical-WebDev"))) {
+            if (raw.includes("1Cybrical-WebDev")) {
+              raw = raw
+                .replaceAll("https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3", "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")
+                .replaceAll("https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps", "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")
+                .replaceAll("https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App", "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")
+                .replaceAll("https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack", "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt");
+              localStorage.setItem(k, raw);
+            }
             try {
               const obj = JSON.parse(raw);
               if (obj.zipFiles) {
@@ -667,6 +694,23 @@ function CourseDetails() {
           const fallbackMod = FALLBACK_COURSES_MAP[cleanSlug]?.modules || FALLBACK_COURSES_MAP[slug]?.modules || [];
           if (fallbackMod && fallbackMod.length > 0) {
             fetchedCourse.modules = fallbackMod;
+          }
+        }
+
+        // Ensure Web Development always has its complete Google Drive ZIP resources
+        if (fetchedCourse && (cleanSlug.includes("web") || cleanSlug === "660000000000000000000001" || fetchedCourse.slug === "web-development")) {
+          if (!fetchedCourse.zipFiles || fetchedCourse.zipFiles.length === 0) {
+            fetchedCourse.zipFiles = WEB_DEV_FALLBACK_DATA.zipFiles;
+            fetchedCourse.zipFile = WEB_DEV_FALLBACK_DATA.zipFile;
+            fetchedCourse.resources = WEB_DEV_FALLBACK_DATA.resources;
+          } else {
+            fetchedCourse.zipFiles = fetchedCourse.zipFiles.map((z) => ({
+              ...z,
+              url: (z && z.url && z.url.includes("1Cybrical-WebDev")) ? "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt" : (z ? z.url : ""),
+            }));
+            if (fetchedCourse.zipFile && fetchedCourse.zipFile.url && fetchedCourse.zipFile.url.includes("1Cybrical-WebDev")) {
+              fetchedCourse.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
+            }
           }
         }
 
