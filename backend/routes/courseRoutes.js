@@ -246,8 +246,95 @@ const WEB_DEV_ZIP_COURSE = {
       ],
     },
   ],
-  zipFiles: [],
-  resources: [],
+  zipFile: {
+    _id: "zf-wd-1",
+    title: "Web Development Complete Starter & Project Code ZIP",
+    fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
+    url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+    fileSize: "185 MB",
+    isExternal: true,
+    source: "Google Drive",
+  },
+  zipFiles: [
+    {
+      _id: "zf-wd-1",
+      title: "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+      fileSize: "185 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-2",
+      title: "02: JavaScript DOM & Async REST API Projects ZIP",
+      fileName: "02-JavaScript-DOM-Async-Projects.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+      fileSize: "351 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-3",
+      title: "03: React.js E-Commerce Catalog & Modern UI ZIP",
+      fileName: "03-React-Ecommerce-App-Source.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+      fileSize: "586 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-4",
+      title: "04: Full-Stack MERN Capstone Project Complete ZIP",
+      fileName: "04-FullStack-MERN-Capstone-Project.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+      fileSize: "420 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+  ],
+  resources: [
+    {
+      _id: "res-wd-1",
+      title: "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+      fileSize: "185 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-2",
+      title: "02: JavaScript DOM & Async REST API Projects ZIP",
+      fileName: "02-JavaScript-DOM-Async-Projects.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+      fileSize: "351 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-3",
+      title: "03: React.js E-Commerce Catalog & Modern UI ZIP",
+      fileName: "03-React-Ecommerce-App-Source.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+      fileSize: "586 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-4",
+      title: "04: Full-Stack MERN Capstone Project Complete ZIP",
+      fileName: "04-FullStack-MERN-Capstone-Project.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+      fileSize: "420 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+  ],
 };
 
 const FALLBACK_ANDROID_COURSE = {
@@ -580,11 +667,20 @@ const loadFallbackCourses = () => {
       const parsed = JSON.parse(content);
       if (Array.isArray(parsed) && parsed.length > 0) {
         // Ensure all system default courses are present
-        const parsedSlugs = new Set(parsed.map((c) => (c.slug || "").toLowerCase()));
         let updated = false;
         SYSTEM_DEFAULT_COURSES.forEach((def) => {
-          if (!parsedSlugs.has((def.slug || "").toLowerCase())) {
+          const idx = parsed.findIndex(
+            (c) =>
+              (c.slug && c.slug.toLowerCase() === (def.slug || "").toLowerCase()) ||
+              (c._id && def._id && c._id.toString() === def._id.toString())
+          );
+          if (idx === -1) {
             parsed.push(def);
+            updated = true;
+          } else if ((!parsed[idx].zipFiles || parsed[idx].zipFiles.length === 0) && def.zipFiles && def.zipFiles.length > 0) {
+            parsed[idx].zipFiles = def.zipFiles;
+            parsed[idx].resources = def.resources || [];
+            parsed[idx].zipFile = def.zipFile;
             updated = true;
           }
         });
@@ -620,8 +716,9 @@ const saveSingleFallbackCourse = (courseObj) => {
     (c) =>
       (c._id && c._id.toString() === cleanId) ||
       (c.slug && c.slug.toLowerCase() === cleanSlug) ||
-      (cleanSlug.includes("ai") && (c.slug === "ai" || (c._id && c._id.toString().includes("000000000000000000000004")))) ||
-      (cleanSlug.includes("android") && (c.slug === "android" || (c._id && c._id.toString().includes("000000000000000000000005"))))
+      ((cleanSlug.includes("web") || cleanId.includes("000000000000000000000001")) && (c.slug === "web-development" || (c._id && c._id.toString().includes("000000000000000000000001")))) ||
+      ((cleanSlug.includes("ai") || cleanId.includes("000000000000000000000004")) && (c.slug === "ai" || (c._id && c._id.toString().includes("000000000000000000000004")))) ||
+      ((cleanSlug.includes("android") || cleanId.includes("000000000000000000000005")) && (c.slug === "android" || (c._id && c._id.toString().includes("000000000000000000000005"))))
   );
 
   if (idx >= 0) {
@@ -630,6 +727,14 @@ const saveSingleFallbackCourse = (courseObj) => {
     list.push(courseObj);
   }
   saveFallbackCourses(list);
+};
+
+const KNOWN_ID_SLUG_MAP = {
+  "660000000000000000000001": "web-development",
+  "660000000000000000000002": "seo",
+  "660000000000000000000003": "digital-marketing",
+  "660000000000000000000004": "ai",
+  "660000000000000000000005": "android",
 };
 
 const getCourseDoc = async (targetId) => {
@@ -645,20 +750,53 @@ const getCourseDoc = async (targetId) => {
     }
   }
 
+  const mappedSlug = KNOWN_ID_SLUG_MAP[targetStr] || "";
+
   if (!course) {
     try {
       const cleanSlug = targetStr.toLowerCase().replace(/\s+/g, "-");
       const escaped = targetStr.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+      const queryList = [
+        { slug: targetStr },
+        { slug: cleanSlug },
+        { slug: new RegExp(`^${escaped}$`, "i") },
+        { title: new RegExp(`^${escaped}$`, "i") },
+      ];
+      if (mappedSlug) {
+        queryList.push({ slug: mappedSlug });
+        queryList.push({ slug: new RegExp(`^${mappedSlug}$`, "i") });
+      }
       course = await Course.findOne({
-        $or: [
-          { slug: targetStr },
-          { slug: cleanSlug },
-          { slug: new RegExp(`^${escaped}$`, "i") },
-          { title: new RegExp(`^${escaped}$`, "i") },
-        ],
+        $or: queryList,
       });
     } catch (e) {
       course = null;
+    }
+  }
+
+  // If connected to MongoDB and document doesn't exist yet, auto-seed it into MongoDB Atlas
+  if (!course && mongoose.connection.readyState === 1) {
+    const fallback = getFallbackCourse(targetStr);
+    if (fallback) {
+      try {
+        course = new Course({
+          title: fallback.title,
+          slug: fallback.slug || mappedSlug || targetStr,
+          description: fallback.description,
+          category: fallback.category,
+          level: fallback.level,
+          duration: fallback.duration,
+          thumbnail: fallback.thumbnail,
+          price: fallback.price || 0,
+          isPublished: true,
+          modules: fallback.modules || [],
+          zipFiles: fallback.zipFiles || [],
+          zipFile: fallback.zipFile || { url: "", fileName: "", fileSize: "" },
+        });
+        await course.save();
+      } catch (seedErr) {
+        console.warn("Auto-seed course failed (non-critical):", seedErr.message);
+      }
     }
   }
 
@@ -739,13 +877,16 @@ const getFallbackCourse = (targetId) => {
   );
   if (found) return sanitizeCourseZips(found);
 
-  if (clean.includes("ai") || clean.includes("artificial")) {
+  if (clean.includes("web") || clean === "660000000000000000000001") {
+    return sanitizeCourseZips(storeCourses.find((c) => (c.slug || "").includes("web")) || WEB_DEV_ZIP_COURSE);
+  }
+  if (clean.includes("ai") || clean.includes("artificial") || clean === "660000000000000000000004") {
     return sanitizeCourseZips(storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE);
   }
-  if (clean.includes("android")) {
+  if (clean.includes("android") || clean === "660000000000000000000005") {
     return sanitizeCourseZips(storeCourses.find((c) => c.slug === "android") || FALLBACK_ANDROID_COURSE);
   }
-  return sanitizeCourseZips(storeCourses[0] || FALLBACK_AI_COURSE);
+  return sanitizeCourseZips(storeCourses[0] || WEB_DEV_ZIP_COURSE);
 };
 
 // ==========================================
@@ -891,29 +1032,8 @@ router.post("/:courseId/upload-zip", upload.any(), async (req, res) => {
       fileSize: fileSize,
     };
 
-    let course = null;
     const targetId = req.params.courseId;
-
-    if (mongoose.Types.ObjectId.isValid(targetId)) {
-      try {
-        course = await Course.findById(targetId);
-      } catch (e) {
-        course = null;
-      }
-    }
-
-    if (!course) {
-      try {
-        course = await Course.findOne({
-          $or: [
-            { slug: targetId },
-            { slug: new RegExp(`^${targetId}$`, "i") },
-          ],
-        });
-      } catch (e) {
-        course = null;
-      }
-    }
+    let course = await getCourseDoc(targetId);
 
     if (course) {
       course.zipFile = {
@@ -1024,29 +1144,8 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
       source: "Google Drive",
     };
 
-    let course = null;
     const targetId = req.params.courseId;
-
-    if (mongoose.Types.ObjectId.isValid(targetId)) {
-      try {
-        course = await Course.findById(targetId);
-      } catch (e) {
-        course = null;
-      }
-    }
-
-    if (!course) {
-      try {
-        course = await Course.findOne({
-          $or: [
-            { slug: targetId },
-            { slug: new RegExp(`^${targetId}$`, "i") },
-          ],
-        });
-      } catch (e) {
-        course = null;
-      }
-    }
+    let course = await getCourseDoc(targetId);
 
     if (course) {
       course.zipFile = {

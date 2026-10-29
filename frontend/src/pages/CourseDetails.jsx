@@ -1,9 +1,249 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getApiUrl, getAssetUrl, getDownloadUrl } from "../config/api";
+import { getApiUrl, getAssetUrl, getDownloadUrl, isGoogleDriveUrl, getGoogleDriveViewUrl } from "../config/api";
 import "./CourseDetails.css";
 
+const WEB_DEV_FALLBACK_DATA = {
+  _id: "660000000000000000000001",
+  title: "Web Development",
+  slug: "web-development",
+  description:
+    "Complete Web Development Bootcamp from Scratch — HTML, CSS, JavaScript, React, Node.js & Full-Stack Projects with downloadable Source Code ZIPs for every lesson.",
+  category: "Web Development",
+  level: "Beginner to Advanced",
+  duration: "12 Weeks",
+  price: 0,
+  isPublished: true,
+  thumbnail:
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
+  modules: [
+    {
+      _id: "web-mod-1",
+      title: "Module 1: HTML5 & Modern Responsive CSS",
+      description: "Foundations of modern web layout, semantic elements, and responsive design with project ZIP archives.",
+      lessons: [
+        {
+          _id: "web-les-1",
+          title: "Lesson 1: HTML5 Semantic Structure & Starter Project",
+          description: "Learn semantic tags, forms, tables, and project directory scaffolding. Download the starter kit ZIP below.",
+          duration: "35 min",
+          videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+          zipName: "01-HTML5-CSS3-Responsive-Starter.zip",
+          zipSize: "185 MB",
+        },
+        {
+          _id: "web-les-2",
+          title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts",
+          description: "Master modern layout techniques, media queries, CSS variables, and layout patterns with full source code.",
+          duration: "45 min",
+          videoUrl: "",
+          zipSize: "507 MB",
+        },
+        {
+          _id: "web-les-3",
+          title: "Lesson 3: Complete Responsive Agency Landing Page",
+          description: "Build and deploy a mobile-friendly agency landing page with animations and interactive navigation.",
+          duration: "50 min",
+          videoUrl: "",
+          zipSize: "185 MB",
+        },
+      ],
+    },
+    {
+      _id: "web-mod-2",
+      title: "Module 2: JavaScript DOM & Interactive Applications",
+      description: "Master core JavaScript, DOM manipulation, asynchronous programming, APIs, and interactive applications.",
+      lessons: [
+        {
+          _id: "web-les-4",
+          title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control",
+          description: "ES6+ syntax, arrays, objects, functions, event listeners, and dynamic DOM rendering practice project.",
+          duration: "55 min",
+          videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+          zipName: "02-JavaScript-DOM-Async-Projects.zip",
+          zipSize: "351 MB",
+        },
+        {
+          _id: "web-les-5",
+          title: "Lesson 5: Async JS, REST APIs & Live Weather Application",
+          description: "Working with Promises, async/await, Fetch API, error handling, and building a live API-powered app.",
+          duration: "60 min",
+          videoUrl: "",
+          zipSize: "436 MB",
+        },
+        {
+          _id: "web-les-6",
+          title: "Lesson 6: Interactive CRUD App with LocalStorage",
+          description: "Create a persistent task management application with state persistence, filtering, and local storage.",
+          duration: "50 min",
+          videoUrl: "",
+          zipSize: "707 MB",
+        },
+      ],
+    },
+    {
+      _id: "web-mod-3",
+      title: "Module 3: React.js & Modern Frontend Architecture",
+      description: "Build robust single-page applications using React components, hooks, routing, and state management.",
+      lessons: [
+        {
+          _id: "web-les-7",
+          title: "Lesson 7: React Setup, JSX, Components & Props",
+          description: "Component architecture, props drilling, conditional rendering, and structured folder layout with Vite.",
+          duration: "45 min",
+          videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+          zipName: "03-React-Ecommerce-App-Source.zip",
+          zipSize: "586 MB",
+        },
+        {
+          _id: "web-les-8",
+          title: "Lesson 8: React Hooks (useState, useEffect) & Context API",
+          description: "Deep dive into state lifecycles, effect hooks, custom hooks, and global state management with Context.",
+          duration: "55 min",
+          videoUrl: "",
+          zipSize: "356 MB",
+        },
+        {
+          _id: "web-les-9",
+          title: "Lesson 9: Full E-Commerce Product Catalog with Cart",
+          description: "Build an interactive E-commerce frontend with cart management, checkout modals, and responsive UI.",
+          duration: "65 min",
+          videoUrl: "",
+          zipSize: "301 MB",
+        },
+      ],
+    },
+    {
+      _id: "web-mod-4",
+      title: "Module 4: Full-Stack Backend, Database & Deployment",
+      description: "Build RESTful APIs with Node.js, Express, MongoDB, and deploy full-stack applications to cloud servers.",
+      lessons: [
+        {
+          _id: "web-les-10",
+          title: "Lesson 10: Node.js & Express REST API Architecture",
+          description: "Express routing, middleware, request validation, error handling, and building secure REST endpoints.",
+          duration: "50 min",
+          videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+          zipName: "04-FullStack-MERN-Capstone-Project.zip",
+          zipSize: "420 MB",
+        },
+        {
+          _id: "web-les-11",
+          title: "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth",
+          description: "Database modeling, CRUD operations, password hashing with bcrypt, and JWT user authentication.",
+          duration: "60 min",
+          videoUrl: "",
+          zipSize: "197 MB",
+        },
+        {
+          _id: "web-les-12",
+          title: "Lesson 12: Full Stack Production Deployment & CI/CD",
+          description: "Connecting frontend and backend, environment variables, building for production, and live cloud deployment.",
+          duration: "60 min",
+          videoUrl: "",
+          zipSize: "333 MB",
+        },
+      ],
+    },
+  ],
+  zipFile: {
+    _id: "zf-wd-1",
+    title: "Web Development Complete Starter & Project Code ZIP",
+    fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
+    url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+    fileSize: "185 MB",
+    isExternal: true,
+    source: "Google Drive",
+  },
+  zipFiles: [
+    {
+      _id: "zf-wd-1",
+      title: "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+      fileSize: "185 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-2",
+      title: "02: JavaScript DOM & Async REST API Projects ZIP",
+      fileName: "02-JavaScript-DOM-Async-Projects.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+      fileSize: "351 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-3",
+      title: "03: React.js E-Commerce Catalog & Modern UI ZIP",
+      fileName: "03-React-Ecommerce-App-Source.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+      fileSize: "586 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-4",
+      title: "04: Full-Stack MERN Capstone Project Complete ZIP",
+      fileName: "04-FullStack-MERN-Capstone-Project.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+      fileSize: "420 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+  ],
+  resources: [
+    {
+      _id: "res-wd-1",
+      title: "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+      fileSize: "185 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-2",
+      title: "02: JavaScript DOM & Async REST API Projects ZIP",
+      fileName: "02-JavaScript-DOM-Async-Projects.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+      fileSize: "351 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-3",
+      title: "03: React.js E-Commerce Catalog & Modern UI ZIP",
+      fileName: "03-React-Ecommerce-App-Source.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+      fileSize: "586 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-4",
+      title: "04: Full-Stack MERN Capstone Project Complete ZIP",
+      fileName: "04-FullStack-MERN-Capstone-Project.zip",
+      url: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+      fileUrl: "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+      fileSize: "420 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+  ],
+};
+
 const FALLBACK_COURSES_MAP = {
+  "web-development": WEB_DEV_FALLBACK_DATA,
+  "660000000000000000000001": WEB_DEV_FALLBACK_DATA,
   ai: {
     _id: "660000000000000000000004",
     title: "Artificial Intelligence (AI)",
@@ -56,23 +296,6 @@ const FALLBACK_COURSES_MAP = {
       url: "/uploads/courses/1791286656010-391085889.zip",
       fileSize: "457.43 MB",
     },
-    zipFiles: [],
-    resources: [],
-  },
-  "web-development": {
-    _id: "660000000000000000000001",
-    title: "Web Development",
-    slug: "web-development",
-    description:
-      "Complete Web Development Bootcamp from Scratch — HTML, CSS, JavaScript, React, Node.js & Full-Stack Projects with downloadable Source Code ZIPs for every lesson.",
-    category: "Web Development",
-    level: "Beginner to Advanced",
-    duration: "12 Weeks",
-    price: 0,
-    isPublished: true,
-    thumbnail:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
-    modules: [],
     zipFiles: [],
     resources: [],
   },
@@ -387,7 +610,10 @@ function CourseDetails() {
         try {
           const raw =
             localStorage.getItem(`admin_course_${cleanSlug}`) ||
-            localStorage.getItem(`admin_course_${slug}`);
+            localStorage.getItem(`admin_course_${slug}`) ||
+            (cleanSlug.includes("web") ? (localStorage.getItem("admin_course_web-development") || localStorage.getItem("admin_course_660000000000000000000001")) : null) ||
+            (cleanSlug.includes("ai") ? (localStorage.getItem("admin_course_ai") || localStorage.getItem("admin_course_660000000000000000000004")) : null) ||
+            (cleanSlug.includes("android") ? (localStorage.getItem("admin_course_android") || localStorage.getItem("admin_course_660000000000000000000005")) : null);
           if (raw) {
             savedLocal = JSON.parse(raw);
             if (savedLocal.zipFiles) {
@@ -403,6 +629,8 @@ function CourseDetails() {
           fetchedCourse =
             savedLocal ||
             FALLBACK_COURSES_MAP[cleanSlug] ||
+            FALLBACK_COURSES_MAP[slug] ||
+            (cleanSlug.includes("web") ? WEB_DEV_FALLBACK_DATA : null) ||
             (cleanSlug.includes("ai") || cleanSlug.includes("artificial")
               ? FALLBACK_COURSES_MAP["ai"]
               : null);
@@ -502,7 +730,7 @@ function CourseDetails() {
         fileName: z.fileName || `project-part-${i + 1}.zip`,
         url: z.url,
         fileSize: z.fileSize || "ZIP File",
-        isExternal: z.isExternal || z.url.includes("drive.google.com") || z.url.includes("google"),
+        isExternal: z.isExternal || isGoogleDriveUrl(z.url),
       });
     }
   });
@@ -518,7 +746,7 @@ function CourseDetails() {
           fileName: r.fileName || `resource-${i + 1}.zip`,
           url,
           fileSize: r.fileSize || "ZIP File",
-          isExternal: r.isExternal || url.includes("drive.google.com") || url.includes("google"),
+          isExternal: r.isExternal || isGoogleDriveUrl(url),
         });
       }
     }
@@ -532,7 +760,7 @@ function CourseDetails() {
       fileName: course.zipFile.fileName || "course-project.zip",
       url: course.zipFile.url,
       fileSize: course.zipFile.fileSize || "ZIP Archive",
-      isExternal: course.zipFile.isExternal || course.zipFile.url.includes("drive.google.com") || course.zipFile.url.includes("google"),
+      isExternal: course.zipFile.isExternal || isGoogleDriveUrl(course.zipFile.url),
     });
   }
 
@@ -546,7 +774,7 @@ function CourseDetails() {
           fileName: l.zipName || `${l.title}.zip`,
           url: l.zipUrl,
           fileSize: l.zipSize || "Lesson ZIP",
-          isExternal: l.zipUrl.includes("drive.google.com") || l.zipUrl.includes("google"),
+          isExternal: isGoogleDriveUrl(l.zipUrl),
         });
       }
     });
@@ -561,8 +789,11 @@ function CourseDetails() {
     allCourseZips.forEach((z, index) => {
       setTimeout(() => {
         const link = document.createElement("a");
-        link.href = getDownloadUrl(z.url, z.fileName);
-        link.setAttribute("download", z.fileName || `course-project-part-${index + 1}.zip`);
+        const isDrive = z.isExternal || isGoogleDriveUrl(z.url);
+        link.href = isDrive ? (getGoogleDriveViewUrl(z.url) || getDownloadUrl(z.url, z.fileName)) : getDownloadUrl(z.url, z.fileName);
+        if (!isDrive) {
+          link.setAttribute("download", z.fileName || `course-project-part-${index + 1}.zip`);
+        }
         link.setAttribute("target", "_blank");
         link.setAttribute("rel", "noreferrer");
         document.body.appendChild(link);
@@ -675,8 +906,8 @@ function CourseDetails() {
                     </div>
 
                     <a
-                      href={getDownloadUrl(selectedLesson.zipUrl, selectedLesson.zipName || `${selectedLesson.title}.zip`)}
-                      download={selectedLesson.zipName || `${selectedLesson.title}.zip`}
+                      href={isGoogleDriveUrl(selectedLesson.zipUrl) ? (getGoogleDriveViewUrl(selectedLesson.zipUrl) || selectedLesson.zipUrl) : getDownloadUrl(selectedLesson.zipUrl, selectedLesson.zipName || `${selectedLesson.title}.zip`)}
+                      download={isGoogleDriveUrl(selectedLesson.zipUrl) ? undefined : (selectedLesson.zipName || `${selectedLesson.title}.zip`)}
                       target="_blank"
                       rel="noreferrer"
                       style={{
@@ -693,7 +924,7 @@ function CourseDetails() {
                         boxShadow: "0 4px 12px rgba(34, 197, 94, 0.3)",
                       }}
                     >
-                      <span>📥</span> Download Lesson ZIP ⬇
+                      <span>{isGoogleDriveUrl(selectedLesson.zipUrl) ? "☁️" : "📥"}</span> {isGoogleDriveUrl(selectedLesson.zipUrl) ? "Open Lesson ZIP ☁️" : "Download Lesson ZIP ⬇"}
                     </a>
                   </div>
                 )}
@@ -759,13 +990,13 @@ function CourseDetails() {
                         </span>
                       </div>
                       <a
-                        href={getDownloadUrl(z.url, z.fileName)}
-                        download={z.fileName || `project-${idx + 1}.zip`}
+                        href={isGoogleDriveUrl(z.url) ? (getGoogleDriveViewUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName)}
+                        download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
                         target="_blank"
                         rel="noreferrer"
                         className="materials-download-btn"
                       >
-                        Download ZIP ⬇
+                        {z.isExternal || isGoogleDriveUrl(z.url) ? "Open in Drive ☁️" : "Download ZIP ⬇"}
                       </a>
                     </div>
                   ))}
@@ -901,8 +1132,8 @@ function CourseDetails() {
                     {allCourseZips.map((z, idx) => (
                       <a
                         key={z._id || idx}
-                        href={getDownloadUrl(z.url, z.fileName)}
-                        download={z.fileName || `project-${idx + 1}.zip`}
+                        href={isGoogleDriveUrl(z.url) ? (getGoogleDriveViewUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName)}
+                        download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
                         target="_blank"
                         rel="noreferrer"
                         style={{
@@ -922,7 +1153,9 @@ function CourseDetails() {
                         <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginRight: "6px" }}>
                           📦 {z.title || z.fileName}
                         </span>
-                        <span style={{ color: "#4ade80", fontWeight: "800", flexShrink: 0 }}>⬇</span>
+                        <span style={{ color: "#4ade80", fontWeight: "800", flexShrink: 0 }}>
+                          {z.isExternal || isGoogleDriveUrl(z.url) ? "☁️" : "⬇"}
+                        </span>
                       </a>
                     ))}
                   </div>

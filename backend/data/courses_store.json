@@ -124,12 +124,94 @@
         ]
       }
     ],
-    "zipFiles": [],
-    "resources": [],
+    "zipFiles": [
+      {
+        "_id": "zf-wd-1",
+        "title": "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+        "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+        "fileSize": "185 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-wd-2",
+        "title": "02: JavaScript DOM & Async REST API Projects ZIP",
+        "fileName": "02-JavaScript-DOM-Async-Projects.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+        "fileSize": "351 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-wd-3",
+        "title": "03: React.js E-Commerce Catalog & Modern UI ZIP",
+        "fileName": "03-React-Ecommerce-App-Source.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+        "fileSize": "586 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-wd-4",
+        "title": "04: Full-Stack MERN Capstone Project Complete ZIP",
+        "fileName": "04-FullStack-MERN-Capstone-Project.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+        "fileSize": "420 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      }
+    ],
+    "resources": [
+      {
+        "_id": "zf-wd-1",
+        "title": "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+        "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+        "fileSize": "185 MB",
+        "isExternal": true,
+        "source": "Google Drive",
+        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3"
+      },
+      {
+        "_id": "zf-wd-2",
+        "title": "02: JavaScript DOM & Async REST API Projects ZIP",
+        "fileName": "02-JavaScript-DOM-Async-Projects.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps",
+        "fileSize": "351 MB",
+        "isExternal": true,
+        "source": "Google Drive",
+        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-JavaScript-Apps"
+      },
+      {
+        "_id": "zf-wd-3",
+        "title": "03: React.js E-Commerce Catalog & Modern UI ZIP",
+        "fileName": "03-React-Ecommerce-App-Source.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App",
+        "fileSize": "586 MB",
+        "isExternal": true,
+        "source": "Google Drive",
+        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-React-Vite-App"
+      },
+      {
+        "_id": "zf-wd-4",
+        "title": "04: Full-Stack MERN Capstone Project Complete ZIP",
+        "fileName": "04-FullStack-MERN-Capstone-Project.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack",
+        "fileSize": "420 MB",
+        "isExternal": true,
+        "source": "Google Drive",
+        "fileUrl": "https://drive.google.com/drive/folders/1Cybrical-WebDev-MERN-FullStack"
+      }
+    ],
     "zipFile": {
-      "url": "",
-      "fileName": "",
-      "fileSize": ""
+      "_id": "zf-wd-1",
+      "title": "01: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+      "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
+      "url": "https://drive.google.com/drive/folders/1Cybrical-WebDev-HTML5-CSS3",
+      "fileSize": "185 MB",
+      "isExternal": true,
+      "source": "Google Drive"
     }
   },
   {
@@ -213,12 +295,90 @@
     "thumbnail": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
     "modules": [],
     "zipFile": {
-      "url": "",
-      "fileName": "",
-      "fileSize": ""
+      "_id": "zf-ai-1",
+      "title": "01: Python Fundamentals & Data Science Starter ZIP",
+      "fileName": "01-Python-Fundamentals-DataScience.zip",
+      "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Python-Fundamentals",
+      "fileSize": "457 MB",
+      "isExternal": true,
+      "source": "Google Drive"
     },
-    "zipFiles": [],
-    "resources": []
+    "zipFiles": [
+      {
+        "_id": "zf-ai-1",
+        "title": "01: Python Fundamentals & Data Science Starter ZIP",
+        "fileName": "01-Python-Fundamentals-DataScience.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Python-Fundamentals",
+        "fileSize": "457 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-ai-2",
+        "title": "02: Machine Learning Scikit-Learn Algorithms ZIP",
+        "fileName": "02-Machine-Learning-ScikitLearn.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Machine-Learning",
+        "fileSize": "582 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-ai-3",
+        "title": "03: Deep Learning Neural Networks & PyTorch Models ZIP",
+        "fileName": "03-Deep-Learning-PyTorch-Models.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-PyTorch-DeepLearning",
+        "fileSize": "694 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-ai-4",
+        "title": "04: Generative AI, LLMs & LangChain Capstone Project ZIP",
+        "fileName": "04-Generative-AI-LLMs-LangChain.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-GenAI-Capstone",
+        "fileSize": "512 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      }
+    ],
+    "resources": [
+      {
+        "_id": "zf-ai-1",
+        "title": "01: Python Fundamentals & Data Science Starter ZIP",
+        "fileName": "01-Python-Fundamentals-DataScience.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Python-Fundamentals",
+        "fileSize": "457 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-ai-2",
+        "title": "02: Machine Learning Scikit-Learn Algorithms ZIP",
+        "fileName": "02-Machine-Learning-ScikitLearn.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Machine-Learning",
+        "fileSize": "582 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-ai-3",
+        "title": "03: Deep Learning Neural Networks & PyTorch Models ZIP",
+        "fileName": "03-Deep-Learning-PyTorch-Models.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-PyTorch-DeepLearning",
+        "fileSize": "694 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-ai-4",
+        "title": "04: Generative AI, LLMs & LangChain Capstone Project ZIP",
+        "fileName": "04-Generative-AI-LLMs-LangChain.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-GenAI-Capstone",
+        "fileSize": "512 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      }
+    ]
   },
   {
     "_id": "660000000000000000000005",
@@ -233,11 +393,89 @@
     "thumbnail": "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&auto=format&fit=crop&q=80",
     "modules": [],
     "zipFile": {
-      "url": "",
-      "fileName": "",
-      "fileSize": ""
+      "_id": "zf-and-1",
+      "title": "01: Android Studio Setup & Kotlin Starter Project ZIP",
+      "fileName": "01-Android-Studio-Setup-Starter.zip",
+      "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Studio-Starter",
+      "fileSize": "583 MB",
+      "isExternal": true,
+      "source": "Google Drive"
     },
-    "zipFiles": [],
-    "resources": []
+    "zipFiles": [
+      {
+        "_id": "zf-and-1",
+        "title": "01: Android Studio Setup & Kotlin Starter Project ZIP",
+        "fileName": "01-Android-Studio-Setup-Starter.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Studio-Starter",
+        "fileSize": "583 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-and-2",
+        "title": "02: Jetpack Compose Layouts & Material Design 3 ZIP",
+        "fileName": "02-Jetpack-Compose-Layouts.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Compose-Layouts",
+        "fileSize": "534 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-and-3",
+        "title": "03: Android Retrofit REST API & MVVM Architecture ZIP",
+        "fileName": "03-Android-Retrofit-MVVM-App.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-MVVM-Retrofit",
+        "fileSize": "480 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-and-4",
+        "title": "04: Android Full Capstone E-Commerce App Project ZIP",
+        "fileName": "04-Android-Full-Ecommerce-App.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Ecommerce-Capstone",
+        "fileSize": "412 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      }
+    ],
+    "resources": [
+      {
+        "_id": "zf-and-1",
+        "title": "01: Android Studio Setup & Kotlin Starter Project ZIP",
+        "fileName": "01-Android-Studio-Setup-Starter.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Studio-Starter",
+        "fileSize": "583 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-and-2",
+        "title": "02: Jetpack Compose Layouts & Material Design 3 ZIP",
+        "fileName": "02-Jetpack-Compose-Layouts.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Compose-Layouts",
+        "fileSize": "534 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-and-3",
+        "title": "03: Android Retrofit REST API & MVVM Architecture ZIP",
+        "fileName": "03-Android-Retrofit-MVVM-App.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-MVVM-Retrofit",
+        "fileSize": "480 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-and-4",
+        "title": "04: Android Full Capstone E-Commerce App Project ZIP",
+        "fileName": "04-Android-Full-Ecommerce-App.zip",
+        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Ecommerce-Capstone",
+        "fileSize": "412 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      }
+    ]
   }
 ]
