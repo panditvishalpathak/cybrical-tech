@@ -250,7 +250,7 @@ const WEB_DEV_ZIP_COURSE = {
     _id: "zf-wd-main",
     title: "Web Development Complete Course Project & Source Code (Google Drive)",
     fileName: "Web-Development-Complete-Projects.zip",
-    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+    url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
     fileSize: "Google Drive Cloud Folder",
     isExternal: true,
     source: "Google Drive",
@@ -260,7 +260,7 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "zf-wd-main",
       title: "01: Web Development Complete Project & Source Code (Google Drive)",
       fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -269,7 +269,7 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "zf-wd-1",
       title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
       fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -278,7 +278,7 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "zf-wd-2",
       title: "03: JavaScript DOM & Async REST API Projects ZIP",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -287,7 +287,7 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "zf-wd-3",
       title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
       fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -296,7 +296,7 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "zf-wd-4",
       title: "05: Full-Stack MERN Capstone Project Complete ZIP",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -307,8 +307,8 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "res-wd-main",
       title: "Web Development Complete Course Project & Source Code (Google Drive)",
       fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -317,8 +317,8 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "res-wd-1",
       title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
       fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -327,8 +327,8 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "res-wd-2",
       title: "03: JavaScript DOM & Async REST API Projects ZIP",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -337,8 +337,8 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "res-wd-3",
       title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
       fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -347,8 +347,8 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "res-wd-4",
       title: "05: Full-Stack MERN Capstone Project Complete ZIP",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -865,9 +865,9 @@ const sanitizeCourseZips = (c) => {
 
   if (isWebDev) {
     const replaceWebDevLink = (url) => {
-      if (!url) return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
-      if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev")) {
-        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
+      if (!url) return "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+      if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev") || url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")) {
+        return "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
       }
       return url;
     };
@@ -959,6 +959,7 @@ router.get("/download-file", (req, res) => {
       let redirectUrl = rawUrl;
       if (rawUrl.includes("drive.google.com") || rawUrl.includes("drive.usercontent.google.com")) {
         const match = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+                      rawUrl.match(/\/folders\/([a-zA-Z0-9_-]+)/) ||
                       rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
                       rawUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
         if (match && match[1]) {

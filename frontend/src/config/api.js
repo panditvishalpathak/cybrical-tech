@@ -24,38 +24,45 @@ export const isGoogleDriveUrl = (url = "") => {
   return lower.includes("drive.google.com") || lower.includes("drive.usercontent.google.com") || lower.includes("docs.google.com");
 };
 
-export const getGoogleDriveViewUrl = (url = "") => {
+export const extractGoogleDriveId = (url = "") => {
   if (!url || typeof url !== "string") return "";
   const trimmed = url.trim();
-  const folderMatch = trimmed.match(/\/folders\/([a-zA-Z0-9_-]+)/);
-  if (folderMatch && folderMatch[1]) {
-    return `https://drive.google.com/drive/folders/${folderMatch[1]}?usp=sharing`;
+  const match =
+    trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+    trimmed.match(/\/folders\/([a-zA-Z0-9_-]+)/) ||
+    trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
+    trimmed.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  return match && match[1] ? match[1] : "";
+};
+
+export const getGoogleDriveViewUrl = (url = "") => {
+  if (!url || typeof url !== "string") return "";
+  const id = extractGoogleDriveId(url);
+  if (id) {
+    // Open ONLY the specific ZIP file viewer, NEVER the full Google Drive folder
+    return `https://drive.google.com/file/d/${id}/view`;
   }
-  const fileMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
-                    trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
-                    trimmed.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  if (fileMatch && fileMatch[1]) {
-    return `https://drive.google.com/file/d/${fileMatch[1]}/view?usp=sharing`;
+  return url.trim();
+};
+
+export const getGoogleDriveDownloadUrl = (url = "") => {
+  if (!url || typeof url !== "string") return "";
+  const id = extractGoogleDriveId(url);
+  if (id) {
+    // Direct ZIP download link
+    return `https://drive.google.com/uc?export=download&id=${id}`;
   }
-  return trimmed;
+  return url.trim();
 };
 
 export const formatGoogleDriveUrl = (url = "") => {
   if (!url || typeof url !== "string") return "";
   const trimmed = url.trim();
   if (isGoogleDriveUrl(trimmed)) {
-    // Check if it's a folder link
-    const folderMatch = trimmed.match(/\/folders\/([a-zA-Z0-9_-]+)/);
-    if (folderMatch && folderMatch[1]) {
-      return `https://drive.google.com/drive/folders/${folderMatch[1]}?usp=sharing`;
-    }
-    // Check if it's a file link
-    const match = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
-                  trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
-                  trimmed.match(/\/d\/([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      // Direct download URL
-      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+    const id = extractGoogleDriveId(trimmed);
+    if (id) {
+      // Return direct download URL
+      return `https://drive.google.com/uc?export=download&id=${id}`;
     }
   }
   return trimmed;
@@ -86,4 +93,13 @@ export const getDownloadUrl = (path = "", customName = "") => {
   return getApiUrl(`/api/courses/download-file?url=${encodeURIComponent(path)}${nameParam}`);
 };
 
-export default { getApiUrl, getAssetUrl, getDownloadUrl, formatGoogleDriveUrl, isGoogleDriveUrl, getGoogleDriveViewUrl };
+export default {
+  getApiUrl,
+  getAssetUrl,
+  getDownloadUrl,
+  formatGoogleDriveUrl,
+  isGoogleDriveUrl,
+  getGoogleDriveViewUrl,
+  getGoogleDriveDownloadUrl,
+  extractGoogleDriveId,
+};

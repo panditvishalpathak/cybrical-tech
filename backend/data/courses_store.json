@@ -129,7 +129,7 @@
         "_id": "zf-wd-main",
         "title": "01: Web Development Complete Project & Source Code (Google Drive)",
         "fileName": "Web-Development-Complete-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
@@ -138,7 +138,7 @@
         "_id": "zf-wd-1",
         "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
         "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
@@ -147,7 +147,7 @@
         "_id": "zf-wd-2",
         "title": "03: JavaScript DOM & Async REST API Projects ZIP",
         "fileName": "02-JavaScript-DOM-Async-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
@@ -156,7 +156,7 @@
         "_id": "zf-wd-3",
         "title": "04: React.js E-Commerce Catalog & Modern UI ZIP",
         "fileName": "03-React-Ecommerce-App-Source.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
@@ -165,7 +165,7 @@
         "_id": "zf-wd-4",
         "title": "05: Full-Stack MERN Capstone Project Complete ZIP",
         "fileName": "04-FullStack-MERN-Capstone-Project.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
@@ -176,58 +176,68 @@
         "_id": "zf-wd-main",
         "title": "01: Web Development Complete Project & Source Code (Google Drive)",
         "fileName": "Web-Development-Complete-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
       },
       {
         "_id": "zf-wd-1",
         "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
         "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
+      },
+      {
+        "_id": "zf-wd-1",
+        "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
+        "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+        "fileSize": "Google Drive Cloud",
+        "isExternal": true,
+        "source": "Google Drive",
+        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
       },
       {
         "_id": "zf-wd-2",
         "title": "03: JavaScript DOM & Async REST API Projects ZIP",
         "fileName": "02-JavaScript-DOM-Async-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
       },
       {
         "_id": "zf-wd-3",
         "title": "04: React.js E-Commerce Catalog & Modern UI ZIP",
         "fileName": "03-React-Ecommerce-App-Source.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
       },
       {
         "_id": "zf-wd-4",
         "title": "05: Full-Stack MERN Capstone Project Complete ZIP",
         "fileName": "04-FullStack-MERN-Capstone-Project.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
       }
     ],
     "zipFile": {
       "_id": "zf-wd-main",
       "title": "01: Web Development Complete Project & Source Code (Google Drive)",
       "fileName": "Web-Development-Complete-Projects.zip",
-      "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
       "fileSize": "Google Drive Cloud",
       "isExternal": true,
       "source": "Google Drive"
