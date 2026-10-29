@@ -315,7 +315,7 @@
     "_id": "660000000000000000000004",
     "title": "Artificial Intelligence (AI)",
     "slug": "ai",
-    "description": "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI. Download full source code and starter ZIPs for lessons.",
+    "description": "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI.",
     "category": "Artificial Intelligence",
     "level": "Beginner to Advanced",
     "duration": "16 Weeks",
@@ -323,97 +323,14 @@
     "isPublished": true,
     "thumbnail": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
     "modules": [],
-    "zipFile": {
-      "_id": "zf-ai-1",
-      "title": "01: Python Fundamentals & Data Science Starter ZIP",
-      "fileName": "01-Python-Fundamentals-DataScience.zip",
-      "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Python-Fundamentals",
-      "fileSize": "457 MB",
-      "isExternal": true,
-      "source": "Google Drive"
-    },
-    "zipFiles": [
-      {
-        "_id": "zf-ai-1",
-        "title": "01: Python Fundamentals & Data Science Starter ZIP",
-        "fileName": "01-Python-Fundamentals-DataScience.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Python-Fundamentals",
-        "fileSize": "457 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-ai-2",
-        "title": "02: Machine Learning Scikit-Learn Algorithms ZIP",
-        "fileName": "02-Machine-Learning-ScikitLearn.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Machine-Learning",
-        "fileSize": "582 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-ai-3",
-        "title": "03: Deep Learning Neural Networks & PyTorch Models ZIP",
-        "fileName": "03-Deep-Learning-PyTorch-Models.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-PyTorch-DeepLearning",
-        "fileSize": "694 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-ai-4",
-        "title": "04: Generative AI, LLMs & LangChain Capstone Project ZIP",
-        "fileName": "04-Generative-AI-LLMs-LangChain.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-GenAI-Capstone",
-        "fileSize": "512 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      }
-    ],
-    "resources": [
-      {
-        "_id": "zf-ai-1",
-        "title": "01: Python Fundamentals & Data Science Starter ZIP",
-        "fileName": "01-Python-Fundamentals-DataScience.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Python-Fundamentals",
-        "fileSize": "457 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-ai-2",
-        "title": "02: Machine Learning Scikit-Learn Algorithms ZIP",
-        "fileName": "02-Machine-Learning-ScikitLearn.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-Machine-Learning",
-        "fileSize": "582 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-ai-3",
-        "title": "03: Deep Learning Neural Networks & PyTorch Models ZIP",
-        "fileName": "03-Deep-Learning-PyTorch-Models.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-PyTorch-DeepLearning",
-        "fileSize": "694 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-ai-4",
-        "title": "04: Generative AI, LLMs & LangChain Capstone Project ZIP",
-        "fileName": "04-Generative-AI-LLMs-LangChain.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-AI-GenAI-Capstone",
-        "fileSize": "512 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      }
-    ]
+    "zipFiles": [],
+    "resources": []
   },
   {
     "_id": "660000000000000000000005",
     "title": "Android App Development",
     "slug": "android",
-    "description": "Master Native Android App Development with Kotlin, Jetpack Compose, Android SDK, MVVM Architecture, Room Database, and REST APIs. Includes starter projects & downloadable ZIP files for lessons.",
+    "description": "Master Native Android App Development with Kotlin, Jetpack Compose, Android SDK, MVVM Architecture, Room Database, and REST APIs.",
     "category": "Mobile Development",
     "level": "Beginner to Advanced",
     "duration": "14 Weeks",
@@ -421,90 +338,7 @@
     "isPublished": true,
     "thumbnail": "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800&auto=format&fit=crop&q=80",
     "modules": [],
-    "zipFile": {
-      "_id": "zf-and-1",
-      "title": "01: Android Studio Setup & Kotlin Starter Project ZIP",
-      "fileName": "01-Android-Studio-Setup-Starter.zip",
-      "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Studio-Starter",
-      "fileSize": "583 MB",
-      "isExternal": true,
-      "source": "Google Drive"
-    },
-    "zipFiles": [
-      {
-        "_id": "zf-and-1",
-        "title": "01: Android Studio Setup & Kotlin Starter Project ZIP",
-        "fileName": "01-Android-Studio-Setup-Starter.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Studio-Starter",
-        "fileSize": "583 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-and-2",
-        "title": "02: Jetpack Compose Layouts & Material Design 3 ZIP",
-        "fileName": "02-Jetpack-Compose-Layouts.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Compose-Layouts",
-        "fileSize": "534 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-and-3",
-        "title": "03: Android Retrofit REST API & MVVM Architecture ZIP",
-        "fileName": "03-Android-Retrofit-MVVM-App.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-MVVM-Retrofit",
-        "fileSize": "480 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-and-4",
-        "title": "04: Android Full Capstone E-Commerce App Project ZIP",
-        "fileName": "04-Android-Full-Ecommerce-App.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Ecommerce-Capstone",
-        "fileSize": "412 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      }
-    ],
-    "resources": [
-      {
-        "_id": "zf-and-1",
-        "title": "01: Android Studio Setup & Kotlin Starter Project ZIP",
-        "fileName": "01-Android-Studio-Setup-Starter.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Studio-Starter",
-        "fileSize": "583 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-and-2",
-        "title": "02: Jetpack Compose Layouts & Material Design 3 ZIP",
-        "fileName": "02-Jetpack-Compose-Layouts.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Compose-Layouts",
-        "fileSize": "534 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-and-3",
-        "title": "03: Android Retrofit REST API & MVVM Architecture ZIP",
-        "fileName": "03-Android-Retrofit-MVVM-App.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-MVVM-Retrofit",
-        "fileSize": "480 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "zf-and-4",
-        "title": "04: Android Full Capstone E-Commerce App Project ZIP",
-        "fileName": "04-Android-Full-Ecommerce-App.zip",
-        "url": "https://drive.google.com/drive/folders/1Cybrical-Android-Ecommerce-Capstone",
-        "fileSize": "412 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      }
-    ]
+    "zipFiles": [],
+    "resources": []
   }
 ]

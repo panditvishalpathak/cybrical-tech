@@ -268,7 +268,7 @@ const FALLBACK_COURSES_MAP = {
     title: "Artificial Intelligence (AI)",
     slug: "ai",
     description:
-      "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI. Download full source code and starter ZIPs for lessons.",
+      "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI.",
     category: "Artificial Intelligence",
     level: "Beginner to Advanced",
     duration: "16 Weeks",
@@ -288,7 +288,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Introduction to AI bootcamp, collaboration workflow, and environment setup.",
             duration: "30 min",
             videoUrl: "",
-            zipUrl: "/uploads/courses/1791286605286-173949088.zip",
           },
         ],
       },
@@ -303,18 +302,11 @@ const FALLBACK_COURSES_MAP = {
             description: "Python syntax, control flow, functions, and fundamental data science libraries.",
             duration: "45 min",
             videoUrl: "",
-            zipUrl: "/uploads/courses/1791286656010-391085889.zip",
           },
         ],
       },
     ],
-    zipFile: {
-      _id: "zf-ai-2",
-      title: "Python Fundamentals (Part-1).zip",
-      fileName: "Python Fundamentals (Part-1).zip",
-      url: "/uploads/courses/1791286656010-391085889.zip",
-      fileSize: "457.43 MB",
-    },
+    zipFile: null,
     zipFiles: [],
     resources: [],
   },
@@ -389,7 +381,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Install Android Studio, configure Android Virtual Device (AVD), and understand project file hierarchy.",
             duration: "30 min",
             videoUrl: "",
-            zipUrl: "/uploads/courses/1791265931186-935533293.zip",
           },
           {
             _id: "and-les-2",
@@ -397,7 +388,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Variables, Null Safety, Lambdas, Coroutines and Asynchronous Kotlin for Android.",
             duration: "45 min",
             videoUrl: "",
-            zipUrl: "",
           },
         ],
       },
@@ -412,7 +402,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Column, Row, Box, Scaffold, LazyColumn and dynamic UI state manipulation.",
             duration: "50 min",
             videoUrl: "",
-            zipUrl: "/uploads/courses/1791265885918-768069909.zip",
           },
           {
             _id: "and-les-4",
@@ -420,7 +409,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Remember, MutableState, State Hoisting, and Navigation Component.",
             duration: "45 min",
             videoUrl: "",
-            zipUrl: "",
           },
         ],
       },
@@ -435,7 +423,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Fetching JSON data, Moshi/Gson serialization, error handling, and internet permissions.",
             duration: "55 min",
             videoUrl: "",
-            zipUrl: "/uploads/courses/1791265849347-992920259.zip",
           },
           {
             _id: "and-les-6",
@@ -443,7 +430,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Entities, DAOs, TypeConverters, LiveData/Flow, and Preferences DataStore.",
             duration: "50 min",
             videoUrl: "",
-            zipUrl: "",
           },
         ],
       },
@@ -458,7 +444,6 @@ const FALLBACK_COURSES_MAP = {
             description: "Firebase Auth, Firestore, Push Notifications with FCM, and Cloud Storage.",
             duration: "65 min",
             videoUrl: "",
-            zipUrl: "/uploads/courses/1791265800123-2443587.zip",
           },
           {
             _id: "and-les-8",
@@ -466,82 +451,13 @@ const FALLBACK_COURSES_MAP = {
             description: "Keystore generation, signing, optimization, and deploying to Google Play Console.",
             duration: "40 min",
             videoUrl: "",
-            zipUrl: "",
           },
         ],
       },
     ],
-    zipFile: {
-      _id: "zf-and-1",
-      title: "Android Capstone Project Complete Source Code ZIP",
-      fileName: "04-Android-Full-Ecommerce-App.zip",
-      url: "/uploads/courses/1791265800123-2443587.zip",
-      fileSize: "412 MB",
-    },
-    zipFiles: [
-      {
-        _id: "zf-and-1",
-        title: "01: Android Studio Setup & Starter Project ZIP",
-        fileName: "01-Android-Studio-Setup-Starter.zip",
-        url: "/uploads/courses/1791265931186-935533293.zip",
-        fileSize: "583 MB",
-      },
-      {
-        _id: "zf-and-2",
-        title: "02: Jetpack Compose Layouts & Material Design 3 ZIP",
-        fileName: "02-Jetpack-Compose-Layouts.zip",
-        url: "/uploads/courses/1791265885918-768069909.zip",
-        fileSize: "534 MB",
-      },
-      {
-        _id: "zf-and-3",
-        title: "03: Android Retrofit REST API & MVVM Architecture ZIP",
-        fileName: "03-Android-Retrofit-MVVM-App.zip",
-        url: "/uploads/courses/1791265849347-992920259.zip",
-        fileSize: "480 MB",
-      },
-      {
-        _id: "zf-and-4",
-        title: "04: Android Full Capstone E-Commerce App Project ZIP",
-        fileName: "04-Android-Full-Ecommerce-App.zip",
-        url: "/uploads/courses/1791265800123-2443587.zip",
-        fileSize: "412 MB",
-      },
-    ],
-    resources: [
-      {
-        _id: "res-and-1",
-        title: "01: Android Studio Setup & Starter Project ZIP",
-        fileName: "01-Android-Studio-Setup-Starter.zip",
-        url: "/uploads/courses/1791265931186-935533293.zip",
-        fileUrl: "/uploads/courses/1791265931186-935533293.zip",
-        fileSize: "583 MB",
-      },
-      {
-        _id: "res-and-2",
-        title: "02: Jetpack Compose Layouts & Material Design 3 ZIP",
-        fileName: "02-Jetpack-Compose-Layouts.zip",
-        url: "/uploads/courses/1791265885918-768069909.zip",
-        fileUrl: "/uploads/courses/1791265885918-768069909.zip",
-        fileSize: "534 MB",
-      },
-      {
-        _id: "res-and-3",
-        title: "03: Android Retrofit REST API & MVVM Architecture ZIP",
-        fileName: "03-Android-Retrofit-MVVM-App.zip",
-        url: "/uploads/courses/1791265849347-992920259.zip",
-        fileUrl: "/uploads/courses/1791265849347-992920259.zip",
-        fileSize: "480 MB",
-      },
-      {
-        _id: "res-and-4",
-        title: "04: Android Full Capstone E-Commerce App Project ZIP",
-        fileName: "04-Android-Full-Ecommerce-App.zip",
-        url: "/uploads/courses/1791265800123-2443587.zip",
-        fileUrl: "/uploads/courses/1791265800123-2443587.zip",
-        fileSize: "412 MB",
-      },
-    ],
+    zipFile: null,
+    zipFiles: [],
+    resources: [],
   },
 };
 
@@ -698,7 +614,8 @@ function CourseDetails() {
         }
 
         // Ensure Web Development always has its complete Google Drive ZIP resources
-        if (fetchedCourse && (cleanSlug.includes("web") || cleanSlug === "660000000000000000000001" || fetchedCourse.slug === "web-development")) {
+        const isCurrentWeb = cleanSlug.includes("web") || cleanSlug === "660000000000000000000001" || (fetchedCourse && (fetchedCourse.slug === "web-development" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("web"))));
+        if (fetchedCourse && isCurrentWeb) {
           if (!fetchedCourse.zipFiles || fetchedCourse.zipFiles.length === 0) {
             fetchedCourse.zipFiles = WEB_DEV_FALLBACK_DATA.zipFiles;
             fetchedCourse.zipFile = WEB_DEV_FALLBACK_DATA.zipFile;
@@ -711,6 +628,25 @@ function CourseDetails() {
             if (fetchedCourse.zipFile && fetchedCourse.zipFile.url && fetchedCourse.zipFile.url.includes("1Cybrical-WebDev")) {
               fetchedCourse.zipFile.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
             }
+          }
+        } else if (fetchedCourse && !isCurrentWeb) {
+          // STRICT RULE: ONLY Web Development course should show ZIP files!
+          fetchedCourse.zipFiles = [];
+          fetchedCourse.zipFile = null;
+          if (fetchedCourse.resources) {
+            fetchedCourse.resources = fetchedCourse.resources.filter((r) => {
+              const u = (r.url || r.fileUrl || "").toLowerCase();
+              return !u.endsWith(".zip") && !u.includes("drive.google.com");
+            });
+          }
+          if (fetchedCourse.modules) {
+            fetchedCourse.modules.forEach((m) => {
+              (m.lessons || []).forEach((l) => {
+                l.zipUrl = "";
+                l.zipName = "";
+                l.zipSize = "";
+              });
+            });
           }
         }
 
@@ -762,69 +698,78 @@ function CourseDetails() {
     ? course.modules.reduce((t, m) => t + (m.lessons ? m.lessons.length : 0), 0)
     : 0;
 
+  // STRICT RULE: ONLY Web Development course should show ZIP files!
+  const isWebDevCourse =
+    (course.slug && course.slug.toLowerCase().includes("web")) ||
+    (course.title && course.title.toLowerCase().includes("web")) ||
+    (course._id && course._id.toString().includes("000000000000000000000001")) ||
+    (slug && slug.toLowerCase().includes("web"));
+
   // Gather ALL unique ZIP files from zipFiles, resources, zipFile, and all lessons
   const zipMap = new Map();
 
-  // 1. From zipFiles
-  (course.zipFiles || []).forEach((z, i) => {
-    if (z && z.url && !isStaleDummyZip(z.url)) {
-      zipMap.set(z.url, {
-        _id: z._id || `zf-${i}`,
-        title: z.title || `Project ZIP Part ${i + 1}`,
-        fileName: z.fileName || `project-part-${i + 1}.zip`,
-        url: z.url,
-        fileSize: z.fileSize || "ZIP File",
-        isExternal: z.isExternal || isGoogleDriveUrl(z.url),
-      });
-    }
-  });
-
-  // 2. From resources
-  (course.resources || []).forEach((r, i) => {
-    const url = r.url || r.fileUrl;
-    if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || !zipMap.has(url))) {
-      if (!zipMap.has(url)) {
-        zipMap.set(url, {
-          _id: r._id || `res-${i}`,
-          title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
-          fileName: r.fileName || `resource-${i + 1}.zip`,
-          url,
-          fileSize: r.fileSize || "ZIP File",
-          isExternal: r.isExternal || isGoogleDriveUrl(url),
+  if (isWebDevCourse) {
+    // 1. From zipFiles
+    (course.zipFiles || []).forEach((z, i) => {
+      if (z && z.url && !isStaleDummyZip(z.url)) {
+        zipMap.set(z.url, {
+          _id: z._id || `zf-${i}`,
+          title: z.title || `Project ZIP Part ${i + 1}`,
+          fileName: z.fileName || `project-part-${i + 1}.zip`,
+          url: z.url,
+          fileSize: z.fileSize || "ZIP File",
+          isExternal: z.isExternal || isGoogleDriveUrl(z.url),
         });
       }
-    }
-  });
+    });
 
-  // 3. From legacy zipFile
-  if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url) && !zipMap.has(course.zipFile.url)) {
-    zipMap.set(course.zipFile.url, {
-      _id: "main-zip",
-      title: course.zipFile.fileName || "Course Project ZIP",
-      fileName: course.zipFile.fileName || "course-project.zip",
-      url: course.zipFile.url,
-      fileSize: course.zipFile.fileSize || "ZIP Archive",
-      isExternal: course.zipFile.isExternal || isGoogleDriveUrl(course.zipFile.url),
+    // 2. From resources
+    (course.resources || []).forEach((r, i) => {
+      const url = r.url || r.fileUrl;
+      if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || !zipMap.has(url))) {
+        if (!zipMap.has(url)) {
+          zipMap.set(url, {
+            _id: r._id || `res-${i}`,
+            title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
+            fileName: r.fileName || `resource-${i + 1}.zip`,
+            url,
+            fileSize: r.fileSize || "ZIP File",
+            isExternal: r.isExternal || isGoogleDriveUrl(url),
+          });
+        }
+      }
+    });
+
+    // 3. From legacy zipFile
+    if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url) && !zipMap.has(course.zipFile.url)) {
+      zipMap.set(course.zipFile.url, {
+        _id: "main-zip",
+        title: course.zipFile.fileName || "Course Project ZIP",
+        fileName: course.zipFile.fileName || "course-project.zip",
+        url: course.zipFile.url,
+        fileSize: course.zipFile.fileSize || "ZIP Archive",
+        isExternal: course.zipFile.isExternal || isGoogleDriveUrl(course.zipFile.url),
+      });
+    }
+
+    // 4. From any lessons with zipUrl (ignoring stale 179119)
+    (course.modules || []).forEach((m) => {
+      (m.lessons || []).forEach((l) => {
+        if (l.zipUrl && !isStaleDummyZip(l.zipUrl) && !zipMap.has(l.zipUrl)) {
+          zipMap.set(l.zipUrl, {
+            _id: l._id || l.zipUrl,
+            title: `${l.title} (Project ZIP)`,
+            fileName: l.zipName || `${l.title}.zip`,
+            url: l.zipUrl,
+            fileSize: l.zipSize || "Lesson ZIP",
+            isExternal: isGoogleDriveUrl(l.zipUrl),
+          });
+        }
+      });
     });
   }
 
-  // 4. From any lessons with zipUrl (ignoring stale 179119)
-  (course.modules || []).forEach((m) => {
-    (m.lessons || []).forEach((l) => {
-      if (l.zipUrl && !isStaleDummyZip(l.zipUrl) && !zipMap.has(l.zipUrl)) {
-        zipMap.set(l.zipUrl, {
-          _id: l._id || l.zipUrl,
-          title: `${l.title} (Project ZIP)`,
-          fileName: l.zipName || `${l.title}.zip`,
-          url: l.zipUrl,
-          fileSize: l.zipSize || "Lesson ZIP",
-          isExternal: isGoogleDriveUrl(l.zipUrl),
-        });
-      }
-    });
-  });
-
-  const allCourseZips = Array.from(zipMap.values());
+  const allCourseZips = isWebDevCourse ? Array.from(zipMap.values()) : [];
 
   const handleDownloadAllZips = () => {
     if (!allCourseZips || allCourseZips.length === 0) return;
@@ -927,7 +872,7 @@ function CourseDetails() {
                 )}
 
                 {/* LESSON SPECIFIC ZIP DOWNLOAD BUTTON */}
-                {selectedLesson.zipUrl && (
+                {isWebDevCourse && selectedLesson.zipUrl && (
                   <div
                     style={{
                       marginTop: "16px",

@@ -5,7 +5,7 @@ import "./AdminCourses.css";
 
 const ADMIN_DEFAULT_COURSES = [
   {
-    _id: "660000000000000000000001",
+    _id: "660 000000000000000000001",
     title: "Web Development",
     slug: "web-development",
     description: "Complete Full-Stack Web Development: HTML, CSS, JavaScript, React, Node.js & Full Project Source Code ZIPs for each lesson.",

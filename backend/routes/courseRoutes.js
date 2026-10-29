@@ -16,7 +16,7 @@ const FALLBACK_AI_COURSE = {
   title: "Artificial Intelligence (AI)",
   slug: "ai",
   description:
-    "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI. Download full source code and starter ZIPs for lessons.",
+    "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI.",
   category: "Artificial Intelligence",
   level: "Beginner to Advanced",
   duration: "16 Weeks",
@@ -36,9 +36,6 @@ const FALLBACK_AI_COURSE = {
           description: "Introduction to AI bootcamp, collaboration workflow, and environment setup.",
           duration: "30 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791286605286-173949088.zip",
-          zipName: "Course Introduction TEAMWORK.zip",
-          zipSize: "266.07 MB",
         },
       ],
     },
@@ -53,54 +50,13 @@ const FALLBACK_AI_COURSE = {
           description: "Python syntax, control flow, functions, and fundamental data science libraries.",
           duration: "45 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791286656010-391085889.zip",
-          zipName: "Python Fundamentals (Part-1).zip",
-          zipSize: "457.43 MB",
         },
       ],
     },
   ],
-  zipFile: {
-    _id: "zf-ai-2",
-    title: "Python Fundamentals (Part-1).zip",
-    fileName: "Python Fundamentals (Part-1).zip",
-    url: "/uploads/courses/1791286656010-391085889.zip",
-    fileSize: "457.43 MB",
-  },
-  zipFiles: [
-    {
-      _id: "zf-ai-1",
-      title: "Course Introduction TEAMWORK.zip",
-      fileName: "Course Introduction TEAMWORK.zip",
-      url: "/uploads/courses/1791286605286-173949088.zip",
-      fileSize: "266.07 MB",
-    },
-    {
-      _id: "zf-ai-2",
-      title: "Python Fundamentals (Part-1).zip",
-      fileName: "Python Fundamentals (Part-1).zip",
-      url: "/uploads/courses/1791286656010-391085889.zip",
-      fileSize: "457.43 MB",
-    },
-  ],
-  resources: [
-    {
-      _id: "res-ai-1",
-      title: "Course Introduction TEAMWORK.zip",
-      fileName: "Course Introduction TEAMWORK.zip",
-      url: "/uploads/courses/1791286605286-173949088.zip",
-      fileUrl: "/uploads/courses/1791286605286-173949088.zip",
-      fileSize: "266.07 MB",
-    },
-    {
-      _id: "res-ai-2",
-      title: "Python Fundamentals (Part-1).zip",
-      fileName: "Python Fundamentals (Part-1).zip",
-      url: "/uploads/courses/1791286656010-391085889.zip",
-      fileUrl: "/uploads/courses/1791286656010-391085889.zip",
-      fileSize: "457.43 MB",
-    },
-  ],
+  zipFile: null,
+  zipFiles: [],
+  resources: [],
 };
 
 const WEB_DEV_ZIP_COURSE = {
@@ -361,7 +317,7 @@ const FALLBACK_ANDROID_COURSE = {
   title: "Android App Development",
   slug: "android",
   description:
-    "Master Native Android App Development with Kotlin, Jetpack Compose, Android SDK, MVVM Architecture, Room Database, and REST APIs. Includes starter projects & downloadable ZIP files for lessons.",
+    "Master Native Android App Development with Kotlin, Jetpack Compose, Android SDK, MVVM Architecture, Room Database, and REST APIs.",
   category: "Mobile Development",
   level: "Beginner to Advanced",
   duration: "14 Weeks",
@@ -381,9 +337,6 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Install Android Studio, configure Android Virtual Device (AVD), and understand project file hierarchy.",
           duration: "30 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791265931186-935533293.zip",
-          zipName: "01-Android-Studio-Setup-Starter.zip",
-          zipSize: "583 MB",
         },
         {
           _id: "and-les-2",
@@ -391,9 +344,6 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Variables, Null Safety, Lambdas, Coroutines and Asynchronous Kotlin for Android.",
           duration: "45 min",
           videoUrl: "",
-          zipUrl: "",
-          zipName: "",
-          zipSize: "",
         },
       ],
     },
@@ -408,9 +358,6 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Column, Row, Box, Scaffold, LazyColumn and dynamic UI state manipulation.",
           duration: "50 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791265885918-768069909.zip",
-          zipName: "02-Jetpack-Compose-Layouts.zip",
-          zipSize: "534 MB",
         },
         {
           _id: "and-les-4",
@@ -418,9 +365,6 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Remember, MutableState, State Hoisting, and Navigation Component.",
           duration: "45 min",
           videoUrl: "",
-          zipUrl: "",
-          zipName: "",
-          zipSize: "",
         },
       ],
     },
@@ -435,9 +379,6 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Fetching JSON data, Moshi/Gson serialization, error handling, and internet permissions.",
           duration: "55 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791265849347-992920259.zip",
-          zipName: "03-Android-Retrofit-MVVM-App.zip",
-          zipSize: "480 MB",
         },
         {
           _id: "and-les-6",
@@ -445,9 +386,6 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Entities, DAOs, TypeConverters, LiveData/Flow, and Preferences DataStore.",
           duration: "50 min",
           videoUrl: "",
-          zipUrl: "",
-          zipName: "",
-          zipSize: "",
         },
       ],
     },
@@ -462,9 +400,6 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Firebase Auth, Firestore, Push Notifications with FCM, and Cloud Storage.",
           duration: "65 min",
           videoUrl: "",
-          zipUrl: "/uploads/courses/1791265800123-2443587.zip",
-          zipName: "04-Android-Full-Ecommerce-App.zip",
-          zipSize: "412 MB",
         },
         {
           _id: "and-les-8",
@@ -472,84 +407,13 @@ const FALLBACK_ANDROID_COURSE = {
           description: "Keystore generation, signing, optimization, and deploying to Google Play Console.",
           duration: "40 min",
           videoUrl: "",
-          zipUrl: "",
-          zipName: "",
-          zipSize: "",
         },
       ],
     },
   ],
-  zipFile: {
-    _id: "zf-and-1",
-    title: "Android Capstone Project Complete Source Code ZIP",
-    fileName: "04-Android-Full-Ecommerce-App.zip",
-    url: "/uploads/courses/1791265800123-2443587.zip",
-    fileSize: "412 MB",
-  },
-  zipFiles: [
-    {
-      _id: "zf-and-1",
-      title: "01: Android Studio Setup & Starter Project ZIP",
-      fileName: "01-Android-Studio-Setup-Starter.zip",
-      url: "/uploads/courses/1791265931186-935533293.zip",
-      fileSize: "583 MB",
-    },
-    {
-      _id: "zf-and-2",
-      title: "02: Jetpack Compose Layouts & Material Design 3 ZIP",
-      fileName: "02-Jetpack-Compose-Layouts.zip",
-      url: "/uploads/courses/1791265885918-768069909.zip",
-      fileSize: "534 MB",
-    },
-    {
-      _id: "zf-and-3",
-      title: "03: Android Retrofit REST API & MVVM Architecture ZIP",
-      fileName: "03-Android-Retrofit-MVVM-App.zip",
-      url: "/uploads/courses/1791265849347-992920259.zip",
-      fileSize: "480 MB",
-    },
-    {
-      _id: "zf-and-4",
-      title: "04: Android Full Capstone E-Commerce App Project ZIP",
-      fileName: "04-Android-Full-Ecommerce-App.zip",
-      url: "/uploads/courses/1791265800123-2443587.zip",
-      fileSize: "412 MB",
-    },
-  ],
-  resources: [
-    {
-      _id: "res-and-1",
-      title: "01: Android Studio Setup & Starter Project ZIP",
-      fileName: "01-Android-Studio-Setup-Starter.zip",
-      url: "/uploads/courses/1791265931186-935533293.zip",
-      fileUrl: "/uploads/courses/1791265931186-935533293.zip",
-      fileSize: "583 MB",
-    },
-    {
-      _id: "res-and-2",
-      title: "02: Jetpack Compose Layouts & Material Design 3 ZIP",
-      fileName: "02-Jetpack-Compose-Layouts.zip",
-      url: "/uploads/courses/1791265885918-768069909.zip",
-      fileUrl: "/uploads/courses/1791265885918-768069909.zip",
-      fileSize: "534 MB",
-    },
-    {
-      _id: "res-and-3",
-      title: "03: Android Retrofit REST API & MVVM Architecture ZIP",
-      fileName: "03-Android-Retrofit-MVVM-App.zip",
-      url: "/uploads/courses/1791265849347-992920259.zip",
-      fileUrl: "/uploads/courses/1791265849347-992920259.zip",
-      fileSize: "480 MB",
-    },
-    {
-      _id: "res-and-4",
-      title: "04: Android Full Capstone E-Commerce App Project ZIP",
-      fileName: "04-Android-Full-Ecommerce-App.zip",
-      url: "/uploads/courses/1791265800123-2443587.zip",
-      fileUrl: "/uploads/courses/1791265800123-2443587.zip",
-      fileSize: "412 MB",
-    },
-  ],
+  zipFile: null,
+  zipFiles: [],
+  resources: [],
 };
 
 const SYSTEM_DEFAULT_COURSES = [
@@ -890,6 +754,27 @@ const sanitizeCourseZips = (c) => {
         });
       }
     }
+  } else {
+    // ONLY Web Development course should show/have ZIP files
+    c.zipFiles = [];
+    c.zipFile = { url: "", fileName: "", fileSize: "" };
+    if (c.resources) {
+      c.resources = c.resources.filter((r) => {
+        const u = (r.url || r.fileUrl || "").toLowerCase();
+        const fn = (r.fileName || "").toLowerCase();
+        return !u.endsWith(".zip") && !fn.endsWith(".zip") && !u.includes("drive.google.com");
+      });
+    }
+    if (c.modules) {
+      c.modules.forEach((m) => {
+        (m.lessons || []).forEach((l) => {
+          l.zipUrl = "";
+          l.zipName = "";
+          l.zipSize = "";
+        });
+      });
+    }
+    return c;
   }
 
   if (c.zipFiles) {

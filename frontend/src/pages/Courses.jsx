@@ -47,7 +47,7 @@ const defaultCourses = [
     slug: "ai",
     title: "Artificial Intelligence (AI)",
     description:
-      "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI with downloadable starter project ZIPs.",
+      "Master Modern Artificial Intelligence, Machine Learning, Deep Learning, Neural Networks, and Generative AI.",
     level: "Beginner to Advanced",
     duration: "16 Weeks",
     icon: "🤖",

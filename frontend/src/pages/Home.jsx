@@ -703,7 +703,9 @@ function Home() {
                     </div>
 
                     <div className="course-card-action">
-                      <span className="course-zip-notice">📦 Includes Project ZIPs</span>
+                      {(course.slug?.toLowerCase().includes("web") || course.title?.toLowerCase().includes("web")) && (
+                        <span className="course-zip-notice">📦 Includes Project ZIPs</span>
+                      )}
                       <Link to={`/courses/${course.slug}`} className="course-enroll-btn">
                         View Course ↗
                       </Link>
