@@ -461,6 +461,46 @@ const FALLBACK_COURSES_MAP = {
   },
 };
 
+const getVideoEmbedInfo = (url) => {
+  if (!url || typeof url !== "string") return null;
+  const trimmed = url.trim();
+
+  // YouTube match (watch, embed, short url)
+  const ytMatch = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+  if (ytMatch && ytMatch[1]) {
+    return {
+      type: "iframe",
+      src: `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=0&rel=0`,
+    };
+  }
+
+  // Google Drive match (/file/d/.../view or id=...)
+  if (trimmed.includes("drive.google.com")) {
+    const fileIdMatch = trimmed.match(/\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/id=([a-zA-Z0-9_-]+)/);
+    if (fileIdMatch && fileIdMatch[1]) {
+      return {
+        type: "iframe",
+        src: `https://drive.google.com/file/d/${fileIdMatch[1]}/preview`,
+      };
+    }
+  }
+
+  // Vimeo match
+  const vimeoMatch = trimmed.match(/vimeo\.com\/(?:video\/)?([0-9]+)/);
+  if (vimeoMatch && vimeoMatch[1]) {
+    return {
+      type: "iframe",
+      src: `https://player.vimeo.com/video/${vimeoMatch[1]}`,
+    };
+  }
+
+  // Direct video file or server path
+  return {
+    type: "video",
+    src: getAssetUrl(trimmed),
+  };
+};
+
 function CourseDetails() {
   const { slug } = useParams();
 
@@ -847,15 +887,33 @@ function CourseDetails() {
 
                 {selectedLesson.videoUrl ? (
                   <div className="video-player-wrapper">
-                    <video
-                      controls
-                      controlsList="nodownload"
-                      className="lesson-video-player"
-                      src={getAssetUrl(selectedLesson.videoUrl)}
-                      key={selectedLesson.videoUrl}
-                    >
-                      Your browser does not support video playback.
-                    </video>
+                    {(() => {
+                      const embed = getVideoEmbedInfo(selectedLesson.videoUrl);
+                      if (embed?.type === "iframe") {
+                        return (
+                          <iframe
+                            className="lesson-video-player"
+                            src={embed.src}
+                            title={selectedLesson.title}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ width: "100%", height: "460px", minHeight: "360px", borderRadius: "12px", border: "none", background: "#000" }}
+                          />
+                        );
+                      }
+                      return (
+                        <video
+                          controls
+                          controlsList="nodownload"
+                          className="lesson-video-player"
+                          src={embed?.src || getAssetUrl(selectedLesson.videoUrl)}
+                          key={selectedLesson.videoUrl}
+                        >
+                          Your browser does not support video playback.
+                        </video>
+                      );
+                    })()}
                   </div>
                 ) : (
                   <div className="video-empty-state" style={{ minHeight: "180px", padding: "30px 20px" }}>

@@ -350,6 +350,8 @@ function AdminCourseContent() {
   const [lessonDescription, setLessonDescription] = useState("");
   const [lessonDuration, setLessonDuration] = useState("");
   const [lessonIsPreview, setLessonIsPreview] = useState(false);
+  const [lessonVideoMode, setLessonVideoMode] = useState("url"); // "url" | "file"
+  const [lessonVideoUrl, setLessonVideoUrl] = useState("");
   const [videoFile, setVideoFile] = useState(null);
   const [uploadingLesson, setUploadingLesson] = useState(false);
 
@@ -1150,11 +1152,13 @@ function AdminCourseContent() {
     try {
       let uploadedVideoUrl = "";
 
-      if (videoFile) {
+      if (lessonVideoMode === "file" && videoFile) {
         const vData = await uploadVideoDirect(videoFile);
         if (vData) {
           uploadedVideoUrl = vData.videoUrl || vData.fileUrl;
         }
+      } else if (lessonVideoUrl.trim()) {
+        uploadedVideoUrl = lessonVideoUrl.trim();
       }
 
       const newLesson = {
@@ -1204,6 +1208,7 @@ function AdminCourseContent() {
       setLessonDescription("");
       setLessonDuration("");
       setLessonIsPreview(false);
+      setLessonVideoUrl("");
       setVideoFile(null);
 
       const videoInput = document.getElementById("lesson-video");
@@ -1873,23 +1878,86 @@ function AdminCourseContent() {
                 </div>
               </div>
 
-              {/* VIDEO UPLOAD */}
-              <div className="video-upload-box">
-                <label htmlFor="lesson-video">
-                  🎬 Choose Lesson Video File (.mp4, .webm, .mov, .mkv)
+              {/* VIDEO SOURCE SELECTOR (URL vs FILE) */}
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", fontSize: "13px", color: "#e2e8f0" }}>
+                  Video Source:
                 </label>
-                <input
-                  id="lesson-video"
-                  type="file"
-                  accept="video/mp4,video/webm,video/quicktime,video/x-matroska"
-                  onChange={(e) => setVideoFile(e.target.files[0] || null)}
-                />
-                {videoFile && (
-                  <p className="selected-video">
-                    🎬 {videoFile.name} • {(videoFile.size / (1024 * 1024)).toFixed(2)} MB
-                  </p>
-                )}
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <button
+                    type="button"
+                    onClick={() => setLessonVideoMode("url")}
+                    style={{
+                      flex: 1,
+                      minWidth: "160px",
+                      padding: "9px 14px",
+                      borderRadius: "8px",
+                      fontWeight: "700",
+                      fontSize: "13px",
+                      cursor: "pointer",
+                      border: lessonVideoMode === "url" ? "2px solid #38bdf8" : "1px solid rgba(255,255,255,0.12)",
+                      background: lessonVideoMode === "url" ? "rgba(56, 189, 248, 0.18)" : "rgba(255,255,255,0.04)",
+                      color: lessonVideoMode === "url" ? "#38bdf8" : "rgba(255,255,255,0.7)",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    🌐 Video URL / Link (YouTube, Drive, MP4)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLessonVideoMode("file")}
+                    style={{
+                      flex: 1,
+                      minWidth: "160px",
+                      padding: "9px 14px",
+                      borderRadius: "8px",
+                      fontWeight: "700",
+                      fontSize: "13px",
+                      cursor: "pointer",
+                      border: lessonVideoMode === "file" ? "2px solid #4ade80" : "1px solid rgba(255,255,255,0.12)",
+                      background: lessonVideoMode === "file" ? "rgba(74, 222, 128, 0.18)" : "rgba(255,255,255,0.04)",
+                      color: lessonVideoMode === "file" ? "#4ade80" : "rgba(255,255,255,0.7)",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    💻 Laptop Se Video Upload (.mp4)
+                  </button>
+                </div>
               </div>
+
+              {lessonVideoMode === "url" ? (
+                <div className="form-group">
+                  <label>Video URL / Embed Link (YouTube, Google Drive, Direct MP4 URL)</label>
+                  <input
+                    type="url"
+                    placeholder="https://www.youtube.com/watch?v=... or https://drive.google.com/file/d/.../view"
+                    value={lessonVideoUrl}
+                    onChange={(e) => setLessonVideoUrl(e.target.value)}
+                  />
+                  {lessonVideoUrl && (
+                    <p style={{ margin: "6px 0 0", fontSize: "12px", color: "#38bdf8", fontWeight: "600" }}>
+                      🔗 Video link detected! Students will be able to play this video directly in the course viewer.
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <div className="video-upload-box">
+                  <label htmlFor="lesson-video">
+                    🎬 Choose Lesson Video File (.mp4, .webm, .mov, .mkv)
+                  </label>
+                  <input
+                    id="lesson-video"
+                    type="file"
+                    accept="video/mp4,video/webm,video/quicktime,video/x-matroska"
+                    onChange={(e) => setVideoFile(e.target.files[0] || null)}
+                  />
+                  {videoFile && (
+                    <p className="selected-video">
+                      🎬 {videoFile.name} • {(videoFile.size / (1024 * 1024)).toFixed(2)} MB
+                    </p>
+                  )}
+                </div>
+              )}
 
               <button
                 type="submit"
