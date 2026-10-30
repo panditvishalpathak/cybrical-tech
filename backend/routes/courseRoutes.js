@@ -727,13 +727,18 @@ const getCourseDoc = async (targetId) => {
       (course._id && course._id.toString().includes("000000000000000000000001"));
 
     if (isWebDev) {
+      if (!course.modules || course.modules.length === 0) {
+        course.modules = WEB_DEV_ZIP_COURSE.modules;
+        modified = true;
+      }
+
       const hasValidZips =
         course.zipFiles &&
         course.zipFiles.some(
           (z) => z && z.url && z.url.trim() && !z.url.includes("179119")
         );
 
-      if (!hasValidZips) {
+      if (!hasValidZips || !course.zipFiles || course.zipFiles.length < 3) {
         course.zipFiles = WEB_DEV_ZIP_COURSE.zipFiles;
         course.zipFile = WEB_DEV_ZIP_COURSE.zipFile;
         course.resources = WEB_DEV_ZIP_COURSE.resources;
@@ -869,6 +874,10 @@ const sanitizeCourseZips = (c) => {
       }
     }
 
+    if (!c.modules || c.modules.length === 0) {
+      c.modules = WEB_DEV_ZIP_COURSE.modules;
+    }
+
     if (c.modules) {
       c.modules.forEach((m, mIdx) => {
         (m.lessons || []).forEach((l, lIdx) => {
@@ -929,7 +938,7 @@ const getFallbackCourse = (targetId) => {
   );
   if (found) return sanitizeCourseZips(found);
 
-  if (clean.includes("web") || clean === "660000000000000000000001") {
+  if (clean.includes("web") || clean === "660000000000000000000001" || clean === "6ac3757e77cb85107a5ab348") {
     return sanitizeCourseZips(storeCourses.find((c) => (c.slug || "").includes("web")) || WEB_DEV_ZIP_COURSE);
   }
   if (clean.includes("ai") || clean.includes("artificial") || clean === "660000000000000000000004") {
@@ -1220,13 +1229,13 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
       };
 
       course.zipFiles = course.zipFiles || [];
-      // Remove any existing duplicate with same url
-      course.zipFiles = course.zipFiles.filter((z) => z.url !== directUrl);
+      // Remove only exact duplicates with same url AND same title
+      course.zipFiles = course.zipFiles.filter((z) => !(z.url === directUrl && z.title === zipTitle));
       course.zipFiles.push(newZipObj);
       course.markModified("zipFiles");
 
       course.resources = course.resources || [];
-      course.resources = course.resources.filter((r) => r.url !== directUrl && r.fileUrl !== directUrl);
+      course.resources = course.resources.filter((r) => !((r.url === directUrl || r.fileUrl === directUrl) && r.title === zipTitle));
       course.resources.push({
         title: zipTitle,
         url: directUrl,
@@ -1250,7 +1259,7 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
     // Fallback if DB offline or mock course
     const fallbackCourse = getFallbackCourse(targetId);
     fallbackCourse.zipFiles = fallbackCourse.zipFiles || [];
-    fallbackCourse.zipFiles = fallbackCourse.zipFiles.filter((z) => z.url !== directUrl);
+    fallbackCourse.zipFiles = fallbackCourse.zipFiles.filter((z) => !(z.url === directUrl && z.title === zipTitle));
     fallbackCourse.zipFiles.push(newZipObj);
     fallbackCourse.zipFile = newZipObj;
     saveSingleFallbackCourse(fallbackCourse);

@@ -646,9 +646,10 @@ function CourseDetails() {
             const remoteZips = (fetchedCourse.zipFiles || []).filter((z) => z && z.url && !isStaleDummyZip(z.url));
             const localZips = (savedLocal.zipFiles || []).filter((z) => z && z.url && !isStaleDummyZip(z.url));
             const zipMergeMap = new Map();
-            remoteZips.forEach((z) => zipMergeMap.set(z.url, z));
-            localZips.forEach((z) => {
-              if (!zipMergeMap.has(z.url)) zipMergeMap.set(z.url, z);
+            remoteZips.forEach((z, i) => zipMergeMap.set(z._id || `remote-${z.title || ""}-${i}`, z));
+            localZips.forEach((z, i) => {
+              const k = z._id || `local-${z.title || ""}-${i}`;
+              if (!zipMergeMap.has(k)) zipMergeMap.set(k, z);
             });
             fetchedCourse.zipFiles = Array.from(zipMergeMap.values());
 
@@ -661,16 +662,25 @@ function CourseDetails() {
           }
         }
 
+        // Ensure Web Development always has its complete Google Drive ZIP resources
+        const isCurrentWeb =
+          cleanSlug.includes("web") ||
+          cleanSlug === "660000000000000000000001" ||
+          cleanSlug === "6ac3757e77cb85107a5ab348" ||
+          (fetchedCourse && (fetchedCourse.slug === "web-development" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("web"))));
+
         // Ensure modules are always present if empty
         if (fetchedCourse && (!fetchedCourse.modules || fetchedCourse.modules.length === 0)) {
-          const fallbackMod = FALLBACK_COURSES_MAP[cleanSlug]?.modules || FALLBACK_COURSES_MAP[slug]?.modules || [];
-          if (fallbackMod && fallbackMod.length > 0) {
-            fetchedCourse.modules = fallbackMod;
+          if (isCurrentWeb) {
+            fetchedCourse.modules = WEB_DEV_FALLBACK_DATA.modules;
+          } else {
+            const fallbackMod = FALLBACK_COURSES_MAP[cleanSlug]?.modules || FALLBACK_COURSES_MAP[slug]?.modules || [];
+            if (fallbackMod && fallbackMod.length > 0) {
+              fetchedCourse.modules = fallbackMod;
+            }
           }
         }
 
-        // Ensure Web Development always has its complete Google Drive ZIP resources
-        const isCurrentWeb = cleanSlug.includes("web") || cleanSlug === "660000000000000000000001" || (fetchedCourse && (fetchedCourse.slug === "web-development" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("web"))));
         if (fetchedCourse && isCurrentWeb) {
           const hasValidZips =
             fetchedCourse.zipFiles &&

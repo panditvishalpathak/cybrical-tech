@@ -528,29 +528,35 @@ function AdminCourseContent() {
         const remoteZips = (resolvedCourse.zipFiles || []).filter((z) => z && z.url && !isStaleDummyZip(z.url));
         const localZips = (savedLocal.zipFiles || []).filter((z) => z && z.url && !isStaleDummyZip(z.url));
         const zipMergeMap = new Map();
-        remoteZips.forEach((z) => zipMergeMap.set(z.url, z));
-        localZips.forEach((z) => {
-          if (!zipMergeMap.has(z.url)) zipMergeMap.set(z.url, z);
+        remoteZips.forEach((z, i) => zipMergeMap.set(z._id || `remote-${z.title || ""}-${i}`, z));
+        localZips.forEach((z, i) => {
+          const k = z._id || `local-${z.title || ""}-${i}`;
+          if (!zipMergeMap.has(k)) zipMergeMap.set(k, z);
         });
         resolvedCourse.zipFiles = Array.from(zipMergeMap.values());
       }
     }
 
     if (resolvedCourse) {
-      if (!resolvedCourse.modules || resolvedCourse.modules.length === 0) {
-        const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
-        if (fallback?.modules && fallback.modules.length > 0) {
-          resolvedCourse.modules = fallback.modules;
-        }
-      }
-
       // Ensure WebDev zipFiles are populated with exact Google Drive link
       const isWebCourse =
         cleanId.includes("web") ||
         cleanId === "660000000000000000000001" ||
+        cleanId === "6ac3757e77cb85107a5ab348" ||
         cleanId === "000000000000000000000001" ||
         resolvedCourse.slug === "web-development" ||
         (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("web"));
+
+      if (!resolvedCourse.modules || resolvedCourse.modules.length === 0) {
+        if (isWebCourse) {
+          resolvedCourse.modules = WEB_DEV_FALLBACK_DATA.modules;
+        } else {
+          const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
+          if (fallback?.modules && fallback.modules.length > 0) {
+            resolvedCourse.modules = fallback.modules;
+          }
+        }
+      }
 
       if (isWebCourse) {
         const hasValidZips =
