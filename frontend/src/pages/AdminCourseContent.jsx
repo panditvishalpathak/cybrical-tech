@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getApiUrl, getAssetUrl, getDownloadUrl, formatGoogleDriveUrl } from "../config/api";
+import { getApiUrl, getAssetUrl, getDownloadUrl, formatGoogleDriveUrl, isGoogleDriveFolder, getGoogleDriveViewUrl, getGoogleDriveDownloadUrl, isGoogleDriveUrl } from "../config/api";
 import "./AdminCourseContent.css";
 
 const AI_FALLBACK_DATA = {
@@ -70,9 +70,9 @@ const WEB_DEV_FALLBACK_DATA = {
       title: "Module 1: HTML5 & Modern Responsive CSS",
       description: "Foundations of modern web layout, semantic elements, and responsive design with project ZIP archives.",
       lessons: [
-        { _id: "web-les-1", title: "Lesson 1: HTML5 Semantic Structure & Starter Project", duration: "35 min", videoUrl: "", zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view", zipName: "01-HTML5-CSS3-Responsive-Starter.zip", zipSize: "185 MB" },
-        { _id: "web-les-2", title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts", duration: "45 min", videoUrl: "", zipSize: "507 MB" },
-        { _id: "web-les-3", title: "Lesson 3: Complete Responsive Agency Landing Page", duration: "50 min", videoUrl: "", zipSize: "185 MB" },
+        { _id: "web-les-1", title: "Lesson 1: HTML5 Semantic Structure & Starter Project", duration: "35 min", videoUrl: "", zipUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr", zipName: "Day 1 WELCOME + HTML.zip", zipSize: "506.7 MB" },
+        { _id: "web-les-2", title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts", duration: "45 min", videoUrl: "", zipUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo", zipName: "Day 2 HTML.zip", zipSize: "350.6 MB" },
+        { _id: "web-les-3", title: "Lesson 3: Complete Responsive Agency Landing Page", duration: "50 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "Web-Development-Complete-Projects", zipSize: "Google Drive Folder" },
       ],
     },
     {
@@ -80,9 +80,9 @@ const WEB_DEV_FALLBACK_DATA = {
       title: "Module 2: JavaScript DOM & Interactive Applications",
       description: "Master core JavaScript, DOM manipulation, asynchronous programming, APIs, and interactive applications.",
       lessons: [
-        { _id: "web-les-4", title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control", duration: "55 min", videoUrl: "", zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view", zipName: "02-JavaScript-DOM-Async-Projects.zip", zipSize: "351 MB" },
-        { _id: "web-les-5", title: "Lesson 5: Async JS, REST APIs & Live Weather Application", duration: "60 min", videoUrl: "", zipSize: "436 MB" },
-        { _id: "web-les-6", title: "Lesson 6: Interactive CRUD App with LocalStorage", duration: "50 min", videoUrl: "", zipSize: "707 MB" },
+        { _id: "web-les-4", title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control", duration: "55 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "02-JavaScript-DOM-Async-Projects.zip", zipSize: "Google Drive Cloud" },
+        { _id: "web-les-5", title: "Lesson 5: Async JS, REST APIs & Live Weather Application", duration: "60 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "02-JavaScript-DOM-Async-Projects.zip", zipSize: "Google Drive Cloud" },
+        { _id: "web-les-6", title: "Lesson 6: Interactive CRUD App with LocalStorage", duration: "50 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "02-JavaScript-DOM-Async-Projects.zip", zipSize: "Google Drive Cloud" },
       ],
     },
     {
@@ -90,9 +90,9 @@ const WEB_DEV_FALLBACK_DATA = {
       title: "Module 3: React.js & Modern Frontend Architecture",
       description: "Build robust single-page applications using React components, hooks, routing, and state management.",
       lessons: [
-        { _id: "web-les-7", title: "Lesson 7: React Setup, JSX, Components & Props", duration: "45 min", videoUrl: "", zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view", zipName: "03-React-Ecommerce-App-Source.zip", zipSize: "586 MB" },
-        { _id: "web-les-8", title: "Lesson 8: React Hooks (useState, useEffect) & Context API", duration: "55 min", videoUrl: "", zipSize: "356 MB" },
-        { _id: "web-les-9", title: "Lesson 9: Full E-Commerce Product Catalog with Cart", duration: "65 min", videoUrl: "", zipSize: "301 MB" },
+        { _id: "web-les-7", title: "Lesson 7: React Setup, JSX, Components & Props", duration: "45 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "03-React-Ecommerce-App-Source.zip", zipSize: "Google Drive Cloud" },
+        { _id: "web-les-8", title: "Lesson 8: React Hooks (useState, useEffect) & Context API", duration: "55 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "03-React-Ecommerce-App-Source.zip", zipSize: "Google Drive Cloud" },
+        { _id: "web-les-9", title: "Lesson 9: Full E-Commerce Product Catalog with Cart", duration: "65 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "03-React-Ecommerce-App-Source.zip", zipSize: "Google Drive Cloud" },
       ],
     },
     {
@@ -100,63 +100,63 @@ const WEB_DEV_FALLBACK_DATA = {
       title: "Module 4: Full-Stack Backend, Database & Deployment",
       description: "Build RESTful APIs with Node.js, Express, MongoDB, and deploy full-stack applications to cloud servers.",
       lessons: [
-        { _id: "web-les-10", title: "Lesson 10: Node.js & Express REST API Architecture", duration: "50 min", videoUrl: "", zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view", zipName: "04-FullStack-MERN-Capstone-Project.zip", zipSize: "420 MB" },
-        { _id: "web-les-11", title: "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth", duration: "60 min", videoUrl: "", zipSize: "197 MB" },
-        { _id: "web-les-12", title: "Lesson 12: Full Stack Production Deployment & CI/CD", duration: "60 min", videoUrl: "", zipSize: "333 MB" },
+        { _id: "web-les-10", title: "Lesson 10: Node.js & Express REST API Architecture", duration: "50 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "04-FullStack-MERN-Capstone-Project.zip", zipSize: "Google Drive Cloud" },
+        { _id: "web-les-11", title: "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth", duration: "60 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "04-FullStack-MERN-Capstone-Project.zip", zipSize: "Google Drive Cloud" },
+        { _id: "web-les-12", title: "Lesson 12: Full Stack Production Deployment & CI/CD", duration: "60 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "04-FullStack-MERN-Capstone-Project.zip", zipSize: "Google Drive Cloud" },
       ],
     },
   ],
   zipFile: {
-    _id: "zf-wd-main",
-    title: "Web Development Complete Course Project & Source Code (Google Drive)",
-    fileName: "Web-Development-Complete-Projects.zip",
-    url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-    fileSize: "Google Drive Cloud Folder",
+    _id: "zf-wd-drive-folder",
+    title: "Web Development Complete Course Project & Source Code (Google Drive Folder)",
+    fileName: "Web-Development-Google-Drive-Projects",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+    fileSize: "Google Drive Folder",
     isExternal: true,
     source: "Google Drive",
   },
   zipFiles: [
     {
-      _id: "zf-wd-main",
-      title: "01: Web Development Complete Project & Source Code (Google Drive)",
-      fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "zf-wd-drive-folder",
+      title: "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
+      fileName: "Web-Development-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-1",
-      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "zf-wd-day1",
+      title: "📦 Day 1: WELCOME + HTML5 Starter Kit (ZIP)",
+      fileName: "Day 1 WELCOME + HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-2",
-      title: "03: JavaScript DOM & Async REST API Projects ZIP",
+      _id: "zf-wd-day2",
+      title: "📦 Day 2: HTML & CSS Projects Complete (ZIP)",
+      fileName: "Day 2 HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileSize: "350.6 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-day3",
+      title: "📦 Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-3",
-      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
-      fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "zf-wd-4",
-      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
+      _id: "zf-wd-day4",
+      title: "📦 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -164,51 +164,51 @@ const WEB_DEV_FALLBACK_DATA = {
   ],
   resources: [
     {
-      _id: "res-wd-main",
-      title: "Web Development Complete Course Project & Source Code (Google Drive)",
-      fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "res-wd-drive-folder",
+      title: "Web Development Complete Project & Source Code (Google Drive Folder)",
+      fileName: "Web-Development-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-1",
-      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "res-wd-day1",
+      title: "Day 1: WELCOME + HTML5 Starter Kit (ZIP)",
+      fileName: "Day 1 WELCOME + HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-2",
-      title: "03: JavaScript DOM & Async REST API Projects ZIP",
+      _id: "res-wd-day2",
+      title: "Day 2: HTML & CSS Projects Complete (ZIP)",
+      fileName: "Day 2 HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileSize: "350.6 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-day3",
+      title: "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-3",
-      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
-      fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "res-wd-4",
-      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
+      _id: "res-wd-day4",
+      title: "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -559,19 +559,22 @@ function AdminCourseContent() {
             (z) => z && z.url && z.url.trim() && !isStaleDummyZip(z.url)
           );
 
-        if (!hasValidZips) {
+        if (!hasValidZips || (resolvedCourse.zipFiles && resolvedCourse.zipFiles.length < 3)) {
           resolvedCourse.zipFiles = WEB_DEV_FALLBACK_DATA.zipFiles;
           resolvedCourse.zipFile = WEB_DEV_FALLBACK_DATA.zipFile;
           resolvedCourse.resources = WEB_DEV_FALLBACK_DATA.resources;
         } else {
-          resolvedCourse.zipFiles = resolvedCourse.zipFiles.map((z) => ({
-            ...z,
-            url: (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")))
-              ? "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-              : (z ? z.url : ""),
-          }));
-          if (resolvedCourse.zipFile && resolvedCourse.zipFile.url && (resolvedCourse.zipFile.url.includes("1Cybrical-WebDev") || resolvedCourse.zipFile.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
-            resolvedCourse.zipFile.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+          resolvedCourse.zipFiles = resolvedCourse.zipFiles.map((z) => {
+            let u = z ? (z.url || z.fileUrl || "") : "";
+            if (u.includes("1Cybrical-WebDev") || (u.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && u.includes("/file/d/"))) {
+              u = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+            }
+            return { ...z, url: u };
+          });
+          if (resolvedCourse.zipFile && resolvedCourse.zipFile.url) {
+            if (resolvedCourse.zipFile.url.includes("1Cybrical-WebDev") || (resolvedCourse.zipFile.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && resolvedCourse.zipFile.url.includes("/file/d/"))) {
+              resolvedCourse.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+            }
           }
         }
       } else {
@@ -1362,23 +1365,26 @@ function AdminCourseContent() {
 
   if (isWebDevCourse) {
     (course.zipFiles || []).forEach((z, i) => {
-      if (z && z.url && !isStaleDummyZip(z.url)) {
-        zipMap.set(z.url, {
+      const u = z && (z.url || z.fileUrl);
+      if (u && !isStaleDummyZip(u)) {
+        const key = z._id || `zf-${i}-${z.title || u}`;
+        zipMap.set(key, {
           _id: z._id || `zf-${i}`,
           title: z.title || `Project ZIP Part ${i + 1}`,
           fileName: z.fileName || `project-part-${i + 1}.zip`,
-          url: z.url,
+          url: u,
           fileSize: z.fileSize || "",
-          isExternal: z.isExternal || z.url.includes("drive.google.com") || z.url.includes("google"),
+          isExternal: z.isExternal || u.includes("drive.google.com") || u.includes("google"),
         });
       }
     });
 
     (course.resources || []).forEach((r, i) => {
       const url = r.url || r.fileUrl;
-      if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || !zipMap.has(url))) {
-        if (!zipMap.has(url)) {
-          zipMap.set(url, {
+      if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
+        const key = r._id || `res-${i}-${r.title || url}`;
+        if (!zipMap.has(key)) {
+          zipMap.set(key, {
             _id: r._id || `res-${i}`,
             title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
             fileName: r.fileName || `resource-${i + 1}.zip`,
@@ -1390,21 +1396,25 @@ function AdminCourseContent() {
       }
     });
 
-    if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url) && !zipMap.has(course.zipFile.url)) {
-      zipMap.set(course.zipFile.url, {
-        _id: "main-zip",
-        title: course.zipFile.fileName || "Course Project ZIP",
-        fileName: course.zipFile.fileName || "course-project.zip",
-        url: course.zipFile.url,
-        fileSize: course.zipFile.fileSize || "",
-        isExternal: course.zipFile.isExternal || course.zipFile.url.includes("drive.google.com") || course.zipFile.url.includes("google"),
-      });
+    if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url)) {
+      const u = course.zipFile.url;
+      const key = course.zipFile._id || `main-zip-${u}`;
+      if (!zipMap.has(key)) {
+        zipMap.set(key, {
+          _id: "main-zip",
+          title: course.zipFile.title || course.zipFile.fileName || "Course Project ZIP",
+          fileName: course.zipFile.fileName || "course-project.zip",
+          url: u,
+          fileSize: course.zipFile.fileSize || "",
+          isExternal: course.zipFile.isExternal || u.includes("drive.google.com") || u.includes("google"),
+        });
+      }
     }
 
     if (zipMap.size === 0) {
       (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
         if (z && z.url) {
-          zipMap.set(z.url, {
+          zipMap.set(z._id || `zf-${i}`, {
             _id: z._id || `zf-${i}`,
             title: z.title || `Project ZIP Part ${i + 1}`,
             fileName: z.fileName || `project-part-${i + 1}.zip`,
@@ -1508,16 +1518,28 @@ function AdminCourseContent() {
                   </div>
 
                   <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-                    <a
-                      href={getDownloadUrl(z.url, z.fileName)}
-                      download={z.fileName || `project-${idx + 1}.zip`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="download-zip-link"
-                      style={{ padding: "7px 14px", background: "#16a34a", color: "#fff", textDecoration: "none", fontWeight: "700", borderRadius: "8px", fontSize: "12px" }}
-                    >
-                      Download ⬇
-                    </a>
+                    {isGoogleDriveFolder(z.url) ? (
+                      <a
+                        href={getGoogleDriveViewUrl(z.url)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="download-zip-link"
+                        style={{ padding: "7px 14px", background: "linear-gradient(135deg, #3b82f6, #2563eb)", color: "#fff", textDecoration: "none", fontWeight: "700", borderRadius: "8px", fontSize: "12px" }}
+                      >
+                        📁 Open Drive Folder ↗
+                      </a>
+                    ) : (
+                      <a
+                        href={isGoogleDriveUrl(z.url) ? (getGoogleDriveDownloadUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName)}
+                        download={z.fileName || `project-${idx + 1}.zip`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="download-zip-link"
+                        style={{ padding: "7px 14px", background: "#16a34a", color: "#fff", textDecoration: "none", fontWeight: "700", borderRadius: "8px", fontSize: "12px" }}
+                      >
+                        Download ⬇
+                      </a>
+                    )}
                     <button
                       type="button"
                       onClick={() => handleDeleteSpecificZip(z)}

@@ -24,6 +24,11 @@ export const isGoogleDriveUrl = (url = "") => {
   return lower.includes("drive.google.com") || lower.includes("drive.usercontent.google.com") || lower.includes("docs.google.com");
 };
 
+export const isGoogleDriveFolder = (url = "") => {
+  if (!url || typeof url !== "string") return false;
+  return url.toLowerCase().includes("/folders/");
+};
+
 export const extractGoogleDriveId = (url = "") => {
   if (!url || typeof url !== "string") return "";
   const trimmed = url.trim();
@@ -37,22 +42,24 @@ export const extractGoogleDriveId = (url = "") => {
 
 export const getGoogleDriveViewUrl = (url = "") => {
   if (!url || typeof url !== "string") return "";
-  const id = extractGoogleDriveId(url);
-  if (id) {
-    // Open ONLY the specific ZIP file viewer, NEVER the full Google Drive folder
-    return `https://drive.google.com/file/d/${id}/view`;
+  const trimmed = url.trim();
+  const id = extractGoogleDriveId(trimmed);
+  if (!id) return trimmed;
+  if (isGoogleDriveFolder(trimmed)) {
+    return `https://drive.google.com/drive/folders/${id}?usp=sharing`;
   }
-  return url.trim();
+  return `https://drive.google.com/file/d/${id}/view`;
 };
 
 export const getGoogleDriveDownloadUrl = (url = "") => {
   if (!url || typeof url !== "string") return "";
-  const id = extractGoogleDriveId(url);
-  if (id) {
-    // Direct ZIP download link
-    return `https://drive.google.com/uc?export=download&id=${id}`;
+  const trimmed = url.trim();
+  const id = extractGoogleDriveId(trimmed);
+  if (!id) return trimmed;
+  if (isGoogleDriveFolder(trimmed)) {
+    return `https://drive.google.com/drive/folders/${id}?usp=sharing`;
   }
-  return url.trim();
+  return `https://drive.google.com/uc?export=download&id=${id}`;
 };
 
 export const formatGoogleDriveUrl = (url = "") => {
@@ -61,7 +68,9 @@ export const formatGoogleDriveUrl = (url = "") => {
   if (isGoogleDriveUrl(trimmed)) {
     const id = extractGoogleDriveId(trimmed);
     if (id) {
-      // Return direct download URL
+      if (isGoogleDriveFolder(trimmed)) {
+        return `https://drive.google.com/drive/folders/${id}?usp=sharing`;
+      }
       return `https://drive.google.com/uc?export=download&id=${id}`;
     }
   }
@@ -99,6 +108,7 @@ export default {
   getDownloadUrl,
   formatGoogleDriveUrl,
   isGoogleDriveUrl,
+  isGoogleDriveFolder,
   getGoogleDriveViewUrl,
   getGoogleDriveDownloadUrl,
   extractGoogleDriveId,

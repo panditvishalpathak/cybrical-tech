@@ -86,6 +86,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Learn semantic tags, forms, tables, and project directory scaffolding. Download the starter kit ZIP below.",
           duration: "35 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+          zipName: "Day 1 WELCOME + HTML.zip",
+          zipSize: "506.7 MB",
         },
         {
           _id: "web-les-2",
@@ -94,6 +97,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Master modern layout techniques, media queries, CSS variables, and layout patterns with full source code.",
           duration: "45 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+          zipName: "Day 2 HTML.zip",
+          zipSize: "350.6 MB",
         },
         {
           _id: "web-les-3",
@@ -102,6 +108,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Build and deploy a mobile-friendly agency landing page with animations and interactive navigation.",
           duration: "50 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "Web-Development-Complete-Projects",
+          zipSize: "Google Drive Folder",
         },
       ],
     },
@@ -118,6 +127,9 @@ const WEB_DEV_ZIP_COURSE = {
             "ES6+ syntax, arrays, objects, functions, event listeners, and dynamic DOM rendering practice project.",
           duration: "55 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "02-JavaScript-DOM-Async-Projects.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-5",
@@ -126,6 +138,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Working with Promises, async/await, Fetch API, error handling, and building a live API-powered app.",
           duration: "60 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "02-JavaScript-DOM-Async-Projects.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-6",
@@ -134,6 +149,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Create a persistent task management application with state persistence, filtering, and local storage.",
           duration: "50 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "02-JavaScript-DOM-Async-Projects.zip",
+          zipSize: "Google Drive Cloud",
         },
       ],
     },
@@ -150,6 +168,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Component architecture, props drilling, conditional rendering, and structured folder layout with Vite.",
           duration: "45 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "03-React-Ecommerce-App-Source.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-8",
@@ -158,6 +179,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Deep dive into state lifecycles, effect hooks, custom hooks, and global state management with Context.",
           duration: "55 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "03-React-Ecommerce-App-Source.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-9",
@@ -166,6 +190,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Build an interactive E-commerce frontend with cart management, checkout modals, and responsive UI.",
           duration: "65 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "03-React-Ecommerce-App-Source.zip",
+          zipSize: "Google Drive Cloud",
         },
       ],
     },
@@ -182,6 +209,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Express routing, middleware, request validation, error handling, and building secure REST endpoints.",
           duration: "50 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "04-FullStack-MERN-Capstone-Project.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-11",
@@ -190,6 +220,9 @@ const WEB_DEV_ZIP_COURSE = {
             "Database modeling, CRUD operations, password hashing with bcrypt, and JWT user authentication.",
           duration: "60 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "04-FullStack-MERN-Capstone-Project.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-12",
@@ -198,61 +231,64 @@ const WEB_DEV_ZIP_COURSE = {
             "Connecting frontend and backend, environment variables, building for production, and live cloud deployment.",
           duration: "60 min",
           videoUrl: "",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "04-FullStack-MERN-Capstone-Project.zip",
+          zipSize: "Google Drive Cloud",
         },
       ],
     },
   ],
   zipFile: {
-    _id: "zf-wd-main",
-    title: "Web Development Complete Course Project & Source Code (Google Drive)",
-    fileName: "Web-Development-Complete-Projects.zip",
-    url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-    fileSize: "Google Drive Cloud Folder",
+    _id: "zf-wd-drive-folder",
+    title: "Web Development Complete Project & Source Code (Google Drive Folder)",
+    fileName: "Web-Development-Google-Drive-Projects",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+    fileSize: "Google Drive Folder",
     isExternal: true,
     source: "Google Drive",
   },
   zipFiles: [
     {
-      _id: "zf-wd-main",
-      title: "01: Web Development Complete Project & Source Code (Google Drive)",
-      fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "zf-wd-drive-folder",
+      title: "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
+      fileName: "Web-Development-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-1",
-      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "zf-wd-day1",
+      title: "📦 Day 1: WELCOME + HTML5 Starter Kit (ZIP)",
+      fileName: "Day 1 WELCOME + HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-2",
-      title: "03: JavaScript DOM & Async REST API Projects ZIP",
+      _id: "zf-wd-day2",
+      title: "📦 Day 2: HTML & CSS Projects Complete (ZIP)",
+      fileName: "Day 2 HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileSize: "350.6 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-day3",
+      title: "📦 Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-3",
-      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
-      fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "zf-wd-4",
-      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
+      _id: "zf-wd-day4",
+      title: "📦 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -260,51 +296,51 @@ const WEB_DEV_ZIP_COURSE = {
   ],
   resources: [
     {
-      _id: "res-wd-main",
-      title: "Web Development Complete Course Project & Source Code (Google Drive)",
-      fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "res-wd-drive-folder",
+      title: "Web Development Complete Project & Source Code (Google Drive Folder)",
+      fileName: "Web-Development-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-1",
-      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "res-wd-day1",
+      title: "Day 1: WELCOME + HTML5 Starter Kit (ZIP)",
+      fileName: "Day 1 WELCOME + HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-2",
-      title: "03: JavaScript DOM & Async REST API Projects ZIP",
+      _id: "res-wd-day2",
+      title: "Day 2: HTML & CSS Projects Complete (ZIP)",
+      fileName: "Day 2 HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileSize: "350.6 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-day3",
+      title: "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-3",
-      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
-      fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "res-wd-4",
-      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
+      _id: "res-wd-day4",
+      title: "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -704,16 +740,44 @@ const getCourseDoc = async (targetId) => {
         modified = true;
       } else {
         course.zipFiles.forEach((z) => {
-          if (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
-            z.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+          if (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("drive.google.com/drive/folders/1Cybrical-WebDev"))) {
+            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+            modified = true;
+          }
+          if (z && z.url && z.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && z.url.includes("/file/d/")) {
+            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
             modified = true;
           }
         });
-        if (course.zipFile && course.zipFile.url && (course.zipFile.url.includes("1Cybrical-WebDev") || course.zipFile.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
-          course.zipFile.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
-          modified = true;
+        if (course.zipFile && course.zipFile.url) {
+          if (course.zipFile.url.includes("1Cybrical-WebDev") || (course.zipFile.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && course.zipFile.url.includes("/file/d/"))) {
+            course.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+            modified = true;
+          }
         }
       }
+
+      // Ensure modules in Web Development have zipUrl on lessons
+      (course.modules || []).forEach((m, mIdx) => {
+        (m.lessons || []).forEach((l, lIdx) => {
+          if (!l.zipUrl || l.zipUrl.includes("179119") || l.zipUrl.includes("1Cybrical-WebDev")) {
+            if (mIdx === 0 && lIdx === 0) {
+              l.zipUrl = "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr";
+              l.zipName = "Day 1 WELCOME + HTML.zip";
+              l.zipSize = "506.7 MB";
+            } else if (mIdx === 0 && lIdx === 1) {
+              l.zipUrl = "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo";
+              l.zipName = "Day 2 HTML.zip";
+              l.zipSize = "350.6 MB";
+            } else {
+              l.zipUrl = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+              l.zipName = "Web-Development-Complete-Projects";
+              l.zipSize = "Google Drive Folder";
+            }
+            modified = true;
+          }
+        });
+      });
     } else {
       // Non-WebDev courses must never have ZIP files
       if (course.zipFiles && course.zipFiles.length > 0) {
@@ -770,9 +834,12 @@ const sanitizeCourseZips = (c) => {
 
   if (isWebDev) {
     const replaceWebDevLink = (url) => {
-      if (!url) return "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
-      if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev") || url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")) {
-        return "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+      if (!url) return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+      if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev")) {
+        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+      }
+      if (url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && url.includes("/file/d/")) {
+        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
       }
       return url;
     };
@@ -783,7 +850,7 @@ const sanitizeCourseZips = (c) => {
         (z) => z && z.url && z.url.trim() && !z.url.includes("179119")
       );
 
-    if (!hasValidZips) {
+    if (!hasValidZips || (c.zipFiles && c.zipFiles.length < 3)) {
       c.zipFiles = WEB_DEV_ZIP_COURSE.zipFiles;
       c.zipFile = WEB_DEV_ZIP_COURSE.zipFile;
       c.resources = WEB_DEV_ZIP_COURSE.resources;
@@ -801,6 +868,29 @@ const sanitizeCourseZips = (c) => {
         });
       }
     }
+
+    if (c.modules) {
+      c.modules.forEach((m, mIdx) => {
+        (m.lessons || []).forEach((l, lIdx) => {
+          if (!l.zipUrl || l.zipUrl.includes("179119") || l.zipUrl.includes("1Cybrical-WebDev")) {
+            if (mIdx === 0 && lIdx === 0) {
+              l.zipUrl = "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr";
+              l.zipName = "Day 1 WELCOME + HTML.zip";
+              l.zipSize = "506.7 MB";
+            } else if (mIdx === 0 && lIdx === 1) {
+              l.zipUrl = "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo";
+              l.zipName = "Day 2 HTML.zip";
+              l.zipSize = "350.6 MB";
+            } else {
+              l.zipUrl = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+              l.zipName = "Web-Development-Complete-Projects";
+              l.zipSize = "Google Drive Folder";
+            }
+          }
+        });
+      });
+    }
+
     return c;
   } else {
     // ONLY Web Development course should show/have ZIP files
@@ -866,8 +956,11 @@ router.get("/download-file", (req, res) => {
     if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
       let redirectUrl = rawUrl;
       if (rawUrl.includes("drive.google.com") || rawUrl.includes("drive.usercontent.google.com")) {
+        if (rawUrl.includes("/folders/")) {
+          const fMatch = rawUrl.match(/\/folders\/([a-zA-Z0-9_-]+)/);
+          return res.redirect(fMatch && fMatch[1] ? `https://drive.google.com/drive/folders/${fMatch[1]}?usp=sharing` : rawUrl);
+        }
         const match = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
-                      rawUrl.match(/\/folders\/([a-zA-Z0-9_-]+)/) ||
                       rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
                       rawUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
         if (match && match[1]) {
@@ -1087,11 +1180,18 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
 
     let directUrl = url.trim();
     if (directUrl.includes("drive.google.com") || directUrl.includes("drive.usercontent.google.com")) {
-      const match = directUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
-                    directUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
-                    directUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-      if (match && match[1]) {
-        directUrl = `https://drive.google.com/uc?export=download&id=${match[1]}`;
+      if (directUrl.includes("/folders/")) {
+        const fMatch = directUrl.match(/\/folders\/([a-zA-Z0-9_-]+)/);
+        if (fMatch && fMatch[1]) {
+          directUrl = `https://drive.google.com/drive/folders/${fMatch[1]}?usp=sharing`;
+        }
+      } else {
+        const match = directUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+                      directUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
+                      directUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (match && match[1]) {
+          directUrl = `https://drive.google.com/uc?export=download&id=${match[1]}`;
+        }
       }
     }
 

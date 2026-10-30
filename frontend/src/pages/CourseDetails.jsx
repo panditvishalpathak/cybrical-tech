@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getApiUrl, getAssetUrl, getDownloadUrl, isGoogleDriveUrl, getGoogleDriveViewUrl, getGoogleDriveDownloadUrl } from "../config/api";
+import { getApiUrl, getAssetUrl, getDownloadUrl, isGoogleDriveUrl, isGoogleDriveFolder, getGoogleDriveViewUrl, getGoogleDriveDownloadUrl } from "../config/api";
 import "./CourseDetails.css";
 
 const WEB_DEV_FALLBACK_DATA = {
@@ -28,9 +28,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Learn semantic tags, forms, tables, and project directory scaffolding. Download the starter kit ZIP below.",
           duration: "35 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-          zipName: "01-HTML5-CSS3-Responsive-Starter.zip",
-          zipSize: "185 MB",
+          zipUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+          zipName: "Day 1 WELCOME + HTML.zip",
+          zipSize: "506.7 MB",
         },
         {
           _id: "web-les-2",
@@ -38,7 +38,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Master modern layout techniques, media queries, CSS variables, and layout patterns with full source code.",
           duration: "45 min",
           videoUrl: "",
-          zipSize: "507 MB",
+          zipUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+          zipName: "Day 2 HTML.zip",
+          zipSize: "350.6 MB",
         },
         {
           _id: "web-les-3",
@@ -46,7 +48,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Build and deploy a mobile-friendly agency landing page with animations and interactive navigation.",
           duration: "50 min",
           videoUrl: "",
-          zipSize: "185 MB",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "Web-Development-Complete-Projects",
+          zipSize: "Google Drive Folder",
         },
       ],
     },
@@ -61,9 +65,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "ES6+ syntax, arrays, objects, functions, event listeners, and dynamic DOM rendering practice project.",
           duration: "55 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
           zipName: "02-JavaScript-DOM-Async-Projects.zip",
-          zipSize: "351 MB",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-5",
@@ -71,7 +75,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Working with Promises, async/await, Fetch API, error handling, and building a live API-powered app.",
           duration: "60 min",
           videoUrl: "",
-          zipSize: "436 MB",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "02-JavaScript-DOM-Async-Projects.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-6",
@@ -79,7 +85,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Create a persistent task management application with state persistence, filtering, and local storage.",
           duration: "50 min",
           videoUrl: "",
-          zipSize: "707 MB",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "02-JavaScript-DOM-Async-Projects.zip",
+          zipSize: "Google Drive Cloud",
         },
       ],
     },
@@ -94,9 +102,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Component architecture, props drilling, conditional rendering, and structured folder layout with Vite.",
           duration: "45 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
           zipName: "03-React-Ecommerce-App-Source.zip",
-          zipSize: "586 MB",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-8",
@@ -104,7 +112,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Deep dive into state lifecycles, effect hooks, custom hooks, and global state management with Context.",
           duration: "55 min",
           videoUrl: "",
-          zipSize: "356 MB",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "03-React-Ecommerce-App-Source.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-9",
@@ -112,7 +122,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Build an interactive E-commerce frontend with cart management, checkout modals, and responsive UI.",
           duration: "65 min",
           videoUrl: "",
-          zipSize: "301 MB",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "03-React-Ecommerce-App-Source.zip",
+          zipSize: "Google Drive Cloud",
         },
       ],
     },
@@ -127,9 +139,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Express routing, middleware, request validation, error handling, and building secure REST endpoints.",
           duration: "50 min",
           videoUrl: "",
-          zipUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
           zipName: "04-FullStack-MERN-Capstone-Project.zip",
-          zipSize: "420 MB",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-11",
@@ -137,7 +149,9 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Database modeling, CRUD operations, password hashing with bcrypt, and JWT user authentication.",
           duration: "60 min",
           videoUrl: "",
-          zipSize: "197 MB",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "04-FullStack-MERN-Capstone-Project.zip",
+          zipSize: "Google Drive Cloud",
         },
         {
           _id: "web-les-12",
@@ -145,62 +159,64 @@ const WEB_DEV_FALLBACK_DATA = {
           description: "Connecting frontend and backend, environment variables, building for production, and live cloud deployment.",
           duration: "60 min",
           videoUrl: "",
-          zipSize: "333 MB",
+          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+          zipName: "04-FullStack-MERN-Capstone-Project.zip",
+          zipSize: "Google Drive Cloud",
         },
       ],
     },
   ],
   zipFile: {
-    _id: "zf-wd-main",
-    title: "Web Development Complete Course Project & Source Code (Google Drive)",
-    fileName: "Web-Development-Complete-Projects.zip",
-    url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-    fileSize: "Google Drive Cloud Folder",
+    _id: "zf-wd-drive-folder",
+    title: "Web Development Complete Project & Source Code (Google Drive Folder)",
+    fileName: "Web-Development-Google-Drive-Projects",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+    fileSize: "Google Drive Folder",
     isExternal: true,
     source: "Google Drive",
   },
   zipFiles: [
     {
-      _id: "zf-wd-main",
-      title: "01: Web Development Complete Project & Source Code (Google Drive)",
-      fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "zf-wd-drive-folder",
+      title: "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
+      fileName: "Web-Development-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-1",
-      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "zf-wd-day1",
+      title: "📦 Day 1: WELCOME + HTML5 Starter Kit (ZIP)",
+      fileName: "Day 1 WELCOME + HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-2",
-      title: "03: JavaScript DOM & Async REST API Projects ZIP",
+      _id: "zf-wd-day2",
+      title: "📦 Day 2: HTML & CSS Projects Complete (ZIP)",
+      fileName: "Day 2 HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileSize: "350.6 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "zf-wd-day3",
+      title: "📦 Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "zf-wd-3",
-      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
-      fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "zf-wd-4",
-      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
+      _id: "zf-wd-day4",
+      title: "📦 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -208,51 +224,51 @@ const WEB_DEV_FALLBACK_DATA = {
   ],
   resources: [
     {
-      _id: "res-wd-main",
-      title: "Web Development Complete Course Project & Source Code (Google Drive)",
-      fileName: "Web-Development-Complete-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "res-wd-drive-folder",
+      title: "Web Development Complete Project & Source Code (Google Drive Folder)",
+      fileName: "Web-Development-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-1",
-      title: "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-      fileName: "01-HTML5-CSS3-Responsive-Starter.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
+      _id: "res-wd-day1",
+      title: "Day 1: WELCOME + HTML5 Starter Kit (ZIP)",
+      fileName: "Day 1 WELCOME + HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-2",
-      title: "03: JavaScript DOM & Async REST API Projects ZIP",
+      _id: "res-wd-day2",
+      title: "Day 2: HTML & CSS Projects Complete (ZIP)",
+      fileName: "Day 2 HTML.zip",
+      url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileSize: "350.6 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-day3",
+      title: "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
     {
-      _id: "res-wd-3",
-      title: "04: React.js E-Commerce Catalog & Modern UI ZIP",
-      fileName: "03-React-Ecommerce-App-Source.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "res-wd-4",
-      title: "05: Full-Stack MERN Capstone Project Complete ZIP",
+      _id: "res-wd-day4",
+      title: "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-      fileUrl: "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -662,19 +678,22 @@ function CourseDetails() {
               (z) => z && z.url && z.url.trim() && !isStaleDummyZip(z.url)
             );
 
-          if (!hasValidZips) {
+          if (!hasValidZips || (fetchedCourse.zipFiles && fetchedCourse.zipFiles.length < 3)) {
             fetchedCourse.zipFiles = WEB_DEV_FALLBACK_DATA.zipFiles;
             fetchedCourse.zipFile = WEB_DEV_FALLBACK_DATA.zipFile;
             fetchedCourse.resources = WEB_DEV_FALLBACK_DATA.resources;
           } else {
-            fetchedCourse.zipFiles = fetchedCourse.zipFiles.map((z) => ({
-              ...z,
-              url: (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")))
-                ? "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-                : (z ? z.url : ""),
-            }));
-            if (fetchedCourse.zipFile && fetchedCourse.zipFile.url && (fetchedCourse.zipFile.url.includes("1Cybrical-WebDev") || fetchedCourse.zipFile.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
-              fetchedCourse.zipFile.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+            fetchedCourse.zipFiles = fetchedCourse.zipFiles.map((z) => {
+              let u = z ? (z.url || z.fileUrl || "") : "";
+              if (u.includes("1Cybrical-WebDev") || (u.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && u.includes("/file/d/"))) {
+                u = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+              }
+              return { ...z, url: u };
+            });
+            if (fetchedCourse.zipFile && fetchedCourse.zipFile.url) {
+              if (fetchedCourse.zipFile.url.includes("1Cybrical-WebDev") || (fetchedCourse.zipFile.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && fetchedCourse.zipFile.url.includes("/file/d/"))) {
+                fetchedCourse.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+              }
             }
           }
         } else if (fetchedCourse && !isCurrentWeb) {
@@ -759,14 +778,16 @@ function CourseDetails() {
   if (isWebDevCourse) {
     // 1. From zipFiles
     (course.zipFiles || []).forEach((z, i) => {
-      if (z && z.url && !isStaleDummyZip(z.url)) {
-        zipMap.set(z.url, {
+      const u = z && (z.url || z.fileUrl);
+      if (u && !isStaleDummyZip(u)) {
+        const key = z._id || `zf-${i}-${z.title || u}`;
+        zipMap.set(key, {
           _id: z._id || `zf-${i}`,
           title: z.title || `Project ZIP Part ${i + 1}`,
           fileName: z.fileName || `project-part-${i + 1}.zip`,
-          url: z.url,
+          url: u,
           fileSize: z.fileSize || "ZIP File",
-          isExternal: z.isExternal || isGoogleDriveUrl(z.url),
+          isExternal: z.isExternal || isGoogleDriveUrl(u),
         });
       }
     });
@@ -774,9 +795,10 @@ function CourseDetails() {
     // 2. From resources
     (course.resources || []).forEach((r, i) => {
       const url = r.url || r.fileUrl;
-      if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || !zipMap.has(url))) {
-        if (!zipMap.has(url)) {
-          zipMap.set(url, {
+      if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
+        const key = r._id || `res-${i}-${r.title || url}`;
+        if (!zipMap.has(key)) {
+          zipMap.set(key, {
             _id: r._id || `res-${i}`,
             title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
             fileName: r.fileName || `resource-${i + 1}.zip`,
@@ -789,29 +811,36 @@ function CourseDetails() {
     });
 
     // 3. From legacy zipFile
-    if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url) && !zipMap.has(course.zipFile.url)) {
-      zipMap.set(course.zipFile.url, {
-        _id: "main-zip",
-        title: course.zipFile.fileName || "Course Project ZIP",
-        fileName: course.zipFile.fileName || "course-project.zip",
-        url: course.zipFile.url,
-        fileSize: course.zipFile.fileSize || "ZIP Archive",
-        isExternal: course.zipFile.isExternal || isGoogleDriveUrl(course.zipFile.url),
-      });
+    if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url)) {
+      const u = course.zipFile.url;
+      const key = course.zipFile._id || `main-zip-${u}`;
+      if (!zipMap.has(key)) {
+        zipMap.set(key, {
+          _id: "main-zip",
+          title: course.zipFile.title || course.zipFile.fileName || "Course Project ZIP",
+          fileName: course.zipFile.fileName || "course-project.zip",
+          url: u,
+          fileSize: course.zipFile.fileSize || "ZIP Archive",
+          isExternal: course.zipFile.isExternal || isGoogleDriveUrl(u),
+        });
+      }
     }
 
     // 4. From any lessons with zipUrl (ignoring stale 179119)
     (course.modules || []).forEach((m) => {
       (m.lessons || []).forEach((l) => {
-        if (l.zipUrl && !isStaleDummyZip(l.zipUrl) && !zipMap.has(l.zipUrl)) {
-          zipMap.set(l.zipUrl, {
-            _id: l._id || l.zipUrl,
-            title: `${l.title} (Project ZIP)`,
-            fileName: l.zipName || `${l.title}.zip`,
-            url: l.zipUrl,
-            fileSize: l.zipSize || "Lesson ZIP",
-            isExternal: isGoogleDriveUrl(l.zipUrl),
-          });
+        if (l.zipUrl && !isStaleDummyZip(l.zipUrl)) {
+          const key = `lesson-zip-${l._id || l.title}`;
+          if (!zipMap.has(key)) {
+            zipMap.set(key, {
+              _id: l._id || l.zipUrl,
+              title: `${l.title} (Project ZIP)`,
+              fileName: l.zipName || `${l.title}.zip`,
+              url: l.zipUrl,
+              fileSize: l.zipSize || "Lesson ZIP",
+              isExternal: isGoogleDriveUrl(l.zipUrl),
+            });
+          }
         }
       });
     });
@@ -820,7 +849,7 @@ function CourseDetails() {
     if (zipMap.size === 0) {
       (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
         if (z && z.url) {
-          zipMap.set(z.url, {
+          zipMap.set(z._id || `zf-${i}`, {
             _id: z._id || `zf-${i}`,
             title: z.title || `Project ZIP Part ${i + 1}`,
             fileName: z.fileName || `project-part-${i + 1}.zip`,
@@ -955,7 +984,8 @@ function CourseDetails() {
 
                 {/* LESSON SPECIFIC ZIP DOWNLOAD BUTTON */}
                 {isWebDevCourse && (selectedLesson.zipUrl || allCourseZips.length > 0) && (() => {
-                  const zipUrl = selectedLesson.zipUrl || allCourseZips[0]?.url || "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+                  const zipUrl = selectedLesson.zipUrl || allCourseZips[0]?.url || "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+                  const isFolder = isGoogleDriveFolder(zipUrl);
                   const zipTitle = selectedLesson.zipName || (selectedLesson.zipUrl ? `${selectedLesson.title}.zip` : (allCourseZips[0]?.title || "Web-Development-Complete-Projects.zip"));
                   const zipSize = selectedLesson.zipSize || allCourseZips[0]?.fileSize || "Google Drive Cloud";
 
@@ -984,29 +1014,53 @@ function CourseDetails() {
                       </div>
 
                       <div style={{ display: "inline-flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-                        <a
-                          href={isGoogleDriveUrl(zipUrl) ? (getGoogleDriveDownloadUrl(zipUrl) || zipUrl) : getDownloadUrl(zipUrl, zipTitle)}
-                          download={isGoogleDriveUrl(zipUrl) ? undefined : zipTitle}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "6px",
-                            padding: "8px 16px",
-                            background: "#22c55e",
-                            color: "#031007",
-                            fontWeight: "800",
-                            fontSize: "13px",
-                            borderRadius: "8px",
-                            textDecoration: "none",
-                            boxShadow: "0 4px 12px rgba(34, 197, 94, 0.3)",
-                          }}
-                          title="Direct Download ZIP file"
-                        >
-                          <span>📥</span> Download Lesson ZIP ⬇
-                        </a>
-                        {isGoogleDriveUrl(zipUrl) && (
+                        {isFolder ? (
+                          <a
+                            href={getGoogleDriveViewUrl(zipUrl)}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "6px",
+                              padding: "8px 16px",
+                              background: "linear-gradient(135deg, #3b82f6, #2563eb)",
+                              color: "#ffffff",
+                              fontWeight: "800",
+                              fontSize: "13px",
+                              borderRadius: "8px",
+                              textDecoration: "none",
+                              boxShadow: "0 4px 12px rgba(59, 130, 246, 0.4)",
+                            }}
+                            title="Open Google Drive Project Folder"
+                          >
+                            <span>📁</span> Open Drive Folder ↗
+                          </a>
+                        ) : (
+                          <a
+                            href={isGoogleDriveUrl(zipUrl) ? (getGoogleDriveDownloadUrl(zipUrl) || zipUrl) : getDownloadUrl(zipUrl, zipTitle)}
+                            download={isGoogleDriveUrl(zipUrl) ? undefined : zipTitle}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "6px",
+                              padding: "8px 16px",
+                              background: "#22c55e",
+                              color: "#031007",
+                              fontWeight: "800",
+                              fontSize: "13px",
+                              borderRadius: "8px",
+                              textDecoration: "none",
+                              boxShadow: "0 4px 12px rgba(34, 197, 94, 0.3)",
+                            }}
+                            title="Direct Download ZIP file"
+                          >
+                            <span>📥</span> Download Lesson ZIP ⬇
+                          </a>
+                        )}
+                        {isGoogleDriveUrl(zipUrl) && !isFolder && (
                           <a
                             href={getGoogleDriveViewUrl(zipUrl)}
                             target="_blank"
@@ -1082,56 +1136,76 @@ function CourseDetails() {
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                  {allCourseZips.map((z, idx) => (
-                    <div className="materials-card" key={z._id || idx}>
-                      <div className="materials-icon">📦</div>
-                      <div className="materials-details">
-                        <h3>{z.title || z.fileName}</h3>
-                        <p>{z.fileName}</p>
-                        <span className="materials-badge">
-                          {(z.isExternal || (z.url && (z.url.includes("drive.google.com") || z.url.includes("google.com"))))
-                            ? `☁️ Google Drive • ${z.fileSize || "Cloud ZIP"}`
-                            : (z.fileSize || "ZIP Archive")}
-                        </span>
+                  {allCourseZips.map((z, idx) => {
+                    const isFolder = isGoogleDriveFolder(z.url);
+                    return (
+                      <div className="materials-card" key={z._id || idx}>
+                        <div className="materials-icon">{isFolder ? "📁" : "📦"}</div>
+                        <div className="materials-details">
+                          <h3>{z.title || z.fileName}</h3>
+                          <p>{z.fileName}</p>
+                          <span className="materials-badge">
+                            {isFolder
+                              ? "☁️ Google Drive • Project Folder"
+                              : ((z.isExternal || (z.url && (z.url.includes("drive.google.com") || z.url.includes("google.com"))))
+                                ? `☁️ Google Drive • ${z.fileSize || "Cloud ZIP"}`
+                                : (z.fileSize || "ZIP Archive"))}
+                          </span>
+                        </div>
+                        <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+                          {isFolder ? (
+                            <a
+                              href={getGoogleDriveViewUrl(z.url)}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="materials-download-btn"
+                              style={{ background: "linear-gradient(135deg, #3b82f6, #2563eb)", color: "#ffffff" }}
+                              title="Open Google Drive Project Folder"
+                            >
+                              📁 Open Drive Folder ↗
+                            </a>
+                          ) : (
+                            <>
+                              <a
+                                href={isGoogleDriveUrl(z.url) ? (getGoogleDriveDownloadUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName)}
+                                download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="materials-download-btn"
+                                title="Direct Download ZIP file"
+                              >
+                                Download ZIP ⬇
+                              </a>
+                              {isGoogleDriveUrl(z.url) && (
+                                <a
+                                  href={getGoogleDriveViewUrl(z.url)}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: "5px",
+                                    padding: "11px 16px",
+                                    background: "rgba(255, 255, 255, 0.08)",
+                                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                                    borderRadius: "10px",
+                                    color: "#e2e8f0",
+                                    fontSize: "13px",
+                                    fontWeight: "700",
+                                    textDecoration: "none",
+                                    transition: "all 0.2s ease",
+                                  }}
+                                  title="Open single ZIP preview"
+                                >
+                                  Open ZIP 👁️
+                                </a>
+                              )}
+                            </>
+                          )}
+                        </div>
                       </div>
-                      <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-                        <a
-                          href={isGoogleDriveUrl(z.url) ? (getGoogleDriveDownloadUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName)}
-                          download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="materials-download-btn"
-                          title="Direct Download ZIP file"
-                        >
-                          Download ZIP ⬇
-                        </a>
-                        {isGoogleDriveUrl(z.url) && (
-                          <a
-                            href={getGoogleDriveViewUrl(z.url)}
-                            target="_blank"
-                            rel="noreferrer"
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: "5px",
-                              padding: "11px 16px",
-                              background: "rgba(255, 255, 255, 0.08)",
-                              border: "1px solid rgba(255, 255, 255, 0.2)",
-                              borderRadius: "10px",
-                              color: "#e2e8f0",
-                              fontSize: "13px",
-                              fontWeight: "700",
-                              textDecoration: "none",
-                              transition: "all 0.2s ease",
-                            }}
-                            title="Open single ZIP preview"
-                          >
-                            Open ZIP 👁️
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </section>
             )}
@@ -1261,35 +1335,41 @@ function CourseDetails() {
                     )}
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                    {allCourseZips.map((z, idx) => (
-                      <a
-                        key={z._id || idx}
-                        href={isGoogleDriveUrl(z.url) ? (getGoogleDriveDownloadUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName)}
-                        download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{
-                          padding: "7px 10px",
-                          background: "rgba(0,0,0,0.3)",
-                          border: "1px solid rgba(34,197,94,0.3)",
-                          borderRadius: "6px",
-                          color: "#86efac",
-                          fontSize: "12px",
-                          textDecoration: "none",
-                          fontWeight: "600",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginRight: "6px" }}>
-                          📦 {z.title || z.fileName}
-                        </span>
-                        <span style={{ color: "#4ade80", fontWeight: "800", flexShrink: 0 }}>
-                          {z.isExternal || isGoogleDriveUrl(z.url) ? "☁️" : "⬇"}
-                        </span>
-                      </a>
-                    ))}
+                    {allCourseZips.map((z, idx) => {
+                      const isFolder = isGoogleDriveFolder(z.url);
+                      const href = isFolder
+                        ? getGoogleDriveViewUrl(z.url)
+                        : (isGoogleDriveUrl(z.url) ? (getGoogleDriveDownloadUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName));
+                      return (
+                        <a
+                          key={z._id || idx}
+                          href={href}
+                          download={isFolder || z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            padding: "7px 10px",
+                            background: "rgba(0,0,0,0.3)",
+                            border: isFolder ? "1px solid rgba(59,130,246,0.4)" : "1px solid rgba(34,197,94,0.3)",
+                            borderRadius: "6px",
+                            color: isFolder ? "#93c5fd" : "#86efac",
+                            fontSize: "12px",
+                            textDecoration: "none",
+                            fontWeight: "600",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                          }}
+                        >
+                          <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginRight: "6px" }}>
+                            {isFolder ? "📁" : "📦"} {z.title || z.fileName}
+                          </span>
+                          <span style={{ color: isFolder ? "#60a5fa" : "#4ade80", fontWeight: "800", flexShrink: 0 }}>
+                            {isFolder ? "📁 ↗" : (z.isExternal || isGoogleDriveUrl(z.url) ? "☁️" : "⬇")}
+                          </span>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               )}
