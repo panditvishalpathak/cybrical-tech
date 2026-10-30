@@ -21,21 +21,30 @@
             "title": "Lesson 1: HTML5 Semantic Structure & Starter Project",
             "description": "Learn semantic tags, forms, tables, and project directory scaffolding. Download the starter kit ZIP below.",
             "duration": "35 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "01-HTML5-CSS3-Responsive-Starter.zip",
+            "zipSize": "185 MB"
           },
           {
             "_id": "web-les-2",
             "title": "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts",
             "description": "Master modern layout techniques, media queries, CSS variables, and layout patterns with full source code.",
             "duration": "45 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "01-HTML5-CSS3-Responsive-Starter.zip",
+            "zipSize": "507 MB"
           },
           {
             "_id": "web-les-3",
             "title": "Lesson 3: Complete Responsive Agency Landing Page",
             "description": "Build and deploy a mobile-friendly agency landing page with animations and interactive navigation.",
             "duration": "50 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "01-HTML5-CSS3-Responsive-Starter.zip",
+            "zipSize": "185 MB"
           }
         ]
       },
@@ -49,21 +58,30 @@
             "title": "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control",
             "description": "ES6+ syntax, arrays, objects, functions, event listeners, and dynamic DOM rendering practice project.",
             "duration": "55 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "02-JavaScript-DOM-Async-Projects.zip",
+            "zipSize": "351 MB"
           },
           {
             "_id": "web-les-5",
             "title": "Lesson 5: Async JS, REST APIs & Live Weather Application",
             "description": "Working with Promises, async/await, Fetch API, error handling, and building a live API-powered app.",
             "duration": "60 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "02-JavaScript-DOM-Async-Projects.zip",
+            "zipSize": "436 MB"
           },
           {
             "_id": "web-les-6",
             "title": "Lesson 6: Interactive CRUD App with LocalStorage",
             "description": "Create a persistent task management application with state persistence, filtering, and local storage.",
             "duration": "50 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "02-JavaScript-DOM-Async-Projects.zip",
+            "zipSize": "707 MB"
           }
         ]
       },
@@ -77,21 +95,30 @@
             "title": "Lesson 7: React Setup, JSX, Components & Props",
             "description": "Component architecture, props drilling, conditional rendering, and structured folder layout with Vite.",
             "duration": "45 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "03-React-Ecommerce-App-Source.zip",
+            "zipSize": "586 MB"
           },
           {
             "_id": "web-les-8",
-            "title": "Lesson 8: React Hooks (useState, useEffect) & Context API",
-            "description": "Deep dive into state lifecycles, effect hooks, custom hooks, and global state management with Context.",
-            "duration": "55 min",
-            "videoUrl": ""
+            "title": "Lesson 8: State Management, Hooks (useState, useEffect)",
+            "description": "Deep dive into component lifecycle, API integration with hooks, custom hooks, and memoization.",
+            "duration": "50 min",
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "03-React-Ecommerce-App-Source.zip",
+            "zipSize": "290 MB"
           },
           {
             "_id": "web-les-9",
             "title": "Lesson 9: Full E-Commerce Product Catalog with Cart",
             "description": "Build an interactive E-commerce frontend with cart management, checkout modals, and responsive UI.",
             "duration": "65 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "03-React-Ecommerce-App-Source.zip",
+            "zipSize": "301 MB"
           }
         ]
       },
@@ -105,21 +132,30 @@
             "title": "Lesson 10: Node.js & Express REST API Architecture",
             "description": "Express routing, middleware, request validation, error handling, and building secure REST endpoints.",
             "duration": "50 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "04-FullStack-MERN-Capstone-Project.zip",
+            "zipSize": "420 MB"
           },
           {
             "_id": "web-les-11",
             "title": "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth",
             "description": "Database modeling, CRUD operations, password hashing with bcrypt, and JWT user authentication.",
             "duration": "60 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "04-FullStack-MERN-Capstone-Project.zip",
+            "zipSize": "197 MB"
           },
           {
             "_id": "web-les-12",
             "title": "Lesson 12: Full Stack Production Deployment & CI/CD",
             "description": "Connecting frontend and backend, environment variables, building for production, and live cloud deployment.",
             "duration": "60 min",
-            "videoUrl": ""
+            "videoUrl": "",
+            "zipUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
+            "zipName": "04-FullStack-MERN-Capstone-Project.zip",
+            "zipSize": "333 MB"
           }
         ]
       }
@@ -135,6 +171,24 @@
         "source": "Google Drive"
       },
       {
+        "_id": "zf-gdrive-1793356637070",
+        "title": "Day 1 WELCOME + HTML",
+        "url": "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+        "fileName": "Day 1 WELCOME + HTML.zip",
+        "fileSize": "506.7 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "zf-gdrive-1793356871204",
+        "title": "Day 2 HTML",
+        "url": "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+        "fileName": "Day 2 HTML.zip",
+        "fileSize": "350.6 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
         "_id": "zf-wd-1",
         "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
         "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
@@ -171,68 +225,7 @@
         "source": "Google Drive"
       }
     ],
-    "resources": [
-      {
-        "_id": "zf-wd-main",
-        "title": "01: Web Development Complete Project & Source Code (Google Drive)",
-        "fileName": "Web-Development-Complete-Projects.zip",
-        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-      },
-      {
-        "_id": "zf-wd-1",
-        "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-        "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
-        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-      },
-      {
-        "_id": "zf-wd-1",
-        "title": "02: HTML5 & Modern Responsive CSS Starter Kit ZIP",
-        "fileName": "01-HTML5-CSS3-Responsive-Starter.zip",
-        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-      },
-      {
-        "_id": "zf-wd-2",
-        "title": "03: JavaScript DOM & Async REST API Projects ZIP",
-        "fileName": "02-JavaScript-DOM-Async-Projects.zip",
-        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-      },
-      {
-        "_id": "zf-wd-3",
-        "title": "04: React.js E-Commerce Catalog & Modern UI ZIP",
-        "fileName": "03-React-Ecommerce-App-Source.zip",
-        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-      },
-      {
-        "_id": "zf-wd-4",
-        "title": "05: Full-Stack MERN Capstone Project Complete ZIP",
-        "fileName": "04-FullStack-MERN-Capstone-Project.zip",
-        "url": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "fileUrl": "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
-      }
-    ],
+    "resources": [],
     "zipFile": {
       "_id": "zf-wd-main",
       "title": "01: Web Development Complete Project & Source Code (Google Drive)",

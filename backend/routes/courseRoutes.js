@@ -685,6 +685,47 @@ const getCourseDoc = async (targetId) => {
 
   if (course) {
     let modified = false;
+    const isWebDev =
+      (course.slug && course.slug.toLowerCase().includes("web")) ||
+      (course.title && course.title.toLowerCase().includes("web")) ||
+      (course._id && course._id.toString().includes("000000000000000000000001"));
+
+    if (isWebDev) {
+      const hasValidZips =
+        course.zipFiles &&
+        course.zipFiles.some(
+          (z) => z && z.url && z.url.trim() && !z.url.includes("179119")
+        );
+
+      if (!hasValidZips) {
+        course.zipFiles = WEB_DEV_ZIP_COURSE.zipFiles;
+        course.zipFile = WEB_DEV_ZIP_COURSE.zipFile;
+        course.resources = WEB_DEV_ZIP_COURSE.resources;
+        modified = true;
+      } else {
+        course.zipFiles.forEach((z) => {
+          if (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
+            z.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+            modified = true;
+          }
+        });
+        if (course.zipFile && course.zipFile.url && (course.zipFile.url.includes("1Cybrical-WebDev") || course.zipFile.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
+          course.zipFile.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+          modified = true;
+        }
+      }
+    } else {
+      // Non-WebDev courses must never have ZIP files
+      if (course.zipFiles && course.zipFiles.length > 0) {
+        course.zipFiles = [];
+        modified = true;
+      }
+      if (course.zipFile && course.zipFile.url) {
+        course.zipFile = { url: "", fileName: "", fileSize: "" };
+        modified = true;
+      }
+    }
+
     if (course.zipFiles && course.zipFiles.length > 0) {
       const filtered = course.zipFiles.filter(
         (z) => !z.url || (!z.url.startsWith("/uploads/courses/179119") && !z.url.includes("179119"))
@@ -736,7 +777,13 @@ const sanitizeCourseZips = (c) => {
       return url;
     };
 
-    if (!c.zipFiles || c.zipFiles.length === 0) {
+    const hasValidZips =
+      c.zipFiles &&
+      c.zipFiles.some(
+        (z) => z && z.url && z.url.trim() && !z.url.includes("179119")
+      );
+
+    if (!hasValidZips) {
       c.zipFiles = WEB_DEV_ZIP_COURSE.zipFiles;
       c.zipFile = WEB_DEV_ZIP_COURSE.zipFile;
       c.resources = WEB_DEV_ZIP_COURSE.resources;
@@ -754,6 +801,7 @@ const sanitizeCourseZips = (c) => {
         });
       }
     }
+    return c;
   } else {
     // ONLY Web Development course should show/have ZIP files
     c.zipFiles = [];
@@ -776,31 +824,6 @@ const sanitizeCourseZips = (c) => {
     }
     return c;
   }
-
-  if (c.zipFiles) {
-    c.zipFiles = c.zipFiles.filter((z) => z && z.url && !z.url.includes("179119"));
-  }
-  if (c.zipFile && c.zipFile.url && c.zipFile.url.includes("179119")) {
-    c.zipFile = { url: "", fileName: "", fileSize: "" };
-  }
-  if (c.resources) {
-    c.resources = c.resources.filter((r) => {
-      const u = (r.url || r.fileUrl || "");
-      return !u.includes("179119");
-    });
-  }
-  if (c.modules) {
-    c.modules.forEach((m) => {
-      (m.lessons || []).forEach((l) => {
-        if (l.zipUrl && l.zipUrl.includes("179119")) {
-          l.zipUrl = "";
-          l.zipName = "";
-          l.zipSize = "";
-        }
-      });
-    });
-  }
-  return c;
 };
 
 const getFallbackCourse = (targetId) => {
@@ -900,7 +923,9 @@ router.get("/", async (req, res) => {
       (def) => !existingSlugs.has((def.slug || "").toLowerCase())
     );
 
-    const merged = [...(courses || []), ...missingDefaults];
+    const merged = [...(courses || []), ...missingDefaults].map((c) =>
+      sanitizeCourseZips(c && c.toObject ? c.toObject() : c)
+    );
 
     res.json({
       success: true,
@@ -909,7 +934,7 @@ router.get("/", async (req, res) => {
   } catch (error) {
     res.json({
       success: true,
-      courses: loadFallbackCourses(),
+      courses: loadFallbackCourses().map((c) => sanitizeCourseZips(c)),
     });
   }
 });
@@ -1292,12 +1317,12 @@ router.get("/id/:id", async (req, res) => {
 
     res.json({
       success: true,
-      course,
+      course: sanitizeCourseZips(course && course.toObject ? course.toObject() : course),
     });
   } catch (error) {
     const fallback = getFallbackCourse(req.params.id);
     if (fallback) {
-      return res.json({ success: true, course: fallback });
+      return res.json({ success: true, course: sanitizeCourseZips(fallback) });
     }
     res.status(500).json({
       success: false,
@@ -1328,12 +1353,12 @@ router.get("/:slug", async (req, res) => {
 
     res.json({
       success: true,
-      course,
+      course: sanitizeCourseZips(course && course.toObject ? course.toObject() : course),
     });
   } catch (error) {
     const fallback = getFallbackCourse(req.params.slug);
     if (fallback) {
-      return res.json({ success: true, course: fallback });
+      return res.json({ success: true, course: sanitizeCourseZips(fallback) });
     }
     res.status(500).json({
       success: false,

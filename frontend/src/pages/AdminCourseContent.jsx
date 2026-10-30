@@ -553,16 +553,24 @@ function AdminCourseContent() {
         (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("web"));
 
       if (isWebCourse) {
-        if (!resolvedCourse.zipFiles || resolvedCourse.zipFiles.length === 0) {
+        const hasValidZips =
+          resolvedCourse.zipFiles &&
+          resolvedCourse.zipFiles.some(
+            (z) => z && z.url && z.url.trim() && !isStaleDummyZip(z.url)
+          );
+
+        if (!hasValidZips) {
           resolvedCourse.zipFiles = WEB_DEV_FALLBACK_DATA.zipFiles;
           resolvedCourse.zipFile = WEB_DEV_FALLBACK_DATA.zipFile;
           resolvedCourse.resources = WEB_DEV_FALLBACK_DATA.resources;
         } else {
           resolvedCourse.zipFiles = resolvedCourse.zipFiles.map((z) => ({
             ...z,
-            url: (z && z.url && z.url.includes("1Cybrical-WebDev")) ? "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view" : (z ? z.url : ""),
+            url: (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")))
+              ? "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
+              : (z ? z.url : ""),
           }));
-          if (resolvedCourse.zipFile && resolvedCourse.zipFile.url && resolvedCourse.zipFile.url.includes("1Cybrical-WebDev")) {
+          if (resolvedCourse.zipFile && resolvedCourse.zipFile.url && (resolvedCourse.zipFile.url.includes("1Cybrical-WebDev") || resolvedCourse.zipFile.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
             resolvedCourse.zipFile.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
           }
         }
@@ -1390,6 +1398,21 @@ function AdminCourseContent() {
         url: course.zipFile.url,
         fileSize: course.zipFile.fileSize || "",
         isExternal: course.zipFile.isExternal || course.zipFile.url.includes("drive.google.com") || course.zipFile.url.includes("google"),
+      });
+    }
+
+    if (zipMap.size === 0) {
+      (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
+        if (z && z.url) {
+          zipMap.set(z.url, {
+            _id: z._id || `zf-${i}`,
+            title: z.title || `Project ZIP Part ${i + 1}`,
+            fileName: z.fileName || `project-part-${i + 1}.zip`,
+            url: z.url,
+            fileSize: z.fileSize || "Google Drive Cloud",
+            isExternal: true,
+          });
+        }
       });
     }
   }

@@ -656,16 +656,24 @@ function CourseDetails() {
         // Ensure Web Development always has its complete Google Drive ZIP resources
         const isCurrentWeb = cleanSlug.includes("web") || cleanSlug === "660000000000000000000001" || (fetchedCourse && (fetchedCourse.slug === "web-development" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("web"))));
         if (fetchedCourse && isCurrentWeb) {
-          if (!fetchedCourse.zipFiles || fetchedCourse.zipFiles.length === 0) {
+          const hasValidZips =
+            fetchedCourse.zipFiles &&
+            fetchedCourse.zipFiles.some(
+              (z) => z && z.url && z.url.trim() && !isStaleDummyZip(z.url)
+            );
+
+          if (!hasValidZips) {
             fetchedCourse.zipFiles = WEB_DEV_FALLBACK_DATA.zipFiles;
             fetchedCourse.zipFile = WEB_DEV_FALLBACK_DATA.zipFile;
             fetchedCourse.resources = WEB_DEV_FALLBACK_DATA.resources;
           } else {
             fetchedCourse.zipFiles = fetchedCourse.zipFiles.map((z) => ({
               ...z,
-              url: (z && z.url && z.url.includes("1Cybrical-WebDev")) ? "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view" : (z ? z.url : ""),
+              url: (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt")))
+                ? "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view"
+                : (z ? z.url : ""),
             }));
-            if (fetchedCourse.zipFile && fetchedCourse.zipFile.url && fetchedCourse.zipFile.url.includes("1Cybrical-WebDev")) {
+            if (fetchedCourse.zipFile && fetchedCourse.zipFile.url && (fetchedCourse.zipFile.url.includes("1Cybrical-WebDev") || fetchedCourse.zipFile.url.includes("folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"))) {
               fetchedCourse.zipFile.url = "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
             }
           }
@@ -807,6 +815,22 @@ function CourseDetails() {
         }
       });
     });
+
+    // Guaranteed fallback: If WebDev course has 0 items in zipMap, populate with standard 5 Google Drive ZIPs
+    if (zipMap.size === 0) {
+      (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
+        if (z && z.url) {
+          zipMap.set(z.url, {
+            _id: z._id || `zf-${i}`,
+            title: z.title || `Project ZIP Part ${i + 1}`,
+            fileName: z.fileName || `project-part-${i + 1}.zip`,
+            url: z.url,
+            fileSize: z.fileSize || "Google Drive Cloud",
+            isExternal: true,
+          });
+        }
+      });
+    }
   }
 
   const allCourseZips = isWebDevCourse ? Array.from(zipMap.values()) : [];
@@ -930,79 +954,85 @@ function CourseDetails() {
                 )}
 
                 {/* LESSON SPECIFIC ZIP DOWNLOAD BUTTON */}
-                {isWebDevCourse && selectedLesson.zipUrl && (
-                  <div
-                    style={{
-                      marginTop: "16px",
-                      padding: "14px 18px",
-                      background: "rgba(34, 197, 94, 0.08)",
-                      border: "1px solid rgba(34, 197, 94, 0.3)",
-                      borderRadius: "12px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      flexWrap: "wrap",
-                      gap: "12px",
-                    }}
-                  >
-                    <div>
-                      <span style={{ fontSize: "12px", fontWeight: "700", color: "#4ade80", textTransform: "uppercase", letterSpacing: "0.5px" }}>
-                        📦 Lesson Project Code & Assets
-                      </span>
-                      <h4 style={{ margin: "4px 0 0 0", color: "#f0fdf4", fontSize: "15px" }}>
-                        {selectedLesson.zipName || `${selectedLesson.title}.zip`} {selectedLesson.zipSize ? `(${selectedLesson.zipSize})` : ""}
-                      </h4>
-                    </div>
+                {isWebDevCourse && (selectedLesson.zipUrl || allCourseZips.length > 0) && (() => {
+                  const zipUrl = selectedLesson.zipUrl || allCourseZips[0]?.url || "https://drive.google.com/file/d/1C10i264a0xaytSIhoNeW0j1seO75J8qt/view";
+                  const zipTitle = selectedLesson.zipName || (selectedLesson.zipUrl ? `${selectedLesson.title}.zip` : (allCourseZips[0]?.title || "Web-Development-Complete-Projects.zip"));
+                  const zipSize = selectedLesson.zipSize || allCourseZips[0]?.fileSize || "Google Drive Cloud";
 
-                    <div style={{ display: "inline-flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-                      <a
-                        href={isGoogleDriveUrl(selectedLesson.zipUrl) ? (getGoogleDriveDownloadUrl(selectedLesson.zipUrl) || selectedLesson.zipUrl) : getDownloadUrl(selectedLesson.zipUrl, selectedLesson.zipName || `${selectedLesson.title}.zip`)}
-                        download={isGoogleDriveUrl(selectedLesson.zipUrl) ? undefined : (selectedLesson.zipName || `${selectedLesson.title}.zip`)}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          padding: "8px 16px",
-                          background: "#22c55e",
-                          color: "#031007",
-                          fontWeight: "800",
-                          fontSize: "13px",
-                          borderRadius: "8px",
-                          textDecoration: "none",
-                          boxShadow: "0 4px 12px rgba(34, 197, 94, 0.3)",
-                        }}
-                        title="Direct Download ZIP file"
-                      >
-                        <span>📥</span> Download Lesson ZIP ⬇
-                      </a>
-                      {isGoogleDriveUrl(selectedLesson.zipUrl) && (
+                  return (
+                    <div
+                      style={{
+                        marginTop: "16px",
+                        padding: "14px 18px",
+                        background: "rgba(34, 197, 94, 0.08)",
+                        border: "1px solid rgba(34, 197, 94, 0.3)",
+                        borderRadius: "12px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexWrap: "wrap",
+                        gap: "12px",
+                      }}
+                    >
+                      <div>
+                        <span style={{ fontSize: "12px", fontWeight: "700", color: "#4ade80", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                          📦 Lesson Project Code & Assets
+                        </span>
+                        <h4 style={{ margin: "4px 0 0 0", color: "#f0fdf4", fontSize: "15px" }}>
+                          {zipTitle} {zipSize ? `(${zipSize})` : ""}
+                        </h4>
+                      </div>
+
+                      <div style={{ display: "inline-flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
                         <a
-                          href={getGoogleDriveViewUrl(selectedLesson.zipUrl)}
+                          href={isGoogleDriveUrl(zipUrl) ? (getGoogleDriveDownloadUrl(zipUrl) || zipUrl) : getDownloadUrl(zipUrl, zipTitle)}
+                          download={isGoogleDriveUrl(zipUrl) ? undefined : zipTitle}
                           target="_blank"
                           rel="noreferrer"
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
-                            gap: "5px",
-                            padding: "8px 14px",
-                            background: "rgba(255, 255, 255, 0.08)",
-                            border: "1px solid rgba(255, 255, 255, 0.2)",
-                            borderRadius: "8px",
-                            color: "#e2e8f0",
+                            gap: "6px",
+                            padding: "8px 16px",
+                            background: "#22c55e",
+                            color: "#031007",
+                            fontWeight: "800",
                             fontSize: "13px",
-                            fontWeight: "700",
+                            borderRadius: "8px",
                             textDecoration: "none",
+                            boxShadow: "0 4px 12px rgba(34, 197, 94, 0.3)",
                           }}
-                          title="Open single ZIP preview"
+                          title="Direct Download ZIP file"
                         >
-                          <span>👁️</span> Open ZIP ↗
+                          <span>📥</span> Download Lesson ZIP ⬇
                         </a>
-                      )}
+                        {isGoogleDriveUrl(zipUrl) && (
+                          <a
+                            href={getGoogleDriveViewUrl(zipUrl)}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "5px",
+                              padding: "8px 14px",
+                              background: "rgba(255, 255, 255, 0.08)",
+                              border: "1px solid rgba(255, 255, 255, 0.2)",
+                              borderRadius: "8px",
+                              color: "#e2e8f0",
+                              fontSize: "13px",
+                              fontWeight: "700",
+                              textDecoration: "none",
+                            }}
+                            title="Open single ZIP preview"
+                          >
+                            <span>👁️</span> Open ZIP ↗
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  );
+                })()}
 
               </section>
             ) : (
