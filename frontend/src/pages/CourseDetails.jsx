@@ -14,158 +14,8 @@ const WEB_DEV_FALLBACK_DATA = {
   duration: "12 Weeks",
   price: 0,
   isPublished: true,
-  thumbnail:
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
-  modules: [
-    {
-      _id: "web-mod-1",
-      title: "Module 1: HTML5 & Modern Responsive CSS",
-      description: "Foundations of modern web layout, semantic elements, and responsive design with project ZIP archives.",
-      lessons: [
-        {
-          _id: "web-les-1",
-          title: "Lesson 1: HTML5 Semantic Structure & Starter Project",
-          description: "Learn semantic tags, forms, tables, and project directory scaffolding. Download the starter kit ZIP below.",
-          duration: "35 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
-          zipName: "Day 1 WELCOME + HTML.zip",
-          zipSize: "506.7 MB",
-        },
-        {
-          _id: "web-les-2",
-          title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts",
-          description: "Master modern layout techniques, media queries, CSS variables, and layout patterns with full source code.",
-          duration: "45 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
-          zipName: "Day 2 HTML.zip",
-          zipSize: "350.6 MB",
-        },
-        {
-          _id: "web-les-3",
-          title: "Lesson 3: Complete Responsive Agency Landing Page",
-          description: "Build and deploy a mobile-friendly agency landing page with animations and interactive navigation.",
-          duration: "50 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "Web-Development-Complete-Projects",
-          zipSize: "Google Drive Folder",
-        },
-      ],
-    },
-    {
-      _id: "web-mod-2",
-      title: "Module 2: JavaScript DOM & Interactive Applications",
-      description: "Master core JavaScript, DOM manipulation, asynchronous programming, APIs, and interactive applications.",
-      lessons: [
-        {
-          _id: "web-les-4",
-          title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control",
-          description: "ES6+ syntax, arrays, objects, functions, event listeners, and dynamic DOM rendering practice project.",
-          duration: "55 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "02-JavaScript-DOM-Async-Projects.zip",
-          zipSize: "Google Drive Cloud",
-        },
-        {
-          _id: "web-les-5",
-          title: "Lesson 5: Async JS, REST APIs & Live Weather Application",
-          description: "Working with Promises, async/await, Fetch API, error handling, and building a live API-powered app.",
-          duration: "60 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "02-JavaScript-DOM-Async-Projects.zip",
-          zipSize: "Google Drive Cloud",
-        },
-        {
-          _id: "web-les-6",
-          title: "Lesson 6: Interactive CRUD App with LocalStorage",
-          description: "Create a persistent task management application with state persistence, filtering, and local storage.",
-          duration: "50 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "02-JavaScript-DOM-Async-Projects.zip",
-          zipSize: "Google Drive Cloud",
-        },
-      ],
-    },
-    {
-      _id: "web-mod-3",
-      title: "Module 3: React.js & Modern Frontend Architecture",
-      description: "Build robust single-page applications using React components, hooks, routing, and state management.",
-      lessons: [
-        {
-          _id: "web-les-7",
-          title: "Lesson 7: React Setup, JSX, Components & Props",
-          description: "Component architecture, props drilling, conditional rendering, and structured folder layout with Vite.",
-          duration: "45 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "03-React-Ecommerce-App-Source.zip",
-          zipSize: "Google Drive Cloud",
-        },
-        {
-          _id: "web-les-8",
-          title: "Lesson 8: React Hooks (useState, useEffect) & Context API",
-          description: "Deep dive into state lifecycles, effect hooks, custom hooks, and global state management with Context.",
-          duration: "55 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "03-React-Ecommerce-App-Source.zip",
-          zipSize: "Google Drive Cloud",
-        },
-        {
-          _id: "web-les-9",
-          title: "Lesson 9: Full E-Commerce Product Catalog with Cart",
-          description: "Build an interactive E-commerce frontend with cart management, checkout modals, and responsive UI.",
-          duration: "65 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "03-React-Ecommerce-App-Source.zip",
-          zipSize: "Google Drive Cloud",
-        },
-      ],
-    },
-    {
-      _id: "web-mod-4",
-      title: "Module 4: Full-Stack Backend, Database & Deployment",
-      description: "Build RESTful APIs with Node.js, Express, MongoDB, and deploy full-stack applications to cloud servers.",
-      lessons: [
-        {
-          _id: "web-les-10",
-          title: "Lesson 10: Node.js & Express REST API Architecture",
-          description: "Express routing, middleware, request validation, error handling, and building secure REST endpoints.",
-          duration: "50 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "04-FullStack-MERN-Capstone-Project.zip",
-          zipSize: "Google Drive Cloud",
-        },
-        {
-          _id: "web-les-11",
-          title: "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth",
-          description: "Database modeling, CRUD operations, password hashing with bcrypt, and JWT user authentication.",
-          duration: "60 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "04-FullStack-MERN-Capstone-Project.zip",
-          zipSize: "Google Drive Cloud",
-        },
-        {
-          _id: "web-les-12",
-          title: "Lesson 12: Full Stack Production Deployment & CI/CD",
-          description: "Connecting frontend and backend, environment variables, building for production, and live cloud deployment.",
-          duration: "60 min",
-          videoUrl: "",
-          zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-          zipName: "04-FullStack-MERN-Capstone-Project.zip",
-          zipSize: "Google Drive Cloud",
-        },
-      ],
-    },
-  ],
+  thumbnail: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
+  modules: [],
   zipFile: {
     _id: "zf-wd-drive-folder",
     title: "Web Development Complete Project & Source Code (Google Drive Folder)",
@@ -669,15 +519,13 @@ function CourseDetails() {
           cleanSlug === "6ac3757e77cb85107a5ab348" ||
           (fetchedCourse && (fetchedCourse.slug === "web-development" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("web"))));
 
-        // Ensure modules are always present if empty
-        if (fetchedCourse && (!fetchedCourse.modules || fetchedCourse.modules.length === 0)) {
-          if (isCurrentWeb) {
-            fetchedCourse.modules = WEB_DEV_FALLBACK_DATA.modules;
-          } else {
-            const fallbackMod = FALLBACK_COURSES_MAP[cleanSlug]?.modules || FALLBACK_COURSES_MAP[slug]?.modules || [];
-            if (fallbackMod && fallbackMod.length > 0) {
-              fetchedCourse.modules = fallbackMod;
-            }
+        // User request: remove all lesson names from Web Development course
+        if (isCurrentWeb) {
+          fetchedCourse.modules = [];
+        } else if (!fetchedCourse.modules || fetchedCourse.modules.length === 0) {
+          const fallbackMod = FALLBACK_COURSES_MAP[cleanSlug]?.modules || FALLBACK_COURSES_MAP[slug]?.modules || [];
+          if (fallbackMod && fallbackMod.length > 0) {
+            fetchedCourse.modules = fallbackMod;
           }
         }
 
@@ -836,25 +684,6 @@ function CourseDetails() {
       }
     }
 
-    // 4. From any lessons with zipUrl (ignoring stale 179119)
-    (course.modules || []).forEach((m) => {
-      (m.lessons || []).forEach((l) => {
-        if (l.zipUrl && !isStaleDummyZip(l.zipUrl)) {
-          const key = `lesson-zip-${l._id || l.title}`;
-          if (!zipMap.has(key)) {
-            zipMap.set(key, {
-              _id: l._id || l.zipUrl,
-              title: `${l.title} (Project ZIP)`,
-              fileName: l.zipName || `${l.title}.zip`,
-              url: l.zipUrl,
-              fileSize: l.zipSize || "Lesson ZIP",
-              isExternal: isGoogleDriveUrl(l.zipUrl),
-            });
-          }
-        }
-      });
-    });
-
     // Guaranteed fallback: If WebDev course has 0 items in zipMap, populate with standard 5 Google Drive ZIPs
     if (zipMap.size === 0) {
       (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
@@ -926,7 +755,11 @@ function CourseDetails() {
           <div className="course-meta">
             <span>📊 {course.level || "Beginner"}</span>
             <span>⏱ {course.duration || "Self-Paced"}</span>
-            <span>📚 {totalLessons} Lessons</span>
+            {totalLessons > 0 ? (
+              <span>📚 {totalLessons} Lessons</span>
+            ) : allCourseZips.length > 0 ? (
+              <span>📦 {allCourseZips.length} Project ZIPs</span>
+            ) : null}
           </div>
 
         </div>
@@ -1099,13 +932,13 @@ function CourseDetails() {
                 })()}
 
               </section>
-            ) : (
+            ) : totalLessons > 0 ? (
               <section className="video-empty-state">
                 <div>🎬</div>
                 <h2>Select a lesson to start learning</h2>
                 <p>Choose any lesson from the course curriculum below to start watching video lectures.</p>
               </section>
-            )}
+            ) : null}
 
             {/* ALL COURSE ZIP FILES LIST IN MAIN CONTENT */}
             {allCourseZips.length > 0 && (
@@ -1284,6 +1117,11 @@ function CourseDetails() {
                       </div>
                     </div>
                   ))
+                ) : isWebDevCourse ? (
+                  <div style={{ padding: "18px 22px", background: "rgba(34, 197, 94, 0.05)", borderRadius: "12px", border: "1px solid rgba(34, 197, 94, 0.2)", color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6" }}>
+                    <strong style={{ color: "#4ade80", display: "block", marginBottom: "4px" }}>📦 Project-Driven Source Code Course</strong>
+                    This course focuses on practical, real-world source codes and projects. All project code files, starter kits, and Google Drive resources are available above in the Course Resources section.
+                  </div>
                 ) : (
                   <p style={{ color: "#8da096" }}>Curriculum content is being updated.</p>
                 )}

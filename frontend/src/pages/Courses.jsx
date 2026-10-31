@@ -8,12 +8,12 @@ const defaultCourses = [
     slug: "web-development",
     title: "Web Development",
     description:
-      "Complete Full-Stack Web Development: HTML, CSS, JavaScript, React, Node.js & Full Project Source Code ZIPs for each lesson.",
+      "Complete Full-Stack Web Development: Real-world projects, source code archives, starter kits, and downloadable Google Drive ZIP packages.",
     level: "Beginner to Advanced",
     duration: "12 Weeks",
     icon: "💻",
-    modulesCount: 4,
-    lessonsCount: 12,
+    modulesCount: 0,
+    lessonsCount: 0,
     thumbnail:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
   },
@@ -182,9 +182,11 @@ function Courses() {
 
                     <div className="course-info">
                       <span>⏱ {course.duration || "Self-Paced"}</span>
-                      <span>
-                        📚 {lessonCount} Lessons
-                      </span>
+                      {lessonCount > 0 ? (
+                        <span>📚 {lessonCount} Lessons</span>
+                      ) : (
+                        <span>📦 Project ZIPs</span>
+                      )}
                     </div>
 
                     <Link

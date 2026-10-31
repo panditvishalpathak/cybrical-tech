@@ -62,50 +62,7 @@ const WEB_DEV_FALLBACK_DATA = {
   duration: "12 Weeks",
   price: 0,
   isPublished: true,
-  thumbnail:
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
-  modules: [
-    {
-      _id: "web-mod-1",
-      title: "Module 1: HTML5 & Modern Responsive CSS",
-      description: "Foundations of modern web layout, semantic elements, and responsive design with project ZIP archives.",
-      lessons: [
-        { _id: "web-les-1", title: "Lesson 1: HTML5 Semantic Structure & Starter Project", duration: "35 min", videoUrl: "", zipUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr", zipName: "Day 1 WELCOME + HTML.zip", zipSize: "506.7 MB" },
-        { _id: "web-les-2", title: "Lesson 2: CSS3 Flexbox & Grid Responsive Layouts", duration: "45 min", videoUrl: "", zipUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo", zipName: "Day 2 HTML.zip", zipSize: "350.6 MB" },
-        { _id: "web-les-3", title: "Lesson 3: Complete Responsive Agency Landing Page", duration: "50 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "Web-Development-Complete-Projects", zipSize: "Google Drive Folder" },
-      ],
-    },
-    {
-      _id: "web-mod-2",
-      title: "Module 2: JavaScript DOM & Interactive Applications",
-      description: "Master core JavaScript, DOM manipulation, asynchronous programming, APIs, and interactive applications.",
-      lessons: [
-        { _id: "web-les-4", title: "Lesson 4: JavaScript Fundamentals & Dynamic DOM Control", duration: "55 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "02-JavaScript-DOM-Async-Projects.zip", zipSize: "Google Drive Cloud" },
-        { _id: "web-les-5", title: "Lesson 5: Async JS, REST APIs & Live Weather Application", duration: "60 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "02-JavaScript-DOM-Async-Projects.zip", zipSize: "Google Drive Cloud" },
-        { _id: "web-les-6", title: "Lesson 6: Interactive CRUD App with LocalStorage", duration: "50 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "02-JavaScript-DOM-Async-Projects.zip", zipSize: "Google Drive Cloud" },
-      ],
-    },
-    {
-      _id: "web-mod-3",
-      title: "Module 3: React.js & Modern Frontend Architecture",
-      description: "Build robust single-page applications using React components, hooks, routing, and state management.",
-      lessons: [
-        { _id: "web-les-7", title: "Lesson 7: React Setup, JSX, Components & Props", duration: "45 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "03-React-Ecommerce-App-Source.zip", zipSize: "Google Drive Cloud" },
-        { _id: "web-les-8", title: "Lesson 8: React Hooks (useState, useEffect) & Context API", duration: "55 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "03-React-Ecommerce-App-Source.zip", zipSize: "Google Drive Cloud" },
-        { _id: "web-les-9", title: "Lesson 9: Full E-Commerce Product Catalog with Cart", duration: "65 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "03-React-Ecommerce-App-Source.zip", zipSize: "Google Drive Cloud" },
-      ],
-    },
-    {
-      _id: "web-mod-4",
-      title: "Module 4: Full-Stack Backend, Database & Deployment",
-      description: "Build RESTful APIs with Node.js, Express, MongoDB, and deploy full-stack applications to cloud servers.",
-      lessons: [
-        { _id: "web-les-10", title: "Lesson 10: Node.js & Express REST API Architecture", duration: "50 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "04-FullStack-MERN-Capstone-Project.zip", zipSize: "Google Drive Cloud" },
-        { _id: "web-les-11", title: "Lesson 11: MongoDB, Mongoose Schemas & JWT Auth", duration: "60 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "04-FullStack-MERN-Capstone-Project.zip", zipSize: "Google Drive Cloud" },
-        { _id: "web-les-12", title: "Lesson 12: Full Stack Production Deployment & CI/CD", duration: "60 min", videoUrl: "", zipUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing", zipName: "04-FullStack-MERN-Capstone-Project.zip", zipSize: "Google Drive Cloud" },
-      ],
-    },
-  ],
+  modules: [],
   zipFile: {
     _id: "zf-wd-drive-folder",
     title: "Web Development Complete Course Project & Source Code (Google Drive Folder)",
@@ -547,14 +504,13 @@ function AdminCourseContent() {
         resolvedCourse.slug === "web-development" ||
         (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("web"));
 
-      if (!resolvedCourse.modules || resolvedCourse.modules.length === 0) {
-        if (isWebCourse) {
-          resolvedCourse.modules = WEB_DEV_FALLBACK_DATA.modules;
-        } else {
-          const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
-          if (fallback?.modules && fallback.modules.length > 0) {
-            resolvedCourse.modules = fallback.modules;
-          }
+      // User request: remove all lesson names from Web Development course
+      if (isWebCourse) {
+        resolvedCourse.modules = [];
+      } else if (!resolvedCourse.modules || resolvedCourse.modules.length === 0) {
+        const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
+        if (fallback?.modules && fallback.modules.length > 0) {
+          resolvedCourse.modules = fallback.modules;
         }
       }
 
