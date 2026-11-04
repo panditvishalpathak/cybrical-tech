@@ -166,6 +166,14 @@ const connectDB = async () => {
   }
 };
 
+mongoose.connection.on("error", (err) => {
+  console.warn("MongoDB runtime warning:", err.message);
+});
+
+mongoose.connection.on("disconnected", () => {
+  console.log("MongoDB disconnected.");
+});
+
 connectDB();
 
 /* =========================
