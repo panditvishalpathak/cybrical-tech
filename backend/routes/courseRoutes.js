@@ -90,6 +90,8 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
+      summary: "Master Google Drive folder containing all daily project folders, assets, and full-stack source code.",
+      highlights: ["HTML5 Starter Pack", "CSS3 Responsive Projects", "JavaScript DOM Apps", "Full-Stack MERN Capstone", "Starter Assets"],
     },
     {
       _id: "zf-wd-day1",
@@ -99,6 +101,8 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
+      summary: "HTML5 foundations, semantic layout boilerplate, forms, and welcome starter kit.",
+      highlights: ["index.html Boilerplate", "Semantic Tags", "Forms & Input Elements", "Welcome Guide & Assets"],
     },
     {
       _id: "zf-wd-day2",
@@ -108,6 +112,8 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "350.6 MB",
       isExternal: true,
       source: "Google Drive",
+      summary: "Modern CSS3 responsive styling, Flexbox layouts, Grid systems, and landing page builds.",
+      highlights: ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"],
     },
     {
       _id: "zf-wd-day3",
@@ -117,6 +123,8 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
+      summary: "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
+      highlights: ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"],
     },
     {
       _id: "zf-wd-day4",
@@ -126,6 +134,8 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
+      summary: "Production-ready MERN stack web app with Node/Express backend, MongoDB, and React frontend.",
+      highlights: ["React.js Modern Frontend", "Node & Express REST API", "MongoDB Database Schemas", "JWT Auth & Protected Routes"],
     },
   ],
   resources: [

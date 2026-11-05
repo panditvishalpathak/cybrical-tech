@@ -34,6 +34,8 @@ const WEB_DEV_FALLBACK_DATA = {
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
+      summary: "Master Google Drive folder containing all daily project folders, assets, and full-stack source code.",
+      highlights: ["HTML5 Starter Pack", "CSS3 Responsive Projects", "JavaScript DOM Apps", "Full-Stack MERN Capstone", "Starter Assets"],
     },
     {
       _id: "zf-wd-day1",
@@ -43,6 +45,8 @@ const WEB_DEV_FALLBACK_DATA = {
       fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
+      summary: "HTML5 foundations, semantic layout boilerplate, forms, and welcome starter kit.",
+      highlights: ["index.html Boilerplate", "Semantic Tags", "Forms & Input Elements", "Welcome Guide & Assets"],
     },
     {
       _id: "zf-wd-day2",
@@ -52,6 +56,8 @@ const WEB_DEV_FALLBACK_DATA = {
       fileSize: "350.6 MB",
       isExternal: true,
       source: "Google Drive",
+      summary: "Modern CSS3 responsive styling, Flexbox layouts, Grid systems, and landing page builds.",
+      highlights: ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"],
     },
     {
       _id: "zf-wd-day3",
@@ -61,6 +67,8 @@ const WEB_DEV_FALLBACK_DATA = {
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
+      summary: "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
+      highlights: ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"],
     },
     {
       _id: "zf-wd-day4",
@@ -70,6 +78,8 @@ const WEB_DEV_FALLBACK_DATA = {
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
+      summary: "Production-ready MERN stack web app with Node/Express backend, MongoDB, and React frontend.",
+      highlights: ["React.js Modern Frontend", "Node & Express REST API", "MongoDB Database Schemas", "JWT Auth & Protected Routes"],
     },
   ],
   resources: [
@@ -673,18 +683,32 @@ function CourseDetails() {
       return z._id || `zf-${i}`;
     };
 
+    const findFallbackMeta = (item, url) => {
+      const u = url || (item && (item.url || item.fileUrl)) || "";
+      const dId = extractGoogleDriveId(u);
+      return (WEB_DEV_FALLBACK_DATA.zipFiles || []).find((fb) => {
+        if (fb._id && item && fb._id === item._id) return true;
+        if (dId && extractGoogleDriveId(fb.url) === dId) return true;
+        if (item && item.fileName && fb.fileName && item.fileName.toLowerCase().trim() === fb.fileName.toLowerCase().trim()) return true;
+        return false;
+      });
+    };
+
     // 1. From zipFiles
     (course.zipFiles || []).forEach((z, i) => {
       const u = z && (z.url || z.fileUrl);
       if (u && !isStaleDummyZip(u)) {
         const key = getZipKey(z, i);
+        const fbMeta = findFallbackMeta(z, u);
         zipMap.set(key, {
-          _id: z._id || `zf-${i}`,
-          title: z.title || `Project ZIP Part ${i + 1}`,
-          fileName: z.fileName || `project-part-${i + 1}.zip`,
+          _id: z._id || (fbMeta && fbMeta._id) || `zf-${i}`,
+          title: z.title || (fbMeta && fbMeta.title) || `Project ZIP Part ${i + 1}`,
+          fileName: z.fileName || (fbMeta && fbMeta.fileName) || `project-part-${i + 1}.zip`,
           url: u,
-          fileSize: z.fileSize || "Google Drive Cloud",
+          fileSize: z.fileSize || (fbMeta && fbMeta.fileSize) || "Google Drive Cloud",
           isExternal: z.isExternal || isGoogleDriveUrl(u),
+          summary: z.summary || (fbMeta && fbMeta.summary) || "",
+          highlights: (z.highlights && z.highlights.length > 0) ? z.highlights : (fbMeta && fbMeta.highlights) || [],
         });
       }
     });
@@ -695,13 +719,16 @@ function CourseDetails() {
       if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
         const key = getZipKey(r, i);
         if (!zipMap.has(key)) {
+          const fbMeta = findFallbackMeta(r, url);
           zipMap.set(key, {
-            _id: r._id || `res-${i}`,
-            title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
-            fileName: r.fileName || `resource-${i + 1}.zip`,
+            _id: r._id || (fbMeta && fbMeta._id) || `res-${i}`,
+            title: r.title || (fbMeta && fbMeta.title) || r.fileName || `Resource ZIP Part ${i + 1}`,
+            fileName: r.fileName || (fbMeta && fbMeta.fileName) || `resource-${i + 1}.zip`,
             url,
-            fileSize: r.fileSize || "Google Drive Cloud",
+            fileSize: r.fileSize || (fbMeta && fbMeta.fileSize) || "Google Drive Cloud",
             isExternal: r.isExternal || isGoogleDriveUrl(url),
+            summary: r.summary || (fbMeta && fbMeta.summary) || "",
+            highlights: (r.highlights && r.highlights.length > 0) ? r.highlights : (fbMeta && fbMeta.highlights) || [],
           });
         }
       }
@@ -712,13 +739,16 @@ function CourseDetails() {
       const u = course.zipFile.url;
       const key = getZipKey(course.zipFile, "main");
       if (!zipMap.has(key)) {
+        const fbMeta = findFallbackMeta(course.zipFile, u);
         zipMap.set(key, {
           _id: "main-zip",
-          title: course.zipFile.title || course.zipFile.fileName || "Web Development Complete Project & Source Code (Google Drive Folder)",
-          fileName: course.zipFile.fileName || "Web-Development-Google-Drive-Projects",
+          title: course.zipFile.title || (fbMeta && fbMeta.title) || course.zipFile.fileName || "Web Development Complete Project & Source Code (Google Drive Folder)",
+          fileName: course.zipFile.fileName || (fbMeta && fbMeta.fileName) || "Web-Development-Google-Drive-Projects",
           url: u,
-          fileSize: course.zipFile.fileSize || "Google Drive Folder",
+          fileSize: course.zipFile.fileSize || (fbMeta && fbMeta.fileSize) || "Google Drive Folder",
           isExternal: course.zipFile.isExternal || isGoogleDriveUrl(u),
+          summary: course.zipFile.summary || (fbMeta && fbMeta.summary) || "",
+          highlights: (course.zipFile.highlights && course.zipFile.highlights.length > 0) ? course.zipFile.highlights : (fbMeta && fbMeta.highlights) || [],
         });
       }
     }
@@ -735,6 +765,8 @@ function CourseDetails() {
             url: z.url,
             fileSize: z.fileSize || "Google Drive Cloud",
             isExternal: true,
+            summary: z.summary || "",
+            highlights: z.highlights || [],
           });
         }
       }
@@ -961,7 +993,39 @@ function CourseDetails() {
                           </div>
 
                           <h3>{z.title || z.fileName}</h3>
-                          <p>{z.fileName}</p>
+                          <p style={{ color: "#94a3b8", fontSize: "13px", margin: "2px 0 6px 0" }}>{z.fileName}</p>
+
+                          {/* Summary / Description of the ZIP */}
+                          {z.summary && (
+                            <p style={{ color: "#cbd5e1", fontSize: "14px", margin: "6px 0 10px 0", lineHeight: "1.5" }}>
+                              {z.summary}
+                            </p>
+                          )}
+
+                          {/* Included Files & Topics to Read */}
+                          {z.highlights && z.highlights.length > 0 && (
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", margin: "8px 0 12px 0" }}>
+                              <span style={{ fontSize: "11px", fontWeight: "700", color: "#38bdf8", textTransform: "uppercase", letterSpacing: "0.5px", alignSelf: "center", marginRight: "2px" }}>
+                                📖 Included:
+                              </span>
+                              {z.highlights.map((h, hIdx) => (
+                                <span
+                                  key={hIdx}
+                                  style={{
+                                    fontSize: "12px",
+                                    padding: "3px 9px",
+                                    background: "rgba(56, 189, 248, 0.12)",
+                                    border: "1px solid rgba(56, 189, 248, 0.3)",
+                                    borderRadius: "6px",
+                                    color: "#bae6fd",
+                                    fontWeight: "500",
+                                  }}
+                                >
+                                  ✓ {h}
+                                </span>
+                              ))}
+                            </div>
+                          )}
 
                           {/* Direct Google Drive URL display */}
                           <div
@@ -990,7 +1054,7 @@ function CourseDetails() {
                                 textDecoration: "underline",
                                 wordBreak: "break-all",
                               }}
-                              title="Click to view file in Google Drive"
+                              title="Click to view and read file in Google Drive"
                             >
                               {driveViewUrl}
                             </a>
@@ -998,7 +1062,7 @@ function CourseDetails() {
                         </div>
 
                         <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-                          {/* 1. Open in Google Drive Button */}
+                          {/* 1. Read & Open in Google Drive Button */}
                           <a
                             href={driveViewUrl}
                             target="_blank"
@@ -1008,10 +1072,13 @@ function CourseDetails() {
                               background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
                               color: "#ffffff",
                               boxShadow: "0 4px 14px rgba(37, 99, 235, 0.35)",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "8px",
                             }}
-                            title="Open directly on Google Drive"
+                            title="Read files and inspect source code in Google Drive"
                           >
-                            <span>☁️</span> Open in Google Drive ↗
+                            <span>📖</span> Read in Google Drive ↗
                           </a>
 
                           {/* 2. Download ZIP Button */}
@@ -1155,11 +1222,11 @@ function CourseDetails() {
                         >
                           <div style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, minWidth: "240px" }}>
                             <span style={{ fontSize: "28px" }}>{isFolder ? "📁" : "📦"}</span>
-                            <div>
+                            <div style={{ flex: 1 }}>
                               <h4 style={{ margin: "0 0 4px 0", color: "#f8fafc", fontSize: "15px", fontWeight: "700" }}>
                                 {z.title || z.fileName}
                               </h4>
-                              <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+                              <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap", marginBottom: "6px" }}>
                                 <span style={{ background: "rgba(37, 99, 235, 0.2)", color: "#93c5fd", padding: "2px 8px", borderRadius: "6px", fontSize: "11px", fontWeight: "700" }}>
                                   ☁️ Google Drive
                                 </span>
@@ -1167,6 +1234,30 @@ function CourseDetails() {
                                   {isFolder ? "Project Folder" : (z.fileSize || "Cloud ZIP")}
                                 </span>
                               </div>
+                              {z.summary && (
+                                <p style={{ color: "#cbd5e1", fontSize: "13px", margin: "4px 0 6px 0", lineHeight: "1.4" }}>
+                                  {z.summary}
+                                </p>
+                              )}
+                              {z.highlights && z.highlights.length > 0 && (
+                                <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "4px" }}>
+                                  {z.highlights.map((h, i) => (
+                                    <span
+                                      key={i}
+                                      style={{
+                                        fontSize: "11px",
+                                        padding: "2px 7px",
+                                        background: "rgba(56, 189, 248, 0.1)",
+                                        border: "1px solid rgba(56, 189, 248, 0.25)",
+                                        borderRadius: "4px",
+                                        color: "#bae6fd",
+                                      }}
+                                    >
+                                      ✓ {h}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           </div>
 
@@ -1188,9 +1279,9 @@ function CourseDetails() {
                                 gap: "6px",
                                 boxShadow: "0 4px 12px rgba(37, 99, 235, 0.35)",
                               }}
-                              title="Open on Google Drive"
+                              title="Read files and inspect source code in Google Drive"
                             >
-                              <span>☁️</span> Open Drive ↗
+                              <span>📖</span> Read in Google Drive ↗
                             </a>
 
                             {!isFolder && (
@@ -1311,7 +1402,7 @@ function CourseDetails() {
                             {isFolder ? "📁" : "📦"} {z.title || z.fileName}
                           </span>
                           <span style={{ color: "#60a5fa", fontWeight: "800", flexShrink: 0, fontSize: "11px" }}>
-                            ☁️ Drive ↗
+                            📖 Read ↗
                           </span>
                         </a>
                       );
