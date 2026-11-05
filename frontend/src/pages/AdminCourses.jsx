@@ -5,7 +5,7 @@ import "./AdminCourses.css";
 
 const ADMIN_DEFAULT_COURSES = [
   {
-    _id: "660 000000000000000000001",
+    _id: "660000000000000000000001",
     title: "Web Development",
     slug: "web-development",
     description: "Complete Full-Stack Web Development: HTML, CSS, JavaScript, React, Node.js & Full Project Source Code ZIPs for each lesson.",
@@ -14,12 +14,7 @@ const ADMIN_DEFAULT_COURSES = [
     duration: "12 Weeks",
     price: 0,
     isPublished: true,
-    modules: [
-      { title: "Module 1: HTML5 & Modern Responsive CSS", lessons: [{}, {}, {}] },
-      { title: "Module 2: JavaScript DOM & Interactive Applications", lessons: [{}, {}, {}] },
-      { title: "Module 3: React.js & Modern Frontend Architecture", lessons: [{}, {}, {}] },
-      { title: "Module 4: Full-Stack Backend, Database & Deployment", lessons: [{}, {}, {}] },
-    ],
+    modules: [],
   },
   {
     _id: "660000000000000000000002",
@@ -531,8 +526,14 @@ function AdminCourses() {
                           <span>📶 {c.level}</span>
                           <span>⏱ {c.duration || "N/A"}</span>
                           <span>💰 {c.price === 0 ? "Free" : `₹${c.price}`}</span>
-                          <span>📑 {c.modules ? c.modules.length : 0} Modules</span>
-                          <span>🎬 {totalLessons} Lessons</span>
+                          {((c.slug || "").includes("web") || (c.title || "").toLowerCase().includes("web")) ? (
+                            <span style={{ color: "#38bdf8", fontWeight: "700" }}>📦 {c.zipFiles && c.zipFiles.length > 0 ? c.zipFiles.length : 5} Project ZIPs (Google Drive)</span>
+                          ) : (
+                            <>
+                              <span>📑 {c.modules ? c.modules.length : 0} Modules</span>
+                              <span>🎬 {totalLessons} Lessons</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -542,7 +543,7 @@ function AdminCourses() {
                         to={`/admin/courses/${c._id}/content`}
                         className="btn-action-content"
                       >
-                        🎬 Manage Lessons & Videos
+                        {((c.slug || "").includes("web") || (c.title || "").toLowerCase().includes("web")) ? "📦 Manage Project ZIPs" : "🎬 Manage Lessons & Videos"}
                       </Link>
 
                       <button

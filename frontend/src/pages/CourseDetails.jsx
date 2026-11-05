@@ -661,21 +661,29 @@ function CourseDetails() {
     (course._id && course._id.toString().includes("000000000000000000000001")) ||
     (slug && slug.toLowerCase().includes("web"));
 
-  // Gather ALL unique ZIP files from zipFiles, resources, zipFile, and all lessons
+  // Gather ALL unique ZIP files from zipFiles, resources, zipFile, and standard projects
   const zipMap = new Map();
 
   if (isWebDevCourse) {
+    const getZipKey = (z, i) => {
+      const u = z && (z.url || z.fileUrl || "");
+      const driveId = extractGoogleDriveId(u);
+      if (driveId) return `drive-${driveId}`;
+      if (u) return `url-${u.trim().toLowerCase()}`;
+      return z._id || `zf-${i}`;
+    };
+
     // 1. From zipFiles
     (course.zipFiles || []).forEach((z, i) => {
       const u = z && (z.url || z.fileUrl);
       if (u && !isStaleDummyZip(u)) {
-        const key = z._id || `zf-${i}-${z.title || u}`;
+        const key = getZipKey(z, i);
         zipMap.set(key, {
           _id: z._id || `zf-${i}`,
           title: z.title || `Project ZIP Part ${i + 1}`,
           fileName: z.fileName || `project-part-${i + 1}.zip`,
           url: u,
-          fileSize: z.fileSize || "ZIP File",
+          fileSize: z.fileSize || "Google Drive Cloud",
           isExternal: z.isExternal || isGoogleDriveUrl(u),
         });
       }
@@ -685,14 +693,14 @@ function CourseDetails() {
     (course.resources || []).forEach((r, i) => {
       const url = r.url || r.fileUrl;
       if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
-        const key = r._id || `res-${i}-${r.title || url}`;
+        const key = getZipKey(r, i);
         if (!zipMap.has(key)) {
           zipMap.set(key, {
             _id: r._id || `res-${i}`,
             title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
             fileName: r.fileName || `resource-${i + 1}.zip`,
             url,
-            fileSize: r.fileSize || "ZIP File",
+            fileSize: r.fileSize || "Google Drive Cloud",
             isExternal: r.isExternal || isGoogleDriveUrl(url),
           });
         }
@@ -702,24 +710,25 @@ function CourseDetails() {
     // 3. From legacy zipFile
     if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url)) {
       const u = course.zipFile.url;
-      const key = course.zipFile._id || `main-zip-${u}`;
+      const key = getZipKey(course.zipFile, "main");
       if (!zipMap.has(key)) {
         zipMap.set(key, {
           _id: "main-zip",
-          title: course.zipFile.title || course.zipFile.fileName || "Course Project ZIP",
-          fileName: course.zipFile.fileName || "course-project.zip",
+          title: course.zipFile.title || course.zipFile.fileName || "Web Development Complete Project & Source Code (Google Drive Folder)",
+          fileName: course.zipFile.fileName || "Web-Development-Google-Drive-Projects",
           url: u,
-          fileSize: course.zipFile.fileSize || "ZIP Archive",
+          fileSize: course.zipFile.fileSize || "Google Drive Folder",
           isExternal: course.zipFile.isExternal || isGoogleDriveUrl(u),
         });
       }
     }
 
-    // Guaranteed fallback: If WebDev course has 0 items in zipMap, populate with standard 5 Google Drive ZIPs
-    if (zipMap.size === 0) {
-      (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
-        if (z && z.url) {
-          zipMap.set(z._id || `zf-${i}`, {
+    // 4. Guaranteed: Ensure all 5 standard Web Development Google Drive items are populated
+    (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
+      if (z && z.url) {
+        const key = getZipKey(z, i);
+        if (!zipMap.has(key)) {
+          zipMap.set(key, {
             _id: z._id || `zf-${i}`,
             title: z.title || `Project ZIP Part ${i + 1}`,
             fileName: z.fileName || `project-part-${i + 1}.zip`,
@@ -728,8 +737,8 @@ function CourseDetails() {
             isExternal: true,
           });
         }
-      });
-    }
+      }
+    });
   }
 
   const allCourseZips = isWebDevCourse ? Array.from(zipMap.values()) : [];
@@ -1116,9 +1125,102 @@ function CourseDetails() {
                     </div>
                   ))
                 ) : isWebDevCourse ? (
-                  <div style={{ padding: "18px 22px", background: "rgba(34, 197, 94, 0.05)", borderRadius: "12px", border: "1px solid rgba(34, 197, 94, 0.2)", color: "#cbd5e1", fontSize: "14px", lineHeight: "1.6" }}>
-                    <strong style={{ color: "#4ade80", display: "block", marginBottom: "4px" }}>📦 Project-Driven Source Code Course</strong>
-                    This course focuses on practical, real-world source codes and projects. All project code files, starter kits, and Google Drive resources are available above in the Course Resources section.
+                  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                    <div style={{ padding: "14px 18px", background: "rgba(37, 99, 235, 0.08)", borderRadius: "10px", border: "1px solid rgba(59, 130, 246, 0.25)", color: "#cbd5e1", fontSize: "14px", lineHeight: "1.5" }}>
+                      <strong style={{ color: "#93c5fd", display: "block", marginBottom: "4px" }}>☁️ All Project ZIP Files & Source Code ({allCourseZips.length})</strong>
+                      All source code packages, starter kits, and full-stack projects are hosted on Google Drive. Click below to open directly in Google Drive or download:
+                    </div>
+
+                    {allCourseZips.map((z, idx) => {
+                      const isFolder = isGoogleDriveFolder(z.url);
+                      const driveUrl = getGoogleDriveViewUrl(z.url) || z.url;
+                      const downloadUrl = isGoogleDriveUrl(z.url)
+                        ? (getGoogleDriveDownloadUrl(z.url) || z.url)
+                        : getDownloadUrl(z.url, z.fileName);
+
+                      return (
+                        <div
+                          key={`curr-${z._id || idx}`}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            padding: "16px 20px",
+                            background: "rgba(15, 23, 42, 0.6)",
+                            border: "1px solid rgba(59, 130, 246, 0.25)",
+                            borderRadius: "12px",
+                            flexWrap: "wrap",
+                            gap: "12px",
+                          }}
+                        >
+                          <div style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, minWidth: "240px" }}>
+                            <span style={{ fontSize: "28px" }}>{isFolder ? "📁" : "📦"}</span>
+                            <div>
+                              <h4 style={{ margin: "0 0 4px 0", color: "#f8fafc", fontSize: "15px", fontWeight: "700" }}>
+                                {z.title || z.fileName}
+                              </h4>
+                              <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+                                <span style={{ background: "rgba(37, 99, 235, 0.2)", color: "#93c5fd", padding: "2px 8px", borderRadius: "6px", fontSize: "11px", fontWeight: "700" }}>
+                                  ☁️ Google Drive
+                                </span>
+                                <span style={{ color: "#94a3b8", fontSize: "12px" }}>
+                                  {isFolder ? "Project Folder" : (z.fileSize || "Cloud ZIP")}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+                            <a
+                              href={driveUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{
+                                padding: "9px 16px",
+                                background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+                                color: "#ffffff",
+                                borderRadius: "8px",
+                                fontSize: "13px",
+                                fontWeight: "700",
+                                textDecoration: "none",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: "6px",
+                                boxShadow: "0 4px 12px rgba(37, 99, 235, 0.35)",
+                              }}
+                              title="Open on Google Drive"
+                            >
+                              <span>☁️</span> Open Drive ↗
+                            </a>
+
+                            {!isFolder && (
+                              <a
+                                href={downloadUrl}
+                                download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{
+                                  padding: "9px 14px",
+                                  background: "rgba(34, 197, 94, 0.15)",
+                                  border: "1px solid rgba(34, 197, 94, 0.4)",
+                                  color: "#4ade80",
+                                  borderRadius: "8px",
+                                  fontSize: "13px",
+                                  fontWeight: "700",
+                                  textDecoration: "none",
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: "6px",
+                                }}
+                                title="Download ZIP"
+                              >
+                                <span>⬇</span> Download
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <p style={{ color: "#8da096" }}>Curriculum content is being updated.</p>
