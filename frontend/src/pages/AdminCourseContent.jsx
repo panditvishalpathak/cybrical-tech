@@ -1323,73 +1323,96 @@ function AdminCourseContent() {
       course._id === "660000000000000000000001" ||
       course._id === "000000000000000000000001");
 
-  const zipMap = new Map();
+  const allZips = (() => {
+    if (!isWebDevCourse) return [];
 
-  if (isWebDevCourse) {
+    const getCanonicalKey = (z) => {
+      if (!z) return null;
+      if (z._id && typeof z._id === "string" && z._id.startsWith("zf-wd-")) {
+        if (z._id.includes("folder")) return "std-folder";
+        if (z._id.includes("day1")) return "std-day1";
+        if (z._id.includes("day2")) return "std-day2";
+        if (z._id.includes("day3")) return "std-day3";
+        if (z._id.includes("day4")) return "std-day4";
+      }
+      const str = ((z.fileName || "") + " " + (z.title || "") + " " + (z._id || "")).toLowerCase();
+      if (str.includes("day 1") || str.includes("day-1") || str.includes("welcome")) return "std-day1";
+      if (str.includes("day 2") || str.includes("day-2")) return "std-day2";
+      if (str.includes("day 3") || str.includes("day-3") || str.includes("javascript") || str.includes("02-javascript")) return "std-day3";
+      if (str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack")) return "std-day4";
+      if (str.includes("folder") || str.includes("master") || str.includes("web-development-google-drive")) return "std-folder";
+      return null;
+    };
+
+    const zipMap = new Map();
+
+    // 1. ALWAYS initialize with all 5 standard projects first!
+    (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((std) => {
+      const canon = getCanonicalKey(std);
+      if (canon) {
+        zipMap.set(canon, { ...std, isExternal: true });
+      }
+    });
+
+    // 2. Enhance with course.zipFiles
     (course.zipFiles || []).forEach((z, i) => {
       const u = z && (z.url || z.fileUrl);
       if (u && !isStaleDummyZip(u)) {
-        const key = z._id || `zf-${i}-${z.title || u}`;
-        zipMap.set(key, {
-          _id: z._id || `zf-${i}`,
-          title: z.title || `Project ZIP Part ${i + 1}`,
-          fileName: z.fileName || `project-part-${i + 1}.zip`,
-          url: u,
-          fileSize: z.fileSize || "",
-          isExternal: z.isExternal || u.includes("drive.google.com") || u.includes("google"),
-        });
+        const canon = getCanonicalKey(z);
+        if (canon && zipMap.has(canon)) {
+          const existing = zipMap.get(canon);
+          zipMap.set(canon, {
+            ...existing,
+            ...z,
+            _id: z._id || existing._id,
+            title: z.title || existing.title,
+            fileName: z.fileName || existing.fileName,
+            url: u || existing.url,
+            fileSize: z.fileSize || existing.fileSize,
+            isExternal: true,
+          });
+        } else {
+          const customKey = z._id || `custom-zf-${i}-${z.fileName || z.title || u}`;
+          zipMap.set(customKey, {
+            _id: z._id || `zf-custom-${i}`,
+            title: z.title || `Project ZIP Part ${i + 1}`,
+            fileName: z.fileName || `project-part-${i + 1}.zip`,
+            url: u,
+            fileSize: z.fileSize || "Google Drive Cloud",
+            isExternal: z.isExternal || isGoogleDriveUrl(u),
+          });
+        }
       }
     });
 
+    // 3. Enhance with resources
     (course.resources || []).forEach((r, i) => {
       const url = r.url || r.fileUrl;
       if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
-        const key = r._id || `res-${i}-${r.title || url}`;
-        if (!zipMap.has(key)) {
-          zipMap.set(key, {
-            _id: r._id || `res-${i}`,
-            title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
-            fileName: r.fileName || `resource-${i + 1}.zip`,
-            url,
-            fileSize: r.fileSize || "",
-            isExternal: r.isExternal || url.includes("drive.google.com") || url.includes("google"),
-          });
+        const canon = getCanonicalKey(r);
+        if (canon && zipMap.has(canon)) {
+          const existing = zipMap.get(canon);
+          if (!existing.url && url) {
+            existing.url = url;
+          }
+        } else {
+          const customKey = r._id || `custom-res-${i}-${r.fileName || r.title || url}`;
+          if (!zipMap.has(customKey)) {
+            zipMap.set(customKey, {
+              _id: r._id || `res-${i}`,
+              title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
+              fileName: r.fileName || `resource-${i + 1}.zip`,
+              url,
+              fileSize: r.fileSize || "Google Drive Cloud",
+              isExternal: r.isExternal || isGoogleDriveUrl(url),
+            });
+          }
         }
       }
     });
 
-    if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url)) {
-      const u = course.zipFile.url;
-      const key = course.zipFile._id || `main-zip-${u}`;
-      if (!zipMap.has(key)) {
-        zipMap.set(key, {
-          _id: "main-zip",
-          title: course.zipFile.title || course.zipFile.fileName || "Course Project ZIP",
-          fileName: course.zipFile.fileName || "course-project.zip",
-          url: u,
-          fileSize: course.zipFile.fileSize || "",
-          isExternal: course.zipFile.isExternal || u.includes("drive.google.com") || u.includes("google"),
-        });
-      }
-    }
-
-    if (zipMap.size === 0) {
-      (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
-        if (z && z.url) {
-          zipMap.set(z._id || `zf-${i}`, {
-            _id: z._id || `zf-${i}`,
-            title: z.title || `Project ZIP Part ${i + 1}`,
-            fileName: z.fileName || `project-part-${i + 1}.zip`,
-            url: z.url,
-            fileSize: z.fileSize || "Google Drive Cloud",
-            isExternal: true,
-          });
-        }
-      });
-    }
-  }
-
-  const allZips = isWebDevCourse ? Array.from(zipMap.values()) : [];
+    return Array.from(zipMap.values());
+  })();
 
   return (
     <div className="admin-content-page">

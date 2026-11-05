@@ -680,109 +680,103 @@ function CourseDetails() {
     (course._id && course._id.toString().includes("000000000000000000000001")) ||
     (slug && slug.toLowerCase().includes("web"));
 
-  // Gather ALL unique ZIP files from zipFiles, resources, zipFile, and standard projects
-  const zipMap = new Map();
+  // Gather ALL unique ZIP files from standard projects, zipFiles, and resources
+  const allCourseZips = (() => {
+    if (!isWebDevCourse) return [];
 
-  if (isWebDevCourse) {
-    const getZipKey = (z, i) => {
-      const u = z && (z.url || z.fileUrl || "");
-      const driveId = extractGoogleDriveId(u);
-      if (driveId) return `drive-${driveId}`;
-      if (u) return `url-${u.trim().toLowerCase()}`;
-      return z._id || `zf-${i}`;
+    const getCanonicalKey = (z) => {
+      if (!z) return null;
+      if (z._id && typeof z._id === "string" && z._id.startsWith("zf-wd-")) {
+        if (z._id.includes("folder")) return "std-folder";
+        if (z._id.includes("day1")) return "std-day1";
+        if (z._id.includes("day2")) return "std-day2";
+        if (z._id.includes("day3")) return "std-day3";
+        if (z._id.includes("day4")) return "std-day4";
+      }
+      const str = ((z.fileName || "") + " " + (z.title || "") + " " + (z._id || "")).toLowerCase();
+      if (str.includes("day 1") || str.includes("day-1") || str.includes("welcome")) return "std-day1";
+      if (str.includes("day 2") || str.includes("day-2")) return "std-day2";
+      if (str.includes("day 3") || str.includes("day-3") || str.includes("javascript") || str.includes("02-javascript")) return "std-day3";
+      if (str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack")) return "std-day4";
+      if (str.includes("folder") || str.includes("master") || str.includes("web-development-google-drive")) return "std-folder";
+      return null;
     };
 
-    const findFallbackMeta = (item, url) => {
-      const u = url || (item && (item.url || item.fileUrl)) || "";
-      const dId = extractGoogleDriveId(u);
-      return (WEB_DEV_FALLBACK_DATA.zipFiles || []).find((fb) => {
-        if (fb._id && item && fb._id === item._id) return true;
-        if (dId && extractGoogleDriveId(fb.url) === dId) return true;
-        if (item && item.fileName && fb.fileName && item.fileName.toLowerCase().trim() === fb.fileName.toLowerCase().trim()) return true;
-        return false;
-      });
-    };
+    const zipMap = new Map();
 
-    // 1. From zipFiles
+    // 1. ALWAYS initialize with all 5 standard projects first!
+    (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((std) => {
+      const canon = getCanonicalKey(std);
+      if (canon) {
+        zipMap.set(canon, { ...std, isExternal: true });
+      }
+    });
+
+    // 2. Enhance with course.zipFiles
     (course.zipFiles || []).forEach((z, i) => {
       const u = z && (z.url || z.fileUrl);
       if (u && !isStaleDummyZip(u)) {
-        const key = getZipKey(z, i);
-        const fbMeta = findFallbackMeta(z, u);
-        zipMap.set(key, {
-          _id: z._id || (fbMeta && fbMeta._id) || `zf-${i}`,
-          title: z.title || (fbMeta && fbMeta.title) || `Project ZIP Part ${i + 1}`,
-          fileName: z.fileName || (fbMeta && fbMeta.fileName) || `project-part-${i + 1}.zip`,
-          url: u,
-          fileSize: z.fileSize || (fbMeta && fbMeta.fileSize) || "Google Drive Cloud",
-          isExternal: z.isExternal || isGoogleDriveUrl(u),
-          summary: z.summary || (fbMeta && fbMeta.summary) || "",
-          highlights: (z.highlights && z.highlights.length > 0) ? z.highlights : (fbMeta && fbMeta.highlights) || [],
-        });
-      }
-    });
-
-    // 2. From resources
-    (course.resources || []).forEach((r, i) => {
-      const url = r.url || r.fileUrl;
-      if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
-        const key = getZipKey(r, i);
-        if (!zipMap.has(key)) {
-          const fbMeta = findFallbackMeta(r, url);
-          zipMap.set(key, {
-            _id: r._id || (fbMeta && fbMeta._id) || `res-${i}`,
-            title: r.title || (fbMeta && fbMeta.title) || r.fileName || `Resource ZIP Part ${i + 1}`,
-            fileName: r.fileName || (fbMeta && fbMeta.fileName) || `resource-${i + 1}.zip`,
-            url,
-            fileSize: r.fileSize || (fbMeta && fbMeta.fileSize) || "Google Drive Cloud",
-            isExternal: r.isExternal || isGoogleDriveUrl(url),
-            summary: r.summary || (fbMeta && fbMeta.summary) || "",
-            highlights: (r.highlights && r.highlights.length > 0) ? r.highlights : (fbMeta && fbMeta.highlights) || [],
+        const canon = getCanonicalKey(z);
+        if (canon && zipMap.has(canon)) {
+          const existing = zipMap.get(canon);
+          zipMap.set(canon, {
+            ...existing,
+            ...z,
+            _id: z._id || existing._id,
+            title: z.title || existing.title,
+            fileName: z.fileName || existing.fileName,
+            url: u || existing.url,
+            fileSize: z.fileSize || existing.fileSize,
+            summary: z.summary || existing.summary,
+            highlights: (z.highlights && z.highlights.length > 0) ? z.highlights : existing.highlights,
+            isExternal: true,
           });
-        }
-      }
-    });
-
-    // 3. From legacy zipFile
-    if (course.zipFile && course.zipFile.url && !isStaleDummyZip(course.zipFile.url)) {
-      const u = course.zipFile.url;
-      const key = getZipKey(course.zipFile, "main");
-      if (!zipMap.has(key)) {
-        const fbMeta = findFallbackMeta(course.zipFile, u);
-        zipMap.set(key, {
-          _id: "main-zip",
-          title: course.zipFile.title || (fbMeta && fbMeta.title) || course.zipFile.fileName || "Web Development Complete Project & Source Code (Google Drive Folder)",
-          fileName: course.zipFile.fileName || (fbMeta && fbMeta.fileName) || "Web-Development-Google-Drive-Projects",
-          url: u,
-          fileSize: course.zipFile.fileSize || (fbMeta && fbMeta.fileSize) || "Google Drive Folder",
-          isExternal: course.zipFile.isExternal || isGoogleDriveUrl(u),
-          summary: course.zipFile.summary || (fbMeta && fbMeta.summary) || "",
-          highlights: (course.zipFile.highlights && course.zipFile.highlights.length > 0) ? course.zipFile.highlights : (fbMeta && fbMeta.highlights) || [],
-        });
-      }
-    }
-
-    // 4. Guaranteed: Ensure all 5 standard Web Development Google Drive items are populated
-    (WEB_DEV_FALLBACK_DATA.zipFiles || []).forEach((z, i) => {
-      if (z && z.url) {
-        const key = getZipKey(z, i);
-        if (!zipMap.has(key)) {
-          zipMap.set(key, {
-            _id: z._id || `zf-${i}`,
+        } else {
+          const customKey = z._id || `custom-zf-${i}-${z.fileName || z.title || u}`;
+          zipMap.set(customKey, {
+            _id: z._id || `zf-custom-${i}`,
             title: z.title || `Project ZIP Part ${i + 1}`,
             fileName: z.fileName || `project-part-${i + 1}.zip`,
-            url: z.url,
+            url: u,
             fileSize: z.fileSize || "Google Drive Cloud",
-            isExternal: true,
+            isExternal: z.isExternal || isGoogleDriveUrl(u),
             summary: z.summary || "",
             highlights: z.highlights || [],
           });
         }
       }
     });
-  }
 
-  const allCourseZips = isWebDevCourse ? Array.from(zipMap.values()) : [];
+    // 3. Enhance with resources
+    (course.resources || []).forEach((r, i) => {
+      const url = r.url || r.fileUrl;
+      if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
+        const canon = getCanonicalKey(r);
+        if (canon && zipMap.has(canon)) {
+          const existing = zipMap.get(canon);
+          if (!existing.url && url) {
+            existing.url = url;
+          }
+        } else {
+          const customKey = r._id || `custom-res-${i}-${r.fileName || r.title || url}`;
+          if (!zipMap.has(customKey)) {
+            zipMap.set(customKey, {
+              _id: r._id || `res-${i}`,
+              title: r.title || r.fileName || `Resource ZIP Part ${i + 1}`,
+              fileName: r.fileName || `resource-${i + 1}.zip`,
+              url,
+              fileSize: r.fileSize || "Google Drive Cloud",
+              isExternal: r.isExternal || isGoogleDriveUrl(url),
+              summary: r.summary || "",
+              highlights: r.highlights || [],
+            });
+          }
+        }
+      }
+    });
+
+    return Array.from(zipMap.values());
+  })();
 
   const handleDownloadAllZips = () => {
     if (!allCourseZips || allCourseZips.length === 0) return;
