@@ -25,9 +25,46 @@ const FALLBACK_AI_COURSE = {
   thumbnail:
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
   modules: [],
-  zipFile: null,
-  zipFiles: [],
-  resources: [],
+  zipFiles: [
+    {
+      _id: "zf-ai-drive-folder",
+      title: "📁 Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+      fileName: "Artificial-Intelligence-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+      fileSize: "Google Drive Folder",
+      isExternal: true,
+      source: "Google Drive",
+      summary: "Master Google Drive folder containing all Artificial Intelligence projects, machine learning models, neural networks, Jupyter notebooks, and datasets.",
+      highlights: [
+        "Machine Learning Models",
+        "Deep Learning & PyTorch / TensorFlow",
+        "Generative AI & LLM Notebooks",
+        "Computer Vision & NLP Projects",
+        "Real-World AI Datasets",
+      ],
+    },
+  ],
+  resources: [
+    {
+      _id: "res-ai-drive-folder",
+      title: "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+      fileName: "Artificial-Intelligence-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+      fileUrl: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+      fileSize: "Google Drive Folder",
+      isExternal: true,
+      source: "Google Drive",
+    },
+  ],
+  zipFile: {
+    _id: "zf-ai-drive-folder",
+    title: "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+    fileName: "Artificial-Intelligence-Google-Drive-Projects",
+    url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+    fileSize: "Google Drive Folder",
+    isExternal: true,
+    source: "Google Drive",
+  },
 };
 
 const WEB_DEV_ZIP_COURSE = {
@@ -650,6 +687,12 @@ const getCourseDoc = async (targetId) => {
           course.modules = [];
           modified = true;
         }
+        if (!course.zipFiles || course.zipFiles.length === 0) {
+          course.zipFiles = FALLBACK_AI_COURSE.zipFiles;
+          course.zipFile = FALLBACK_AI_COURSE.zipFile;
+          course.resources = FALLBACK_AI_COURSE.resources;
+          modified = true;
+        }
       }
 
       if (isDataScience) {
@@ -663,7 +706,9 @@ const getCourseDoc = async (targetId) => {
           course.resources = FALLBACK_DATA_SCIENCE_COURSE.resources;
           modified = true;
         }
-      } else {
+      }
+
+      if (!isAI && !isDataScience) {
         // Only strip stale dummy upload artifacts
         if (course.zipFiles && course.zipFiles.length > 0) {
           course.zipFiles = course.zipFiles.filter((z) => z && z.url && !z.url.includes("179119") && !z.url.includes("1Cybrical-WebDev"));

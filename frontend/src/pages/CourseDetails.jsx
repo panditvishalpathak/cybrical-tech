@@ -220,9 +220,46 @@ const FALLBACK_COURSES_MAP = {
     thumbnail:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
     modules: [],
-    zipFile: null,
-    zipFiles: [],
-    resources: [],
+    zipFiles: [
+      {
+        _id: "zf-ai-drive-folder",
+        title: "📁 Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+        fileName: "Artificial-Intelligence-Google-Drive-Projects",
+        url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+        fileSize: "Google Drive Folder",
+        isExternal: true,
+        source: "Google Drive",
+        summary: "Master Google Drive folder containing all Artificial Intelligence projects, machine learning models, neural networks, Jupyter notebooks, and datasets.",
+        highlights: [
+          "Machine Learning Models",
+          "Deep Learning & PyTorch / TensorFlow",
+          "Generative AI & LLM Notebooks",
+          "Computer Vision & NLP Projects",
+          "Real-World AI Datasets",
+        ],
+      },
+    ],
+    resources: [
+      {
+        _id: "res-ai-drive-folder",
+        title: "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+        fileName: "Artificial-Intelligence-Google-Drive-Projects",
+        url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+        fileUrl: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+        fileSize: "Google Drive Folder",
+        isExternal: true,
+        source: "Google Drive",
+      },
+    ],
+    zipFile: {
+      _id: "zf-ai-drive-folder",
+      title: "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+      fileName: "Artificial-Intelligence-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+      fileSize: "Google Drive Folder",
+      isExternal: true,
+      source: "Google Drive",
+    },
   },
   seo: {
     _id: "660000000000000000000002",
@@ -658,8 +695,20 @@ function CourseDetails() {
             fetchedCourse.zipFile = DATA_SCIENCE_FALLBACK_DATA.zipFile;
             fetchedCourse.resources = DATA_SCIENCE_FALLBACK_DATA.resources;
           }
-        } else if (fetchedCourse && !isCurrentWeb && !isCurrentDataScience) {
-          // STRICT RULE: ONLY Web Development & Data Science courses should show ZIP / Drive files
+        } else if (fetchedCourse && isCurrentAI) {
+          const hasValidZips =
+            fetchedCourse.zipFiles &&
+            fetchedCourse.zipFiles.some(
+              (z) => z && z.url && z.url.trim() && !isStaleDummyZip(z.url)
+            );
+
+          if (!hasValidZips) {
+            fetchedCourse.zipFiles = FALLBACK_COURSES_MAP["ai"].zipFiles;
+            fetchedCourse.zipFile = FALLBACK_COURSES_MAP["ai"].zipFile;
+            fetchedCourse.resources = FALLBACK_COURSES_MAP["ai"].resources;
+          }
+        } else if (fetchedCourse && !isCurrentWeb && !isCurrentDataScience && !isCurrentAI) {
+          // STRICT RULE: ONLY Web Development, Data Science & AI courses should show ZIP / Drive files
           fetchedCourse.zipFiles = [];
           fetchedCourse.zipFile = null;
           if (fetchedCourse.resources) {
@@ -739,14 +788,28 @@ function CourseDetails() {
     (course._id && course._id.toString().includes("000000000000000000000006")) ||
     (slug && slug.toLowerCase().includes("data"));
 
-  const isGoogleDriveHubCourse = isWebDevCourse || isDataScienceCourse;
+  const isAICourse =
+    (course.slug && course.slug.toLowerCase() === "ai") ||
+    (course.title && course.title.toLowerCase().includes("artificial")) ||
+    (course._id && course._id.toString().includes("000000000000000000000004")) ||
+    (slug && (slug.toLowerCase() === "ai" || slug.toLowerCase().includes("artificial")));
 
-  const mainDriveFolderUrl = isDataScienceCourse
+  const isGoogleDriveHubCourse = isWebDevCourse || isDataScienceCourse || isAICourse;
+
+  const mainDriveFolderUrl = isAICourse
+    ? "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d"
+    : isDataScienceCourse
     ? "https://drive.google.com/drive/folders/14StHo9kxA0Umf_KpoGnQB22zmUNQKyjS"
     : "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
 
   // Gather ALL unique ZIP files from standard projects, zipFiles, and resources
   const allCourseZips = (() => {
+    if (isAICourse) {
+      const zips = (course?.zipFiles && course.zipFiles.length > 0)
+        ? course.zipFiles
+        : (FALLBACK_COURSES_MAP["ai"]?.zipFiles || []);
+      return zips.filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
+    }
     if (isDataScienceCourse) {
       const zips = (course?.zipFiles && course.zipFiles.length > 0)
         ? course.zipFiles
