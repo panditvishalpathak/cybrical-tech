@@ -79,6 +79,17 @@ const WEB_DEV_FALLBACK_DATA = {
       summary: "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
       highlights: ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"],
     },
+    {
+      _id: "zf-wd-day4",
+      title: "📦 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
+      fileName: "04-FullStack-MERN-Capstone-Project.zip",
+      url: "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
+      fileSize: "Google Drive Cloud",
+      isExternal: true,
+      source: "Google Drive",
+      summary: "Production-ready MERN stack web app with Node/Express backend, MongoDB, and React frontend.",
+      highlights: ["React.js Modern Frontend", "Node & Express REST API", "MongoDB Database Schemas", "JWT Auth & Protected Routes"],
+    },
   ],
   resources: [
     {
@@ -117,6 +128,16 @@ const WEB_DEV_FALLBACK_DATA = {
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
       url: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
       fileUrl: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+      fileSize: "Google Drive Cloud",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-day4",
+      title: "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
+      fileName: "04-FullStack-MERN-Capstone-Project.zip",
+      url: "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
+      fileUrl: "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -665,26 +686,20 @@ function CourseDetails() {
       return (course?.zipFiles || []).filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
     }
 
-    const isDay4 = (z) => {
-      if (!z) return false;
-      const str = ((z.fileName || "") + " " + (z.title || "") + " " + (z._id || "")).toLowerCase();
-      return (
-        str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack") || (z._id && typeof z._id === "string" && z._id.includes("day4"))
-      );
-    };
-
     const getCanonicalKey = (z) => {
-      if (!z || isDay4(z)) return null;
+      if (!z) return null;
       if (z._id && typeof z._id === "string" && z._id.startsWith("zf-wd-")) {
         if (z._id.includes("folder")) return "std-folder";
         if (z._id.includes("day1")) return "std-day1";
         if (z._id.includes("day2")) return "std-day2";
         if (z._id.includes("day3")) return "std-day3";
+        if (z._id.includes("day4")) return "std-day4";
       }
       const str = ((z.fileName || "") + " " + (z.title || "") + " " + (z._id || "")).toLowerCase();
       if (str.includes("day 1") || str.includes("day-1") || str.includes("welcome")) return "std-day1";
       if (str.includes("day 2") || str.includes("day-2")) return "std-day2";
       if (str.includes("day 3") || str.includes("day-3") || str.includes("javascript") || str.includes("02-javascript")) return "std-day3";
+      if (str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack")) return "std-day4";
       if (str.includes("folder") || str.includes("master") || str.includes("web-development-google-drive")) return "std-folder";
       return null;
     };
@@ -701,7 +716,6 @@ function CourseDetails() {
 
     // 2. Enhance with course.zipFiles
     (course.zipFiles || []).forEach((z, i) => {
-      if (isDay4(z)) return;
       const u = z && (z.url || z.fileUrl);
       if (u && !isStaleDummyZip(u)) {
         const canon = getCanonicalKey(z);
@@ -737,7 +751,6 @@ function CourseDetails() {
 
     // 3. Enhance with resources
     (course.resources || []).forEach((r, i) => {
-      if (isDay4(r)) return;
       const url = r.url || r.fileUrl;
       if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
         const canon = getCanonicalKey(r);

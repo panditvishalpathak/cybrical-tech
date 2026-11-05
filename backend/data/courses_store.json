@@ -55,6 +55,17 @@
         "source": "Google Drive",
         "summary": "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
         "highlights": ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"]
+      },
+      {
+        "_id": "zf-wd-day4",
+        "title": "\ud83d\udce6 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
+        "fileName": "04-FullStack-MERN-Capstone-Project.zip",
+        "url": "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
+        "fileSize": "Google Drive Cloud",
+        "isExternal": true,
+        "source": "Google Drive",
+        "summary": "Production-ready MERN stack web app with Node/Express backend, MongoDB, and React frontend.",
+        "highlights": ["React.js Modern Frontend", "Node & Express REST API", "MongoDB Database Schemas", "JWT Auth & Protected Routes"]
       }
     ],
     "resources": [
@@ -94,6 +105,16 @@
         "fileName": "02-JavaScript-DOM-Async-Projects.zip",
         "url": "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
         "fileUrl": "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+        "fileSize": "Google Drive Cloud",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "res-wd-day4",
+        "title": "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
+        "fileName": "04-FullStack-MERN-Capstone-Project.zip",
+        "url": "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
+        "fileUrl": "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
         "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
