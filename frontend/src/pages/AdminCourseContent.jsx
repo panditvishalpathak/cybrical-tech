@@ -100,15 +100,6 @@ const WEB_DEV_FALLBACK_DATA = {
       isExternal: true,
       source: "Google Drive",
     },
-    {
-      _id: "zf-wd-day4",
-      title: "📦 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
-      fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-    },
   ],
   resources: [
     {
@@ -138,16 +129,6 @@ const WEB_DEV_FALLBACK_DATA = {
       url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
       fileUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
       fileSize: "350.6 MB",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "res-wd-day4",
-      title: "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
-      fileName: "04-FullStack-MERN-Capstone-Project.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
@@ -1307,24 +1288,25 @@ function AdminCourseContent() {
   const allZips = (() => {
     if (!isWebDevCourse) return [];
 
-    const isDay3 = (z) => {
+    const isDay3Or4 = (z) => {
       if (!z) return false;
       const str = ((z.fileName || "") + " " + (z.title || "") + " " + (z._id || "")).toLowerCase();
-      return str.includes("day 3") || str.includes("day-3") || str.includes("02-javascript") || (z._id && typeof z._id === "string" && z._id.includes("day3"));
+      return (
+        str.includes("day 3") || str.includes("day-3") || str.includes("02-javascript") || (z._id && typeof z._id === "string" && z._id.includes("day3")) ||
+        str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack") || (z._id && typeof z._id === "string" && z._id.includes("day4"))
+      );
     };
 
     const getCanonicalKey = (z) => {
-      if (!z || isDay3(z)) return null;
+      if (!z || isDay3Or4(z)) return null;
       if (z._id && typeof z._id === "string" && z._id.startsWith("zf-wd-")) {
         if (z._id.includes("folder")) return "std-folder";
         if (z._id.includes("day1")) return "std-day1";
         if (z._id.includes("day2")) return "std-day2";
-        if (z._id.includes("day4")) return "std-day4";
       }
       const str = ((z.fileName || "") + " " + (z.title || "") + " " + (z._id || "")).toLowerCase();
       if (str.includes("day 1") || str.includes("day-1") || str.includes("welcome")) return "std-day1";
       if (str.includes("day 2") || str.includes("day-2")) return "std-day2";
-      if (str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack")) return "std-day4";
       if (str.includes("folder") || str.includes("master") || str.includes("web-development-google-drive")) return "std-folder";
       return null;
     };
@@ -1341,7 +1323,7 @@ function AdminCourseContent() {
 
     // 2. Enhance with course.zipFiles
     (course.zipFiles || []).forEach((z, i) => {
-      if (isDay3(z)) return;
+      if (isDay3Or4(z)) return;
       const u = z && (z.url || z.fileUrl);
       if (u && !isStaleDummyZip(u)) {
         const canon = getCanonicalKey(z);
@@ -1373,7 +1355,7 @@ function AdminCourseContent() {
 
     // 3. Enhance with resources
     (course.resources || []).forEach((r, i) => {
-      if (isDay3(r)) return;
+      if (isDay3Or4(r)) return;
       const url = r.url || r.fileUrl;
       if (url && !isStaleDummyZip(url) && (url.toLowerCase().endsWith(".zip") || (r.fileName && r.fileName.toLowerCase().endsWith(".zip")) || isGoogleDriveUrl(url))) {
         const canon = getCanonicalKey(r);

@@ -44,17 +44,6 @@
         "source": "Google Drive",
         "summary": "Modern CSS3 responsive styling, Flexbox layouts, Grid systems, and landing page builds.",
         "highlights": ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"]
-      },
-      {
-        "_id": "zf-wd-day4",
-        "title": "\ud83d\udce6 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
-        "fileName": "04-FullStack-MERN-Capstone-Project.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "summary": "Production-ready MERN stack web app with Node/Express backend, MongoDB, and React frontend.",
-        "highlights": ["React.js Modern Frontend", "Node & Express REST API", "MongoDB Database Schemas", "JWT Auth & Protected Routes"]
       }
     ],
     "resources": [
@@ -85,16 +74,6 @@
         "url": "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
         "fileUrl": "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
         "fileSize": "350.6 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "res-wd-day4",
-        "title": "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
-        "fileName": "04-FullStack-MERN-Capstone-Project.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
       }
