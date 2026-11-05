@@ -46,9 +46,20 @@ export const getGoogleDriveViewUrl = (url = "") => {
   const id = extractGoogleDriveId(trimmed);
   if (!id) return trimmed;
   if (isGoogleDriveFolder(trimmed)) {
-    return `https://drive.google.com/drive/folders/${id}?usp=sharing`;
+    return `https://drive.google.com/drive/folders/${id}`;
   }
   return `https://drive.google.com/file/d/${id}/view`;
+};
+
+export const getGoogleDriveCleanEmbedUrl = (url = "") => {
+  if (!url || typeof url !== "string") return "";
+  const trimmed = url.trim();
+  const id = extractGoogleDriveId(trimmed);
+  if (!id) return trimmed;
+  if (isGoogleDriveFolder(trimmed)) {
+    return `https://drive.google.com/embeddedfolderview?id=${id}#grid`;
+  }
+  return `https://drive.google.com/file/d/${id}/preview`;
 };
 
 export const getGoogleDriveDownloadUrl = (url = "") => {
@@ -57,7 +68,7 @@ export const getGoogleDriveDownloadUrl = (url = "") => {
   const id = extractGoogleDriveId(trimmed);
   if (!id) return trimmed;
   if (isGoogleDriveFolder(trimmed)) {
-    return `https://drive.google.com/drive/folders/${id}?usp=sharing`;
+    return `https://drive.google.com/drive/folders/${id}`;
   }
   return `https://drive.google.com/uc?export=download&id=${id}`;
 };
@@ -69,7 +80,7 @@ export const formatGoogleDriveUrl = (url = "") => {
     const id = extractGoogleDriveId(trimmed);
     if (id) {
       if (isGoogleDriveFolder(trimmed)) {
-        return `https://drive.google.com/drive/folders/${id}?usp=sharing`;
+        return `https://drive.google.com/drive/folders/${id}`;
       }
       return `https://drive.google.com/uc?export=download&id=${id}`;
     }
@@ -110,6 +121,7 @@ export default {
   isGoogleDriveUrl,
   isGoogleDriveFolder,
   getGoogleDriveViewUrl,
+  getGoogleDriveCleanEmbedUrl,
   getGoogleDriveDownloadUrl,
   extractGoogleDriveId,
 };

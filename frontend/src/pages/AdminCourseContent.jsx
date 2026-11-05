@@ -67,7 +67,7 @@ const WEB_DEV_FALLBACK_DATA = {
     _id: "zf-wd-drive-folder",
     title: "Web Development Complete Course Project & Source Code (Google Drive Folder)",
     fileName: "Web-Development-Google-Drive-Projects",
-    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
     fileSize: "Google Drive Folder",
     isExternal: true,
     source: "Google Drive",
@@ -77,7 +77,7 @@ const WEB_DEV_FALLBACK_DATA = {
       _id: "zf-wd-drive-folder",
       title: "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -124,8 +124,8 @@ const WEB_DEV_FALLBACK_DATA = {
       _id: "res-wd-drive-folder",
       title: "Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -529,13 +529,13 @@ function AdminCourseContent() {
           resolvedCourse.zipFiles = resolvedCourse.zipFiles.map((z) => {
             let u = z ? (z.url || z.fileUrl || "") : "";
             if (u.includes("1Cybrical-WebDev") || (u.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && u.includes("/file/d/"))) {
-              u = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+              u = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             }
             return { ...z, url: u };
           });
           if (resolvedCourse.zipFile && resolvedCourse.zipFile.url) {
             if (resolvedCourse.zipFile.url.includes("1Cybrical-WebDev") || (resolvedCourse.zipFile.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && resolvedCourse.zipFile.url.includes("/file/d/"))) {
-              resolvedCourse.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+              resolvedCourse.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             }
           }
         }

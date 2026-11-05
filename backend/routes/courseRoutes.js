@@ -76,7 +76,7 @@ const WEB_DEV_ZIP_COURSE = {
     _id: "zf-wd-drive-folder",
     title: "Web Development Complete Project & Source Code (Google Drive Folder)",
     fileName: "Web-Development-Google-Drive-Projects",
-    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
     fileSize: "Google Drive Folder",
     isExternal: true,
     source: "Google Drive",
@@ -86,7 +86,7 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "zf-wd-drive-folder",
       title: "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -143,8 +143,8 @@ const WEB_DEV_ZIP_COURSE = {
       _id: "res-wd-drive-folder",
       title: "Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -590,17 +590,17 @@ const getCourseDoc = async (targetId) => {
       } else {
         course.zipFiles.forEach((z) => {
           if (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("drive.google.com/drive/folders/1Cybrical-WebDev"))) {
-            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             modified = true;
           }
           if (z && z.url && z.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && z.url.includes("/file/d/")) {
-            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             modified = true;
           }
         });
         if (course.zipFile && course.zipFile.url) {
           if (course.zipFile.url.includes("1Cybrical-WebDev") || (course.zipFile.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && course.zipFile.url.includes("/file/d/"))) {
-            course.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+            course.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             modified = true;
           }
         }
@@ -672,7 +672,7 @@ const sanitizeCourseZips = (c) => {
 
   if (isWebDev) {
     const replaceWebDevLink = (url) => {
-      if (!url) return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+      if (!url) return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
       if (
         url.includes("1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI") ||
         url.includes("1SINj1Bz_LZNafdzzK_algyuE0Tberpcf") ||
@@ -682,10 +682,10 @@ const sanitizeCourseZips = (c) => {
         return url;
       }
       if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev")) {
-        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
       }
       if (url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && url.includes("/file/d/")) {
-        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
       }
       return url;
     };

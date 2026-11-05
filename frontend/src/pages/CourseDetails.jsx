@@ -29,7 +29,7 @@ const WEB_DEV_FALLBACK_DATA = {
     _id: "zf-wd-drive-folder",
     title: "Web Development Complete Project & Source Code (Google Drive Folder)",
     fileName: "Web-Development-Google-Drive-Projects",
-    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
     fileSize: "Google Drive Folder",
     isExternal: true,
     source: "Google Drive",
@@ -39,7 +39,7 @@ const WEB_DEV_FALLBACK_DATA = {
       _id: "zf-wd-drive-folder",
       title: "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -96,8 +96,8 @@ const WEB_DEV_FALLBACK_DATA = {
       _id: "res-wd-drive-folder",
       title: "Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -863,12 +863,12 @@ function CourseDetails() {
 
                   <div className="google-drive-hub-actions">
                     <a
-                      href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing"
+                      href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
                       target="_blank"
                       rel="noreferrer"
                       className="google-drive-main-btn"
                     >
-                      <span>📁</span> Open Google Drive Main Folder ↗
+                      <span>📁</span> Open Google Drive Folder ↗
                     </a>
                     {allCourseZips.length > 0 && (
                       <button
@@ -954,7 +954,7 @@ function CourseDetails() {
                   </div>
 
                   <a
-                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing"
+                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
                     target="_blank"
                     rel="noreferrer"
                     style={{
@@ -1415,7 +1415,7 @@ function CourseDetails() {
                   </div>
 
                   <a
-                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing"
+                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
                     target="_blank"
                     rel="noreferrer"
                     style={{
