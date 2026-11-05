@@ -24,36 +24,7 @@ const FALLBACK_AI_COURSE = {
   isPublished: true,
   thumbnail:
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
-  modules: [
-    {
-      _id: "ai-mod-1",
-      title: "Module 1: Course Introduction & Setup",
-      description: "Welcome to the Artificial Intelligence course and team setup.",
-      lessons: [
-        {
-          _id: "ai-les-1",
-          title: "Lesson 1: Course Introduction TEAMWORK",
-          description: "Introduction to AI bootcamp, collaboration workflow, and environment setup.",
-          duration: "30 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ai-mod-2",
-      title: "Module 2: Python Fundamentals for AI",
-      description: "Core Python programming, variables, data structures, and algorithms for AI.",
-      lessons: [
-        {
-          _id: "ai-les-2",
-          title: "Lesson 2: Python Fundamentals (Part-1)",
-          description: "Python syntax, control flow, functions, and fundamental data science libraries.",
-          duration: "45 min",
-          videoUrl: "",
-        },
-      ],
-    },
-  ],
+  modules: [],
   zipFile: null,
   zipFiles: [],
   resources: [],
@@ -668,6 +639,18 @@ const getCourseDoc = async (targetId) => {
         (course.slug && course.slug.toLowerCase().includes("data")) ||
         (course.title && course.title.toLowerCase().includes("data science")) ||
         (course._id && course._id.toString().includes("000000000000000000000006"));
+
+      const isAI =
+        (course.slug && course.slug.toLowerCase() === "ai") ||
+        (course.title && course.title.toLowerCase().includes("artificial")) ||
+        (course._id && course._id.toString().includes("000000000000000000000004"));
+
+      if (isAI) {
+        if (course.modules && course.modules.length > 0) {
+          course.modules = [];
+          modified = true;
+        }
+      }
 
       if (isDataScience) {
         if (course.modules && course.modules.length > 0) {

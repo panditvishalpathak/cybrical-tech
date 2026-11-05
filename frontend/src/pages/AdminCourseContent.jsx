@@ -16,36 +16,7 @@ const AI_FALLBACK_DATA = {
   isPublished: true,
   thumbnail:
     "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
-  modules: [
-    {
-      _id: "ai-mod-1",
-      title: "Module 1: Course Introduction & Setup",
-      description: "Welcome to the Artificial Intelligence course and team setup.",
-      lessons: [
-        {
-          _id: "ai-les-1",
-          title: "Lesson 1: Course Introduction TEAMWORK",
-          description: "Introduction to AI bootcamp, collaboration workflow, and environment setup.",
-          duration: "30 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ai-mod-2",
-      title: "Module 2: Python Fundamentals for AI",
-      description: "Core Python programming, variables, data structures, and algorithms for AI.",
-      lessons: [
-        {
-          _id: "ai-les-2",
-          title: "Lesson 2: Python Fundamentals (Part-1)",
-          description: "Python syntax, control flow, functions, and fundamental data science libraries.",
-          duration: "45 min",
-          videoUrl: "",
-        },
-      ],
-    },
-  ],
+  modules: [],
   zipFile: null,
   zipFiles: [],
   resources: [],
@@ -573,8 +544,15 @@ function AdminCourseContent() {
         resolvedCourse.slug === "data-science" ||
         (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("data science"));
 
-      // User request: remove all modules/lessons from Web Development and Data Science courses
-      if (isWebCourse || isDataScience) {
+      const isAICourse =
+        cleanId === "ai" ||
+        cleanId.includes("artificial") ||
+        cleanId === "660000000000000000000004" ||
+        resolvedCourse.slug === "ai" ||
+        (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("artificial"));
+
+      // User request: remove all modules/lessons from Web Development, Data Science, and AI courses
+      if (isWebCourse || isDataScience || isAICourse) {
         resolvedCourse.modules = [];
       } else if (!resolvedCourse.modules || resolvedCourse.modules.length === 0) {
         const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];

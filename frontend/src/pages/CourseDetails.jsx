@@ -219,36 +219,7 @@ const FALLBACK_COURSES_MAP = {
     isPublished: true,
     thumbnail:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
-    modules: [
-      {
-        _id: "ai-mod-1",
-        title: "Module 1: Course Introduction & Setup",
-        description: "Welcome to the Artificial Intelligence course and team setup.",
-        lessons: [
-          {
-            _id: "ai-les-1",
-            title: "Lesson 1: Course Introduction TEAMWORK",
-            description: "Introduction to AI bootcamp, collaboration workflow, and environment setup.",
-            duration: "30 min",
-            videoUrl: "",
-          },
-        ],
-      },
-      {
-        _id: "ai-mod-2",
-        title: "Module 2: Python Fundamentals for AI",
-        description: "Core Python programming, variables, data structures, and algorithms for AI.",
-        lessons: [
-          {
-            _id: "ai-les-2",
-            title: "Lesson 2: Python Fundamentals (Part-1)",
-            description: "Python syntax, control flow, functions, and fundamental data science libraries.",
-            duration: "45 min",
-            videoUrl: "",
-          },
-        ],
-      },
-    ],
+    modules: [],
     zipFile: null,
     zipFiles: [],
     resources: [],
@@ -634,8 +605,14 @@ function CourseDetails() {
           cleanSlug === "660000000000000000000006" ||
           (fetchedCourse && (fetchedCourse.slug === "data-science" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("data"))));
 
-        // User request: remove all lesson names / modules from Web Development and Data Science courses
-        if (isCurrentWeb || isCurrentDataScience) {
+        const isCurrentAI =
+          cleanSlug === "ai" ||
+          cleanSlug.includes("artificial") ||
+          cleanSlug === "660000000000000000000004" ||
+          (fetchedCourse && (fetchedCourse.slug === "ai" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("artificial"))));
+
+        // User request: remove all lesson names / modules from Web Development, Data Science, and AI courses
+        if (isCurrentWeb || isCurrentDataScience || isCurrentAI) {
           fetchedCourse.modules = [];
         } else if (!fetchedCourse.modules || fetchedCourse.modules.length === 0) {
           const fallbackMod = FALLBACK_COURSES_MAP[cleanSlug]?.modules || FALLBACK_COURSES_MAP[slug]?.modules || [];

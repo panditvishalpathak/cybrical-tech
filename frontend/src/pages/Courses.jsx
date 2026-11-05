@@ -64,8 +64,8 @@ const defaultCourses = [
     level: "Beginner to Advanced",
     duration: "16 Weeks",
     icon: "🤖",
-    modulesCount: 2,
-    lessonsCount: 2,
+    modulesCount: 0,
+    lessonsCount: 0,
     thumbnail:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
   },
@@ -207,7 +207,7 @@ function Courses() {
                       {lessonCount > 0 ? (
                         <span>📚 {lessonCount} Lessons</span>
                       ) : (
-                        <span>☁️ 5 Google Drive Projects</span>
+                        <span>☁️ Google Drive Projects</span>
                       )}
                     </div>
 
