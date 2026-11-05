@@ -18,6 +18,19 @@ const defaultCourses = [
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
   },
   {
+    slug: "data-science",
+    title: "Data Science",
+    description:
+      "Master Python for Data Science, Data Analysis, Pandas, NumPy, Machine Learning, Data Visualization, and real-world datasets.",
+    level: "Beginner to Advanced",
+    duration: "14 Weeks",
+    icon: "📊",
+    modulesCount: 3,
+    lessonsCount: 6,
+    thumbnail:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+  },
+  {
     slug: "seo",
     title: "SEO",
     description:
@@ -74,6 +87,8 @@ const defaultCourses = [
 const getThumbnailForCourse = (course) => {
   if (course.thumbnail) return course.thumbnail;
   const s = (course.slug || "").toLowerCase();
+  if (s.includes("data") || s.includes("science"))
+    return "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80";
   if (s.includes("web"))
     return "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80";
   if (s.includes("ai") || s.includes("artificial"))
@@ -96,7 +111,13 @@ function Courses() {
         if (data.success && data.courses && data.courses.length > 0) {
           const published = data.courses.filter((c) => c.isPublished !== false);
           
-          // Make sure AI is present in published courses
+          // Make sure Data Science and AI are present in published courses
+          const hasDataScience = published.some((c) => (c.slug || "").toLowerCase() === "data-science" || (c.title || "").toLowerCase().includes("data science"));
+          if (!hasDataScience) {
+            const dsDefault = defaultCourses.find((c) => c.slug === "data-science");
+            if (dsDefault) published.push(dsDefault);
+          }
+
           const hasAi = published.some((c) => (c.slug || "").toLowerCase() === "ai");
           if (!hasAi) {
             const aiDefault = defaultCourses.find((c) => c.slug === "ai");
@@ -149,6 +170,7 @@ function Courses() {
               const getIcon = () => {
                 if (course.icon) return course.icon;
                 const s = (course.slug || "").toLowerCase();
+                if (s.includes("data") || s.includes("science")) return "📊";
                 if (s.includes("ai") || s.includes("artificial")) return "🤖";
                 if (s.includes("web")) return "💻";
                 if (s.includes("seo")) return "📈";

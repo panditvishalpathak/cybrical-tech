@@ -173,11 +173,133 @@ const WEB_DEV_FALLBACK_DATA = {
   ],
 };
 
+const DATA_SCIENCE_FALLBACK_DATA = {
+  _id: "660000000000000000000006",
+  title: "Data Science",
+  slug: "data-science",
+  description:
+    "Master Data Science, Python, Data Analysis, Statistics, Pandas, NumPy, Machine Learning, and Data Visualization with hands-on Google Drive projects and source datasets.",
+  category: "Data Science",
+  level: "Beginner to Advanced",
+  duration: "14 Weeks",
+  price: 0,
+  isPublished: true,
+  thumbnail:
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+  modules: [
+    {
+      _id: "ds-mod-1",
+      title: "Module 1: Python for Data Science & Numerical Computing",
+      description: "Python basics, NumPy vectorized computing, and mathematics for data science.",
+      lessons: [
+        {
+          _id: "ds-les-1",
+          title: "Lesson 1: Python Basics, Data Types & Control Structures",
+          description: "Variables, lists, dictionaries, functions, and file I/O in Python.",
+          duration: "45 min",
+          videoUrl: "",
+        },
+        {
+          _id: "ds-les-2",
+          title: "Lesson 2: NumPy Arrays, Matrix Operations & Vectorization",
+          description: "Multi-dimensional arrays, slicing, indexing, broadcasting, and linear algebra.",
+          duration: "50 min",
+          videoUrl: "",
+        },
+      ],
+    },
+    {
+      _id: "ds-mod-2",
+      title: "Module 2: Data Wrangling, Cleaning & EDA with Pandas",
+      description: "Data manipulation, exploratory data analysis, and handling dirty datasets.",
+      lessons: [
+        {
+          _id: "ds-les-3",
+          title: "Lesson 3: DataFrames, CSV Ingestion & Filtering",
+          description: "Loading structured datasets, query indexing, filtering, and summarization.",
+          duration: "55 min",
+          videoUrl: "",
+        },
+        {
+          _id: "ds-les-4",
+          title: "Lesson 4: Handling Missing Data, Merging & Aggregations",
+          description: "Imputation, group-by operations, pivot tables, and multi-table joins.",
+          duration: "50 min",
+          videoUrl: "",
+        },
+      ],
+    },
+    {
+      _id: "ds-mod-3",
+      title: "Module 3: Machine Learning & Predictive Modeling",
+      description: "Building, training, evaluating, and tuning predictive machine learning models.",
+      lessons: [
+        {
+          _id: "ds-les-5",
+          title: "Lesson 5: Supervised Learning: Linear & Logistic Regression",
+          description: "Feature scaling, training-test split, regression, and classification algorithms.",
+          duration: "60 min",
+          videoUrl: "",
+        },
+        {
+          _id: "ds-les-6",
+          title: "Lesson 6: Model Evaluation, Cross Validation & Deployment",
+          description: "Confusion matrix, ROC-AUC, hyperparameters, and saving models with Pickle.",
+          duration: "55 min",
+          videoUrl: "",
+        },
+      ],
+    },
+  ],
+  zipFiles: [
+    {
+      _id: "zf-ds-drive-folder",
+      title: "📁 Data Science Complete Projects & Datasets (Google Drive Folder)",
+      fileName: "Data-Science-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Folder",
+      isExternal: true,
+      source: "Google Drive",
+      summary: "Master Google Drive folder containing all Data Science Jupyter notebooks, Python datasets, machine learning models, and source code.",
+      highlights: [
+        "Python & NumPy Notebooks",
+        "Pandas Data Wrangling Scripts",
+        "Real-World CSV & SQL Datasets",
+        "Scikit-Learn ML Models",
+        "Data Visualization Dashboards",
+      ],
+    },
+  ],
+  resources: [
+    {
+      _id: "res-ds-drive-folder",
+      title: "Data Science Complete Projects & Datasets (Google Drive Folder)",
+      fileName: "Data-Science-Google-Drive-Projects",
+      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileSize: "Google Drive Folder",
+      isExternal: true,
+      source: "Google Drive",
+    },
+  ],
+  zipFile: {
+    _id: "zf-ds-drive-folder",
+    title: "Data Science Complete Projects & Datasets (Google Drive Folder)",
+    fileName: "Data-Science-Google-Drive-Projects",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+    fileSize: "Google Drive Folder",
+    isExternal: true,
+    source: "Google Drive",
+  },
+};
+
 const FALLBACK_COURSES_MAP = {
   ai: AI_FALLBACK_DATA,
   "660000000000000000000004": AI_FALLBACK_DATA,
   "web-development": WEB_DEV_FALLBACK_DATA,
   "660000000000000000000001": WEB_DEV_FALLBACK_DATA,
+  "data-science": DATA_SCIENCE_FALLBACK_DATA,
+  "660000000000000000000006": DATA_SCIENCE_FALLBACK_DATA,
   android: {
     _id: "660000000000000000000005",
     title: "Android App Development",
@@ -405,6 +527,9 @@ function AdminCourseContent() {
       if (cleanKey.includes("web") || id === "660000000000000000000001") {
         localStorage.setItem("admin_course_web-development", raw);
         localStorage.setItem("admin_course_660000000000000000000001", raw);
+      } else if (cleanKey.includes("data") || id === "660000000000000000000006") {
+        localStorage.setItem("admin_course_data-science", raw);
+        localStorage.setItem("admin_course_660000000000000000000006", raw);
       } else if (cleanKey.includes("ai") || id === "660000000000000000000002") {
         localStorage.setItem("admin_course_ai", raw);
         localStorage.setItem("admin_course_660000000000000000000002", raw);
@@ -474,6 +599,8 @@ function AdminCourseContent() {
         FALLBACK_COURSES_MAP[id] ||
         (cleanId.includes("ai") || cleanId.includes("artificial")
           ? FALLBACK_COURSES_MAP["ai"]
+          : cleanId.includes("data") || cleanId.includes("science")
+          ? FALLBACK_COURSES_MAP["data-science"]
           : cleanId.includes("web")
           ? FALLBACK_COURSES_MAP["web-development"]
           : cleanId.includes("android")
@@ -540,23 +667,22 @@ function AdminCourseContent() {
           }
         }
       } else {
-        // Enforce: ONLY Web Development course shows zip files!
-        resolvedCourse.zipFiles = [];
-        resolvedCourse.zipFile = { url: "", fileName: "", fileSize: "" };
-        if (resolvedCourse.resources) {
-          resolvedCourse.resources = resolvedCourse.resources.filter((r) => {
-            const u = (r.url || r.fileUrl || "").toLowerCase();
-            return !u.endsWith(".zip") && !u.includes("drive.google.com");
-          });
-        }
-        if (resolvedCourse.modules) {
-          resolvedCourse.modules.forEach((m) => {
-            (m.lessons || []).forEach((l) => {
-              l.zipUrl = "";
-              l.zipName = "";
-              l.zipSize = "";
-            });
-          });
+        const isDataScience =
+          cleanId.includes("data") ||
+          cleanId === "660000000000000000000006" ||
+          resolvedCourse.slug === "data-science" ||
+          (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("data science"));
+
+        if (isDataScience) {
+          if (!resolvedCourse.zipFiles || resolvedCourse.zipFiles.length === 0) {
+            resolvedCourse.zipFiles = DATA_SCIENCE_FALLBACK_DATA.zipFiles;
+            resolvedCourse.zipFile = DATA_SCIENCE_FALLBACK_DATA.zipFile;
+            resolvedCourse.resources = DATA_SCIENCE_FALLBACK_DATA.resources;
+          }
+        } else {
+          if (resolvedCourse.zipFiles && resolvedCourse.zipFiles.length > 0) {
+            resolvedCourse.zipFiles = resolvedCourse.zipFiles.filter((z) => z && z.url && !isStaleDummyZip(z.url));
+          }
         }
       }
 

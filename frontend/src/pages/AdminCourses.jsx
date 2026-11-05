@@ -17,6 +17,23 @@ const ADMIN_DEFAULT_COURSES = [
     modules: [],
   },
   {
+    _id: "660000000000000000000006",
+    title: "Data Science",
+    slug: "data-science",
+    description: "Master Data Science, Python, Data Analysis, Statistics, Pandas, NumPy, Machine Learning, and Data Visualization with hands-on Google Drive projects and datasets.",
+    category: "Data Science",
+    level: "Beginner to Advanced",
+    duration: "14 Weeks",
+    price: 0,
+    isPublished: true,
+    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+    modules: [
+      { title: "Module 1: Python & NumPy", lessons: [{}, {}] },
+      { title: "Module 2: Pandas & EDA", lessons: [{}, {}] },
+      { title: "Module 3: Machine Learning", lessons: [{}, {}] },
+    ],
+  },
+  {
     _id: "660000000000000000000002",
     title: "SEO",
     slug: "seo",

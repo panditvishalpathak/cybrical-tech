@@ -120,6 +120,10 @@ function Footer() {
               Web Development
             </Link>
 
+            <Link to="/courses/data-science">
+              Data Science
+            </Link>
+
             <Link to="/courses/ai">
               Artificial Intelligence (AI)
             </Link>

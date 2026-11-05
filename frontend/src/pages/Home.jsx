@@ -65,6 +65,19 @@ const defaultFeaturedCourses = [
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
   },
   {
+    slug: "data-science",
+    title: "Data Science & Machine Learning",
+    category: "Data Science & Python",
+    description:
+      "Master Python for Data Science, Pandas, NumPy, Machine Learning, Data Analytics, and predictive modeling with real-world project datasets.",
+    level: "Beginner to Advanced",
+    duration: "14 Weeks",
+    icon: "📊",
+    badge: "New Track",
+    thumbnail:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+  },
+  {
     slug: "android",
     title: "Native Android App Development",
     category: "Mobile Apps",
@@ -95,6 +108,8 @@ const defaultFeaturedCourses = [
 const getCourseThumbnail = (course, idx) => {
   if (course.thumbnail) return course.thumbnail;
   const s = (course.slug || "").toLowerCase();
+  if (s.includes("data") || s.includes("science"))
+    return "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80";
   if (s.includes("web"))
     return "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80";
   if (s.includes("ai") || s.includes("artificial"))

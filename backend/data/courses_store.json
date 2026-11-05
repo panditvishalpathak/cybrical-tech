@@ -227,5 +227,113 @@
     "modules": [],
     "zipFiles": [],
     "resources": []
+  },
+  {
+    "_id": "660000000000000000000006",
+    "title": "Data Science",
+    "slug": "data-science",
+    "description": "Master Data Science, Python, Data Analysis, Statistics, Pandas, NumPy, Machine Learning, and Data Visualization with hands-on Google Drive projects and source datasets.",
+    "category": "Data Science",
+    "level": "Beginner to Advanced",
+    "duration": "14 Weeks",
+    "price": 0,
+    "isPublished": true,
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+    "modules": [
+      {
+        "_id": "ds-mod-1",
+        "title": "Module 1: Python for Data Science & Numerical Computing",
+        "lessons": [
+          {
+            "_id": "ds-les-1",
+            "title": "Python Basics, Data Types & Control Structures",
+            "duration": "45 min",
+            "videoUrl": ""
+          },
+          {
+            "_id": "ds-les-2",
+            "title": "NumPy Arrays, Matrix Operations & Vectorization",
+            "duration": "50 min",
+            "videoUrl": ""
+          }
+        ]
+      },
+      {
+        "_id": "ds-mod-2",
+        "title": "Module 2: Data Wrangling, Cleaning & EDA with Pandas",
+        "lessons": [
+          {
+            "_id": "ds-les-3",
+            "title": "DataFrames, CSV Ingestion & Filtering",
+            "duration": "55 min",
+            "videoUrl": ""
+          },
+          {
+            "_id": "ds-les-4",
+            "title": "Handling Missing Data, Merging & Aggregations",
+            "duration": "50 min",
+            "videoUrl": ""
+          }
+        ]
+      },
+      {
+        "_id": "ds-mod-3",
+        "title": "Module 3: Machine Learning & Predictive Modeling",
+        "lessons": [
+          {
+            "_id": "ds-les-5",
+            "title": "Supervised Learning: Linear & Logistic Regression",
+            "duration": "60 min",
+            "videoUrl": ""
+          },
+          {
+            "_id": "ds-les-6",
+            "title": "Model Evaluation, Cross Validation & Deployment",
+            "duration": "55 min",
+            "videoUrl": ""
+          }
+        ]
+      }
+    ],
+    "zipFiles": [
+      {
+        "_id": "zf-ds-drive-folder",
+        "title": "📁 Data Science Complete Projects & Datasets (Google Drive Folder)",
+        "fileName": "Data-Science-Google-Drive-Projects",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Folder",
+        "isExternal": true,
+        "source": "Google Drive",
+        "summary": "Master Google Drive folder containing all Data Science Jupyter notebooks, Python datasets, machine learning models, and source code.",
+        "highlights": [
+          "Python & NumPy Notebooks",
+          "Pandas Data Wrangling Scripts",
+          "Real-World CSV & SQL Datasets",
+          "Scikit-Learn ML Models",
+          "Data Visualization Dashboards"
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "_id": "res-ds-drive-folder",
+        "title": "Data Science Complete Projects & Datasets (Google Drive Folder)",
+        "fileName": "Data-Science-Google-Drive-Projects",
+        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+        "fileSize": "Google Drive Folder",
+        "isExternal": true,
+        "source": "Google Drive"
+      }
+    ],
+    "zipFile": {
+      "_id": "zf-ds-drive-folder",
+      "title": "Data Science Complete Projects & Datasets (Google Drive Folder)",
+      "fileName": "Data-Science-Google-Drive-Projects",
+      "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      "fileSize": "Google Drive Folder",
+      "isExternal": true,
+      "source": "Google Drive"
+    }
   }
 ]
