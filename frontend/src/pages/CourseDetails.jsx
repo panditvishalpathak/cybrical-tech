@@ -1,6 +1,15 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getApiUrl, getAssetUrl, getDownloadUrl, isGoogleDriveUrl, isGoogleDriveFolder, getGoogleDriveViewUrl, getGoogleDriveDownloadUrl } from "../config/api";
+import {
+  getApiUrl,
+  getAssetUrl,
+  getDownloadUrl,
+  isGoogleDriveUrl,
+  isGoogleDriveFolder,
+  extractGoogleDriveId,
+  getGoogleDriveViewUrl,
+  getGoogleDriveDownloadUrl,
+} from "../config/api";
 import "./CourseDetails.css";
 
 const WEB_DEV_FALLBACK_DATA = {
