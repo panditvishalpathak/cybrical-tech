@@ -171,9 +171,9 @@ function Courses() {
               const isAI = s === "ai" || s.includes("artificial") || (course.title || "").toLowerCase().includes("artificial intelligence");
 
               const getIcon = () => {
-                if (isAI) return "✨🤖✨";
                 if (course.icon) return course.icon;
                 if (s.includes("data") || s.includes("science")) return "📊";
+                if (s.includes("ai") || s.includes("artificial")) return "🤖";
                 if (s.includes("web")) return "💻";
                 if (s.includes("seo")) return "📈";
                 if (s.includes("marketing")) return "📢";
@@ -186,11 +186,6 @@ function Courses() {
                   key={course.slug || course._id}
                 >
                   <div className="course-card-cover">
-                    {isAI && (
-                      <div className="luxury-shimmer-badge">
-                        <span>👑</span> LUXURY AI EDITION
-                      </div>
-                    )}
                     <img
                       src={getThumbnailForCourse(course)}
                       alt={course.title}
@@ -199,37 +194,22 @@ function Courses() {
                     />
                     <div className={`course-cover-overlay ${isAI ? "luxury-cover-overlay" : ""}`}></div>
                     <span className={`course-level ${isAI ? "luxury-level-badge" : ""}`}>
-                      {isAI ? "💎 VIP Masterclass" : (course.level || "Beginner")}
+                      {course.level || "Beginner"}
                     </span>
                     <span className={`course-icon-bubble ${isAI ? "luxury-icon-bubble" : ""}`}>{getIcon()}</span>
                   </div>
 
                   <div className={`course-card-details ${isAI ? "luxury-card-details" : ""}`}>
-                    {isAI && (
-                      <div className="luxury-category-kicker">
-                        <span className="luxury-sparkle">✦</span> LUXURY ARTIFICIAL INTELLIGENCE <span className="luxury-sparkle">✦</span>
-                      </div>
-                    )}
                     <h3 className={isAI ? "luxury-title" : ""}>{course.title}</h3>
 
                     <p className={isAI ? "luxury-description" : ""}>{course.description}</p>
 
-                    {isAI && (
-                      <div className="luxury-tags-row">
-                        <span className="luxury-tag">⚡ Generative AI & LLMs</span>
-                        <span className="luxury-tag">🧠 Neural Networks</span>
-                        <span className="luxury-tag">☁️ VIP Drive Hub</span>
-                      </div>
-                    )}
-
                     <div className={`course-info ${isAI ? "luxury-info" : ""}`}>
                       <span>⏱ {course.duration || "Self-Paced"}</span>
-                      {isAI ? (
-                        <span className="luxury-drive-pill">☁️ VIP Google Drive Projects</span>
-                      ) : lessonCount > 0 ? (
+                      {lessonCount > 0 ? (
                         <span>📚 {lessonCount} Lessons</span>
                       ) : (
-                        <span>☁️ Google Drive Projects</span>
+                        <span className={isAI ? "luxury-drive-pill" : ""}>☁️ Google Drive Projects</span>
                       )}
                     </div>
 
@@ -237,15 +217,7 @@ function Courses() {
                       to={`/courses/${course.slug}`}
                       className={`course-button ${isAI ? "luxury-course-button" : ""}`}
                     >
-                      {isAI ? (
-                        <>
-                          <span>⚡</span> Explore Luxury Course <span>↗</span>
-                        </>
-                      ) : (
-                        <>
-                          View Course <span>↗</span>
-                        </>
-                      )}
+                      View Course <span>↗</span>
                     </Link>
                   </div>
                 </article>

@@ -679,14 +679,15 @@ function Home() {
 
           </div>
 
+          <div className="home-courses-grid">
             {coursesList.map((course, idx) => {
               const s = (course.slug || "").toLowerCase();
               const isAI = s === "ai" || s.includes("artificial") || (course.title || "").toLowerCase().includes("artificial intelligence");
               const icons = ["💻", "🤖", "📱", "📈"];
               const badges = ["Most Popular", "Trending", "High Demand", "Career Track"];
               const colors = ["purple", "blue", "cyan", "pink"];
-              const icon = isAI ? "✨🤖✨" : (course.icon || icons[idx % icons.length]);
-              const badge = isAI ? "👑 LUXURY AI EDITION" : (course.badge || badges[idx % badges.length]);
+              const icon = course.icon || icons[idx % icons.length];
+              const badge = course.badge || badges[idx % badges.length];
               const color = colors[idx % colors.length];
               const thumbUrl = getCourseThumbnail(course, idx);
 
@@ -707,44 +708,34 @@ function Home() {
 
                   <div className={`course-card-body ${isAI ? "luxury-card-body" : ""}`}>
                     <span className={`course-category-tag ${isAI ? "luxury-category-tag" : ""}`}>
-                      {isAI ? "✦ VIP MASTERCLASS ✦" : (course.category || "Professional Track")}
+                      {course.category || "Professional Track"}
                     </span>
                     <h3 className={isAI ? "luxury-title" : ""}>{course.title}</h3>
                     <p className={isAI ? "luxury-description" : ""}>{course.description}</p>
 
                     <div className="course-meta-pills">
                       <span>⏱ {course.duration || "Self-Paced"}</span>
-                      {isAI ? (
-                        <>
-                          <span className="luxury-tag-pill">⚡ GenAI & LLMs</span>
-                          <span className="luxury-tag-pill">☁️ VIP Drive Hub</span>
-                        </>
+                      <span>📊 {course.level || "Beginner to Pro"}</span>
+                      {course.modules && course.modules.length > 0 ? (
+                        <span>📚 {course.modules.length} Modules</span>
                       ) : (
-                        <>
-                          <span>📊 {course.level || "Beginner to Pro"}</span>
-                          {course.modules && course.modules.length > 0 && (
-                            <span>📚 {course.modules.length} Modules</span>
-                          )}
-                        </>
+                        <span className={isAI ? "luxury-drive-pill" : ""}>☁️ Google Drive Projects</span>
                       )}
                     </div>
 
                     <div className="course-card-action">
-                      {isAI ? (
-                        <span className="luxury-drive-pill">☁️ VIP Drive Hub</span>
-                      ) : (course.slug?.toLowerCase().includes("web") || course.title?.toLowerCase().includes("web")) ? (
+                      {(course.slug?.toLowerCase().includes("web") || course.title?.toLowerCase().includes("web")) && (
                         <span className="course-zip-notice">📦 Includes Project ZIPs</span>
-                      ) : (
-                        <span></span>
                       )}
                       <Link to={`/courses/${course.slug}`} className={`course-enroll-btn ${isAI ? "luxury-enroll-btn" : ""}`}>
-                        {isAI ? "⚡ Explore Luxury Course ↗" : "View Course ↗"}
+                        View Course ↗
                       </Link>
                     </div>
                   </div>
                 </div>
               );
             })}
+          </div>
 
           {/* COURSES BOTTOM BANNER */}
           <div className="courses-bottom-banner">
