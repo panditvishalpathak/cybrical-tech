@@ -626,7 +626,7 @@ function AdminCourseContent() {
       };
 
       // Collect all current unique ZIPs
-      const currentList = Array.from(zipMap.values()).map((z) => ({
+      const currentList = (course?.zipFiles || []).map((z) => ({
         title: z.title || z.fileName,
         url: z.url,
         fileName: z.fileName,
@@ -1286,7 +1286,7 @@ function AdminCourseContent() {
       course._id === "000000000000000000000001");
 
   const allZips = (() => {
-    if (!isWebDevCourse) return [];
+    if (!isWebDevCourse) return (course?.zipFiles || []).filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
 
     const isDay3Or4 = (z) => {
       if (!z) return false;

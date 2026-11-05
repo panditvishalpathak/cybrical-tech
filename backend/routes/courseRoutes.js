@@ -686,14 +686,17 @@ const sanitizeCourseZips = (c) => {
     c.modules = [];
     return c;
   } else {
-    // ONLY Web Development course should show/have ZIP files
-    c.zipFiles = [];
-    c.zipFile = { url: "", fileName: "", fileSize: "" };
+    // Retain any real uploaded ZIP files or Google Drive links, filtering out only stale dummy zips
+    if (c.zipFiles) {
+      c.zipFiles = c.zipFiles.filter((z) => z && (z.url || z.fileUrl) && !(z.url || z.fileUrl).includes("179119"));
+    }
+    if (c.zipFile && c.zipFile.url && c.zipFile.url.includes("179119")) {
+      c.zipFile = { url: "", fileName: "", fileSize: "" };
+    }
     if (c.resources) {
       c.resources = c.resources.filter((r) => {
         const u = (r.url || r.fileUrl || "").toLowerCase();
-        const fn = (r.fileName || "").toLowerCase();
-        return !u.endsWith(".zip") && !fn.endsWith(".zip") && !u.includes("drive.google.com");
+        return !u.includes("179119");
       });
     }
     if (c.modules) {

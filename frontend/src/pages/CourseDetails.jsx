@@ -640,7 +640,9 @@ function CourseDetails() {
 
   // Gather ALL unique ZIP files from standard projects, zipFiles, and resources
   const allCourseZips = (() => {
-    if (!isWebDevCourse) return [];
+    if (!isWebDevCourse) {
+      return (course?.zipFiles || []).filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
+    }
 
     const isDay3Or4 = (z) => {
       if (!z) return false;
