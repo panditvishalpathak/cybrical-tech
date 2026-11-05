@@ -27,11 +27,7 @@ const ADMIN_DEFAULT_COURSES = [
     price: 0,
     isPublished: true,
     thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
-    modules: [
-      { title: "Module 1: Python & NumPy", lessons: [{}, {}] },
-      { title: "Module 2: Pandas & EDA", lessons: [{}, {}] },
-      { title: "Module 3: Machine Learning", lessons: [{}, {}] },
-    ],
+    modules: [],
   },
   {
     _id: "660000000000000000000002",

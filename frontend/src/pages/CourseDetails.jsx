@@ -158,71 +158,7 @@ const DATA_SCIENCE_FALLBACK_DATA = {
   isPublished: true,
   thumbnail:
     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
-  modules: [
-    {
-      _id: "ds-mod-1",
-      title: "Module 1: Python for Data Science & Numerical Computing",
-      description: "Python basics, NumPy vectorized computing, and mathematics for data science.",
-      lessons: [
-        {
-          _id: "ds-les-1",
-          title: "Lesson 1: Python Basics, Data Types & Control Structures",
-          description: "Variables, lists, dictionaries, functions, and file I/O in Python.",
-          duration: "45 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-2",
-          title: "Lesson 2: NumPy Arrays, Matrix Operations & Vectorization",
-          description: "Multi-dimensional arrays, slicing, indexing, broadcasting, and linear algebra.",
-          duration: "50 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ds-mod-2",
-      title: "Module 2: Data Wrangling, Cleaning & EDA with Pandas",
-      description: "Data manipulation, exploratory data analysis, and handling dirty datasets.",
-      lessons: [
-        {
-          _id: "ds-les-3",
-          title: "Lesson 3: DataFrames, CSV Ingestion & Filtering",
-          description: "Loading structured datasets, query indexing, filtering, and summarization.",
-          duration: "55 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-4",
-          title: "Lesson 4: Handling Missing Data, Merging & Aggregations",
-          description: "Imputation, group-by operations, pivot tables, and multi-table joins.",
-          duration: "50 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ds-mod-3",
-      title: "Module 3: Machine Learning & Predictive Modeling",
-      description: "Building, training, evaluating, and tuning predictive machine learning models.",
-      lessons: [
-        {
-          _id: "ds-les-5",
-          title: "Lesson 5: Supervised Learning: Linear & Logistic Regression",
-          description: "Feature scaling, training-test split, regression, and classification algorithms.",
-          duration: "60 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-6",
-          title: "Lesson 6: Model Evaluation, Cross Validation & Deployment",
-          description: "Confusion matrix, ROC-AUC, hyperparameters, and saving models with Pickle.",
-          duration: "55 min",
-          videoUrl: "",
-        },
-      ],
-    },
-  ],
+  modules: [],
   zipFiles: [
     {
       _id: "zf-ds-drive-folder",
@@ -686,15 +622,20 @@ function CourseDetails() {
           }
         }
 
-        // Ensure Web Development always has its complete Google Drive ZIP resources
+        // Ensure Web Development and Data Science courses are recognized
         const isCurrentWeb =
           cleanSlug.includes("web") ||
           cleanSlug === "660000000000000000000001" ||
           cleanSlug === "6ac3757e77cb85107a5ab348" ||
           (fetchedCourse && (fetchedCourse.slug === "web-development" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("web"))));
 
-        // User request: remove all lesson names from Web Development course
-        if (isCurrentWeb) {
+        const isCurrentDataScience =
+          cleanSlug.includes("data") ||
+          cleanSlug === "660000000000000000000006" ||
+          (fetchedCourse && (fetchedCourse.slug === "data-science" || (fetchedCourse.title && fetchedCourse.title.toLowerCase().includes("data"))));
+
+        // User request: remove all lesson names / modules from Web Development and Data Science courses
+        if (isCurrentWeb || isCurrentDataScience) {
           fetchedCourse.modules = [];
         } else if (!fetchedCourse.modules || fetchedCourse.modules.length === 0) {
           const fallbackMod = FALLBACK_COURSES_MAP[cleanSlug]?.modules || FALLBACK_COURSES_MAP[slug]?.modules || [];
@@ -728,8 +669,20 @@ function CourseDetails() {
               }
             }
           }
-        } else if (fetchedCourse && !isCurrentWeb) {
-          // STRICT RULE: ONLY Web Development course should show ZIP files!
+        } else if (fetchedCourse && isCurrentDataScience) {
+          const hasValidZips =
+            fetchedCourse.zipFiles &&
+            fetchedCourse.zipFiles.some(
+              (z) => z && z.url && z.url.trim() && !isStaleDummyZip(z.url)
+            );
+
+          if (!hasValidZips) {
+            fetchedCourse.zipFiles = DATA_SCIENCE_FALLBACK_DATA.zipFiles;
+            fetchedCourse.zipFile = DATA_SCIENCE_FALLBACK_DATA.zipFile;
+            fetchedCourse.resources = DATA_SCIENCE_FALLBACK_DATA.resources;
+          }
+        } else if (fetchedCourse && !isCurrentWeb && !isCurrentDataScience) {
+          // STRICT RULE: ONLY Web Development & Data Science courses should show ZIP / Drive files
           fetchedCourse.zipFiles = [];
           fetchedCourse.zipFile = null;
           if (fetchedCourse.resources) {
@@ -797,15 +750,32 @@ function CourseDetails() {
     ? course.modules.reduce((t, m) => t + (m.lessons ? m.lessons.length : 0), 0)
     : 0;
 
-  // STRICT RULE: ONLY Web Development course should show ZIP files!
   const isWebDevCourse =
     (course.slug && course.slug.toLowerCase().includes("web")) ||
     (course.title && course.title.toLowerCase().includes("web")) ||
     (course._id && course._id.toString().includes("000000000000000000000001")) ||
     (slug && slug.toLowerCase().includes("web"));
 
+  const isDataScienceCourse =
+    (course.slug && course.slug.toLowerCase().includes("data")) ||
+    (course.title && course.title.toLowerCase().includes("data")) ||
+    (course._id && course._id.toString().includes("000000000000000000000006")) ||
+    (slug && slug.toLowerCase().includes("data"));
+
+  const isGoogleDriveHubCourse = isWebDevCourse || isDataScienceCourse;
+
+  const mainDriveFolderUrl = isDataScienceCourse
+    ? "https://drive.google.com/drive/folders/14StHo9kxA0Umf_KpoGnQB22zmUNQKyjS"
+    : "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
+
   // Gather ALL unique ZIP files from standard projects, zipFiles, and resources
   const allCourseZips = (() => {
+    if (isDataScienceCourse) {
+      const zips = (course?.zipFiles && course.zipFiles.length > 0)
+        ? course.zipFiles
+        : (DATA_SCIENCE_FALLBACK_DATA.zipFiles || []);
+      return zips.filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
+    }
     if (!isWebDevCourse) {
       return (course?.zipFiles || []).filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
     }
@@ -973,21 +943,21 @@ function CourseDetails() {
 
           <div className="course-main-content">
 
-            {/* GOOGLE DRIVE HUB BANNER FOR WEB DEVELOPMENT */}
-            {isWebDevCourse ? (
+            {/* GOOGLE DRIVE HUB BANNER FOR WEB DEVELOPMENT & DATA SCIENCE */}
+            {isGoogleDriveHubCourse ? (
               <section className="google-drive-hub-hero">
                 <div className="google-drive-hub-content">
                   <span className="google-drive-badge">
                     ☁️ OFFICIAL GOOGLE DRIVE CLOUD STORAGE
                   </span>
-                  <h2>Web Development Projects & Source Code</h2>
+                  <h2>{course.title || "Course"} Projects & Source Code</h2>
                   <p>
-                    All practical project source code archives, starter kits, and full-stack capstone projects are permanently hosted on <strong>Google Drive</strong>. You can open any project directly in Google Drive or download ZIP files for offline practice.
+                    All practical project source code archives, datasets, starter kits, and full-stack capstone projects are permanently hosted on <strong>Google Drive</strong>. You can open any project directly in Google Drive or download ZIP files for offline practice.
                   </p>
 
                   <div className="google-drive-hub-actions">
                     <a
-                      href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+                      href={mainDriveFolderUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="google-drive-main-btn"
@@ -1078,7 +1048,7 @@ function CourseDetails() {
                   </div>
 
                   <a
-                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+                    href={mainDriveFolderUrl}
                     target="_blank"
                     rel="noreferrer"
                     style={{
@@ -1320,7 +1290,7 @@ function CourseDetails() {
                       </div>
                     </div>
                   ))
-                ) : isWebDevCourse ? (
+                ) : isGoogleDriveHubCourse ? (
                   <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                     <div style={{ padding: "14px 18px", background: "rgba(37, 99, 235, 0.08)", borderRadius: "10px", border: "1px solid rgba(59, 130, 246, 0.25)", color: "#cbd5e1", fontSize: "14px", lineHeight: "1.5" }}>
                       <strong style={{ color: "#93c5fd", display: "block", marginBottom: "4px" }}>☁️ All Project ZIP Files & Source Code ({allCourseZips.length})</strong>
@@ -1539,7 +1509,7 @@ function CourseDetails() {
                   </div>
 
                   <a
-                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt"
+                    href={mainDriveFolderUrl}
                     target="_blank"
                     rel="noreferrer"
                     style={{

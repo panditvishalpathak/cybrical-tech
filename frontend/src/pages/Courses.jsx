@@ -25,8 +25,8 @@ const defaultCourses = [
     level: "Beginner to Advanced",
     duration: "14 Weeks",
     icon: "📊",
-    modulesCount: 3,
-    lessonsCount: 6,
+    modulesCount: 0,
+    lessonsCount: 0,
     thumbnail:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
   },

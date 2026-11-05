@@ -186,71 +186,7 @@ const DATA_SCIENCE_FALLBACK_DATA = {
   isPublished: true,
   thumbnail:
     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
-  modules: [
-    {
-      _id: "ds-mod-1",
-      title: "Module 1: Python for Data Science & Numerical Computing",
-      description: "Python basics, NumPy vectorized computing, and mathematics for data science.",
-      lessons: [
-        {
-          _id: "ds-les-1",
-          title: "Lesson 1: Python Basics, Data Types & Control Structures",
-          description: "Variables, lists, dictionaries, functions, and file I/O in Python.",
-          duration: "45 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-2",
-          title: "Lesson 2: NumPy Arrays, Matrix Operations & Vectorization",
-          description: "Multi-dimensional arrays, slicing, indexing, broadcasting, and linear algebra.",
-          duration: "50 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ds-mod-2",
-      title: "Module 2: Data Wrangling, Cleaning & EDA with Pandas",
-      description: "Data manipulation, exploratory data analysis, and handling dirty datasets.",
-      lessons: [
-        {
-          _id: "ds-les-3",
-          title: "Lesson 3: DataFrames, CSV Ingestion & Filtering",
-          description: "Loading structured datasets, query indexing, filtering, and summarization.",
-          duration: "55 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-4",
-          title: "Lesson 4: Handling Missing Data, Merging & Aggregations",
-          description: "Imputation, group-by operations, pivot tables, and multi-table joins.",
-          duration: "50 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ds-mod-3",
-      title: "Module 3: Machine Learning & Predictive Modeling",
-      description: "Building, training, evaluating, and tuning predictive machine learning models.",
-      lessons: [
-        {
-          _id: "ds-les-5",
-          title: "Lesson 5: Supervised Learning: Linear & Logistic Regression",
-          description: "Feature scaling, training-test split, regression, and classification algorithms.",
-          duration: "60 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-6",
-          title: "Lesson 6: Model Evaluation, Cross Validation & Deployment",
-          description: "Confusion matrix, ROC-AUC, hyperparameters, and saving models with Pickle.",
-          duration: "55 min",
-          videoUrl: "",
-        },
-      ],
-    },
-  ],
+  modules: [],
   zipFiles: [
     {
       _id: "zf-ds-drive-folder",
@@ -622,7 +558,7 @@ function AdminCourseContent() {
     }
 
     if (resolvedCourse) {
-      // Ensure WebDev zipFiles are populated with exact Google Drive link
+      // Ensure WebDev and Data Science are identified
       const isWebCourse =
         cleanId.includes("web") ||
         cleanId === "660000000000000000000001" ||
@@ -631,8 +567,14 @@ function AdminCourseContent() {
         resolvedCourse.slug === "web-development" ||
         (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("web"));
 
-      // User request: remove all lesson names from Web Development course
-      if (isWebCourse) {
+      const isDataScience =
+        cleanId.includes("data") ||
+        cleanId === "660000000000000000000006" ||
+        resolvedCourse.slug === "data-science" ||
+        (resolvedCourse.title && resolvedCourse.title.toLowerCase().includes("data science"));
+
+      // User request: remove all modules/lessons from Web Development and Data Science courses
+      if (isWebCourse || isDataScience) {
         resolvedCourse.modules = [];
       } else if (!resolvedCourse.modules || resolvedCourse.modules.length === 0) {
         const fallback = FALLBACK_COURSES_MAP[cleanId] || FALLBACK_COURSES_MAP[id];
@@ -1449,7 +1391,20 @@ function AdminCourseContent() {
       course._id === "660000000000000000000001" ||
       course._id === "000000000000000000000001");
 
+  const isDataScienceAdmin =
+    course &&
+    ((course.slug && course.slug.toLowerCase().includes("data")) ||
+      (course.title && course.title.toLowerCase().includes("data")) ||
+      id === "660000000000000000000006" ||
+      course._id === "660000000000000000000006");
+
   const allZips = (() => {
+    if (isDataScienceAdmin) {
+      const zips = (course?.zipFiles && course.zipFiles.length > 0)
+        ? course.zipFiles
+        : (DATA_SCIENCE_FALLBACK_DATA.zipFiles || []);
+      return zips.filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
+    }
     if (!isWebDevCourse) return (course?.zipFiles || []).filter((z) => z && (z.url || z.fileUrl) && !isStaleDummyZip(z.url || z.fileUrl));
 
     const getCanonicalKey = (z) => {

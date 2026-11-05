@@ -308,71 +308,7 @@ const FALLBACK_DATA_SCIENCE_COURSE = {
   price: 0,
   isPublished: true,
   thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
-  modules: [
-    {
-      _id: "ds-mod-1",
-      title: "Module 1: Python for Data Science & Numerical Computing",
-      description: "Python basics, NumPy vectorized computing, and mathematics for data science.",
-      lessons: [
-        {
-          _id: "ds-les-1",
-          title: "Python Basics, Data Types & Control Structures",
-          description: "Variables, lists, dictionaries, functions, and file I/O in Python.",
-          duration: "45 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-2",
-          title: "NumPy Arrays, Matrix Operations & Vectorization",
-          description: "Multi-dimensional arrays, slicing, indexing, broadcasting, and linear algebra.",
-          duration: "50 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ds-mod-2",
-      title: "Module 2: Data Wrangling, Cleaning & EDA with Pandas",
-      description: "Data manipulation, exploratory data analysis, and handling dirty datasets.",
-      lessons: [
-        {
-          _id: "ds-les-3",
-          title: "DataFrames, CSV Ingestion & Filtering",
-          description: "Loading structured datasets, query indexing, filtering, and summarization.",
-          duration: "55 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-4",
-          title: "Handling Missing Data, Merging & Aggregations",
-          description: "Imputation, group-by operations, pivot tables, and multi-table joins.",
-          duration: "50 min",
-          videoUrl: "",
-        },
-      ],
-    },
-    {
-      _id: "ds-mod-3",
-      title: "Module 3: Machine Learning & Predictive Modeling",
-      description: "Building, training, evaluating, and tuning predictive machine learning models.",
-      lessons: [
-        {
-          _id: "ds-les-5",
-          title: "Supervised Learning: Linear & Logistic Regression",
-          description: "Feature scaling, training-test split, regression, and classification algorithms.",
-          duration: "60 min",
-          videoUrl: "",
-        },
-        {
-          _id: "ds-les-6",
-          title: "Model Evaluation, Cross Validation & Deployment",
-          description: "Confusion matrix, ROC-AUC, hyperparameters, and saving models with Pickle.",
-          duration: "55 min",
-          videoUrl: "",
-        },
-      ],
-    },
-  ],
+  modules: [],
   zipFiles: [
     {
       _id: "zf-ds-drive-folder",
@@ -601,7 +537,8 @@ const saveSingleFallbackCourse = (courseObj) => {
       (c.slug && c.slug.toLowerCase() === cleanSlug) ||
       ((cleanSlug.includes("web") || cleanId.includes("000000000000000000000001")) && (c.slug === "web-development" || (c._id && c._id.toString().includes("000000000000000000000001")))) ||
       ((cleanSlug.includes("ai") || cleanId.includes("000000000000000000000004")) && (c.slug === "ai" || (c._id && c._id.toString().includes("000000000000000000000004")))) ||
-      ((cleanSlug.includes("android") || cleanId.includes("000000000000000000000005")) && (c.slug === "android" || (c._id && c._id.toString().includes("000000000000000000000005"))))
+      ((cleanSlug.includes("android") || cleanId.includes("000000000000000000000005")) && (c.slug === "android" || (c._id && c._id.toString().includes("000000000000000000000005")))) ||
+      ((cleanSlug.includes("data") || cleanId.includes("000000000000000000000006")) && (c.slug === "data-science" || (c._id && c._id.toString().includes("000000000000000000000006"))))
   );
 
   if (idx >= 0) {
@@ -618,6 +555,7 @@ const KNOWN_ID_SLUG_MAP = {
   "660000000000000000000003": "digital-marketing",
   "660000000000000000000004": "ai",
   "660000000000000000000005": "android",
+  "660000000000000000000006": "data-science",
 };
 
 const getCourseDoc = async (targetId) => {
@@ -732,6 +670,10 @@ const getCourseDoc = async (targetId) => {
         (course._id && course._id.toString().includes("000000000000000000000006"));
 
       if (isDataScience) {
+        if (course.modules && course.modules.length > 0) {
+          course.modules = [];
+          modified = true;
+        }
         if (!course.zipFiles || course.zipFiles.length === 0) {
           course.zipFiles = FALLBACK_DATA_SCIENCE_COURSE.zipFiles;
           course.zipFile = FALLBACK_DATA_SCIENCE_COURSE.zipFile;
