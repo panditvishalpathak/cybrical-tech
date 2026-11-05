@@ -376,6 +376,37 @@ function CourseDetails() {
 
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [isDownloadingAll, setIsDownloadingAll] = useState(false);
+  const [copiedId, setCopiedId] = useState(null);
+
+  const fallbackCopy = (text, id) => {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
+    } catch (err) {}
+  };
+
+  const handleCopyLink = (text, id) => {
+    if (!text) return;
+    if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          setCopiedId(id);
+          setTimeout(() => setCopiedId(null), 2000);
+        })
+        .catch(() => fallbackCopy(text, id));
+    } else {
+      fallbackCopy(text, id);
+    }
+  };
 
   const isStaleDummyZip = (url) => {
     if (!url || typeof url !== "string") return false;
@@ -772,10 +803,42 @@ function CourseDetails() {
 
           <div className="course-main-content">
 
-            {/* LESSON VIEWER / PLAYER */}
-            {selectedLesson ? (
-              <section className="lesson-video-section">
+            {/* GOOGLE DRIVE HUB BANNER FOR WEB DEVELOPMENT */}
+            {isWebDevCourse ? (
+              <section className="google-drive-hub-hero">
+                <div className="google-drive-hub-content">
+                  <span className="google-drive-badge">
+                    ☁️ OFFICIAL GOOGLE DRIVE CLOUD STORAGE
+                  </span>
+                  <h2>Web Development Projects & Source Code</h2>
+                  <p>
+                    All 5 practical project source code archives, starter kits, and full-stack capstone projects are permanently hosted on <strong>Google Drive</strong>. You can open any project directly in Google Drive or download ZIP files for offline practice.
+                  </p>
 
+                  <div className="google-drive-hub-actions">
+                    <a
+                      href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="google-drive-main-btn"
+                    >
+                      <span>📁</span> Open Google Drive Main Folder ↗
+                    </a>
+                    {allCourseZips.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={handleDownloadAllZips}
+                        disabled={isDownloadingAll}
+                        className="google-drive-download-all-btn"
+                      >
+                        <span>⚡</span> {isDownloadingAll ? `Downloading ${allCourseZips.length} Files...` : `Download All (${allCourseZips.length}) ZIPs ⬇`}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </section>
+            ) : selectedLesson ? (
+              <section className="lesson-video-section">
                 <div className="lesson-video-header">
                   <span>🎬 Now Playing</span>
                   <h2>{selectedLesson.title}</h2>
@@ -824,113 +887,6 @@ function CourseDetails() {
                     {selectedLesson.description}
                   </p>
                 )}
-
-                {/* LESSON SPECIFIC ZIP DOWNLOAD BUTTON */}
-                {isWebDevCourse && (selectedLesson.zipUrl || allCourseZips.length > 0) && (() => {
-                  const zipUrl = selectedLesson.zipUrl || allCourseZips[0]?.url || "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
-                  const isFolder = isGoogleDriveFolder(zipUrl);
-                  const zipTitle = selectedLesson.zipName || (selectedLesson.zipUrl ? `${selectedLesson.title}.zip` : (allCourseZips[0]?.title || "Web-Development-Complete-Projects.zip"));
-                  const zipSize = selectedLesson.zipSize || allCourseZips[0]?.fileSize || "Google Drive Cloud";
-
-                  return (
-                    <div
-                      style={{
-                        marginTop: "16px",
-                        padding: "14px 18px",
-                        background: "rgba(34, 197, 94, 0.08)",
-                        border: "1px solid rgba(34, 197, 94, 0.3)",
-                        borderRadius: "12px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        flexWrap: "wrap",
-                        gap: "12px",
-                      }}
-                    >
-                      <div>
-                        <span style={{ fontSize: "12px", fontWeight: "700", color: "#4ade80", textTransform: "uppercase", letterSpacing: "0.5px" }}>
-                          📦 Lesson Project Code & Assets
-                        </span>
-                        <h4 style={{ margin: "4px 0 0 0", color: "#f0fdf4", fontSize: "15px" }}>
-                          {zipTitle} {zipSize ? `(${zipSize})` : ""}
-                        </h4>
-                      </div>
-
-                      <div style={{ display: "inline-flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-                        {isFolder ? (
-                          <a
-                            href={getGoogleDriveViewUrl(zipUrl)}
-                            target="_blank"
-                            rel="noreferrer"
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: "6px",
-                              padding: "8px 16px",
-                              background: "linear-gradient(135deg, #3b82f6, #2563eb)",
-                              color: "#ffffff",
-                              fontWeight: "800",
-                              fontSize: "13px",
-                              borderRadius: "8px",
-                              textDecoration: "none",
-                              boxShadow: "0 4px 12px rgba(59, 130, 246, 0.4)",
-                            }}
-                            title="Open Google Drive Project Folder"
-                          >
-                            <span>📁</span> Open Drive Folder ↗
-                          </a>
-                        ) : (
-                          <a
-                            href={isGoogleDriveUrl(zipUrl) ? (getGoogleDriveDownloadUrl(zipUrl) || zipUrl) : getDownloadUrl(zipUrl, zipTitle)}
-                            download={isGoogleDriveUrl(zipUrl) ? undefined : zipTitle}
-                            target="_blank"
-                            rel="noreferrer"
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: "6px",
-                              padding: "8px 16px",
-                              background: "#22c55e",
-                              color: "#031007",
-                              fontWeight: "800",
-                              fontSize: "13px",
-                              borderRadius: "8px",
-                              textDecoration: "none",
-                              boxShadow: "0 4px 12px rgba(34, 197, 94, 0.3)",
-                            }}
-                            title="Direct Download ZIP file"
-                          >
-                            <span>📥</span> Download Lesson ZIP ⬇
-                          </a>
-                        )}
-                        {isGoogleDriveUrl(zipUrl) && !isFolder && (
-                          <a
-                            href={getGoogleDriveViewUrl(zipUrl)}
-                            target="_blank"
-                            rel="noreferrer"
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: "5px",
-                              padding: "8px 14px",
-                              background: "rgba(255, 255, 255, 0.08)",
-                              border: "1px solid rgba(255, 255, 255, 0.2)",
-                              borderRadius: "8px",
-                              color: "#e2e8f0",
-                              fontSize: "13px",
-                              fontWeight: "700",
-                              textDecoration: "none",
-                            }}
-                            title="Open single ZIP preview"
-                          >
-                            <span>👁️</span> Open ZIP ↗
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })()}
-
               </section>
             ) : totalLessons > 0 ? (
               <section className="video-empty-state">
@@ -942,109 +898,151 @@ function CourseDetails() {
 
             {/* ALL COURSE ZIP FILES LIST IN MAIN CONTENT */}
             {allCourseZips.length > 0 && (
-              <section className="course-materials-section" style={{ marginTop: "30px" }}>
+              <section className="course-materials-section" style={{ marginTop: "24px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px", marginBottom: "16px" }}>
                   <div>
-                    <h2 style={{ margin: 0 }}>📦 Course Resources & Project ZIP Files ({allCourseZips.length})</h2>
+                    <h2 style={{ margin: 0 }}>☁️ Google Drive Source Code & Project ZIPs ({allCourseZips.length})</h2>
                     <p style={{ color: "#8da096", fontSize: "14px", margin: "6px 0 0 0" }}>
-                      Download all project source codes, assets, and practice files for offline use:
+                      Direct links to all Google Drive source code archives and downloadable project ZIPs:
                     </p>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={handleDownloadAllZips}
-                    disabled={isDownloadingAll}
+                  <a
+                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing"
+                    target="_blank"
+                    rel="noreferrer"
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
-                      gap: "8px",
-                      padding: "11px 20px",
-                      background: isDownloadingAll
-                        ? "linear-gradient(135deg, #10b981, #059669)"
-                        : "linear-gradient(135deg, #22c55e, #16a34a)",
-                      color: "#031007",
-                      fontWeight: "800",
-                      fontSize: "14px",
-                      borderRadius: "10px",
-                      border: "none",
-                      cursor: isDownloadingAll ? "wait" : "pointer",
-                      boxShadow: "0 6px 18px rgba(34, 197, 94, 0.4)",
-                      transition: "all 0.2s ease",
-                      opacity: isDownloadingAll ? 0.85 : 1,
+                      gap: "6px",
+                      padding: "8px 16px",
+                      background: "rgba(37, 99, 235, 0.15)",
+                      border: "1px solid rgba(59, 130, 246, 0.4)",
+                      borderRadius: "8px",
+                      color: "#93c5fd",
+                      fontWeight: "700",
+                      fontSize: "13px",
+                      textDecoration: "none",
                     }}
                   >
-                    <span>⚡</span> {isDownloadingAll ? `Downloading ${allCourseZips.length} Files...` : `Download All ZIPs (${allCourseZips.length}) ⬇`}
-                  </button>
+                    📁 Main Drive Folder ↗
+                  </a>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                   {allCourseZips.map((z, idx) => {
                     const isFolder = isGoogleDriveFolder(z.url);
+                    const driveViewUrl = getGoogleDriveViewUrl(z.url) || z.url;
+                    const driveDownloadUrl = isGoogleDriveUrl(z.url)
+                      ? (getGoogleDriveDownloadUrl(z.url) || z.url)
+                      : getDownloadUrl(z.url, z.fileName);
+                    const isCopied = copiedId === (z._id || idx);
+
                     return (
-                      <div className="materials-card" key={z._id || idx}>
+                      <div className="materials-card google-drive-card" key={z._id || idx}>
                         <div className="materials-icon">{isFolder ? "📁" : "📦"}</div>
                         <div className="materials-details">
+                          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", marginBottom: "4px" }}>
+                            <span className="materials-badge" style={{ background: "rgba(37, 99, 235, 0.15)", borderColor: "rgba(59, 130, 246, 0.4)", color: "#93c5fd" }}>
+                              ☁️ Google Drive
+                            </span>
+                            <span className="materials-badge">
+                              {isFolder ? "Project Folder" : (z.fileSize || "Cloud ZIP")}
+                            </span>
+                          </div>
+
                           <h3>{z.title || z.fileName}</h3>
                           <p>{z.fileName}</p>
-                          <span className="materials-badge">
-                            {isFolder
-                              ? "☁️ Google Drive • Project Folder"
-                              : ((z.isExternal || (z.url && (z.url.includes("drive.google.com") || z.url.includes("google.com"))))
-                                ? `☁️ Google Drive • ${z.fileSize || "Cloud ZIP"}`
-                                : (z.fileSize || "ZIP Archive"))}
-                          </span>
-                        </div>
-                        <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
-                          {isFolder ? (
+
+                          {/* Direct Google Drive URL display */}
+                          <div
+                            style={{
+                              marginTop: "8px",
+                              padding: "7px 12px",
+                              background: "rgba(0, 0, 0, 0.35)",
+                              border: "1px solid rgba(255, 255, 255, 0.08)",
+                              borderRadius: "8px",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "8px",
+                              flexWrap: "wrap",
+                            }}
+                          >
+                            <span style={{ fontSize: "11px", fontWeight: "700", color: "#60a5fa", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                              🔗 Drive Link:
+                            </span>
                             <a
-                              href={getGoogleDriveViewUrl(z.url)}
+                              href={driveViewUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{
+                                color: "#93c5fd",
+                                fontSize: "12px",
+                                textDecoration: "underline",
+                                wordBreak: "break-all",
+                              }}
+                              title="Click to view file in Google Drive"
+                            >
+                              {driveViewUrl}
+                            </a>
+                          </div>
+                        </div>
+
+                        <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+                          {/* 1. Open in Google Drive Button */}
+                          <a
+                            href={driveViewUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="materials-download-btn"
+                            style={{
+                              background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+                              color: "#ffffff",
+                              boxShadow: "0 4px 14px rgba(37, 99, 235, 0.35)",
+                            }}
+                            title="Open directly on Google Drive"
+                          >
+                            <span>☁️</span> Open in Google Drive ↗
+                          </a>
+
+                          {/* 2. Download ZIP Button */}
+                          {!isFolder && (
+                            <a
+                              href={driveDownloadUrl}
+                              download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
                               target="_blank"
                               rel="noreferrer"
                               className="materials-download-btn"
-                              style={{ background: "linear-gradient(135deg, #3b82f6, #2563eb)", color: "#ffffff" }}
-                              title="Open Google Drive Project Folder"
+                              style={{
+                                background: "rgba(34, 197, 94, 0.15)",
+                                border: "1px solid rgba(34, 197, 94, 0.4)",
+                                color: "#4ade80",
+                              }}
+                              title="Direct Download ZIP file"
                             >
-                              📁 Open Drive Folder ↗
+                              <span>⬇</span> Download ZIP
                             </a>
-                          ) : (
-                            <>
-                              <a
-                                href={isGoogleDriveUrl(z.url) ? (getGoogleDriveDownloadUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName)}
-                                download={z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="materials-download-btn"
-                                title="Direct Download ZIP file"
-                              >
-                                Download ZIP ⬇
-                              </a>
-                              {isGoogleDriveUrl(z.url) && (
-                                <a
-                                  href={getGoogleDriveViewUrl(z.url)}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: "5px",
-                                    padding: "11px 16px",
-                                    background: "rgba(255, 255, 255, 0.08)",
-                                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                                    borderRadius: "10px",
-                                    color: "#e2e8f0",
-                                    fontSize: "13px",
-                                    fontWeight: "700",
-                                    textDecoration: "none",
-                                    transition: "all 0.2s ease",
-                                  }}
-                                  title="Open single ZIP preview"
-                                >
-                                  Open ZIP 👁️
-                                </a>
-                              )}
-                            </>
                           )}
+
+                          {/* 3. Copy Link Button */}
+                          <button
+                            type="button"
+                            onClick={() => handleCopyLink(driveViewUrl, z._id || idx)}
+                            style={{
+                              padding: "11px 14px",
+                              background: isCopied ? "rgba(34, 197, 94, 0.2)" : "rgba(255, 255, 255, 0.08)",
+                              border: isCopied ? "1px solid rgba(34, 197, 94, 0.5)" : "1px solid rgba(255, 255, 255, 0.18)",
+                              borderRadius: "10px",
+                              color: isCopied ? "#4ade80" : "#e2e8f0",
+                              fontSize: "13px",
+                              fontWeight: "700",
+                              cursor: "pointer",
+                              transition: "all 0.2s ease",
+                            }}
+                            title="Copy Google Drive URL"
+                          >
+                            {isCopied ? "Copied! ✅" : "📋 Copy Link"}
+                          </button>
                         </div>
                       </div>
                     );
@@ -1157,10 +1155,10 @@ function CourseDetails() {
 
               {/* SIDEBAR MULTIPLE ZIP DOWNLOADS */}
               {allCourseZips.length > 0 && (
-                <div style={{ marginTop: "16px", padding: "14px", background: "rgba(34, 197, 94, 0.08)", border: "1px solid rgba(34, 197, 94, 0.3)", borderRadius: "12px" }}>
+                <div style={{ marginTop: "16px", padding: "14px", background: "rgba(37, 99, 235, 0.08)", border: "1px solid rgba(59, 130, 246, 0.3)", borderRadius: "12px" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-                    <strong style={{ color: "#4ade80", fontSize: "13px" }}>
-                      📦 Project ZIPs ({allCourseZips.length}):
+                    <strong style={{ color: "#93c5fd", fontSize: "13px", display: "flex", alignItems: "center", gap: "6px" }}>
+                      <span>☁️</span> Google Drive ZIPs ({allCourseZips.length}):
                     </strong>
                     {allCourseZips.length > 1 && (
                       <button
@@ -1168,8 +1166,8 @@ function CourseDetails() {
                         onClick={handleDownloadAllZips}
                         disabled={isDownloadingAll}
                         style={{
-                          background: "#22c55e",
-                          color: "#031007",
+                          background: "#2563eb",
+                          color: "#ffffff",
                           fontSize: "11px",
                           fontWeight: "800",
                           padding: "4px 8px",
@@ -1185,22 +1183,19 @@ function CourseDetails() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                     {allCourseZips.map((z, idx) => {
                       const isFolder = isGoogleDriveFolder(z.url);
-                      const href = isFolder
-                        ? getGoogleDriveViewUrl(z.url)
-                        : (isGoogleDriveUrl(z.url) ? (getGoogleDriveDownloadUrl(z.url) || z.url) : getDownloadUrl(z.url, z.fileName));
+                      const driveUrl = getGoogleDriveViewUrl(z.url) || z.url;
                       return (
                         <a
                           key={z._id || idx}
-                          href={href}
-                          download={isFolder || z.isExternal || isGoogleDriveUrl(z.url) ? undefined : (z.fileName || `project-${idx + 1}.zip`)}
+                          href={driveUrl}
                           target="_blank"
                           rel="noreferrer"
                           style={{
-                            padding: "7px 10px",
+                            padding: "8px 10px",
                             background: "rgba(0,0,0,0.3)",
-                            border: isFolder ? "1px solid rgba(59,130,246,0.4)" : "1px solid rgba(34,197,94,0.3)",
+                            border: "1px solid rgba(59,130,246,0.3)",
                             borderRadius: "6px",
-                            color: isFolder ? "#93c5fd" : "#86efac",
+                            color: "#93c5fd",
                             fontSize: "12px",
                             textDecoration: "none",
                             fontWeight: "600",
@@ -1208,17 +1203,41 @@ function CourseDetails() {
                             justifyContent: "space-between",
                             alignItems: "center",
                           }}
+                          title={`Open ${z.title} on Google Drive`}
                         >
                           <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginRight: "6px" }}>
                             {isFolder ? "📁" : "📦"} {z.title || z.fileName}
                           </span>
-                          <span style={{ color: isFolder ? "#60a5fa" : "#4ade80", fontWeight: "800", flexShrink: 0 }}>
-                            {isFolder ? "📁 ↗" : (z.isExternal || isGoogleDriveUrl(z.url) ? "☁️" : "⬇")}
+                          <span style={{ color: "#60a5fa", fontWeight: "800", flexShrink: 0, fontSize: "11px" }}>
+                            ☁️ Drive ↗
                           </span>
                         </a>
                       );
                     })}
                   </div>
+
+                  <a
+                    href="https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "6px",
+                      width: "100%",
+                      marginTop: "10px",
+                      padding: "8px 12px",
+                      background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+                      color: "#ffffff",
+                      borderRadius: "8px",
+                      fontSize: "12px",
+                      fontWeight: "700",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span>📁</span> Open Google Drive Folder ↗
+                  </a>
                 </div>
               )}
 

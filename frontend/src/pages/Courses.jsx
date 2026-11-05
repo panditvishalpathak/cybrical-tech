@@ -185,7 +185,7 @@ function Courses() {
                       {lessonCount > 0 ? (
                         <span>📚 {lessonCount} Lessons</span>
                       ) : (
-                        <span>📦 Project ZIPs</span>
+                        <span>☁️ 5 Google Drive Projects</span>
                       )}
                     </div>
 
