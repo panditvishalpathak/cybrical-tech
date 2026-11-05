@@ -167,11 +167,13 @@ function Courses() {
           <div className="courses-grid">
             {coursesList.map((course) => {
               const lessonCount = course.lessonsCount || (course.modules ? course.modules.reduce((acc, m) => acc + (m.lessons ? m.lessons.length : 0), 0) : 0);
+              const s = (course.slug || "").toLowerCase();
+              const isAI = s === "ai" || s.includes("artificial") || (course.title || "").toLowerCase().includes("artificial intelligence");
+
               const getIcon = () => {
+                if (isAI) return "✨🤖✨";
                 if (course.icon) return course.icon;
-                const s = (course.slug || "").toLowerCase();
                 if (s.includes("data") || s.includes("science")) return "📊";
-                if (s.includes("ai") || s.includes("artificial")) return "🤖";
                 if (s.includes("web")) return "💻";
                 if (s.includes("seo")) return "📈";
                 if (s.includes("marketing")) return "📢";
@@ -180,31 +182,51 @@ function Courses() {
 
               return (
                 <article
-                  className="course-card"
+                  className={`course-card ${isAI ? "course-card-luxury" : ""}`}
                   key={course.slug || course._id}
                 >
                   <div className="course-card-cover">
+                    {isAI && (
+                      <div className="luxury-shimmer-badge">
+                        <span>👑</span> LUXURY AI EDITION
+                      </div>
+                    )}
                     <img
                       src={getThumbnailForCourse(course)}
                       alt={course.title}
                       className="course-cover-img"
                       loading="lazy"
                     />
-                    <div className="course-cover-overlay"></div>
-                    <span className="course-level">
-                      {course.level || "Beginner"}
+                    <div className={`course-cover-overlay ${isAI ? "luxury-cover-overlay" : ""}`}></div>
+                    <span className={`course-level ${isAI ? "luxury-level-badge" : ""}`}>
+                      {isAI ? "💎 VIP Masterclass" : (course.level || "Beginner")}
                     </span>
-                    <span className="course-icon-bubble">{getIcon()}</span>
+                    <span className={`course-icon-bubble ${isAI ? "luxury-icon-bubble" : ""}`}>{getIcon()}</span>
                   </div>
 
-                  <div className="course-card-details">
-                    <h3>{course.title}</h3>
+                  <div className={`course-card-details ${isAI ? "luxury-card-details" : ""}`}>
+                    {isAI && (
+                      <div className="luxury-category-kicker">
+                        <span className="luxury-sparkle">✦</span> LUXURY ARTIFICIAL INTELLIGENCE <span className="luxury-sparkle">✦</span>
+                      </div>
+                    )}
+                    <h3 className={isAI ? "luxury-title" : ""}>{course.title}</h3>
 
-                    <p>{course.description}</p>
+                    <p className={isAI ? "luxury-description" : ""}>{course.description}</p>
 
-                    <div className="course-info">
+                    {isAI && (
+                      <div className="luxury-tags-row">
+                        <span className="luxury-tag">⚡ Generative AI & LLMs</span>
+                        <span className="luxury-tag">🧠 Neural Networks</span>
+                        <span className="luxury-tag">☁️ VIP Drive Hub</span>
+                      </div>
+                    )}
+
+                    <div className={`course-info ${isAI ? "luxury-info" : ""}`}>
                       <span>⏱ {course.duration || "Self-Paced"}</span>
-                      {lessonCount > 0 ? (
+                      {isAI ? (
+                        <span className="luxury-drive-pill">☁️ VIP Google Drive Projects</span>
+                      ) : lessonCount > 0 ? (
                         <span>📚 {lessonCount} Lessons</span>
                       ) : (
                         <span>☁️ Google Drive Projects</span>
@@ -213,9 +235,17 @@ function Courses() {
 
                     <Link
                       to={`/courses/${course.slug}`}
-                      className="course-button"
+                      className={`course-button ${isAI ? "luxury-course-button" : ""}`}
                     >
-                      View Course <span>↗</span>
+                      {isAI ? (
+                        <>
+                          <span>⚡</span> Explore Luxury Course <span>↗</span>
+                        </>
+                      ) : (
+                        <>
+                          View Course <span>↗</span>
+                        </>
+                      )}
                     </Link>
                   </div>
                 </article>
