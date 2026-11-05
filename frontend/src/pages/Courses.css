@@ -238,17 +238,17 @@
 }
 
 /* =====================================
-   PREMIUM LUXURY ARTIFICIAL INTELLIGENCE CARD
+   PROJECT-ALIGNED LUXURY AI CARD
 ===================================== */
 .course-card.course-card-luxury {
     position: relative;
-    border: 1px solid rgba(212, 175, 55, 0.4) !important;
-    background: linear-gradient(165deg, rgba(20, 16, 36, 0.95) 0%, rgba(10, 8, 18, 0.98) 60%, rgba(6, 4, 12, 1) 100%) !important;
+    border: 1px solid rgba(52, 211, 153, 0.45) !important;
+    background: radial-gradient(130% 130% at 50% 0%, rgba(34, 197, 94, 0.16) 0%, rgba(10, 26, 18, 0.96) 45%, rgba(4, 12, 8, 0.99) 100%) !important;
     border-radius: 22px;
     box-shadow: 
-        0 14px 40px rgba(0, 0, 0, 0.7),
-        0 0 35px rgba(212, 175, 55, 0.12),
-        inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+        0 16px 45px rgba(0, 0, 0, 0.75),
+        0 0 35px rgba(34, 197, 94, 0.2),
+        inset 0 1px 1px rgba(134, 239, 172, 0.25) !important;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
     overflow: hidden;
 }
@@ -258,24 +258,24 @@
     position: absolute;
     inset: -1px;
     border-radius: 23px;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(168, 85, 247, 0.25), rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.15));
+    background: linear-gradient(135deg, rgba(134, 239, 172, 0.6), rgba(52, 211, 153, 0.35), rgba(16, 185, 129, 0.15), rgba(255, 255, 255, 0.25));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     padding: 1px;
     pointer-events: none;
     z-index: 2;
-    opacity: 0.75;
+    opacity: 0.8;
     transition: opacity 0.4s ease;
 }
 
 .course-card.course-card-luxury:hover {
-    transform: translateY(-8px) scale(1.01) !important;
-    border-color: rgba(234, 179, 8, 0.75) !important;
+    transform: translateY(-8px) scale(1.015) !important;
+    border-color: rgba(52, 211, 153, 0.85) !important;
     box-shadow: 
-        0 24px 60px rgba(0, 0, 0, 0.85),
-        0 0 45px rgba(212, 175, 55, 0.25),
-        inset 0 1px 2px rgba(255, 255, 255, 0.25) !important;
+        0 25px 65px rgba(0, 0, 0, 0.85),
+        0 0 50px rgba(34, 197, 94, 0.4),
+        inset 0 1px 2px rgba(134, 239, 172, 0.45) !important;
 }
 
 .course-card.course-card-luxury:hover::before {
@@ -283,23 +283,23 @@
 }
 
 .luxury-cover-overlay {
-    background: linear-gradient(180deg, rgba(14, 10, 26, 0.1) 0%, rgba(10, 8, 18, 0.88) 100%) !important;
+    background: linear-gradient(180deg, rgba(3, 8, 7, 0.1) 0%, rgba(5, 16, 11, 0.88) 100%) !important;
 }
 
 .luxury-level-badge {
-    background: rgba(14, 10, 26, 0.82) !important;
+    background: rgba(3, 14, 9, 0.85) !important;
     backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(212, 175, 55, 0.45) !important;
-    color: #fef08a !important;
+    border: 1px solid rgba(52, 211, 153, 0.6) !important;
+    color: #86efac !important;
     font-weight: 700 !important;
     letter-spacing: 0.5px !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.25) !important;
 }
 
 .luxury-icon-bubble {
-    background: linear-gradient(135deg, rgba(28, 22, 48, 0.95), rgba(13, 10, 24, 0.95)) !important;
-    border: 1.2px solid rgba(212, 175, 55, 0.55) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(212, 175, 55, 0.2) !important;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.25) 0%, rgba(5, 16, 10, 0.95) 100%) !important;
+    border: 1.5px solid rgba(52, 211, 153, 0.7) !important;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), inset 0 1px 2px rgba(134, 239, 172, 0.4) !important;
     font-size: 20px !important;
 }
 
@@ -308,10 +308,10 @@
 }
 
 .luxury-title {
-    background: linear-gradient(135deg, #ffffff 0%, #fef3c7 40%, #e2e8f0 85%, #fcd34d 100%) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #e6fff2 40%, #86efac 75%, #34d399 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    filter: drop-shadow(0 2px 10px rgba(212, 175, 55, 0.25));
+    filter: drop-shadow(0 2px 12px rgba(34, 197, 94, 0.35));
     font-weight: 800 !important;
     letter-spacing: -0.2px;
 }
@@ -322,24 +322,24 @@
 }
 
 .luxury-info {
-    border-top: 1px solid rgba(212, 175, 55, 0.18) !important;
+    border-top: 1px solid rgba(34, 197, 94, 0.2) !important;
     padding-top: 14px;
 }
 
 .luxury-drive-pill {
-    color: #fde047 !important;
+    color: #86efac !important;
     font-weight: 700 !important;
-    text-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
+    text-shadow: 0 0 12px rgba(52, 211, 153, 0.5);
 }
 
-/* LUXURY ACTION BUTTON */
+/* LUXURY ACTION BUTTON - Flagship Cyber Emerald Finish */
 .luxury-course-button {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.08) 100%) !important;
-    border: 1px solid rgba(212, 175, 55, 0.55) !important;
-    color: #fef08a !important;
-    font-weight: 700 !important;
+    background: linear-gradient(135deg, #34d399 0%, #22c55e 50%, #16a34a 100%) !important;
+    color: #030807 !important;
+    font-weight: 800 !important;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 4px 22px rgba(34, 197, 94, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
     position: relative;
     overflow: hidden;
     transition: all 0.35s ease !important;
@@ -352,16 +352,16 @@
     left: -120%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transform: skewX(-20deg);
     transition: 0.6s ease;
 }
 
 .luxury-course-button:hover {
-    background: linear-gradient(135deg, #eab308 0%, #f59e0b 50%, #ca8a04 100%) !important;
-    color: #0b0914 !important;
-    border-color: rgba(255, 255, 255, 0.4) !important;
-    box-shadow: 0 8px 30px rgba(234, 179, 8, 0.45) !important;
+    background: linear-gradient(135deg, #86efac 0%, #34d399 50%, #22c55e 100%) !important;
+    color: #030807 !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 8px 32px rgba(52, 211, 153, 0.65) !important;
     transform: translateY(-2px);
 }
 
