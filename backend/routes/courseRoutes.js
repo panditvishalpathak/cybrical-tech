@@ -115,6 +115,17 @@ const WEB_DEV_ZIP_COURSE = {
       summary: "Modern CSS3 responsive styling, Flexbox layouts, Grid systems, and landing page builds.",
       highlights: ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"],
     },
+    {
+      _id: "zf-wd-day3",
+      title: "📦 Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
+      fileName: "02-JavaScript-DOM-Async-Projects.zip",
+      url: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+      fileSize: "Google Drive Cloud",
+      isExternal: true,
+      source: "Google Drive",
+      summary: "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
+      highlights: ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"],
+    },
   ],
   resources: [
     {
@@ -144,6 +155,16 @@ const WEB_DEV_ZIP_COURSE = {
       url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
       fileUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
       fileSize: "350.6 MB",
+      isExternal: true,
+      source: "Google Drive",
+    },
+    {
+      _id: "res-wd-day3",
+      title: "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
+      fileName: "02-JavaScript-DOM-Async-Projects.zip",
+      url: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+      fileUrl: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
@@ -575,18 +596,17 @@ const getCourseDoc = async (targetId) => {
       }
     }
 
-    const isRemovedDay3Or4Zip = (item) => {
+    const isRemovedDay4Zip = (item) => {
       if (!item) return false;
       const str = ((item.fileName || "") + " " + (item.title || "") + " " + (item._id || "")).toLowerCase();
       return (
-        str.includes("day 3") || str.includes("day-3") || str.includes("02-javascript") || (item._id && item._id.includes("day3")) ||
         str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack") || (item._id && item._id.includes("day4"))
       );
     };
 
     if (course.zipFiles && course.zipFiles.length > 0) {
       const filtered = course.zipFiles.filter(
-        (z) => !isRemovedDay3Or4Zip(z) && (!z.url || (!z.url.startsWith("/uploads/courses/179119") && !z.url.includes("179119")))
+        (z) => !isRemovedDay4Zip(z) && (!z.url || (!z.url.startsWith("/uploads/courses/179119") && !z.url.includes("179119")))
       );
       if (filtered.length !== course.zipFiles.length) {
         course.zipFiles = filtered;
@@ -594,7 +614,7 @@ const getCourseDoc = async (targetId) => {
       }
     }
     if (course.resources && course.resources.length > 0) {
-      const filteredRes = course.resources.filter((r) => !isRemovedDay3Or4Zip(r));
+      const filteredRes = course.resources.filter((r) => !isRemovedDay4Zip(r));
       if (filteredRes.length !== course.resources.length) {
         course.resources = filteredRes;
         modified = true;
@@ -635,17 +655,19 @@ const sanitizeCourseZips = (c) => {
     (c._id && c._id.toString().includes("000000000000000000000001"));
 
   if (isWebDev) {
-    const isRemovedDay3Or4Zip = (item) => {
+    const isRemovedDay4Zip = (item) => {
       if (!item) return false;
       const str = ((item.fileName || "") + " " + (item.title || "") + " " + (item._id || "")).toLowerCase();
       return (
-        str.includes("day 3") || str.includes("day-3") || str.includes("02-javascript") || (item._id && item._id.includes("day3")) ||
         str.includes("day 4") || str.includes("day-4") || str.includes("capstone") || str.includes("mern") || str.includes("04-fullstack") || (item._id && item._id.includes("day4"))
       );
     };
 
     const replaceWebDevLink = (url) => {
       if (!url) return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
+      if (url.includes("1SINj1Bz_LZNafdzzK_algyuE0Tberpcf") || url.includes("1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr") || url.includes("1lWxj29iac2Ssdve-dIvfENu6HBI98omo")) {
+        return url;
+      }
       if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev")) {
         return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
       }
@@ -666,7 +688,7 @@ const sanitizeCourseZips = (c) => {
       c.zipFile = WEB_DEV_ZIP_COURSE.zipFile;
       c.resources = WEB_DEV_ZIP_COURSE.resources;
     } else {
-      c.zipFiles = (c.zipFiles || []).filter((z) => !isRemovedDay3Or4Zip(z));
+      c.zipFiles = (c.zipFiles || []).filter((z) => !isRemovedDay4Zip(z));
       c.zipFiles.forEach((z) => {
         if (z && z.url) z.url = replaceWebDevLink(z.url);
       });
@@ -674,7 +696,7 @@ const sanitizeCourseZips = (c) => {
         c.zipFile.url = replaceWebDevLink(c.zipFile.url);
       }
       if (c.resources) {
-        c.resources = c.resources.filter((r) => !isRemovedDay3Or4Zip(r));
+        c.resources = c.resources.filter((r) => !isRemovedDay4Zip(r));
         c.resources.forEach((r) => {
           if (r.url) r.url = replaceWebDevLink(r.url);
           if (r.fileUrl) r.fileUrl = replaceWebDevLink(r.fileUrl);

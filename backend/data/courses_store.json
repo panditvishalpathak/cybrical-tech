@@ -44,6 +44,17 @@
         "source": "Google Drive",
         "summary": "Modern CSS3 responsive styling, Flexbox layouts, Grid systems, and landing page builds.",
         "highlights": ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"]
+      },
+      {
+        "_id": "zf-wd-day3",
+        "title": "\ud83d\udce6 Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
+        "fileName": "02-JavaScript-DOM-Async-Projects.zip",
+        "url": "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+        "fileSize": "Google Drive Cloud",
+        "isExternal": true,
+        "source": "Google Drive",
+        "summary": "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
+        "highlights": ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"]
       }
     ],
     "resources": [
@@ -74,6 +85,16 @@
         "url": "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
         "fileUrl": "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
         "fileSize": "350.6 MB",
+        "isExternal": true,
+        "source": "Google Drive"
+      },
+      {
+        "_id": "res-wd-day3",
+        "title": "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
+        "fileName": "02-JavaScript-DOM-Async-Projects.zip",
+        "url": "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+        "fileUrl": "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
       }
