@@ -527,7 +527,7 @@ function AdminCourses() {
                           <span>⏱ {c.duration || "N/A"}</span>
                           <span>💰 {c.price === 0 ? "Free" : `₹${c.price}`}</span>
                           {((c.slug || "").includes("web") || (c.title || "").toLowerCase().includes("web")) ? (
-                            <span style={{ color: "#38bdf8", fontWeight: "700" }}>📦 {c.zipFiles && c.zipFiles.length > 0 ? c.zipFiles.length : 5} Project ZIPs (Google Drive)</span>
+                            <span style={{ color: "#38bdf8", fontWeight: "700" }}>📦 {c.zipFiles && c.zipFiles.length > 0 ? c.zipFiles.length : 4} Project ZIPs (Google Drive)</span>
                           ) : (
                             <>
                               <span>📑 {c.modules ? c.modules.length : 0} Modules</span>

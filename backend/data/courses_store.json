@@ -46,17 +46,6 @@
         "highlights": ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"]
       },
       {
-        "_id": "zf-wd-day3",
-        "title": "\ud83d\udce6 Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
-        "fileName": "02-JavaScript-DOM-Async-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-        "fileSize": "Google Drive Cloud",
-        "isExternal": true,
-        "source": "Google Drive",
-        "summary": "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
-        "highlights": ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"]
-      },
-      {
         "_id": "zf-wd-day4",
         "title": "\ud83d\udce6 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
         "fileName": "04-FullStack-MERN-Capstone-Project.zip",
@@ -96,16 +85,6 @@
         "url": "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
         "fileUrl": "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
         "fileSize": "350.6 MB",
-        "isExternal": true,
-        "source": "Google Drive"
-      },
-      {
-        "_id": "res-wd-day3",
-        "title": "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
-        "fileName": "02-JavaScript-DOM-Async-Projects.zip",
-        "url": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-        "fileUrl": "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-        "fileSize": "Google Drive Cloud",
         "isExternal": true,
         "source": "Google Drive"
       },

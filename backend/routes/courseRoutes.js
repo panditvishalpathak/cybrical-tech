@@ -116,17 +116,6 @@ const WEB_DEV_ZIP_COURSE = {
       highlights: ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"],
     },
     {
-      _id: "zf-wd-day3",
-      title: "📦 Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
-      fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileSize: "Google Drive Cloud",
-      isExternal: true,
-      source: "Google Drive",
-      summary: "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
-      highlights: ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"],
-    },
-    {
       _id: "zf-wd-day4",
       title: "📦 Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
@@ -166,16 +155,6 @@ const WEB_DEV_ZIP_COURSE = {
       url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
       fileUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
       fileSize: "350.6 MB",
-      isExternal: true,
-      source: "Google Drive",
-    },
-    {
-      _id: "res-wd-day3",
-      title: "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
-      fileName: "02-JavaScript-DOM-Async-Projects.zip",
-      url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing",
-      fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
     },
@@ -617,12 +596,25 @@ const getCourseDoc = async (targetId) => {
       }
     }
 
+    const isRemovedDay3Zip = (item) => {
+      if (!item) return false;
+      const str = ((item.fileName || "") + " " + (item.title || "") + " " + (item._id || "")).toLowerCase();
+      return str.includes("day 3") || str.includes("day-3") || str.includes("02-javascript") || (item._id && item._id.includes("day3"));
+    };
+
     if (course.zipFiles && course.zipFiles.length > 0) {
       const filtered = course.zipFiles.filter(
-        (z) => !z.url || (!z.url.startsWith("/uploads/courses/179119") && !z.url.includes("179119"))
+        (z) => !isRemovedDay3Zip(z) && (!z.url || (!z.url.startsWith("/uploads/courses/179119") && !z.url.includes("179119")))
       );
       if (filtered.length !== course.zipFiles.length) {
         course.zipFiles = filtered;
+        modified = true;
+      }
+    }
+    if (course.resources && course.resources.length > 0) {
+      const filteredRes = course.resources.filter((r) => !isRemovedDay3Zip(r));
+      if (filteredRes.length !== course.resources.length) {
+        course.resources = filteredRes;
         modified = true;
       }
     }
@@ -642,6 +634,7 @@ const getCourseDoc = async (targetId) => {
     });
     if (modified) {
       course.markModified("zipFiles");
+      course.markModified("resources");
       course.markModified("zipFile");
       course.markModified("modules");
       course.save().catch(() => {});
@@ -660,6 +653,12 @@ const sanitizeCourseZips = (c) => {
     (c._id && c._id.toString().includes("000000000000000000000001"));
 
   if (isWebDev) {
+    const isRemovedDay3Zip = (item) => {
+      if (!item) return false;
+      const str = ((item.fileName || "") + " " + (item.title || "") + " " + (item._id || "")).toLowerCase();
+      return str.includes("day 3") || str.includes("day-3") || str.includes("02-javascript") || (item._id && item._id.includes("day3"));
+    };
+
     const replaceWebDevLink = (url) => {
       if (!url) return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt?usp=sharing";
       if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev")) {
@@ -677,11 +676,12 @@ const sanitizeCourseZips = (c) => {
         (z) => z && z.url && z.url.trim() && !z.url.includes("179119")
       );
 
-    if (!hasValidZips || (c.zipFiles && c.zipFiles.length < 3)) {
+    if (!hasValidZips || (c.zipFiles && c.zipFiles.length < 2)) {
       c.zipFiles = WEB_DEV_ZIP_COURSE.zipFiles;
       c.zipFile = WEB_DEV_ZIP_COURSE.zipFile;
       c.resources = WEB_DEV_ZIP_COURSE.resources;
     } else {
+      c.zipFiles = (c.zipFiles || []).filter((z) => !isRemovedDay3Zip(z));
       c.zipFiles.forEach((z) => {
         if (z && z.url) z.url = replaceWebDevLink(z.url);
       });
@@ -689,6 +689,7 @@ const sanitizeCourseZips = (c) => {
         c.zipFile.url = replaceWebDevLink(c.zipFile.url);
       }
       if (c.resources) {
+        c.resources = c.resources.filter((r) => !isRemovedDay3Zip(r));
         c.resources.forEach((r) => {
           if (r.url) r.url = replaceWebDevLink(r.url);
           if (r.fileUrl) r.fileUrl = replaceWebDevLink(r.fileUrl);
