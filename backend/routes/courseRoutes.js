@@ -28,13 +28,15 @@ const FALLBACK_AI_COURSE = {
   zipFiles: [
     {
       _id: "zf-ai-drive-folder",
-      title: "📁 Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+      title:
+        "📁 Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
       fileName: "Artificial-Intelligence-Google-Drive-Projects",
       url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
-      summary: "Master Google Drive folder containing all Artificial Intelligence projects, machine learning models, neural networks, Jupyter notebooks, and datasets.",
+      summary:
+        "Master Google Drive folder containing all Artificial Intelligence projects, machine learning models, neural networks, Jupyter notebooks, and datasets.",
       highlights: [
         "Machine Learning Models",
         "Deep Learning & PyTorch / TensorFlow",
@@ -47,10 +49,12 @@ const FALLBACK_AI_COURSE = {
   resources: [
     {
       _id: "res-ai-drive-folder",
-      title: "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+      title:
+        "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
       fileName: "Artificial-Intelligence-Google-Drive-Projects",
       url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
-      fileUrl: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
+      fileUrl:
+        "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -58,7 +62,8 @@ const FALLBACK_AI_COURSE = {
   ],
   zipFile: {
     _id: "zf-ai-drive-folder",
-    title: "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
+    title:
+      "Artificial Intelligence Complete Projects & Code (Google Drive Folder)",
     fileName: "Artificial-Intelligence-Google-Drive-Projects",
     url: "https://drive.google.com/drive/folders/12ip1xR3B8YbT7f3NqF9WdwEgp4tspx6d",
     fileSize: "Google Drive Folder",
@@ -78,11 +83,13 @@ const WEB_DEV_ZIP_COURSE = {
   duration: "12 Weeks",
   price: 0,
   isPublished: true,
-  thumbnail: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
+  thumbnail:
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
   modules: [],
   zipFile: {
     _id: "zf-wd-drive-folder",
-    title: "Web Development Complete Project & Source Code (Google Drive Folder)",
+    title:
+      "Web Development Complete Project & Source Code (Google Drive Folder)",
     fileName: "Web-Development-Google-Drive-Projects",
     url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
     fileSize: "Google Drive Folder",
@@ -92,14 +99,22 @@ const WEB_DEV_ZIP_COURSE = {
   zipFiles: [
     {
       _id: "zf-wd-drive-folder",
-      title: "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
+      title:
+        "📁 Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
       url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
-      summary: "Master Google Drive folder containing all daily project folders, assets, and full-stack source code.",
-      highlights: ["HTML5 Starter Pack", "CSS3 Responsive Projects", "JavaScript DOM Apps", "Full-Stack MERN Capstone", "Starter Assets"],
+      summary:
+        "Master Google Drive folder containing all daily project folders, assets, and full-stack source code.",
+      highlights: [
+        "HTML5 Starter Pack",
+        "CSS3 Responsive Projects",
+        "JavaScript DOM Apps",
+        "Full-Stack MERN Capstone",
+        "Starter Assets",
+      ],
     },
     {
       _id: "zf-wd-day1",
@@ -109,8 +124,14 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
-      summary: "HTML5 foundations, semantic layout boilerplate, forms, and welcome starter kit.",
-      highlights: ["index.html Boilerplate", "Semantic Tags", "Forms & Input Elements", "Welcome Guide & Assets"],
+      summary:
+        "HTML5 foundations, semantic layout boilerplate, forms, and welcome starter kit.",
+      highlights: [
+        "index.html Boilerplate",
+        "Semantic Tags",
+        "Forms & Input Elements",
+        "Welcome Guide & Assets",
+      ],
     },
     {
       _id: "zf-wd-day2",
@@ -120,8 +141,14 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "350.6 MB",
       isExternal: true,
       source: "Google Drive",
-      summary: "Modern CSS3 responsive styling, Flexbox layouts, Grid systems, and landing page builds.",
-      highlights: ["Flexbox & Grid Systems", "Responsive Mobile Layouts", "Modern UI Components", "Landing Page Projects"],
+      summary:
+        "Modern CSS3 responsive styling, Flexbox layouts, Grid systems, and landing page builds.",
+      highlights: [
+        "Flexbox & Grid Systems",
+        "Responsive Mobile Layouts",
+        "Modern UI Components",
+        "Landing Page Projects",
+      ],
     },
     {
       _id: "zf-wd-day3",
@@ -131,8 +158,14 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
-      summary: "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
-      highlights: ["DOM Manipulation & Events", "Fetch API & Async/Await", "Interactive Weather App", "Quiz App with LocalStorage"],
+      summary:
+        "Dynamic JavaScript apps, DOM events, fetch API integrations, and async project builds.",
+      highlights: [
+        "DOM Manipulation & Events",
+        "Fetch API & Async/Await",
+        "Interactive Weather App",
+        "Quiz App with LocalStorage",
+      ],
     },
     {
       _id: "zf-wd-day4",
@@ -142,17 +175,25 @@ const WEB_DEV_ZIP_COURSE = {
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
-      summary: "Production-ready MERN stack web app with Node/Express backend, MongoDB, and React frontend.",
-      highlights: ["React.js Modern Frontend", "Node & Express REST API", "MongoDB Database Schemas", "JWT Auth & Protected Routes"],
+      summary:
+        "Production-ready MERN stack web app with Node/Express backend, MongoDB, and React frontend.",
+      highlights: [
+        "React.js Modern Frontend",
+        "Node & Express REST API",
+        "MongoDB Database Schemas",
+        "JWT Auth & Protected Routes",
+      ],
     },
   ],
   resources: [
     {
       _id: "res-wd-drive-folder",
-      title: "Web Development Complete Project & Source Code (Google Drive Folder)",
+      title:
+        "Web Development Complete Project & Source Code (Google Drive Folder)",
       fileName: "Web-Development-Google-Drive-Projects",
       url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
-      fileUrl: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+      fileUrl:
+        "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -162,7 +203,8 @@ const WEB_DEV_ZIP_COURSE = {
       title: "Day 1: WELCOME + HTML5 Starter Kit (ZIP)",
       fileName: "Day 1 WELCOME + HTML.zip",
       url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
-      fileUrl: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+      fileUrl:
+        "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
       fileSize: "506.7 MB",
       isExternal: true,
       source: "Google Drive",
@@ -172,7 +214,8 @@ const WEB_DEV_ZIP_COURSE = {
       title: "Day 2: HTML & CSS Projects Complete (ZIP)",
       fileName: "Day 2 HTML.zip",
       url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
-      fileUrl: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+      fileUrl:
+        "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
       fileSize: "350.6 MB",
       isExternal: true,
       source: "Google Drive",
@@ -182,7 +225,8 @@ const WEB_DEV_ZIP_COURSE = {
       title: "Day 3: JavaScript DOM & Async REST API Projects (ZIP)",
       fileName: "02-JavaScript-DOM-Async-Projects.zip",
       url: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
-      fileUrl: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+      fileUrl:
+        "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -192,7 +236,8 @@ const WEB_DEV_ZIP_COURSE = {
       title: "Day 4: Full-Stack MERN Capstone Projects (ZIP)",
       fileName: "04-FullStack-MERN-Capstone-Project.zip",
       url: "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
-      fileUrl: "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
+      fileUrl:
+        "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
       fileSize: "Google Drive Cloud",
       isExternal: true,
       source: "Google Drive",
@@ -217,19 +262,22 @@ const FALLBACK_ANDROID_COURSE = {
     {
       _id: "and-mod-1",
       title: "Module 1: Kotlin & Android Studio Setup",
-      description: "Kotlin programming essentials, Android Studio IDE setup, and Project Anatomy.",
+      description:
+        "Kotlin programming essentials, Android Studio IDE setup, and Project Anatomy.",
       lessons: [
         {
           _id: "and-les-1",
           title: "Lesson 1: Android Studio Installation & Project Anatomy",
-          description: "Install Android Studio, configure Android Virtual Device (AVD), and understand project file hierarchy.",
+          description:
+            "Install Android Studio, configure Android Virtual Device (AVD), and understand project file hierarchy.",
           duration: "30 min",
           videoUrl: "",
         },
         {
           _id: "and-les-2",
           title: "Lesson 2: Kotlin Fundamentals, OOP & Coroutines",
-          description: "Variables, Null Safety, Lambdas, Coroutines and Asynchronous Kotlin for Android.",
+          description:
+            "Variables, Null Safety, Lambdas, Coroutines and Asynchronous Kotlin for Android.",
           duration: "45 min",
           videoUrl: "",
         },
@@ -238,19 +286,22 @@ const FALLBACK_ANDROID_COURSE = {
     {
       _id: "and-mod-2",
       title: "Module 2: Modern UI with Jetpack Compose",
-      description: "Declarative UI, State management, Navigation, Material 3 Design.",
+      description:
+        "Declarative UI, State management, Navigation, Material 3 Design.",
       lessons: [
         {
           _id: "and-les-3",
           title: "Lesson 3: Jetpack Compose Layouts & Material Design 3",
-          description: "Column, Row, Box, Scaffold, LazyColumn and dynamic UI state manipulation.",
+          description:
+            "Column, Row, Box, Scaffold, LazyColumn and dynamic UI state manipulation.",
           duration: "50 min",
           videoUrl: "",
         },
         {
           _id: "and-les-4",
           title: "Lesson 4: Compose State, ViewModel & Navigation",
-          description: "Remember, MutableState, State Hoisting, and Navigation Component.",
+          description:
+            "Remember, MutableState, State Hoisting, and Navigation Component.",
           duration: "45 min",
           videoUrl: "",
         },
@@ -259,19 +310,22 @@ const FALLBACK_ANDROID_COURSE = {
     {
       _id: "and-mod-3",
       title: "Module 3: Networking, Storage & MVVM Architecture",
-      description: "Retrofit, Room SQLite Database, Repository Pattern, and Hilt Dependency Injection.",
+      description:
+        "Retrofit, Room SQLite Database, Repository Pattern, and Hilt Dependency Injection.",
       lessons: [
         {
           _id: "and-les-5",
           title: "Lesson 5: REST API Integration with Retrofit & OkHttp",
-          description: "Fetching JSON data, Moshi/Gson serialization, error handling, and internet permissions.",
+          description:
+            "Fetching JSON data, Moshi/Gson serialization, error handling, and internet permissions.",
           duration: "55 min",
           videoUrl: "",
         },
         {
           _id: "and-les-6",
           title: "Lesson 6: Local Persistence with Room Database & DataStore",
-          description: "Entities, DAOs, TypeConverters, LiveData/Flow, and Preferences DataStore.",
+          description:
+            "Entities, DAOs, TypeConverters, LiveData/Flow, and Preferences DataStore.",
           duration: "50 min",
           videoUrl: "",
         },
@@ -280,19 +334,22 @@ const FALLBACK_ANDROID_COURSE = {
     {
       _id: "and-mod-4",
       title: "Module 4: Full App Project, Testing & Play Store Deployment",
-      description: "Capstone project, Unit testing, App bundle creation, and Play Console release.",
+      description:
+        "Capstone project, Unit testing, App bundle creation, and Play Console release.",
       lessons: [
         {
           _id: "and-les-7",
           title: "Lesson 7: Full E-Commerce / Social App Project with Firebase",
-          description: "Firebase Auth, Firestore, Push Notifications with FCM, and Cloud Storage.",
+          description:
+            "Firebase Auth, Firestore, Push Notifications with FCM, and Cloud Storage.",
           duration: "65 min",
           videoUrl: "",
         },
         {
           _id: "and-les-8",
           title: "Lesson 8: App Bundle (AAB), ProGuard & Google Play Release",
-          description: "Keystore generation, signing, optimization, and deploying to Google Play Console.",
+          description:
+            "Keystore generation, signing, optimization, and deploying to Google Play Console.",
           duration: "40 min",
           videoUrl: "",
         },
@@ -315,18 +372,21 @@ const FALLBACK_DATA_SCIENCE_COURSE = {
   duration: "14 Weeks",
   price: 0,
   isPublished: true,
-  thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+  thumbnail:
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
   modules: [],
   zipFiles: [
     {
       _id: "zf-ds-drive-folder",
-      title: "📁 Data Science Complete Projects & Datasets (Google Drive Folder)",
+      title:
+        "📁 Data Science Complete Projects & Datasets (Google Drive Folder)",
       fileName: "Data-Science-Google-Drive-Projects",
       url: "https://drive.google.com/drive/folders/14StHo9kxA0Umf_KpoGnQB22zmUNQKyjS",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
-      summary: "Master Google Drive folder containing all Data Science Jupyter notebooks, Python datasets, machine learning models, and source code.",
+      summary:
+        "Master Google Drive folder containing all Data Science Jupyter notebooks, Python datasets, machine learning models, and source code.",
       highlights: [
         "Python & NumPy Notebooks",
         "Pandas Data Wrangling Scripts",
@@ -342,7 +402,8 @@ const FALLBACK_DATA_SCIENCE_COURSE = {
       title: "Data Science Complete Projects & Datasets (Google Drive Folder)",
       fileName: "Data-Science-Google-Drive-Projects",
       url: "https://drive.google.com/drive/folders/14StHo9kxA0Umf_KpoGnQB22zmUNQKyjS",
-      fileUrl: "https://drive.google.com/drive/folders/14StHo9kxA0Umf_KpoGnQB22zmUNQKyjS",
+      fileUrl:
+        "https://drive.google.com/drive/folders/14StHo9kxA0Umf_KpoGnQB22zmUNQKyjS",
       fileSize: "Google Drive Folder",
       isExternal: true,
       source: "Google Drive",
@@ -366,20 +427,32 @@ const SYSTEM_DEFAULT_COURSES = [
     _id: "660000000000000000000002",
     title: "SEO",
     slug: "seo",
-    description: "Learn On-Page SEO, Off-Page SEO, Technical SEO and Local SEO.",
+    description:
+      "Learn On-Page SEO, Off-Page SEO, Technical SEO and Local SEO.",
     category: "Search Engine Optimization",
     level: "Beginner",
     duration: "8 Weeks",
     price: 0,
     isPublished: true,
-    thumbnail: "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80",
+    thumbnail:
+      "https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=800&auto=format&fit=crop&q=80",
     modules: [
       {
         _id: "seo-mod-1",
         title: "Module 1: SEO Fundamentals",
         lessons: [
-          { _id: "seo-les-1", title: "Keyword Research & Strategy", duration: "35 min", videoUrl: "" },
-          { _id: "seo-les-2", title: "On-Page & Technical Optimization", duration: "45 min", videoUrl: "" },
+          {
+            _id: "seo-les-1",
+            title: "Keyword Research & Strategy",
+            duration: "35 min",
+            videoUrl: "",
+          },
+          {
+            _id: "seo-les-2",
+            title: "On-Page & Technical Optimization",
+            duration: "45 min",
+            videoUrl: "",
+          },
         ],
       },
     ],
@@ -390,20 +463,32 @@ const SYSTEM_DEFAULT_COURSES = [
     _id: "660000000000000000000003",
     title: "Digital Marketing",
     slug: "digital-marketing",
-    description: "Learn the fundamentals of digital marketing and online growth.",
+    description:
+      "Learn the fundamentals of digital marketing and online growth.",
     category: "Digital Marketing",
     level: "Beginner",
     duration: "10 Weeks",
     price: 0,
     isPublished: true,
-    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+    thumbnail:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
     modules: [
       {
         _id: "dm-mod-1",
         title: "Module 1: Digital Marketing Strategy",
         lessons: [
-          { _id: "dm-les-1", title: "Social Media Strategy & Ads", duration: "40 min", videoUrl: "" },
-          { _id: "dm-les-2", title: "Email Marketing & Analytics", duration: "35 min", videoUrl: "" },
+          {
+            _id: "dm-les-1",
+            title: "Social Media Strategy & Ads",
+            duration: "40 min",
+            videoUrl: "",
+          },
+          {
+            _id: "dm-les-2",
+            title: "Email Marketing & Analytics",
+            duration: "35 min",
+            videoUrl: "",
+          },
         ],
       },
     ],
@@ -478,7 +563,11 @@ const upload = multer({
     ) {
       cb(null, true);
     } else {
-      cb(new Error("Only video files and ZIP archives (.zip, .rar, .7z) are allowed"));
+      cb(
+        new Error(
+          "Only video files and ZIP archives (.zip, .rar, .7z) are allowed",
+        ),
+      );
     }
   },
 });
@@ -498,17 +587,23 @@ const loadFallbackCourses = () => {
         SYSTEM_DEFAULT_COURSES.forEach((def) => {
           const idx = parsed.findIndex(
             (c) =>
-              (c.slug && c.slug.toLowerCase() === (def.slug || "").toLowerCase()) ||
-              (c._id && def._id && c._id.toString() === def._id.toString())
+              (c.slug &&
+                c.slug.toLowerCase() === (def.slug || "").toLowerCase()) ||
+              (c._id && def._id && c._id.toString() === def._id.toString()),
           );
           if (idx === -1) {
             parsed.push(def);
             updated = true;
-          } else if ((!parsed[idx].zipFiles || parsed[idx].zipFiles.length === 0) && def.zipFiles && def.zipFiles.length > 0) {
+          } else if (
+            (!parsed[idx].zipFiles || parsed[idx].zipFiles.length === 0) &&
+            def.zipFiles &&
+            def.zipFiles.length > 0
+          ) {
             parsed[idx].zipFiles = def.zipFiles;
             parsed[idx].resources = def.resources || [];
             parsed[idx].zipFile = def.zipFile;
             updated = true;
+            vs;
           }
         });
         if (updated) saveFallbackCourses(parsed);
@@ -518,6 +613,7 @@ const loadFallbackCourses = () => {
   } catch (e) {
     console.error("Error loading courses store:", e);
   }
+  detect;
   // Initialize with SYSTEM_DEFAULT_COURSES
   saveFallbackCourses(SYSTEM_DEFAULT_COURSES);
   return [...SYSTEM_DEFAULT_COURSES];
@@ -543,10 +639,22 @@ const saveSingleFallbackCourse = (courseObj) => {
     (c) =>
       (c._id && c._id.toString() === cleanId) ||
       (c.slug && c.slug.toLowerCase() === cleanSlug) ||
-      ((cleanSlug.includes("web") || cleanId.includes("000000000000000000000001")) && (c.slug === "web-development" || (c._id && c._id.toString().includes("000000000000000000000001")))) ||
-      ((cleanSlug.includes("ai") || cleanId.includes("000000000000000000000004")) && (c.slug === "ai" || (c._id && c._id.toString().includes("000000000000000000000004")))) ||
-      ((cleanSlug.includes("android") || cleanId.includes("000000000000000000000005")) && (c.slug === "android" || (c._id && c._id.toString().includes("000000000000000000000005")))) ||
-      ((cleanSlug.includes("data") || cleanId.includes("000000000000000000000006")) && (c.slug === "data-science" || (c._id && c._id.toString().includes("000000000000000000000006"))))
+      ((cleanSlug.includes("web") ||
+        cleanId.includes("000000000000000000000001")) &&
+        (c.slug === "web-development" ||
+          (c._id && c._id.toString().includes("000000000000000000000001")))) ||
+      ((cleanSlug.includes("ai") ||
+        cleanId.includes("000000000000000000000004")) &&
+        (c.slug === "ai" ||
+          (c._id && c._id.toString().includes("000000000000000000000004")))) ||
+      ((cleanSlug.includes("android") ||
+        cleanId.includes("000000000000000000000005")) &&
+        (c.slug === "android" ||
+          (c._id && c._id.toString().includes("000000000000000000000005")))) ||
+      ((cleanSlug.includes("data") ||
+        cleanId.includes("000000000000000000000006")) &&
+        (c.slug === "data-science" ||
+          (c._id && c._id.toString().includes("000000000000000000000006")))),
   );
 
   if (idx >= 0) {
@@ -624,7 +732,10 @@ const getCourseDoc = async (targetId) => {
         });
         await course.save();
       } catch (seedErr) {
-        console.warn("Auto-seed course failed (non-critical):", seedErr.message);
+        console.warn(
+          "Auto-seed course failed (non-critical):",
+          seedErr.message,
+        );
       }
     }
   }
@@ -634,7 +745,8 @@ const getCourseDoc = async (targetId) => {
     const isWebDev =
       (course.slug && course.slug.toLowerCase().includes("web")) ||
       (course.title && course.title.toLowerCase().includes("web")) ||
-      (course._id && course._id.toString().includes("000000000000000000000001"));
+      (course._id &&
+        course._id.toString().includes("000000000000000000000001"));
 
     if (isWebDev) {
       if (course.modules && course.modules.length > 0) {
@@ -645,7 +757,7 @@ const getCourseDoc = async (targetId) => {
       const hasValidZips =
         course.zipFiles &&
         course.zipFiles.some(
-          (z) => z && z.url && z.url.trim() && !z.url.includes("179119")
+          (z) => z && z.url && z.url.trim() && !z.url.includes("179119"),
         );
 
       if (!hasValidZips || !course.zipFiles || course.zipFiles.length < 3) {
@@ -655,18 +767,35 @@ const getCourseDoc = async (targetId) => {
         modified = true;
       } else {
         course.zipFiles.forEach((z) => {
-          if (z && z.url && (z.url.includes("1Cybrical-WebDev") || z.url.includes("drive.google.com/drive/folders/1Cybrical-WebDev"))) {
-            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
+          if (
+            z &&
+            z.url &&
+            (z.url.includes("1Cybrical-WebDev") ||
+              z.url.includes("drive.google.com/drive/folders/1Cybrical-WebDev"))
+          ) {
+            z.url =
+              "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             modified = true;
           }
-          if (z && z.url && z.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && z.url.includes("/file/d/")) {
-            z.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
+          if (
+            z &&
+            z.url &&
+            z.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") &&
+            z.url.includes("/file/d/")
+          ) {
+            z.url =
+              "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             modified = true;
           }
         });
         if (course.zipFile && course.zipFile.url) {
-          if (course.zipFile.url.includes("1Cybrical-WebDev") || (course.zipFile.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && course.zipFile.url.includes("/file/d/"))) {
-            course.zipFile.url = "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
+          if (
+            course.zipFile.url.includes("1Cybrical-WebDev") ||
+            (course.zipFile.url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") &&
+              course.zipFile.url.includes("/file/d/"))
+          ) {
+            course.zipFile.url =
+              "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
             modified = true;
           }
         }
@@ -675,12 +804,14 @@ const getCourseDoc = async (targetId) => {
       const isDataScience =
         (course.slug && course.slug.toLowerCase().includes("data")) ||
         (course.title && course.title.toLowerCase().includes("data science")) ||
-        (course._id && course._id.toString().includes("000000000000000000000006"));
+        (course._id &&
+          course._id.toString().includes("000000000000000000000006"));
 
       const isAI =
         (course.slug && course.slug.toLowerCase() === "ai") ||
         (course.title && course.title.toLowerCase().includes("artificial")) ||
-        (course._id && course._id.toString().includes("000000000000000000000004"));
+        (course._id &&
+          course._id.toString().includes("000000000000000000000004"));
 
       if (isAI) {
         if (course.modules && course.modules.length > 0) {
@@ -711,14 +842,23 @@ const getCourseDoc = async (targetId) => {
       if (!isAI && !isDataScience) {
         // Only strip stale dummy upload artifacts
         if (course.zipFiles && course.zipFiles.length > 0) {
-          course.zipFiles = course.zipFiles.filter((z) => z && z.url && !z.url.includes("179119") && !z.url.includes("1Cybrical-WebDev"));
+          course.zipFiles = course.zipFiles.filter(
+            (z) =>
+              z &&
+              z.url &&
+              !z.url.includes("179119") &&
+              !z.url.includes("1Cybrical-WebDev"),
+          );
         }
       }
     }
 
     if (course.zipFiles && course.zipFiles.length > 0) {
       const filtered = course.zipFiles.filter(
-        (z) => !z.url || (!z.url.startsWith("/uploads/courses/179119") && !z.url.includes("179119"))
+        (z) =>
+          !z.url ||
+          (!z.url.startsWith("/uploads/courses/179119") &&
+            !z.url.includes("179119")),
       );
       if (filtered.length !== course.zipFiles.length) {
         course.zipFiles = filtered;
@@ -735,13 +875,22 @@ const getCourseDoc = async (targetId) => {
         modified = true;
       }
     }
-    if (course.zipFile && course.zipFile.url && (course.zipFile.url.startsWith("/uploads/courses/179119") || course.zipFile.url.includes("179119"))) {
+    if (
+      course.zipFile &&
+      course.zipFile.url &&
+      (course.zipFile.url.startsWith("/uploads/courses/179119") ||
+        course.zipFile.url.includes("179119"))
+    ) {
       course.zipFile = { url: "", fileName: "", fileSize: "" };
       modified = true;
     }
     (course.modules || []).forEach((m) => {
       (m.lessons || []).forEach((l) => {
-        if (l.zipUrl && (l.zipUrl.startsWith("/uploads/courses/179119") || l.zipUrl.includes("179119"))) {
+        if (
+          l.zipUrl &&
+          (l.zipUrl.startsWith("/uploads/courses/179119") ||
+            l.zipUrl.includes("179119"))
+        ) {
           l.zipUrl = "";
           l.zipName = "";
           l.zipSize = "";
@@ -771,7 +920,8 @@ const sanitizeCourseZips = (c) => {
 
   if (isWebDev) {
     const replaceWebDevLink = (url) => {
-      if (!url) return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
+      if (!url)
+        return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
       if (
         url.includes("1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI") ||
         url.includes("1SINj1Bz_LZNafdzzK_algyuE0Tberpcf") ||
@@ -780,10 +930,16 @@ const sanitizeCourseZips = (c) => {
       ) {
         return url;
       }
-      if (url.includes("1Cybrical-WebDev") || url.includes("drive.google.com/drive/folders/1Cybrical-WebDev")) {
+      if (
+        url.includes("1Cybrical-WebDev") ||
+        url.includes("drive.google.com/drive/folders/1Cybrical-WebDev")
+      ) {
         return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
       }
-      if (url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") && url.includes("/file/d/")) {
+      if (
+        url.includes("1C10i264a0xaytSIhoNeW0j1seO75J8qt") &&
+        url.includes("/file/d/")
+      ) {
         return "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt";
       }
       return url;
@@ -792,7 +948,7 @@ const sanitizeCourseZips = (c) => {
     const hasValidZips =
       c.zipFiles &&
       c.zipFiles.some(
-        (z) => z && z.url && z.url.trim() && !z.url.includes("179119")
+        (z) => z && z.url && z.url.trim() && !z.url.includes("179119"),
       );
 
     if (!hasValidZips || (c.zipFiles && c.zipFiles.length < 2)) {
@@ -800,7 +956,9 @@ const sanitizeCourseZips = (c) => {
       c.zipFile = WEB_DEV_ZIP_COURSE.zipFile;
       c.resources = WEB_DEV_ZIP_COURSE.resources;
     } else {
-      c.zipFiles = (c.zipFiles || []).filter((z) => !z.url || !z.url.includes("179119"));
+      c.zipFiles = (c.zipFiles || []).filter(
+        (z) => !z.url || !z.url.includes("179119"),
+      );
       c.zipFiles.forEach((z) => {
         if (z && z.url) z.url = replaceWebDevLink(z.url);
       });
@@ -809,7 +967,7 @@ const sanitizeCourseZips = (c) => {
       }
       if (c.resources) {
         c.resources = c.resources.filter((r) => {
-          const u = (r.url || r.fileUrl || "");
+          const u = r.url || r.fileUrl || "";
           return !u.includes("179119");
         });
         c.resources.forEach((r) => {
@@ -825,7 +983,10 @@ const sanitizeCourseZips = (c) => {
   } else {
     // Retain any real uploaded ZIP files or Google Drive links, filtering out only stale dummy zips
     if (c.zipFiles) {
-      c.zipFiles = c.zipFiles.filter((z) => z && (z.url || z.fileUrl) && !(z.url || z.fileUrl).includes("179119"));
+      c.zipFiles = c.zipFiles.filter(
+        (z) =>
+          z && (z.url || z.fileUrl) && !(z.url || z.fileUrl).includes("179119"),
+      );
     }
     if (c.zipFile && c.zipFile.url && c.zipFile.url.includes("179119")) {
       c.zipFile = { url: "", fileName: "", fileSize: "" };
@@ -851,25 +1012,43 @@ const sanitizeCourseZips = (c) => {
 
 const getFallbackCourse = (targetId) => {
   const storeCourses = loadFallbackCourses();
-  if (!targetId) return sanitizeCourseZips(storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE);
+  if (!targetId)
+    return sanitizeCourseZips(
+      storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE,
+    );
   const clean = targetId.toString().trim().toLowerCase();
 
   const found = storeCourses.find(
     (c) =>
       (c._id && c._id.toString() === targetId.toString()) ||
       (c.slug && c.slug.toLowerCase() === clean) ||
-      (c.title && c.title.toLowerCase() === clean)
+      (c.title && c.title.toLowerCase() === clean),
   );
   if (found) return sanitizeCourseZips(found);
 
-  if (clean.includes("web") || clean === "660000000000000000000001" || clean === "6ac3757e77cb85107a5ab348") {
-    return sanitizeCourseZips(storeCourses.find((c) => (c.slug || "").includes("web")) || WEB_DEV_ZIP_COURSE);
+  if (
+    clean.includes("web") ||
+    clean === "660000000000000000000001" ||
+    clean === "6ac3757e77cb85107a5ab348"
+  ) {
+    return sanitizeCourseZips(
+      storeCourses.find((c) => (c.slug || "").includes("web")) ||
+        WEB_DEV_ZIP_COURSE,
+    );
   }
-  if (clean.includes("ai") || clean.includes("artificial") || clean === "660000000000000000000004") {
-    return sanitizeCourseZips(storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE);
+  if (
+    clean.includes("ai") ||
+    clean.includes("artificial") ||
+    clean === "660000000000000000000004"
+  ) {
+    return sanitizeCourseZips(
+      storeCourses.find((c) => c.slug === "ai") || FALLBACK_AI_COURSE,
+    );
   }
   if (clean.includes("android") || clean === "660000000000000000000005") {
-    return sanitizeCourseZips(storeCourses.find((c) => c.slug === "android") || FALLBACK_ANDROID_COURSE);
+    return sanitizeCourseZips(
+      storeCourses.find((c) => c.slug === "android") || FALLBACK_ANDROID_COURSE,
+    );
   }
   return sanitizeCourseZips(storeCourses[0] || WEB_DEV_ZIP_COURSE);
 };
@@ -882,20 +1061,30 @@ router.get("/download-file", (req, res) => {
     const rawUrl = req.query.url || req.query.path || "";
     const customName = req.query.name || "";
     if (!rawUrl) {
-      return res.status(400).json({ success: false, message: "File URL is required" });
+      return res
+        .status(400)
+        .json({ success: false, message: "File URL is required" });
     }
 
     // Support external cloud links (Google Drive, Dropbox, AWS S3, etc.)
     if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
       let redirectUrl = rawUrl;
-      if (rawUrl.includes("drive.google.com") || rawUrl.includes("drive.usercontent.google.com")) {
+      if (
+        rawUrl.includes("drive.google.com") ||
+        rawUrl.includes("drive.usercontent.google.com")
+      ) {
         if (rawUrl.includes("/folders/")) {
           const fMatch = rawUrl.match(/\/folders\/([a-zA-Z0-9_-]+)/);
-          return res.redirect(fMatch && fMatch[1] ? `https://drive.google.com/drive/folders/${fMatch[1]}?usp=sharing` : rawUrl);
+          return res.redirect(
+            fMatch && fMatch[1]
+              ? `https://drive.google.com/drive/folders/${fMatch[1]}?usp=sharing`
+              : rawUrl,
+          );
         }
-        const match = rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
-                      rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
-                      rawUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        const match =
+          rawUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+          rawUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
+          rawUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
         if (match && match[1]) {
           redirectUrl = `https://drive.google.com/uc?export=download&id=${match[1]}`;
         }
@@ -910,7 +1099,9 @@ router.get("/download-file", (req, res) => {
       const downloadName = customName || cleanName;
       return res.download(filePath, downloadName, (err) => {
         if (err && !res.headersSent) {
-          res.status(500).json({ success: false, message: "Error downloading file" });
+          res
+            .status(500)
+            .json({ success: false, message: "Error downloading file" });
         }
       });
     }
@@ -920,7 +1111,9 @@ router.get("/download-file", (req, res) => {
       return res.download(parentUploadPath, customName || cleanName);
     }
 
-    return res.status(404).json({ success: false, message: "File not found on server" });
+    return res
+      .status(404)
+      .json({ success: false, message: "File not found on server" });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -944,13 +1137,15 @@ router.get("/", async (req, res) => {
     const fallbackList = loadFallbackCourses();
 
     // Merge with fallbackList so all courses are always present
-    const existingSlugs = new Set((courses || []).map((c) => (c.slug || "").toLowerCase()));
+    const existingSlugs = new Set(
+      (courses || []).map((c) => (c.slug || "").toLowerCase()),
+    );
     const missingDefaults = fallbackList.filter(
-      (def) => !existingSlugs.has((def.slug || "").toLowerCase())
+      (def) => !existingSlugs.has((def.slug || "").toLowerCase()),
     );
 
     const merged = [...(courses || []), ...missingDefaults].map((c) =>
-      sanitizeCourseZips(c && c.toObject ? c.toObject() : c)
+      sanitizeCourseZips(c && c.toObject ? c.toObject() : c),
     );
 
     res.json({
@@ -1062,7 +1257,9 @@ router.post("/:courseId/upload-zip", upload.any(), async (req, res) => {
     const fallbackCourse = getFallbackCourse(targetId);
 
     fallbackCourse.zipFiles = fallbackCourse.zipFiles || [];
-    const existsIdx = fallbackCourse.zipFiles.findIndex((z) => z.url === newZipObj.url);
+    const existsIdx = fallbackCourse.zipFiles.findIndex(
+      (z) => z.url === newZipObj.url,
+    );
     if (existsIdx >= 0) {
       fallbackCourse.zipFiles[existsIdx] = newZipObj;
     } else {
@@ -1112,16 +1309,20 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
     }
 
     let directUrl = url.trim();
-    if (directUrl.includes("drive.google.com") || directUrl.includes("drive.usercontent.google.com")) {
+    if (
+      directUrl.includes("drive.google.com") ||
+      directUrl.includes("drive.usercontent.google.com")
+    ) {
       if (directUrl.includes("/folders/")) {
         const fMatch = directUrl.match(/\/folders\/([a-zA-Z0-9_-]+)/);
         if (fMatch && fMatch[1]) {
           directUrl = `https://drive.google.com/drive/folders/${fMatch[1]}?usp=sharing`;
         }
       } else {
-        const match = directUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
-                      directUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
-                      directUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        const match =
+          directUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+          directUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
+          directUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
         if (match && match[1]) {
           directUrl = `https://drive.google.com/uc?export=download&id=${match[1]}`;
         }
@@ -1129,7 +1330,9 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
     }
 
     const zipTitle = title?.trim() || "Course Material ZIP";
-    const zipFileName = fileName?.trim() || (zipTitle.toLowerCase().endsWith(".zip") ? zipTitle : `${zipTitle}.zip`);
+    const zipFileName =
+      fileName?.trim() ||
+      (zipTitle.toLowerCase().endsWith(".zip") ? zipTitle : `${zipTitle}.zip`);
     const zipFileSize = fileSize?.trim() || "Google Drive Cloud";
 
     const newZipObj = {
@@ -1154,12 +1357,20 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
 
       course.zipFiles = course.zipFiles || [];
       // Remove only exact duplicates with same url AND same title
-      course.zipFiles = course.zipFiles.filter((z) => !(z.url === directUrl && z.title === zipTitle));
+      course.zipFiles = course.zipFiles.filter(
+        (z) => !(z.url === directUrl && z.title === zipTitle),
+      );
       course.zipFiles.push(newZipObj);
       course.markModified("zipFiles");
 
       course.resources = course.resources || [];
-      course.resources = course.resources.filter((r) => !((r.url === directUrl || r.fileUrl === directUrl) && r.title === zipTitle));
+      course.resources = course.resources.filter(
+        (r) =>
+          !(
+            (r.url === directUrl || r.fileUrl === directUrl) &&
+            r.title === zipTitle
+          ),
+      );
       course.resources.push({
         title: zipTitle,
         url: directUrl,
@@ -1183,7 +1394,9 @@ router.post("/:courseId/add-drive-zip", async (req, res) => {
     // Fallback if DB offline or mock course
     const fallbackCourse = getFallbackCourse(targetId);
     fallbackCourse.zipFiles = fallbackCourse.zipFiles || [];
-    fallbackCourse.zipFiles = fallbackCourse.zipFiles.filter((z) => !(z.url === directUrl && z.title === zipTitle));
+    fallbackCourse.zipFiles = fallbackCourse.zipFiles.filter(
+      (z) => !(z.url === directUrl && z.title === zipTitle),
+    );
     fallbackCourse.zipFiles.push(newZipObj);
     fallbackCourse.zipFile = newZipObj;
     saveSingleFallbackCourse(fallbackCourse);
@@ -1211,24 +1424,47 @@ const deleteZipHandler = async (req, res) => {
   try {
     const course = await getCourseDoc(req.params.courseId);
 
-    const targetId = req.params.zipId || req.query.zipId || (req.body && req.body.zipId);
+    const targetId =
+      req.params.zipId || req.query.zipId || (req.body && req.body.zipId);
     const targetUrl = req.query.url || (req.body && req.body.url);
-    const targetFileName = req.query.fileName || (req.body && req.body.fileName);
+    const targetFileName =
+      req.query.fileName || (req.body && req.body.fileName);
 
     const isMatch = (item) => {
       if (!item) return false;
       const itemId = item._id ? item._id.toString() : "";
-      if (targetId && targetId !== "main-zip" && targetId !== "all" && itemId && itemId === targetId) {
+      if (
+        targetId &&
+        targetId !== "main-zip" &&
+        targetId !== "all" &&
+        itemId &&
+        itemId === targetId
+      ) {
         return true;
       }
       const itemUrl = item.url || item.fileUrl || "";
-      if (targetUrl && itemUrl && itemUrl.trim().toLowerCase() === targetUrl.trim().toLowerCase()) {
+      if (
+        targetUrl &&
+        itemUrl &&
+        itemUrl.trim().toLowerCase() === targetUrl.trim().toLowerCase()
+      ) {
         return true;
       }
-      if (targetFileName && item.fileName && item.fileName.trim().toLowerCase() === targetFileName.trim().toLowerCase()) {
+      if (
+        targetFileName &&
+        item.fileName &&
+        item.fileName.trim().toLowerCase() ===
+          targetFileName.trim().toLowerCase()
+      ) {
         return true;
       }
-      if (targetId && targetId !== "main-zip" && targetId !== "all" && itemUrl && itemUrl.includes(targetId)) {
+      if (
+        targetId &&
+        targetId !== "main-zip" &&
+        targetId !== "all" &&
+        itemUrl &&
+        itemUrl.includes(targetId)
+      ) {
         return true;
       }
       return false;
@@ -1242,13 +1478,24 @@ const deleteZipHandler = async (req, res) => {
         fallback.resources = (fallback.resources || []).filter((r) => {
           const u = (r.url || r.fileUrl || "").toLowerCase();
           const fn = (r.fileName || "").toLowerCase();
-          return !u.endsWith(".zip") && !fn.endsWith(".zip") && !u.endsWith(".rar") && !u.endsWith(".7z");
+          return (
+            !u.endsWith(".zip") &&
+            !fn.endsWith(".zip") &&
+            !u.endsWith(".rar") &&
+            !u.endsWith(".7z")
+          );
         });
       } else {
-        fallback.zipFiles = (fallback.zipFiles || []).filter((z) => !isMatch(z));
-        fallback.resources = (fallback.resources || []).filter((r) => !isMatch(r));
+        fallback.zipFiles = (fallback.zipFiles || []).filter(
+          (z) => !isMatch(z),
+        );
+        fallback.resources = (fallback.resources || []).filter(
+          (r) => !isMatch(r),
+        );
         if (fallback.zipFiles.length > 0) {
-          fallback.zipFile = { ...fallback.zipFiles[fallback.zipFiles.length - 1] };
+          fallback.zipFile = {
+            ...fallback.zipFiles[fallback.zipFiles.length - 1],
+          };
         } else {
           fallback.zipFile = { url: "", fileName: "", fileSize: "" };
         }
@@ -1270,7 +1517,12 @@ const deleteZipHandler = async (req, res) => {
       course.resources = (course.resources || []).filter((r) => {
         const u = (r.url || r.fileUrl || "").toLowerCase();
         const fn = (r.fileName || "").toLowerCase();
-        return !u.endsWith(".zip") && !fn.endsWith(".zip") && !u.endsWith(".rar") && !u.endsWith(".7z");
+        return (
+          !u.endsWith(".zip") &&
+          !fn.endsWith(".zip") &&
+          !u.endsWith(".rar") &&
+          !u.endsWith(".7z")
+        );
       });
     } else {
       // Filter zipFiles
@@ -1350,7 +1602,9 @@ router.get("/id/:id", async (req, res) => {
 
     res.json({
       success: true,
-      course: sanitizeCourseZips(course && course.toObject ? course.toObject() : course),
+      course: sanitizeCourseZips(
+        course && course.toObject ? course.toObject() : course,
+      ),
     });
   } catch (error) {
     const fallback = getFallbackCourse(req.params.id);
@@ -1386,7 +1640,9 @@ router.get("/:slug", async (req, res) => {
 
     res.json({
       success: true,
-      course: sanitizeCourseZips(course && course.toObject ? course.toObject() : course),
+      course: sanitizeCourseZips(
+        course && course.toObject ? course.toObject() : course,
+      ),
     });
   } catch (error) {
     const fallback = getFallbackCourse(req.params.slug);
@@ -1533,7 +1789,9 @@ router.put("/:id", async (req, res) => {
         ...(duration !== undefined ? { duration } : {}),
         ...(thumbnail !== undefined ? { thumbnail } : {}),
         ...(price !== undefined ? { price: Number(price) } : {}),
-        ...(isPublished !== undefined ? { isPublished: Boolean(isPublished) } : {}),
+        ...(isPublished !== undefined
+          ? { isPublished: Boolean(isPublished) }
+          : {}),
         ...(zipFile !== undefined ? { zipFile } : {}),
         ...(zipFiles !== undefined ? { zipFiles } : {}),
         ...(resources !== undefined ? { resources } : {}),
@@ -1607,7 +1865,7 @@ router.delete("/:id", async (req, res) => {
 
     if (!course) {
       const fallbackList = loadFallbackCourses().filter(
-        (c) => c._id !== req.params.id && c.slug !== req.params.id
+        (c) => c._id !== req.params.id && c.slug !== req.params.id,
       );
       saveFallbackCourses(fallbackList);
       return res.json({
@@ -1754,7 +2012,9 @@ router.delete("/:courseId/modules/:moduleId", async (req, res) => {
 
     if (!course) {
       const fallback = getFallbackCourse(req.params.courseId);
-      const updatedModules = (fallback.modules || []).filter((m) => m._id !== req.params.moduleId);
+      const updatedModules = (fallback.modules || []).filter(
+        (m) => m._id !== req.params.moduleId,
+      );
       const updatedFallback = { ...fallback, modules: updatedModules };
       saveSingleFallbackCourse(updatedFallback);
 
@@ -1787,7 +2047,17 @@ router.delete("/:courseId/modules/:moduleId", async (req, res) => {
 
 router.post("/:courseId/modules/:moduleId/lessons", async (req, res) => {
   try {
-    const { title, description, videoUrl, duration, order, isPreview, zipUrl, zipName, zipSize } = req.body;
+    const {
+      title,
+      description,
+      videoUrl,
+      duration,
+      order,
+      isPreview,
+      zipUrl,
+      zipName,
+      zipSize,
+    } = req.body;
     let course = await getCourseDoc(req.params.courseId);
 
     if (!course) {
@@ -1864,143 +2134,163 @@ router.post("/:courseId/modules/:moduleId/lessons", async (req, res) => {
 // 14. UPDATE LESSON
 // ==========================================
 
-router.put("/:courseId/modules/:moduleId/lessons/:lessonId", async (req, res) => {
-  try {
-    const { title, description, videoUrl, duration, order, isPreview, zipUrl, zipName, zipSize } = req.body;
-    const course = await getCourseDoc(req.params.courseId);
+router.put(
+  "/:courseId/modules/:moduleId/lessons/:lessonId",
+  async (req, res) => {
+    try {
+      const {
+        title,
+        description,
+        videoUrl,
+        duration,
+        order,
+        isPreview,
+        zipUrl,
+        zipName,
+        zipSize,
+      } = req.body;
+      const course = await getCourseDoc(req.params.courseId);
 
-    if (!course) {
-      const fallback = getFallbackCourse(req.params.courseId);
-      const updatedModules = (fallback.modules || []).map((m) => {
-        if (m._id === req.params.moduleId) {
-          return {
-            ...m,
-            lessons: (m.lessons || []).map((l) => {
-              if (l._id === req.params.lessonId) {
-                return {
-                  ...l,
-                  ...(title ? { title: title.trim() } : {}),
-                  ...(description !== undefined ? { description } : {}),
-                  ...(videoUrl !== undefined ? { videoUrl } : {}),
-                  ...(duration !== undefined ? { duration } : {}),
-                  ...(order !== undefined ? { order: Number(order) } : {}),
-                  ...(isPreview !== undefined ? { isPreview: Boolean(isPreview) } : {}),
-                  ...(zipUrl !== undefined ? { zipUrl } : {}),
-                  ...(zipName !== undefined ? { zipName } : {}),
-                  ...(zipSize !== undefined ? { zipSize } : {}),
-                };
-              }
-              return l;
-            }),
-          };
-        }
-        return m;
-      });
+      if (!course) {
+        const fallback = getFallbackCourse(req.params.courseId);
+        const updatedModules = (fallback.modules || []).map((m) => {
+          if (m._id === req.params.moduleId) {
+            return {
+              ...m,
+              lessons: (m.lessons || []).map((l) => {
+                if (l._id === req.params.lessonId) {
+                  return {
+                    ...l,
+                    ...(title ? { title: title.trim() } : {}),
+                    ...(description !== undefined ? { description } : {}),
+                    ...(videoUrl !== undefined ? { videoUrl } : {}),
+                    ...(duration !== undefined ? { duration } : {}),
+                    ...(order !== undefined ? { order: Number(order) } : {}),
+                    ...(isPreview !== undefined
+                      ? { isPreview: Boolean(isPreview) }
+                      : {}),
+                    ...(zipUrl !== undefined ? { zipUrl } : {}),
+                    ...(zipName !== undefined ? { zipName } : {}),
+                    ...(zipSize !== undefined ? { zipSize } : {}),
+                  };
+                }
+                return l;
+              }),
+            };
+          }
+          return m;
+        });
 
-      const updatedFallback = { ...fallback, modules: updatedModules };
-      saveSingleFallbackCourse(updatedFallback);
+        const updatedFallback = { ...fallback, modules: updatedModules };
+        saveSingleFallbackCourse(updatedFallback);
 
-      return res.json({
+        return res.json({
+          success: true,
+          message: "Lesson updated successfully",
+          course: updatedFallback,
+        });
+      }
+
+      const module = course.modules.id(req.params.moduleId);
+      if (!module) {
+        return res.status(404).json({
+          success: false,
+          message: "Module not found",
+        });
+      }
+
+      const lesson = module.lessons.id(req.params.lessonId);
+      if (!lesson) {
+        return res.status(404).json({
+          success: false,
+          message: "Lesson not found",
+        });
+      }
+
+      if (title) lesson.title = title.trim();
+      if (description !== undefined) lesson.description = description;
+      if (videoUrl !== undefined) lesson.videoUrl = videoUrl;
+      if (duration !== undefined) lesson.duration = duration;
+      if (order !== undefined) lesson.order = Number(order);
+      if (isPreview !== undefined) lesson.isPreview = Boolean(isPreview);
+      if (zipUrl !== undefined) lesson.zipUrl = zipUrl;
+      if (zipName !== undefined) lesson.zipName = zipName;
+      if (zipSize !== undefined) lesson.zipSize = zipSize;
+
+      await course.save();
+
+      res.json({
         success: true,
         message: "Lesson updated successfully",
-        course: updatedFallback,
+        course,
       });
-    }
-
-    const module = course.modules.id(req.params.moduleId);
-    if (!module) {
-      return res.status(404).json({
+    } catch (error) {
+      res.status(500).json({
         success: false,
-        message: "Module not found",
+        message: error.message,
       });
     }
-
-    const lesson = module.lessons.id(req.params.lessonId);
-    if (!lesson) {
-      return res.status(404).json({
-        success: false,
-        message: "Lesson not found",
-      });
-    }
-
-    if (title) lesson.title = title.trim();
-    if (description !== undefined) lesson.description = description;
-    if (videoUrl !== undefined) lesson.videoUrl = videoUrl;
-    if (duration !== undefined) lesson.duration = duration;
-    if (order !== undefined) lesson.order = Number(order);
-    if (isPreview !== undefined) lesson.isPreview = Boolean(isPreview);
-    if (zipUrl !== undefined) lesson.zipUrl = zipUrl;
-    if (zipName !== undefined) lesson.zipName = zipName;
-    if (zipSize !== undefined) lesson.zipSize = zipSize;
-
-    await course.save();
-
-    res.json({
-      success: true,
-      message: "Lesson updated successfully",
-      course,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-});
+  },
+);
 
 // ==========================================
 // 15. DELETE LESSON
 // ==========================================
 
-router.delete("/:courseId/modules/:moduleId/lessons/:lessonId", async (req, res) => {
-  try {
-    const course = await getCourseDoc(req.params.courseId);
+router.delete(
+  "/:courseId/modules/:moduleId/lessons/:lessonId",
+  async (req, res) => {
+    try {
+      const course = await getCourseDoc(req.params.courseId);
 
-    if (!course) {
-      const fallback = getFallbackCourse(req.params.courseId);
-      const updatedModules = (fallback.modules || []).map((m) => {
-        if (m._id === req.params.moduleId) {
-          return {
-            ...m,
-            lessons: (m.lessons || []).filter((l) => l._id !== req.params.lessonId),
-          };
-        }
-        return m;
-      });
+      if (!course) {
+        const fallback = getFallbackCourse(req.params.courseId);
+        const updatedModules = (fallback.modules || []).map((m) => {
+          if (m._id === req.params.moduleId) {
+            return {
+              ...m,
+              lessons: (m.lessons || []).filter(
+                (l) => l._id !== req.params.lessonId,
+              ),
+            };
+          }
+          return m;
+        });
 
-      const updatedFallback = { ...fallback, modules: updatedModules };
-      saveSingleFallbackCourse(updatedFallback);
+        const updatedFallback = { ...fallback, modules: updatedModules };
+        saveSingleFallbackCourse(updatedFallback);
 
-      return res.json({
+        return res.json({
+          success: true,
+          message: "Lesson deleted successfully",
+          course: updatedFallback,
+        });
+      }
+
+      const module = course.modules.id(req.params.moduleId);
+      if (!module) {
+        return res.status(404).json({
+          success: false,
+          message: "Module not found",
+        });
+      }
+
+      module.lessons.pull({ _id: req.params.lessonId });
+      await course.save();
+
+      res.json({
         success: true,
         message: "Lesson deleted successfully",
-        course: updatedFallback,
+        course,
       });
-    }
-
-    const module = course.modules.id(req.params.moduleId);
-    if (!module) {
-      return res.status(404).json({
+    } catch (error) {
+      res.status(500).json({
         success: false,
-        message: "Module not found",
+        message: error.message,
       });
     }
-
-    module.lessons.pull({ _id: req.params.lessonId });
-    await course.save();
-
-    res.json({
-      success: true,
-      message: "Lesson deleted successfully",
-      course,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-});
+  },
+);
 
 // ==========================================
 // ERROR HANDLER FOR MULTER

@@ -3,6 +3,34 @@ import { Link } from "react-router-dom";
 import { getApiUrl } from "../config/api";
 import "./Courses.css";
 
+const WEB_DEV_DEFAULT_ZIPS = [
+  {
+    title: "Day 1: HTML5 Starter Kit (ZIP)",
+    url: "https://drive.google.com/uc?export=download&id=1aBkTT6RZphi0YKcPt25Og0yBTolgWWfr",
+    isFolder: false,
+  },
+  {
+    title: "Day 2: HTML & CSS Projects Complete (ZIP)",
+    url: "https://drive.google.com/uc?export=download&id=1lWxj29iac2Ssdve-dIvfENu6HBI98omo",
+    isFolder: false,
+  },
+  {
+    title: "Day 3: JavaScript DOM & Async (ZIP)",
+    url: "https://drive.google.com/file/d/1SINj1Bz_LZNafdzzK_algyuE0Tberpcf/view?usp=drive_link",
+    isFolder: false,
+  },
+  {
+    title: "Day 4: Full-Stack MERN Capstone (ZIP)",
+    url: "https://drive.google.com/file/d/1cgldLQPh2jjt-z4Epaet4G8AhR1lN3EI/view?usp=drive_link",
+    isFolder: false,
+  },
+  {
+    title: "Web Dev Complete Projects (Google Drive Folder)",
+    url: "https://drive.google.com/drive/folders/1C10i264a0xaytSIhoNeW0j1seO75J8qt",
+    isFolder: true,
+  },
+];
+
 const defaultCourses = [
   {
     slug: "web-development",
