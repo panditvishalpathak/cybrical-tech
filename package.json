@@ -4,12 +4,13 @@
   "private": true,
   "description": "Cybrical Tech LMS & Platform",
   "scripts": {
+    "postinstall": "npm --prefix backend install",
     "start": "npm --prefix backend start",
     "dev": "npm --prefix backend start",
     "backend": "npm --prefix backend start",
     "backend:dev": "npm --prefix backend run dev",
     "frontend": "npm --prefix frontend run dev",
-    "build": "npm --prefix frontend run build && cp -r frontend/dist/* backend/public/"
+    "build": "npm --prefix backend install && npm --prefix frontend install && npm --prefix frontend run build && cp -r frontend/dist/* backend/public/"
   }
 }
 
